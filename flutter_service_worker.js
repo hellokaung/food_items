@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "d91ceec1589edae50bb651144c36061d",
+const RESOURCES = {"flutter_bootstrap.js": "cda7e0a94e690ad72050938425f29350",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
@@ -15,7 +15,7 @@ const RESOURCES = {"flutter_bootstrap.js": "d91ceec1589edae50bb651144c36061d",
 "assets/assets/images/le_bernardin.jpg": "f60df1c83f81a407189cc089a9c9092a",
 "assets/assets/images/la_grenouille.jpg": "53a450db2efe29c9ef0fa8fcd6188d3d",
 "assets/assets/images/burger_meal.jpg": "4358fda787a54151c459b4fb242d2170",
-"assets/NOTICES": "65497fd64e2c10b3a0ff57af0ac3b732",
+"assets/NOTICES": "db29b0efae184f175f7643ae6b2201e0",
 "assets/AssetManifest.bin": "c8ecb31494e0b5498231a4f21559db87",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "33b7d9392238c04c131b6ce224e13711",
@@ -39,7 +39,7 @@ const RESOURCES = {"flutter_bootstrap.js": "d91ceec1589edae50bb651144c36061d",
 "canvaskit/chromium/canvaskit.js": "ba4a8ae1a65ff3ad81c6818fd47e348b",
 "index.html": "dc098adba8c111c1f43b246e3b4e87aa",
 "/": "dc098adba8c111c1f43b246e3b4e87aa",
-"main.dart.js": "2a6fc79f08df1f913d85a195400df77b",
+"main.dart.js": "192a07ac45f5d961ab350cf895bebf19",
 "flutter.js": "76f08d47ff9f5715220992f993002504"};
 // The application shell files that are downloaded before a service worker can
 // start.
