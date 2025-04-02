@@ -3,25 +3,19 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "c513b3488f92bde43b59510108a5d126",
+const RESOURCES = {"flutter_bootstrap.js": "459849f1b56614c14cf1c0729f203048",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"assets/AssetManifest.json": "f144fe5e26caf09f2b157b431a791724",
-"assets/assets/images/burger.png": "c82a367627cc5e2480eaad88546349c1",
-"assets/assets/images/taco_meal.jpg": "300984be0e104c467d4d2aaeca245e50",
-"assets/assets/images/gotham_bar.jpg": "a022f5dc043cebe0a10f181bd8899f8f",
-"assets/assets/images/le_bernardin.jpg": "f60df1c83f81a407189cc089a9c9092a",
-"assets/assets/images/la_grenouille.jpg": "53a450db2efe29c9ef0fa8fcd6188d3d",
-"assets/assets/images/burger_meal.jpg": "4358fda787a54151c459b4fb242d2170",
+"assets/AssetManifest.json": "2efbb41d7877d10aac9d091f58ccd7b9",
 "assets/NOTICES": "37e23a81176fa515774f43fd819a22a4",
-"assets/AssetManifest.bin": "c8ecb31494e0b5498231a4f21559db87",
+"assets/AssetManifest.bin": "693635b5258fe5f1cda720cf224f158c",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "33b7d9392238c04c131b6ce224e13711",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "3624865171e88b9023b1695088d0bac8",
-"assets/AssetManifest.bin.json": "5d41a483821991abc135c512062c8686",
+"assets/AssetManifest.bin.json": "69a99f98c8b1fb8111c5fb961769fcd8",
 "manifest.json": "82177b739070a379d1916b9f5027b2cc",
 "version.json": "2e0149ead75056fa9dc1589ab196929e",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
@@ -39,7 +33,7 @@ const RESOURCES = {"flutter_bootstrap.js": "c513b3488f92bde43b59510108a5d126",
 "canvaskit/chromium/canvaskit.js": "ba4a8ae1a65ff3ad81c6818fd47e348b",
 "index.html": "dc098adba8c111c1f43b246e3b4e87aa",
 "/": "dc098adba8c111c1f43b246e3b4e87aa",
-"main.dart.js": "ca57f0a455d35abb8da7a9547b7fc681",
+"main.dart.js": "5f382ac064914d553ab42c62925cffb3",
 "flutter.js": "76f08d47ff9f5715220992f993002504"};
 // The application shell files that are downloaded before a service worker can
 // start.
