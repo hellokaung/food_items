@@ -1,5 +1,6 @@
 {
   "app_title": "Ibizza Beach Club",
+  "language_code": "en",
   "search_foods": "Search Foods...",
   "categories": "Categories",
   "view_all": "View All",
@@ -14,6 +15,8 @@
   "cart": "Cart",
   "settings": "Settings",
   "home": "Home",
+  "theme_settings": "Theme setting",
+  "select_theme": "Select Theme",
   "toggle_theme": "Toggle Theme",
   "dark_mode": "Dark mode",
   "light_mode": "Light Mode",
@@ -21,6 +24,7 @@
   "switch_theme": "Switch Theme",
   "select_language": "Select Language",
   "current_language": "Current Language",
+  "language_settings": "Language setting",
   "change_language": "Change Language",
   "add_to_cart": "Add to Cart",
   "include": "Include",
