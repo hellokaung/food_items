@@ -1,38 +1,787 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food & Drink Menu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    .menu-item {
+      transition: transform 0.3s ease;
+    }
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+    .category-btn.active {
+      background-color: #4f46e5;
+      color: white;
+    }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    .locked-content {
+      filter: blur(5px);
+      pointer-events: none;
+    }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="food_item">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    .lock-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
 
-  <title>food_item</title>
-  <link rel="manifest" href="manifest.json">
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-buttons {
+      animation: fadeInUp 1s ease-out 0.3s backwards;
+    }
+
+    .hero-image {
+      animation: scaleIn 1.2s ease-out;
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          rgba(255, 255, 255, 0.1) 50%,
+          rgba(255, 255, 255, 0.8) 100%);
+      animation: gradientMove 8s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        opacity: 0.5;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 0.8;
+        transform: translateY(-10px);
+      }
+    }
+
+    #mobileMenu {
+      transition: all 0.3s ease-in-out;
+    }
+
+    #mobileMenu.hidden {
+      display: none;
+    }
+
+    #mobileMenu:not(.hidden) {
+      display: block;
+      animation: slideDown 0.3s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-<body>
-  <script src="flutter_bootstrap.js" async></script>
+
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="text-xl font-bold text-indigo-600">Food Menu</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="mobileMenuButton" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="food.html" class="text-gray-700 hover:text-indigo-600">Food</a>
+          <a href="drinks.html" class="text-gray-700 hover:text-indigo-600">Drinks</a>
+          <a href="recipes.html" class="text-gray-700 hover:text-indigo-600">Recipes</a>
+          <a href="search.html" class="text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-search"></i> Search
+          </a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 hidden">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="cart.html" id="cartButton" class="relative p-2 rounded-full hover:bg-gray-100">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartCount"
+              class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+          </a>
+          <a href="search.html" class="text-gray-700 hover:text-indigo-600 md:hidden">
+            <i class="fas fa-search"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Mobile Navigation Menu -->
+      <div id="mobileMenu" class="md:hidden hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="food.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Food</a>
+          <a href="drinks.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Drinks</a>
+          <a href="recipes.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Recipes</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-screen bg-cover bg-center overflow-hidden" style="
+        background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      ">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl">
+          <div class="hero-content space-y-8">
+            <h1 class="text-6xl md:text-7xl font-bold text-white leading-tight">
+              Discover the Art of
+              <span class="text-indigo-400">Fine Dining</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+              Experience culinary excellence with our carefully curated menu
+              of exquisite dishes and refreshing beverages.
+            </p>
+            <div class="hero-buttons flex flex-wrap gap-4">
+              <a href="food.html"
+                class="px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all transform hover:scale-105 duration-300 flex items-center gap-2">
+                <i class="fas fa-utensils"></i>
+                Explore Menu
+              </a>
+              <a href="drinks.html"
+                class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-all transform hover:scale-105 duration-300 flex items-center gap-2">
+                <i class="fas fa-cocktail"></i>
+                View Drinks
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+  </header>
+
+  <!-- Featured Categories -->
+  <main class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-8 text-center">Featured Categories</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Food Categories -->
+      <a href="food.html#appetizers" class="group">
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+          <img
+            src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Appetizers" class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Tapas</h3>
+            <p class="text-gray-600">Start your meal right</p>
+          </div>
+        </div>
+      </a>
+      <a href="food.html#main-course" class="group">
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+          <img
+            src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Main Course" class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Main Course</h3>
+            <p class="text-gray-600">Hearty main dishes</p>
+          </div>
+        </div>
+      </a>
+      <!-- Drink Categories -->
+      <a href="drinks.html" class="group">
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+          <img
+            src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Cocktails" class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Cocktails</h3>
+            <p class="text-gray-600">Signature mixed drinks</p>
+          </div>
+        </div>
+      </a>
+      <a href="drinks.html" class="group">
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+          <img
+            src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Soft Drinks" class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Soft Drinks</h3>
+            <p class="text-gray-600">Refreshing beverages</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+          <p><i class="fas fa-phone mr-2"></i> +1 234 567 890</p>
+          <p><i class="fas fa-envelope mr-2"></i> info@restaurant.com</p>
+          <p>
+            <i class="fas fa-map-marker-alt mr-2"></i> 123 Food Street, City
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+          <p>Monday - Friday: 11:00 AM - 10:00 PM</p>
+          <p>Saturday - Sunday: 10:00 AM - 11:00 PM</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Password Modal -->
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <h3 class="text-xl font-bold mb-4">Enter Password</h3>
+      <input type="password" id="passwordInput" class="w-full p-2 border rounded mb-4" placeholder="Enter password" />
+      <div class="flex justify-end space-x-4">
+        <button id="cancelPassword" class="px-4 py-2 bg-gray-200 rounded">
+          Cancel
+        </button>
+        <button id="submitPassword" class="px-4 py-2 bg-indigo-600 text-white rounded">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item Detail Modal -->
+  <div id="itemDetailModal" class="modal">
+    <div class="modal-content max-w-2xl">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-2xl font-bold" id="detailTitle"></h3>
+        <button id="closeDetailModal" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <img id="detailImage" src="" alt="" class="w-full h-64 object-cover rounded-lg" />
+        </div>
+        <div>
+          <p id="detailDescription" class="text-gray-600 mb-4"></p>
+          <div id="detailPrice" class="text-xl font-bold text-indigo-600 mb-4"></div>
+          <div id="detailIngredients" class="mb-4">
+            <h4 class="font-semibold mb-2">Ingredients:</h4>
+            <ul id="ingredientsList" class="list-disc list-inside text-gray-600"></ul>
+          </div>
+          <div id="detailInstructions" class="mb-4">
+            <h4 class="font-semibold mb-2">Instructions:</h4>
+            <p id="instructionsText" class="text-gray-600"></p>
+          </div>
+          <button id="addToCartDetail"
+            class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample menu data
+    const menuData = {
+      food: {
+        appetizers: [
+          {
+            name: "Bruschetta",
+            description:
+              "Toasted bread topped with tomatoes, garlic, and fresh basil",
+            price: 8.99,
+            image:
+              "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            ingredients: [
+              "Baguette",
+              "Fresh tomatoes",
+              "Garlic",
+              "Fresh basil",
+              "Olive oil",
+              "Balsamic vinegar",
+            ],
+            instructions:
+              "Toast the bread, rub with garlic, top with diced tomatoes and basil, drizzle with olive oil and balsamic vinegar.",
+          },
+          {
+            name: "Calamari",
+            description: "Crispy fried squid served with marinara sauce",
+            price: 12.99,
+            image:
+              "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            ingredients: [
+              "Fresh squid",
+              "Flour",
+              "Eggs",
+              "Breadcrumbs",
+              "Marinara sauce",
+              "Lemon",
+            ],
+            instructions:
+              "Clean and cut squid, coat in flour, egg, and breadcrumbs, deep fry until golden, serve with marinara sauce and lemon wedges.",
+          },
+        ],
+        mainCourse: [
+          {
+            name: "Grilled Salmon",
+            description: "Fresh salmon fillet with lemon butter sauce",
+            price: 24.99,
+            image:
+              "https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            ingredients: [
+              "Salmon fillet",
+              "Butter",
+              "Lemon",
+              "Fresh herbs",
+              "Garlic",
+              "Olive oil",
+            ],
+            instructions:
+              "Season salmon, grill until cooked through, prepare lemon butter sauce with herbs and garlic, serve hot.",
+          },
+        ],
+      },
+      drinks: {
+        softDrinks: [
+          {
+            name: "Fresh Lemonade",
+            description: "Homemade lemonade with mint",
+            price: 4.99,
+            image:
+              "https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            ingredients: [
+              "Fresh lemons",
+              "Water",
+              "Sugar",
+              "Mint leaves",
+              "Ice",
+            ],
+            instructions:
+              "Squeeze lemons, mix with water and sugar, add mint leaves and ice, stir well.",
+          },
+        ],
+        cocktails: [
+          {
+            name: "Mojito",
+            description: "Classic Cuban cocktail with rum and mint",
+            price: 9.99,
+            image:
+              "https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            ingredients: [
+              "White rum",
+              "Fresh mint",
+              "Lime",
+              "Sugar",
+              "Soda water",
+              "Ice",
+            ],
+            instructions:
+              "Muddle mint with sugar and lime, add rum and ice, top with soda water, garnish with mint and lime.",
+            locked: true,
+          },
+        ],
+      },
+      recipes: [
+        {
+          name: "Secret Sauce Recipe",
+          description: "Our famous house sauce recipe",
+          image:
+            "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          ingredients: [
+            "Mayonnaise",
+            "Mustard",
+            "Honey",
+            "Garlic",
+            "Special spices",
+          ],
+          instructions:
+            "Mix all ingredients in a bowl, refrigerate for at least 2 hours before serving.",
+          locked: true,
+        },
+      ],
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function updateCartCount() {
+      const cartCount = document.getElementById("cartCount");
+      console.log("Cart count element:", cartCount);
+
+      if (cartCount) {
+        const totalItems = cart.reduce(
+          (sum, item) => sum + (item.quantity || 1),
+          0
+        );
+        console.log("Cart items:", cart);
+        console.log("Total items calculated:", totalItems);
+        cartCount.textContent = totalItems;
+      } else {
+        console.warn("Cart count element not found!");
+      }
+    }
+
+    // Password for locked content
+    const LOCK_PASSWORD = "secret123";
+
+    function addToCart(item) {
+      // Generate unique ID if not exists
+      if (!item.id) {
+        item.id = Date.now().toString();
+      }
+
+      // Check if item already exists in cart
+      const existingItemIndex = cart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+
+      if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity =
+          (cart[existingItemIndex].quantity || 1) + 1;
+      } else {
+        item.quantity = 1;
+        cart.push(item);
+      }
+
+      // Save to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Update UI
+      updateCartCount();
+
+      // Show success message
+      const successMessage = document.createElement("div");
+      successMessage.className =
+        "fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+      successMessage.textContent = `${item.name} added to cart!`;
+      document.body.appendChild(successMessage);
+      setTimeout(() => successMessage.remove(), 2000);
+    }
+
+    // Function to show item details
+    function showItemDetails(item) {
+      const modal = document.getElementById("itemDetailModal");
+      const modalContent = document.getElementById("modalContent");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalImage = document.getElementById("modalImage");
+      const modalDescription = document.getElementById("modalDescription");
+      const modalIngredients = document.getElementById("modalIngredients");
+      const modalInstructions = document.getElementById("modalInstructions");
+      const modalPrice = document.getElementById("modalPrice");
+      const addToCartBtn = document.getElementById("addToCartBtn");
+
+      modalTitle.textContent = item.name;
+      modalImage.src = item.image;
+      modalDescription.textContent = item.description;
+
+      // Make ingredients clickable links
+      if (item.ingredients) {
+        const ingredientsList = item.ingredients
+          .map((ingredient) => {
+            const searchQuery = encodeURIComponent(ingredient);
+            return `<a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" 
+                            target="_blank" 
+                            class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
+                            ${ingredient}
+                           </a>`;
+          })
+          .join(", ");
+        modalIngredients.innerHTML = `<strong>Ingredients:</strong> ${ingredientsList}`;
+      } else {
+        modalIngredients.textContent = "";
+      }
+
+      if (item.instructions) {
+        modalInstructions.innerHTML = `<strong>Instructions:</strong><br>${item.instructions}`;
+      } else {
+        modalInstructions.textContent = "";
+      }
+
+      if (item.price) {
+        modalPrice.textContent = `$${item.price.toFixed(2)}`;
+        addToCartBtn.style.display = "block";
+        addToCartBtn.onclick = () => addToCart(item);
+      } else {
+        modalPrice.textContent = "";
+        addToCartBtn.style.display = "none";
+      }
+
+      modal.classList.remove("hidden");
+    }
+
+    // Function to render menu items
+    function renderMenuItems(category = "all", section = "food") {
+      const grid = document.getElementById(`${section}Grid`);
+      console.log(`Looking for grid element: ${section}Grid`, grid);
+
+      if (!grid) {
+        console.warn(`Grid element '${section}Grid' not found in the DOM`);
+        return;
+      }
+
+      let items = [];
+
+      if (category === "all") {
+        if (section === "recipes") {
+          items = menuData[section];
+        } else {
+          Object.values(menuData[section]).forEach((categoryItems) => {
+            items = items.concat(categoryItems);
+          });
+        }
+      } else {
+        items = menuData[section][category] || [];
+      }
+
+      console.log(
+        `Rendering ${items.length} items for ${section}/${category}`
+      );
+
+      grid.innerHTML = items
+        .map(
+          (item) => `
+                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer">
+                    ${item.locked
+              ? '<div class="lock-overlay"><i class="fas fa-lock"></i></div>'
+              : ""
+            }
+                    <img src="${item.image}" alt="${item.name
+            }" class="w-full h-48 object-cover ${item.locked ? "locked-content" : ""
+            }">
+                    <div class="p-6 ${item.locked ? "locked-content" : ""}">
+                        <h3 class="text-xl font-semibold mb-2">${item.name}</h3>
+                        <p class="text-gray-600 mb-4">${item.description}</p>
+                        ${item.price
+              ? `
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-indigo-600">$${item.price
+              }</span>
+                                <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" onclick="event.stopPropagation(); addToCart(${JSON.stringify(
+                item
+              ).replace(/"/g, "&quot;")})">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        `
+              : ""
+            }
+                    </div>
+                </div>
+            `
+        )
+        .join("");
+
+      // Add click handlers for items
+      document.querySelectorAll(".menu-item").forEach((item, index) => {
+        item.addEventListener("click", () => {
+          if (!items[index].locked) {
+            showItemDetails(items[index]);
+          }
+        });
+      });
+
+      // Add click handlers for locked items
+      document.querySelectorAll(".lock-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", () => {
+          document.getElementById("passwordModal").style.display = "block";
+        });
+      });
+    }
+
+    // Initialize all sections only if their grid elements exist
+    if (document.getElementById("foodGrid")) {
+      renderMenuItems("all", "food");
+    }
+    if (document.getElementById("drinksGrid")) {
+      renderMenuItems("all", "drinks");
+    }
+    if (document.getElementById("recipesGrid")) {
+      renderMenuItems("all", "recipes");
+    }
+
+    // Initialize cart count immediately and after DOM loads
+    console.log("Initial cart state:", cart);
+    updateCartCount();
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM Content Loaded - Updating cart count");
+      updateCartCount();
+    });
+
+    // Password modal handlers
+    document
+      .getElementById("cancelPassword")
+      .addEventListener("click", () => {
+        document.getElementById("passwordModal").style.display = "none";
+        document.getElementById("passwordInput").value = "";
+      });
+
+    document
+      .getElementById("submitPassword")
+      .addEventListener("click", () => {
+        const password = document.getElementById("passwordInput").value;
+        if (password === LOCK_PASSWORD) {
+          // Unlock content
+          document.querySelectorAll(".locked-content").forEach((content) => {
+            content.classList.remove("locked-content");
+          });
+          document.querySelectorAll(".lock-overlay").forEach((overlay) => {
+            overlay.style.display = "none";
+          });
+          document.getElementById("passwordModal").style.display = "none";
+          document.getElementById("passwordInput").value = "";
+        } else {
+          alert("Invalid password");
+        }
+      });
+
+    // Theme toggle
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const icon = document.querySelector("#themeToggle i");
+      icon.classList.toggle("fa-moon");
+      icon.classList.toggle("fa-sun");
+    });
+
+    // Close detail modal
+    document
+      .getElementById("closeDetailModal")
+      .addEventListener("click", () => {
+        document.getElementById("itemDetailModal").style.display = "none";
+      });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", (event) => {
+      const modal = document.getElementById("itemDetailModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+        // Toggle between hamburger and close icon
+        const icon = mobileMenuButton.querySelector("i");
+        if (mobileMenu.classList.contains("hidden")) {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        } else {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        }
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        if (
+          !mobileMenuButton.contains(event.target) &&
+          !mobileMenu.contains(event.target)
+        ) {
+          mobileMenu.classList.add("hidden");
+          const icon = mobileMenuButton.querySelector("i");
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>

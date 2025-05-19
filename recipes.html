@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Special Recipes Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .recipe-item {
+            transition: transform 0.3s ease;
+        }
+
+        .recipe-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .locked-content {
+            filter: blur(5px);
+            pointer-events: none;
+        }
+
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .sort-btn.active {
+            background-color: #4F46E5;
+            color: white;
+        }
+
+        #mobileMenu {
+            transition: all 0.3s ease-in-out;
+        }
+
+        #mobileMenu.hidden {
+            display: none;
+        }
+
+        #mobileMenu:not(.hidden) {
+            display: block;
+            animation: slideDown 0.3s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-indigo-600">Food Menu</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button id="mobileMenuButton" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="food.html" class="text-gray-700 hover:text-indigo-600">Food</a>
+                    <a href="drinks.html" class="text-gray-700 hover:text-indigo-600">Drinks</a>
+                    <a href="recipes.html" class="text-gray-700 hover:text-indigo-600">Recipes</a>
+                    <a href="search.html" class="text-gray-700 hover:text-indigo-600">
+                        <i class="fas fa-search"></i> Search
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 hidden">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="cart.html" id="cartButton" class="relative p-2 rounded-full hover:bg-gray-100 ">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount"
+                            class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                    </a>
+                    <a href="search.html" class="text-gray-700 hover:text-indigo-600 md:hidden">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="food.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Food</a>
+                    <a href="drinks.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Drinks</a>
+                    <a href="recipes.html"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Recipes</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 text-center">Special Recipes</h1>
+
+        <!-- Sort Options -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="sort-btn active px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                data-sort="name-asc">
+                <i class="fas fa-sort-alpha-down mr-2"></i> A-Z
+            </button>
+            <button class="sort-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                data-sort="name-desc">
+                <i class="fas fa-sort-alpha-up mr-2"></i> Z-A
+            </button>
+            <button class="sort-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                data-sort="category">
+                <i class="fas fa-layer-group mr-2"></i> Category
+            </button>
+        </div>
+
+        <!-- Recipes Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recipesGrid">
+            <!-- Items will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipeDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold" id="detailTitle"></h3>
+                <button id="closeDetailModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <img id="detailImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+                    <div class="mt-4">
+                        <span id="detailCategory"
+                            class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"></span>
+                    </div>
+                </div>
+                <div>
+                    <p id="detailDescription" class="text-gray-600 mb-4"></p>
+                    <div id="detailIngredients" class="mb-4">
+                        <h4 class="font-semibold mb-2">Ingredients:</h4>
+                        <ul id="ingredientsList" class="list-disc list-inside text-gray-600"></ul>
+                    </div>
+                    <div id="detailInstructions" class="mb-4">
+                        <h4 class="font-semibold mb-2">Instructions:</h4>
+                        <p id="instructionsText" class="text-gray-600"></p>
+                    </div>
+                    <div id="detailTips" class="mb-4">
+                        <h4 class="font-semibold mb-2">Chef's Tips:</h4>
+                        <p id="tipsText" class="text-gray-600"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content max-w-md">
+            <h3 class="text-xl font-bold mb-4">Enter Password</h3>
+            <input type="password" id="passwordInput" class="w-full p-2 border rounded mb-4"
+                placeholder="Enter password">
+            <div class="flex justify-end space-x-4">
+                <button id="cancelPassword" class="px-4 py-2 bg-gray-200 rounded">Cancel</button>
+                <button id="submitPassword" class="px-4 py-2 bg-indigo-600 text-white rounded">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample recipes data
+        const recipesData = [
+            {
+                name: "Secret Sauce Recipe",
+                description: "Our famous house sauce recipe that makes everything taste better",
+                category: "Sauces",
+                image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                ingredients: ["Mayonnaise", "Mustard", "Honey", "Garlic", "Special spices"],
+                instructions: "Mix all ingredients in a bowl, refrigerate for at least 2 hours before serving.",
+                tips: "For best results, let the sauce rest overnight in the refrigerator.",
+                locked: true
+            },
+            {
+                name: "Special Marinade",
+                description: "Perfect marinade for meats and vegetables",
+                category: "Marinades",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                ingredients: ["Soy sauce", "Garlic", "Ginger", "Honey", "Sesame oil"],
+                instructions: "Combine all ingredients, marinate meat for at least 4 hours.",
+                tips: "Add a splash of pineapple juice for extra tenderness.",
+                locked: true
+            },
+            {
+                name: "Homemade Pasta",
+                description: "Classic Italian pasta recipe",
+                category: "Pasta",
+                image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                ingredients: ["Flour", "Eggs", "Olive oil", "Salt"],
+                instructions: "Mix ingredients, knead dough, rest for 30 minutes, roll and cut.",
+                tips: "Use room temperature eggs for best results."
+            }
+        ];
+
+        // Password generation and validation
+        function generateDailyPassword() {
+            const today = new Date();
+            const dateStr = today.toISOString().split('T')[0]; // Get YYYY-MM-DD
+            const basePassword = "fuckyou"; // Base password
+            return basePassword;
+        }
+
+        function validatePassword(inputPassword) {
+            const dailyPassword = generateDailyPassword();
+            return inputPassword === dailyPassword;
+        }
+
+        function checkLastUnlockDate() {
+            const lastUnlock = localStorage.getItem('lastRecipeUnlock');
+            if (!lastUnlock) return false;
+
+            const today = new Date().toISOString().split('T')[0];
+            return lastUnlock === today;
+        }
+
+        function setLastUnlockDate() {
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('lastRecipeUnlock', today);
+        }
+
+        // Function to show recipe details
+        function showRecipeDetails(recipe) {
+            const modal = document.getElementById('recipeDetailModal');
+            const title = document.getElementById('detailTitle');
+            const image = document.getElementById('detailImage');
+            const category = document.getElementById('detailCategory');
+            const description = document.getElementById('detailDescription');
+            const ingredientsList = document.getElementById('ingredientsList');
+            const instructionsText = document.getElementById('instructionsText');
+            const tipsText = document.getElementById('tipsText');
+
+            title.textContent = recipe.name;
+            image.src = recipe.image;
+            image.alt = recipe.name;
+            category.textContent = recipe.category;
+            description.textContent = recipe.description;
+
+            // Update ingredients with clickable links
+            if (recipe.ingredients && recipe.ingredients.length > 0) {
+                const ingredientsHTML = recipe.ingredients.map(ingredient => {
+                    const searchQuery = encodeURIComponent(ingredient);
+                    return `<li>
+                        <a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" 
+                           target="_blank" 
+                           class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
+                            ${ingredient}
+                        </a>
+                    </li>`;
+                }).join('');
+                ingredientsList.innerHTML = ingredientsHTML;
+                document.getElementById('detailIngredients').style.display = 'block';
+            } else {
+                document.getElementById('detailIngredients').style.display = 'none';
+            }
+
+            instructionsText.textContent = recipe.instructions;
+            tipsText.textContent = recipe.tips;
+
+            modal.style.display = 'block';
+        }
+
+        // Function to sort recipes
+        function sortRecipes(sortType) {
+            let sortedRecipes = [...recipesData];
+
+            switch (sortType) {
+                case 'name-asc':
+                    sortedRecipes.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'name-desc':
+                    sortedRecipes.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'category':
+                    sortedRecipes.sort((a, b) => a.category.localeCompare(b.category));
+                    break;
+            }
+
+            renderRecipes(sortedRecipes);
+        }
+
+        // Function to render recipes
+        function renderRecipes(recipes) {
+            const grid = document.getElementById('recipesGrid');
+
+            grid.innerHTML = recipes.map(recipe => `
+                <div class="recipe-item bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer" onclick="${recipe.locked ? 'showPasswordModal()' : `showRecipeDetails(${JSON.stringify(recipe).replace(/"/g, '&quot;')})`}">
+                    ${recipe.locked ? '<div class="lock-overlay"><i class="fas fa-lock"></i></div>' : ''}
+                    <img src="${recipe.image}" alt="${recipe.name}" class="w-full h-48 object-cover ${recipe.locked ? 'locked-content' : ''}">
+                    <div class="p-6 ${recipe.locked ? 'locked-content' : ''}">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold">${recipe.name}</h3>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">${recipe.category}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">${recipe.description}</p>
+                        <button class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                            ${recipe.locked ? 'Unlock Recipe' : 'View Recipe'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Function to show password modal
+        function showPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'block';
+        }
+
+        // Initialize
+        sortRecipes('name-asc');
+
+        // Sort button handlers
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const sortType = btn.dataset.sort;
+                sortRecipes(sortType);
+            });
+        });
+
+        // Password modal handlers
+        document.getElementById('cancelPassword').addEventListener('click', () => {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+        });
+
+        document.getElementById('submitPassword').addEventListener('click', () => {
+            const password = document.getElementById('passwordInput').value;
+
+            // Check if already unlocked today
+            if (checkLastUnlockDate()) {
+                // Unlock content without password
+                unlockRecipes();
+                return;
+            }
+
+            if (validatePassword(password)) {
+                // Set unlock date
+                setLastUnlockDate();
+                // Unlock content
+                unlockRecipes();
+            } else {
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+                errorMessage.textContent = 'Invalid password. Please try again.';
+                document.body.appendChild(errorMessage);
+                setTimeout(() => errorMessage.remove(), 2000);
+            }
+        });
+
+        function unlockRecipes() {
+            // Unlock content
+            document.querySelectorAll('.locked-content').forEach(content => {
+                content.classList.remove('locked-content');
+            });
+            document.querySelectorAll('.lock-overlay').forEach(overlay => {
+                overlay.style.display = 'none';
+            });
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+
+            // Update the recipes data to remove locked status
+            recipesData.forEach(recipe => {
+                if (recipe.locked) {
+                    recipe.locked = false;
+                }
+            });
+
+            // Re-render the recipes
+            renderRecipes(recipesData);
+
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            successMessage.textContent = 'Recipes unlocked successfully!';
+            document.body.appendChild(successMessage);
+            setTimeout(() => successMessage.remove(), 2000);
+        }
+
+        // Add password hint to the password modal
+        document.getElementById('passwordModal').querySelector('.modal-content').insertAdjacentHTML('afterbegin', `
+            <p class="text-sm text-gray-600 mb-4">
+                Hint: Enter the password once to unlock recipes for the entire day.
+            </p>
+        `);
+
+        // Check if already unlocked today when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            if (checkLastUnlockDate()) {
+                // Unlock recipes if already unlocked today
+                recipesData.forEach(recipe => {
+                    recipe.locked = false;
+                });
+                renderRecipes(recipesData);
+            }
+        });
+
+        // Close detail modal
+        document.getElementById('closeDetailModal').addEventListener('click', () => {
+            document.getElementById('recipeDetailModal').style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            const modals = ['recipeDetailModal', 'passwordModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('#themeToggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {  // Check if element exists
+                const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                cartCount.textContent = totalItems;
+            }
+        }
+
+        function addToCart(item) {
+            // Generate unique ID if not exists
+            if (!item.id) {
+                item.id = Date.now().toString();
+            }
+
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+            } else {
+                item.quantity = 1;
+                cart.push(item);
+            }
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update UI
+            updateCartCount();
+
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            successMessage.textContent = `${item.name} added to cart!`;
+            document.body.appendChild(successMessage);
+            setTimeout(() => successMessage.remove(), 2000);
+        }
+
+        // Initialize cart count immediately and after DOM loads
+        updateCartCount();
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                // Toggle between hamburger and close icon
+                const icon = mobileMenuButton.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        function showItemDetails(item) {
+            const modal = document.getElementById('itemDetailModal');
+            const title = document.getElementById('detailTitle');
+            const image = document.getElementById('detailImage');
+            const description = document.getElementById('detailDescription');
+            const ingredientsList = document.getElementById('ingredientsList');
+            const instructionsText = document.getElementById('instructionsText');
+
+            // Update modal content
+            title.textContent = item.name;
+            image.src = item.image;
+            image.alt = item.name;
+            description.textContent = item.description;
+
+            // Update ingredients with clickable links
+            if (item.ingredients && item.ingredients.length > 0) {
+                const ingredientsHTML = item.ingredients.map(ingredient => {
+                    const searchQuery = encodeURIComponent(ingredient);
+                    return `<li>
+                        <a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" 
+                           target="_blank" 
+                           class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
+                            ${ingredient}
+                        </a>
+                    </li>`;
+                }).join('');
+                ingredientsList.innerHTML = ingredientsHTML;
+                document.getElementById('detailIngredients').style.display = 'block';
+            } else {
+                document.getElementById('detailIngredients').style.display = 'none';
+            }
+
+            // Update instructions
+            if (item.instructions) {
+                instructionsText.textContent = item.instructions;
+                document.getElementById('detailInstructions').style.display = 'block';
+            } else {
+                document.getElementById('detailInstructions').style.display = 'none';
+            }
+
+            // Show modal
+            modal.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

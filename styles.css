@@ -1,0 +1,550 @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00d1d6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00a8ac;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+    background: #1a2234;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #00d1d6;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #00e8ee;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom focus styles */
+.focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 209, 214, 0.5);
+}
+
+/* Custom button styles */
+.btn-hover-effect {
+    transition: transform 0.2s;
+}
+
+.btn-hover-effect:hover {
+    transform: translateY(-2px);
+}
+
+/* Custom card styles */
+.card-hover {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 209, 214, 0.15);
+}
+
+/* Custom modal styles */
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+}
+
+/* Custom input styles */
+.custom-input {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.custom-input:focus {
+    border-color: #00d1d6;
+    box-shadow: 0 0 0 3px rgba(0, 209, 214, 0.1);
+}
+
+/* Custom quantity button styles */
+.quantity-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #E5E7EB;
+    color: #374151;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background-color: #00d1d6;
+    color: white;
+}
+
+.dark .quantity-btn {
+    background-color: #2d3748;
+    color: #E5E7EB;
+}
+
+.dark .quantity-btn:hover {
+    background-color: #00d1d6;
+    color: #0f172a;
+}
+
+/* Custom category button styles */
+.category-btn {
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.category-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Custom cart badge animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.cart-badge-animation {
+    animation: bounce 0.3s ease-in-out;
+}
+
+/* Custom loading spinner */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #00d1d6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom image placeholder */
+.image-placeholder {
+    background: linear-gradient(45deg, #f3f3f3 25%, #e5e5e5 25%, #e5e5e5 50%, #f3f3f3 50%, #f3f3f3 75%, #e5e5e5 75%, #e5e5e5);
+    background-size: 20px 20px;
+    animation: move-bg 1s linear infinite;
+}
+
+@keyframes move-bg {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+/* Custom error message styles */
+.error-message {
+    background-color: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    color: #DC2626;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.dark .error-message {
+    background-color: #7F1D1D;
+    border-color: #B91C1C;
+    color: #FCA5A5;
+}
+
+/* Custom success message styles */
+.success-message {
+    background-color: #DCFCE7;
+    border: 1px solid #86EFAC;
+    color: #16A34A;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.dark .success-message {
+    background-color: #14532D;
+    border-color: #22C55E;
+    color: #86EFAC;
+}
+
+:root {
+    /* Light theme colors - Teal-based */
+    --primary-color: #00d1d6; /* Teal primary color */
+    --primary-dark: #00a8ac; /* Darker teal for hover states */
+    --primary-light: #b3f0f3; /* Light teal for backgrounds */
+    --secondary-color: #e2e8f0; /* Light gray for backgrounds */
+    --accent-color: #0891b2; /* Complementary blue for accents */
+    --text-color: #1e293b; /* Dark blue-gray for text */
+    --text-light: #64748b; /* Lighter text color for secondary text */
+    --bg-color: #f8fafc; /* Very light background */
+    --card-bg: #ffffff; /* White card background */
+    --border-color: #e2e8f0; /* Light border color */
+    --modal-bg: rgba(0, 0, 0, 0.5); /* Semi-transparent black for modals */
+    --hover-bg: #f0fdfd; /* Very light teal for hover states */
+    --shadow-color: rgba(0, 209, 214, 0.1); /* Teal shadow with low opacity */
+}
+
+[data-theme="dark"] {
+    --primary-color: #00d1d6; /* Keep teal as primary */
+    --primary-dark: #00e8ee; /* Brighter teal for hover in dark mode */
+    --primary-light: #003f42; /* Very dark teal for backgrounds */
+    --secondary-color: #1e293b; /* Dark blue-gray for backgrounds */
+    --accent-color: #22d3ee; /* Lighter cyan for accents */
+    --text-color: #f1f5f9; /* Very light gray for main text */
+    --text-light: #94a3b8; /* Medium gray for secondary text */
+    --bg-color: #0f172a; /* Very dark blue-gray background */
+    --card-bg: #1e293b; /* Dark blue-gray card background */
+    --border-color: #334155; /* Medium dark border */
+    --modal-bg: rgba(0, 0, 0, 0.7); /* More opaque black for modals */
+    --hover-bg: #164e4f; /* Dark teal hover background */
+    --shadow-color: rgba(0, 209, 214, 0.2); /* Teal shadow with higher opacity */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+}
+
+/* Navigation styles */
+nav {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+nav a {
+    color: var(--text-color);
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Card styles */
+.menu-item, .recipe-item, .search-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.menu-item:hover, .recipe-item:hover, .search-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+/* Button styles */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Input styles */
+input {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Modal styles */
+.modal {
+    background-color: var(--modal-bg);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--primary-color);
+}
+
+/* Category/Sort/Filter button styles */
+.category-btn, .sort-btn, .filter-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+}
+
+.category-btn:hover, .sort-btn:hover, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.category-btn.active, .sort-btn.active, .filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#themeToggle:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotate(15deg);
+}
+
+/* Cart styles */
+.cart-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Price tags */
+.price-tag {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Form elements */
+select, textarea {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+}
+
+select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Success/Error messages */
+.success-message {
+    background-color: #DCFCE7;
+    border-left: 4px solid #16A34A;
+    color: #166534;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.dark .success-message {
+    background-color: #14532D;
+    border-left: 4px solid #22C55E;
+    color: #86EFAC;
+}
+
+.error-message {
+    background-color: #FEE2E2;
+    border-left: 4px solid #DC2626;
+    color: #991B1B;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.dark .error-message {
+    background-color: #7F1D1D;
+    border-left: 4px solid #F87171;
+    color: #FCA5A5;
+}
+
+/* Mobile menu */
+#mobileMenu {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border-radius: 0.5rem;
+}
+
+/* Scrollbar - already defined at the top */
+
+/* Lock overlay */
+.lock-overlay {
+    background: var(--modal-bg);
+}
+
+/* Quantity buttons - already defined at the top */
+
+/* Search input */
+#searchInput {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Cart badge */
+#cartCount {
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+}
+
+/* Loading spinner - already defined at the top */
+
+/* Additional custom classes */
+.teal-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: white;
+}
+
+.teal-badge {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.dark .teal-badge {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+/* Highlight text */
+.highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Section headers */
+.section-header {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--text-color);
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Icon styles */
+.icon {
+    color: var(--primary-color);
+}
+
+.icon:hover {
+    color: var(--primary-dark);
+}
+
+.dark .icon {
+    color: var(--primary-color);
+}
+
+.dark .icon:hover {
+    color: var(--primary-dark);
+}

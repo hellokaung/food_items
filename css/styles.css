@@ -1,0 +1,268 @@
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Cart item styles */
+.cart-item {
+    transition: transform 0.3s ease;
+}
+
+.cart-item:hover {
+    transform: translateY(-2px);
+}
+
+/* Note Dialog styles */
+.note-dialog {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    width: 350px;
+    z-index: 1000;
+    transform: translateY(120%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note-dialog.show {
+    transform: translateY(0);
+}
+
+.note-dialog .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.note-dialog .close-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.note-dialog .close-btn:hover {
+    color: #333;
+}
+
+.note-dialog textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    resize: none;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+}
+
+.note-dialog textarea:focus {
+    outline: none;
+    border-color: #00d1d6;
+    box-shadow: 0 0 0 2px rgba(0, 209, 214, 0.1);
+}
+
+.note-dialog .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.note-dialog .actions button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.note-dialog .actions .save-btn {
+    background-color: #00d1d6;
+    color: white;
+    border: none;
+}
+
+.note-dialog .actions .save-btn:hover {
+    background-color: #00a8ac;
+    transform: translateY(-1px);
+}
+
+.note-dialog .actions .cancel-btn {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.note-dialog .actions .cancel-btn:hover {
+    background-color: #e2e8f0;
+}
+
+/* Delete Dialog styles */
+.delete-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    width: 350px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delete-dialog.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.delete-dialog .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.delete-dialog .close-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.delete-dialog .close-btn:hover {
+    color: #333;
+}
+
+.delete-dialog .content {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.delete-dialog .content i {
+    font-size: 3rem;
+    color: #ef4444;
+    margin-bottom: 1rem;
+}
+
+.delete-dialog .actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.delete-dialog .actions button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.delete-dialog .actions .delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+}
+
+.delete-dialog .actions .delete-btn:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+}
+
+.delete-dialog .actions .cancel-btn {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.delete-dialog .actions .cancel-btn:hover {
+    background-color: #e2e8f0;
+}
+
+/* Mobile menu styles */
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+}
+
+#mobileMenu.hidden {
+    display: none;
+}
+
+#mobileMenu:not(.hidden) {
+    display: block;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .note-dialog {
+    background-color: #1e293b;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .note-dialog textarea {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .note-dialog .close-btn {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .note-dialog .close-btn:hover {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .note-dialog .actions .cancel-btn {
+    background-color: #334155;
+    color: #e2e8f0;
+    border-color: #475569;
+}
+
+[data-theme="dark"] .note-dialog .actions .cancel-btn:hover {
+    background-color: #475569;
+}
+
+[data-theme="dark"] .delete-dialog {
+    background-color: #1e293b;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .delete-dialog .close-btn {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .delete-dialog .close-btn:hover {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .delete-dialog .actions .cancel-btn {
+    background-color: #334155;
+    color: #e2e8f0;
+    border-color: #475569;
+}
+
+[data-theme="dark"] .delete-dialog .actions .cancel-btn:hover {
+    background-color: #475569;
+} 
