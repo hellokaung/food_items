@@ -1,0 +1,126 @@
+/* iOS-style bottom navigation */
+.bottom-nav {
+  display: none;
+  /* Hidden by default, shown on mobile */
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(245, 245, 245, 0.95); /* Warm White/Cream #F5F5F5 */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  width: calc(100% - 2rem);
+  max-width: 500px;
+  margin: 0 auto;
+  animation: bounce 4s ease-in-out infinite;
+}
+
+/* Show on mobile */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+  }
+
+  main {
+    padding-bottom: 5rem;
+    /* Adjusted for nav height */
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: none;
+  }
+
+  main {
+    padding-bottom: 2rem;
+  }
+}
+
+/* Bounce animation for iOS feel */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Hover and active states */
+.bottom-nav:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation item styles */
+.nav-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(85, 107, 47, 0.1); /* Olive Green #556B2F with opacity */
+  color: #556b2f; /* Olive Green */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-nav-item.active .nav-icon-wrapper {
+  background: #e27d60; /* Soft Terracotta */
+  color: #fffaf0; /* Warm White/Cream */
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(226, 125, 96, 0.4); /* Soft Terracotta shadow */
+}
+
+.bottom-nav-item span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #556b2f; /* Olive Green */
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-item.active span {
+  color: #e27d60; /* Soft Terracotta */
+  font-weight: 600;
+}
+
+/* iOS-style touch feedback */
+.bottom-nav-item:active .nav-icon-wrapper,
+.bottom-nav-item.touch-active .nav-icon-wrapper {
+  transform: scale(0.9);
+  background: #722f37; /* Deep Burgundy */
+  color: #fffaf0; /* Warm White/Cream */
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#itemDetailModal,
+#recipeDetailModal {
+  z-index: 100000;
+}

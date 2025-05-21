@@ -13,22 +13,41 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="./css/bottom_navigation.css" />
+
     <style>
       body {
         font-family: "Poppins", sans-serif;
+        background-color: #fffaf0; /* Warm White/Cream */
+      }
+
+      .no-scroll {
+        overflow: hidden;
       }
 
       .menu-item {
         transition: transform 0.3s ease;
+        background-color: #f5f5f5; /* Warm White/Cream */
       }
 
       .menu-item:hover {
         transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
+      }
+
+      .category-btn {
+        background-color: #f5f5f5; /* Warm White/Cream */
+        color: #722f37; /* Deep Burgundy */
       }
 
       .category-btn.active {
-        background-color: #4f46e5;
-        color: white;
+        background-color: #e27d60; /* Soft Terracotta */
+        color: #fffaf0; /* Warm White/Cream */
+      }
+
+      .category-btn:hover {
+        background-color: #722f37; /* Deep Burgundy */
+        color: #fffaf0; /* Warm White/Cream */
       }
 
       .modal {
@@ -38,12 +57,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
         z-index: 1000;
       }
 
       .modal-content {
-        background: white;
+        background: #f5f5f5; /* Warm White/Cream */
         padding: 2rem;
         border-radius: 1rem;
         max-width: 800px;
@@ -61,156 +80,139 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: #fffaf0; /* Warm White/Cream */
         font-size: 1.5rem;
         cursor: pointer;
       }
 
-      #mobileMenu {
-        transition: all 0.3s ease-in-out;
+      #itemDetailModal {
+        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
       }
 
-      #mobileMenu.hidden {
-        display: none;
+      #itemDetailModal .modal-content {
+        background: #f5f5f5; /* Warm White/Cream */
       }
 
-      #mobileMenu:not(.hidden) {
-        display: block;
-        animation: slideDown 0.3s ease-in-out;
+      /* Dark mode styles */
+      [data-theme="dark"] .modal-content {
+        background: #722f37; /* Deep Burgundy */
       }
 
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
+      [data-theme="dark"] .menu-item {
+        background: #722f37; /* Deep Burgundy */
+      }
 
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      [data-theme="dark"] .category-btn {
+        background: #556b2f; /* Olive Green */
+        color: #fffaf0; /* Warm White/Cream */
+      }
+
+      [data-theme="dark"] .category-btn.active {
+        background: #e27d60; /* Soft Terracotta */
+        color: #fffaf0; /* Warm White/Cream */
+      }
+
+      [data-theme="dark"] .category-btn:hover {
+        background: #e27d60; /* Soft Terracotta */
       }
     </style>
   </head>
 
-  <body class="bg-gray-50">
+  <body>
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
+     <nav class="bg-white shadow-md">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <a href="index.html" class="text-xl font-bold text-indigo-600"
-              >Food Menu</a
+            <a
+              href="./"
+              class="text-xl font-bold text-[#722F37] flex items-center gap-2" /* Deep Burgundy */
             >
+              <i class="fas fa-utensils"></i>
+              <span>Food Menu</span>
+            </a>
           </div>
-          <!-- Mobile menu button -->
-          <button
-            id="mobileMenuButton"
-            class="md:hidden p-2 rounded-lg hover:bg-gray-100"
-          >
-            <i class="fas fa-bars text-xl"></i>
-          </button>
           <!-- Desktop Navigation -->
-          <div class="hidden md:flex space-x-8">
-            <a href="food.html" class="text-gray-700 hover:text-indigo-600"
-              >Food</a
-            >
-            <a href="drinks.html" class="text-gray-700 hover:text-indigo-600"
-              >Drinks</a
-            >
-            <a href="recipes.html" class="text-gray-700 hover:text-indigo-600"
-              >Recipes</a
-            >
-            <a href="search.html" class="text-gray-700 hover:text-indigo-600">
-              <i class="fas fa-search"></i> Search
-            </a>
-          </div>
-          <div class="flex items-center space-x-4">
-            <button
-              id="themeToggle"
-              class="p-2 rounded-full hover:bg-gray-100 hidden"
-            >
-              <i class="fas fa-moon"></i>
-            </button>
-            <a
-              href="cart.html"
-              id="cartButton"
-              class="relative p-2 rounded-full hover:bg-gray-100"
-            >
-              <i class="fas fa-shopping-cart"></i>
-              <span
-                id="cartCount"
-                class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
-                >0</span
-              >
-            </a>
-            <a
-              href="search.html"
-              class="text-gray-700 hover:text-indigo-600 md:hidden"
-            >
-              <i class="fas fa-search"></i>
-            </a>
-          </div>
-        </div>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1">
+          <div class="hidden md:flex space-x-8 desktop-nav">
             <a
               href="food.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
               >Food</a
             >
             <a
               href="drinks.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
               >Drinks</a
             >
             <a
               href="recipes.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
               >Recipes</a
             >
+            <a
+              href="search.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+            >
+              <i class="fas fa-search"></i> Search
+            </a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="cart.html"
+              id="cartButton"
+              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors" /* Soft Terracotta on hover */
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                id="cartCount"
+                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs" /* Deep Burgundy with Warm White text */
+                >0</span
+              >
+            </a>
           </div>
         </div>
       </div>
     </nav>
 
+
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold mb-8 text-center">Our Drinks Menu</h1>
+      <h1 class="text-4xl font-bold mb-8 text-center text-[#722F37]">
+        Our Drinks Menu
+      </h1>
 
       <!-- Category Navigation -->
       <div class="flex flex-wrap justify-center gap-4 mb-12">
         <button
-          class="category-btn active px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+          class="category-btn active px-6 py-2 rounded-full transition-colors"
           data-category="all"
         >
           All
         </button>
         <button
-          class="category-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+          class="category-btn px-6 py-2 rounded-full transition-colors"
           data-category="shakes"
         >
           Shakes
         </button>
         <button
-          class="category-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+          class="category-btn px-6 py-2 rounded-full transition-colors"
           data-category="soft-drinks"
         >
           Soft drinks
         </button>
         <button
-          class="category-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+          class="category-btn px-6 py-2 rounded-full transition-colors"
           data-category="juices"
         >
           Juices
         </button>
         <button
-          class="category-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+          class="category-btn px-6 py-2 rounded-full transition-colors"
           data-category="cocktails"
         >
           Cocktails
@@ -226,51 +228,58 @@
       </div>
     </main>
 
-    <!-- Item Detail Modal -->
-    <div id="itemDetailModal" class="modal">
-      <div class="modal-content">
-        <div class="flex justify-between items-start mb-4">
-          <h3 class="text-2xl font-bold" id="detailTitle"></h3>
+    <!-- Fullscreen Item Detail Modal -->
+    <div
+      id="itemDetailModal"
+      class="modal hidden flex items-center justify-center"
+    >
+      <div
+        class="modal-content relative w-full h-full max-w-lg overflow-hidden flex flex-col"
+      >
+        <!-- Header -->
+        <div
+          class="flex justify-between items-start p-4 border-b border-[#556B2F]"
+        >
+          <h3 class="text-2xl font-bold text-[#722F37]" id="detailTitle"></h3>
           <button
             id="closeDetailModal"
-            class="text-gray-500 hover:text-gray-700"
+            class="text-[#556B2F] hover:text-[#E27D60]"
           >
             <i class="fas fa-times text-xl"></i>
           </button>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <img
-              id="detailImage"
-              src=""
-              alt=""
-              class="w-full h-64 object-cover rounded-lg"
-            />
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4">
+          <img
+            id="detailImage"
+            src=""
+            alt=""
+            class="w-full h-64 object-cover rounded-lg"
+          />
+          <p id="detailDescription" class="text-[#556B2F]"></p>
+          <div id="detailPrice" class="text-xl font-bold text-[#E27D60]"></div>
+          <div id="detailIngredients">
+            <h4 class="font-semibold mb-1 text-[#722F37]">Ingredients:</h4>
+            <ul
+              id="ingredientsList"
+              class="list-disc list-inside text-[#556B2F]"
+            ></ul>
           </div>
-          <div>
-            <p id="detailDescription" class="text-gray-600 mb-4"></p>
-            <div
-              id="detailPrice"
-              class="text-xl font-bold text-indigo-600 mb-4"
-            ></div>
-            <div id="detailIngredients" class="mb-4">
-              <h4 class="font-semibold mb-2">Ingredients:</h4>
-              <ul
-                id="ingredientsList"
-                class="list-disc list-inside text-gray-600"
-              ></ul>
-            </div>
-            <div id="detailInstructions" class="mb-4">
-              <h4 class="font-semibold mb-2">Instructions:</h4>
-              <p id="instructionsText" class="text-gray-600"></p>
-            </div>
-            <button
-              id="addToCartDetail"
-              class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-            >
-              Add to Cart
-            </button>
+          <div id="detailInstructions">
+            <h4 class="font-semibold mb-1 text-[#722F37]">Instructions:</h4>
+            <p id="instructionsText" class="text-[#556B2F]"></p>
           </div>
+        </div>
+
+        <!-- Sticky Add to Cart Button -->
+        <div class="p-4 border-t bg-[#F5F5F5] sticky bottom-0 z-10">
+          <button
+            id="addToCartDetail"
+            class="w-full px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
@@ -278,1325 +287,173 @@
     <!-- Password Modal -->
     <div id="passwordModal" class="modal">
       <div class="modal-content max-w-md">
-        <h3 class="text-xl font-bold mb-4">Enter Password</h3>
+        <h3 class="text-xl font-bold mb-4 text-[#722F37]">Enter Password</h3>
         <input
           type="password"
           id="passwordInput"
-          class="w-full p-2 border rounded mb-4"
+          class="w-full p-2 border border-[#556B2F] rounded mb-4 bg-[#FFFAF0] text-[#722F37]"
           placeholder="Enter password"
         />
         <div class="flex justify-end space-x-4">
-          <button id="cancelPassword" class="px-4 py-2 bg-gray-200 rounded">
+          <button
+            id="cancelPassword"
+            class="px-4 py-2 bg-[#556B2F] text-[#FFFAF0] rounded hover:bg-[#722F37]"
+          >
             Cancel
           </button>
           <button
             id="submitPassword"
-            class="px-4 py-2 bg-indigo-600 text-white rounded"
+            class="px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37]"
           >
             Submit
           </button>
         </div>
       </div>
     </div>
+    <div class="flex lg:hidden h-28"></div>
 
-    <script>
-      // Sample drinks data
-      const drinksData = {
-        shakes: [
-          {
-            name: "Vanilla Dream Shake",
-            description: "Creamy vanilla milkshake topped with whipped cream",
-            price: 150,
-            image:
-              "https://plus.unsplash.com/premium_photo-1695035006916-bb85c139c70c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8VmFuaWxsYSUyMERyZWFtJTIwU2hha2V8ZW58MHx8MHx8fDA%3D",
-            ingredients: [
-              "Vanilla ice cream",
-              "Milk",
-              "Whipped cream",
-              "Vanilla extract",
-            ],
-            instructions:
-              "Blend vanilla ice cream with milk and vanilla extract until smooth, pour into a glass, top with whipped cream.",
-            locked: false,
-          },
-          {
-            name: "Chocolate Bliss Shake",
-            description: "Rich chocolate shake with chocolate syrup drizzle",
-            price: 160,
-            image:
-              "https://images.unsplash.com/photo-1689358459793-48a913791616?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Q2hvY29sYXRlJTIwQmxpc3MlMjBTaGFrZXxlbnwwfHwwfHx8MA%3D%3D",
-            ingredients: [
-              "Chocolate ice cream",
-              "Milk",
-              "Chocolate syrup",
-              "Cocoa powder",
-            ],
-            instructions:
-              "Blend chocolate ice cream with milk and cocoa powder, pour into a glass, drizzle with chocolate syrup.",
-            locked: false,
-          },
-          {
-            name: "Strawberry Delight Shake",
-            description: "Fresh strawberry shake with real berries",
-            price: 170,
-            image:
-              "https://images.unsplash.com/photo-1642106345746-12eb0a256d6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U3RyYXdiZXJyeSUyMERlbGlnaHQlMjBTaGFrZXxlbnwwfHwwfHx8MA%3D%3D",
-            ingredients: [
-              "Strawberry ice cream",
-              "Fresh strawberries",
-              "Milk",
-              "Sugar",
-            ],
-            instructions:
-              "Blend strawberry ice cream, fresh strawberries, milk, and sugar until smooth, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Banana Nut Shake",
-            description: "Smooth banana shake with a hint of peanut butter",
-            price: 180,
-            image:
-              "data:image/jpeg;base64,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",
-            ingredients: [
-              "Vanilla ice cream",
-              "Bananas",
-              "Peanut butter",
-              "Milk",
-            ],
-            instructions:
-              "Blend vanilla ice cream, bananas, peanut butter, and milk until creamy, pour into a glass.",
-            locked: false,
-          },
-          {
-            name: "Mango Tango Shake",
-            description: "Tropical mango shake with a zesty twist",
-            price: 190,
-            image:
-              "https://plus.unsplash.com/premium_photo-1695055513638-92886435c7eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8TWFuZ28lMjBUYW5nbyUyMFNoYWtlfGVufDB8fDB8fHww",
-            ingredients: [
-              "Mango ice cream",
-              "Fresh mango",
-              "Milk",
-              "Lime juice",
-            ],
-            instructions:
-              "Blend mango ice cream, fresh mango, milk, and a splash of lime juice, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Cookies and Cream Shake",
-            description: "Decadent shake with crushed Oreo cookies",
-            price: 170,
-            image:
-              "https://plus.unsplash.com/premium_photo-1694481100190-97b748ceeb92?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q29va2llcyUyMGFuZCUyMENyZWFtJTIwU2hha2V8ZW58MHx8MHx8fDA%3D",
-            ingredients: [
-              "Vanilla ice cream",
-              "Oreo cookies",
-              "Milk",
-              "Whipped cream",
-            ],
-            instructions:
-              "Blend vanilla ice cream, crushed Oreos, and milk, pour into a glass, top with whipped cream and Oreo crumbs.",
-            locked: false,
-          },
-          {
-            name: "Salted Caramel Shake",
-            description: "Sweet and salty caramel shake with a creamy finish",
-            price: 180,
-            image:
-              "https://images.unsplash.com/photo-1622559245819-6d56f2da4e98?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFNhbHRlZCUyMENhcmFtZWwlMjBTaGFrZXxlbnwwfHwwfHx8MA%3D%3D",
-            ingredients: [
-              "Caramel ice cream",
-              "Milk",
-              "Salted caramel sauce",
-              "Sea salt",
-            ],
-            instructions:
-              "Blend caramel ice cream, milk, and salted caramel sauce, sprinkle with sea salt, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Matcha Green Tea Shake",
-            description: "Refreshing matcha shake with a creamy texture",
-            price: 200,
-            image:
-              "https://images.unsplash.com/photo-1591089398845-0dbbbdba1f75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TWF0Y2hhJTIwR3JlZW4lMjBUZWElMjBTaGFrZXxlbnwwfHwwfHx8MA%3D%3D",
-            ingredients: [
-              "Vanilla ice cream",
-              "Matcha powder",
-              "Milk",
-              "Honey",
-            ],
-            instructions:
-              "Blend vanilla ice cream, matcha powder, milk, and honey until smooth, pour into a glass.",
-            locked: false,
-          },
-          {
-            name: "Pineapple Coconut Shake",
-            description: "Tropical shake with pineapple and coconut flavors",
-            price: 190,
-            image:
-              "https://plus.unsplash.com/premium_photo-1720446085662-6c337f997326?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8UGluZWFwcGxlJTIwQ29jb251dCUyMFNoYWtlfGVufDB8fDB8fHww",
-            ingredients: [
-              "Coconut ice cream",
-              "Pineapple",
-              "Milk",
-              "Coconut milk",
-            ],
-            instructions:
-              "Blend coconut ice cream, pineapple, milk, and coconut milk until creamy, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Espresso Shake",
-            description: "Bold coffee shake with a caffeine kick",
-            price: 210,
-            image:
-              "https://images.unsplash.com/photo-1631147139256-3646191d6950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RXNwcmVzc28lMjBTaGFrZXxlbnwwfHwwfHx8MA%3D%3D",
-            ingredients: [
-              "Coffee ice cream",
-              "Espresso",
-              "Milk",
-              "Chocolate shavings",
-            ],
-            instructions:
-              "Blend coffee ice cream, espresso, and milk, pour into a glass, garnish with chocolate shavings.",
-            locked: false,
-          },
-        ],
-        "soft-drinks": [
-          {
-            name: "Fresh Lemonade",
-            description: "Homemade lemonade with mint",
-            price: 120,
-            image:
-              "https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Fresh lemons",
-              "Water",
-              "Sugar",
-              "Mint leaves",
-              "Ice",
-            ],
-            instructions:
-              "Squeeze lemons, mix with water and sugar, add mint leaves and ice, stir well.",
-            locked: false,
-          },
-          {
-            name: "Berry Smoothie",
-            description: "Mixed berry smoothie with yogurt",
-            price: 150,
-            image:
-              "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Mixed berries", "Yogurt", "Honey", "Ice"],
-            instructions:
-              "Blend all ingredients until smooth, serve immediately.",
-            locked: false,
-          },
-          {
-            name: "Iced Peach Tea",
-            description: "Refreshing peach-flavored iced tea",
-            price: 110,
-            image:
-              "https://images.unsplash.com/photo-1563227812-7b11b3f2c3b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Black tea",
-              "Peach syrup",
-              "Water",
-              "Ice",
-              "Lemon slice",
-            ],
-            instructions:
-              "Brew black tea, mix with peach syrup and water, pour over ice, garnish with a lemon slice.",
-            locked: false,
-          },
-          {
-            name: "Ginger Ale",
-            description: "Sparkling ginger ale with a zesty kick",
-            price: 100,
-            image:
-              "https://images.unsplash.com/photo-1598387180437-80388ae0df12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Ginger syrup", "Soda water", "Lime", "Ice"],
-            instructions:
-              "Mix ginger syrup with soda water, add a squeeze of lime, pour over ice, stir gently.",
-            locked: false,
-          },
-          {
-            name: "Cucumber Cooler",
-            description: "Light and refreshing cucumber-infused drink",
-            price: 130,
-            image:
-              "https://images.unsplash.com/photo-1597983073493-58cd23ed7b91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Cucumber", "Water", "Sugar", "Lime juice", "Ice"],
-            instructions:
-              "Blend cucumber with water and sugar, strain, add lime juice, pour over ice.",
-            locked: false,
-          },
-          {
-            name: "Hibiscus Iced Tea",
-            description: "Floral hibiscus tea with a tart finish",
-            price: 110,
-            image:
-              "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Hibiscus flowers", "Water", "Sugar", "Lemon", "Ice"],
-            instructions:
-              "Steep hibiscus flowers in hot water, add sugar, cool, add lemon juice, serve over ice.",
-            locked: false,
-          },
-          {
-            name: "Passion Fruit Soda",
-            description: "Bubbly passion fruit-flavored soda",
-            price: 120,
-            image:
-              "https://images.unsplash.com/photo-1600271886742-f049cd3d0969?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Passion fruit juice", "Soda water", "Sugar", "Ice"],
-            instructions:
-              "Mix passion fruit juice with soda water and sugar, pour over ice, stir well.",
-            locked: false,
-          },
-          {
-            name: "Watermelon Refresher",
-            description: "Cool watermelon drink with a hint of mint",
-            price: 130,
-            image:
-              "https://images.unsplash.com/photo-1560703650-4c79e36da747?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Watermelon", "Water", "Mint", "Sugar", "Ice"],
-            instructions:
-              "Blend watermelon with water and sugar, strain, add mint, pour over ice.",
-            locked: false,
-          },
-          {
-            name: "Lavender Lemonade",
-            description: "Floral lemonade with a lavender twist",
-            price: 140,
-            image:
-              "https://images.unsplash.com/photo-1524682796557-681b7e0e3b10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Lavender", "Lemons", "Water", "Sugar", "Ice"],
-            instructions:
-              "Steep lavender in hot water, mix with lemon juice and sugar, cool, pour over ice.",
-            locked: false,
-          },
-          {
-            name: "Pineapple Ginger Fizz",
-            description: "Sweet pineapple soda with a ginger kick",
-            price: 120,
-            image:
-              "https://images.unsplash.com/photo-1603561594410-0a9b96b1154b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Pineapple juice",
-              "Ginger",
-              "Soda water",
-              "Sugar",
-              "Ice",
-            ],
-            instructions:
-              "Mix pineapple juice with grated ginger and sugar, add soda water, pour over ice.",
-            locked: false,
-          },
-        ],
-        juices: [
-          {
-            name: "Orange Juice",
-            description: "Freshly squeezed orange juice",
-            price: 100,
-            image:
-              "https://images.unsplash.com/photo-1600271886742-f049cd3d0969?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Oranges", "Ice"],
-            instructions:
-              "Squeeze fresh oranges, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Apple Juice",
-            description: "Crisp and refreshing apple juice",
-            price: 90,
-            image:
-              "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Apples", "Ice"],
-            instructions:
-              "Juice fresh apples, strain, pour over ice, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Pineapple Juice",
-            description: "Sweet and tropical pineapple juice",
-            price: 110,
-            image:
-              "https://images.unsplash.com/photo-1529910471675-72d6f66e2a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Pineapple", "Ice"],
-            instructions:
-              "Juice fresh pineapple, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Watermelon Juice",
-            description: "Refreshing watermelon juice",
-            price: 120,
-            image:
-              "https://images.unsplash.com/photo-1560703650-4c79e36da747?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Watermelon", "Ice"],
-            instructions:
-              "Blend watermelon, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Grapefruit Juice",
-            description: "Tart and tangy grapefruit juice",
-            price: 110,
-            image:
-              "https://images.unsplash.com/photo-1610970881699-3606b8e9d1af?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Grapefruits", "Ice"],
-            instructions:
-              "Squeeze fresh grapefruits, strain, pour over ice, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Carrot Juice",
-            description: "Sweet and earthy carrot juice",
-            price: 100,
-            image:
-              "https://images.unsplash.com/photo-1583064313642-3463b14194d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Carrots", "Ice"],
-            instructions:
-              "Juice fresh carrots, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Mango Juice",
-            description: "Rich and tropical mango juice",
-            price: 130,
-            image:
-              "https://images.unsplash.com/photo-1603561594410-0a9b96b1154b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Mangoes", "Ice"],
-            instructions:
-              "Blend fresh mangoes, strain, pour over ice, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Pomegranate Juice",
-            description: "Vibrant and antioxidant-rich pomegranate juice",
-            price: 140,
-            image:
-              "https://images.unsplash.com/photo-1603561594410-0a9b96b1154b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Pomegranates", "Ice"],
-            instructions:
-              "Extract juice from fresh pomegranates, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-          {
-            name: "Beet Juice",
-            description: "Earthy and vibrant beet juice",
-            price: 120,
-            image:
-              "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Beets", "Ice"],
-            instructions:
-              "Juice fresh beets, strain, pour over ice, serve cold.",
-            locked: false,
-          },
-          {
-            name: "Green Juice",
-            description: "Fresh blend of greens and apple",
-            price: 150,
-            image:
-              "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Spinach", "Kale", "Apple", "Cucumber", "Ice"],
-            instructions:
-              "Juice spinach, kale, apple, and cucumber, strain, pour over ice, serve chilled.",
-            locked: false,
-          },
-        ],
-        cocktails: [
-          {
-            name: "Mojito",
-            description: "Classic Cuban cocktail with rum and mint",
-            price: 250,
-            image:
-              "https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "White rum",
-              "Fresh mint",
-              "Lime",
-              "Sugar",
-              "Soda water",
-              "Ice",
-            ],
-            instructions:
-              "Muddle mint with sugar and lime, add rum and ice, top with soda water, garnish with mint and lime.",
-            locked: false,
-          },
-          {
-            name: "Old Fashioned",
-            description: "Classic whiskey cocktail with bitters",
-            price: 300,
-            image:
-              "https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Bourbon",
-              "Angostura bitters",
-              "Sugar",
-              "Orange peel",
-              "Ice",
-            ],
-            instructions:
-              "Muddle sugar with bitters, add whiskey and ice, stir well, garnish with orange peel.",
-            locked: false,
-          },
-          {
-            name: "Margarita",
-            description: "Zesty tequila cocktail with lime and salt",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Tequila", "Lime juice", "Triple sec", "Salt", "Ice"],
-            instructions:
-              "Rim glass with salt, shake tequila, lime juice, triple sec with ice, strain into glass, serve over ice.",
-            locked: false,
-          },
-          {
-            name: "Cosmopolitan",
-            description: "Vibrant vodka cocktail with cranberry",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Vodka",
-              "Cranberry juice",
-              "Lime juice",
-              "Triple sec",
-              "Ice",
-            ],
-            instructions:
-              "Shake vodka, cranberry juice, lime juice, and triple sec with ice, strain into a martini glass, garnish with lime.",
-            locked: false,
-          },
-          {
-            name: "Negroni",
-            description: "Bitter and bold gin cocktail",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Campari",
-              "Sweet vermouth",
-              "Orange peel",
-              "Ice",
-            ],
-            instructions:
-              "Stir gin, Campari, and vermouth with ice, strain into a glass over ice, garnish with orange peel.",
-            locked: false,
-          },
-          {
-            name: "Piña Colada",
-            description: "Tropical rum cocktail with pineapple and coconut",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "White rum",
-              "Pineapple juice",
-              "Coconut cream",
-              "Ice",
-              "Pineapple slice",
-            ],
-            instructions:
-              "Blend rum, pineapple juice, coconut cream, and ice until smooth, serve in a chilled glass, garnish with pineapple.",
-            locked: false,
-          },
-          {
-            name: "Daiquiri",
-            description: "Classic rum cocktail with lime",
-            price: 250,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["White rum", "Lime juice", "Simple syrup", "Ice"],
-            instructions:
-              "Shake rum, lime juice, and simple syrup with ice, strain into a chilled glass, garnish with lime.",
-            locked: false,
-          },
-          {
-            name: "Manhattan",
-            description: "Sophisticated whiskey cocktail with vermouth",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Rye whiskey",
-              "Sweet vermouth",
-              "Angostura bitters",
-              "Cherry",
-              "Ice",
-            ],
-            instructions:
-              "Stir whiskey, vermouth, and bitters with ice, strain into a martini glass, garnish with a cherry.",
-            locked: false,
-          },
-          {
-            name: "Espresso Martini",
-            description: "Bold coffee cocktail with vodka",
-            price: 300,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Vodka",
-              "Coffee liqueur",
-              "Espresso",
-              "Simple syrup",
-              "Ice",
-            ],
-            instructions:
-              "Shake vodka, coffee liqueur, espresso, and simple syrup with ice, strain into a martini glass, garnish with coffee beans.",
-            locked: false,
-          },
-          {
-            name: "Paloma",
-            description: "Refreshing tequila cocktail with grapefruit",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Tequila",
-              "Grapefruit juice",
-              "Lime juice",
-              "Soda water",
-              "Salt",
-              "Ice",
-            ],
-            instructions:
-              "Rim glass with salt, mix tequila, grapefruit juice, and lime juice, add ice, top with soda water, garnish with lime.",
-            locked: false,
-          },
-          {
-            name: "Aperol Spritz",
-            description: "Light and bubbly aperitif with Aperol",
-            price: 250,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Aperol",
-              "Prosecco",
-              "Soda water",
-              "Orange slice",
-              "Ice",
-            ],
-            instructions:
-              "Mix Aperol, Prosecco, and soda water over ice, garnish with an orange slice.",
-            locked: false,
-          },
-          {
-            name: "Dark 'n' Stormy",
-            description: "Spicy rum cocktail with ginger beer",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Dark rum",
-              "Ginger beer",
-              "Lime juice",
-              "Ice",
-              "Lime wedge",
-            ],
-            instructions:
-              "Pour dark rum and lime juice over ice, top with ginger beer, garnish with a lime wedge.",
-            locked: false,
-          },
-          {
-            name: "Mai Tai",
-            description: "Tropical rum cocktail with almond and lime",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Light rum",
-              "Dark rum",
-              "Orgeat syrup",
-              "Lime juice",
-              "Triple sec",
-              "Ice",
-            ],
-            instructions:
-              "Shake light rum, orgeat, lime juice, and triple sec with ice, strain over ice, float dark rum, garnish with lime.",
-            locked: false,
-          },
-          {
-            name: "Whiskey Sour",
-            description: "Classic whiskey cocktail with lemon",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Bourbon",
-              "Lemon juice",
-              "Simple syrup",
-              "Egg white",
-              "Ice",
-              "Cherry",
-            ],
-            instructions:
-              "Shake bourbon, lemon juice, simple syrup, and egg white with ice, strain into a glass, garnish with a cherry.",
-            locked: false,
-          },
-          {
-            name: "Moscow Mule",
-            description: "Zesty vodka cocktail with ginger beer",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Vodka",
-              "Ginger beer",
-              "Lime juice",
-              "Ice",
-              "Lime wedge",
-            ],
-            instructions:
-              "Mix vodka and lime juice over ice, top with ginger beer, garnish with a lime wedge.",
-            locked: false,
-          },
-          {
-            name: "Gin and Tonic",
-            description: "Classic refreshing gin cocktail",
-            price: 240,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Gin", "Tonic water", "Lime", "Ice"],
-            instructions:
-              "Pour gin over ice, top with tonic water, add a squeeze of lime, garnish with lime wedge.",
-            locked: false,
-          },
-          {
-            name: "Bloody Mary",
-            description: "Savory vodka cocktail with tomato juice",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Vodka",
-              "Tomato juice",
-              "Lemon juice",
-              "Worcestershire sauce",
-              "Tabasco",
-              "Celery",
-              "Ice",
-            ],
-            instructions:
-              "Mix vodka, tomato juice, lemon juice, Worcestershire, and Tabasco over ice, garnish with celery.",
-            locked: false,
-          },
-          {
-            name: "French 75",
-            description: "Elegant gin cocktail with champagne",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Lemon juice",
-              "Simple syrup",
-              "Champagne",
-              "Ice",
-              "Lemon twist",
-            ],
-            instructions:
-              "Shake gin, lemon juice, and simple syrup with ice, strain into a flute, top with champagne, garnish with lemon twist.",
-            locked: false,
-          },
-          {
-            name: "Sidecar",
-            description: "Classic cognac cocktail with citrus",
-            price: 290,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Cognac",
-              "Triple sec",
-              "Lemon juice",
-              "Ice",
-              "Sugar rim",
-            ],
-            instructions:
-              "Rim glass with sugar, shake cognac, triple sec, and lemon juice with ice, strain into glass.",
-            locked: false,
-          },
-          {
-            name: "Caipirinha",
-            description: "Brazilian cachaça cocktail with lime",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Cachaça", "Lime", "Sugar", "Ice"],
-            instructions:
-              "Muddle lime and sugar, add cachaça and ice, stir well, serve in a glass.",
-            locked: false,
-          },
-          {
-            name: "Sazerac",
-            description: "New Orleans rye cocktail with absinthe",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Rye whiskey",
-              "Absinthe",
-              "Peychaud's bitters",
-              "Sugar",
-              "Ice",
-              "Lemon peel",
-            ],
-            instructions:
-              "Rinse glass with absinthe, muddle sugar with bitters, add whiskey and ice, stir, garnish with lemon peel.",
-            locked: false,
-          },
-          {
-            name: "Tom Collins",
-            description: "Refreshing gin cocktail with lemon",
-            price: 250,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Lemon juice",
-              "Simple syrup",
-              "Soda water",
-              "Ice",
-              "Cherry",
-            ],
-            instructions:
-              "Shake gin, lemon juice, and simple syrup with ice, strain over ice, top with soda water, garnish with cherry.",
-            locked: false,
-          },
-          {
-            name: "Vesper Martini",
-            description: "James Bond's gin and vodka martini",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Gin", "Vodka", "Lillet Blanc", "Ice", "Lemon peel"],
-            instructions:
-              "Shake gin, vodka, and Lillet Blanc with ice, strain into a martini glass, garnish with lemon peel.",
-            locked: false,
-          },
-          {
-            name: "Aviation",
-            description: "Floral gin cocktail with violet",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Maraschino liqueur",
-              "Crème de violette",
-              "Lemon juice",
-              "Ice",
-            ],
-            instructions:
-              "Shake gin, maraschino liqueur, crème de violette, and lemon juice with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Pisco Sour",
-            description: "South American pisco cocktail with lime",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Pisco",
-              "Lime juice",
-              "Simple syrup",
-              "Egg white",
-              "Angostura bitters",
-              "Ice",
-            ],
-            instructions:
-              "Shake pisco, lime juice, simple syrup, and egg white with ice, strain into a glass, dash with bitters.",
-            locked: false,
-          },
-          {
-            name: "Amaretto Sour",
-            description: "Sweet almond-flavored cocktail",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Amaretto",
-              "Lemon juice",
-              "Simple syrup",
-              "Egg white",
-              "Ice",
-              "Cherry",
-            ],
-            instructions:
-              "Shake amaretto, lemon juice, simple syrup, and egg white with ice, strain into a glass, garnish with cherry.",
-            locked: false,
-          },
-          {
-            name: "Clover Club",
-            description: "Frothy gin cocktail with raspberry",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Raspberry syrup",
-              "Lemon juice",
-              "Egg white",
-              "Ice",
-            ],
-            instructions:
-              "Shake gin, raspberry syrup, lemon juice, and egg white with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Boulevardier",
-            description: "Rich whiskey cocktail with Campari",
-            price: 300,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Bourbon",
-              "Campari",
-              "Sweet vermouth",
-              "Ice",
-              "Orange peel",
-            ],
-            instructions:
-              "Stir bourbon, Campari, and vermouth with ice, strain into a glass, garnish with orange peel.",
-            locked: false,
-          },
-          {
-            name: "Hemingway Daiquiri",
-            description: "Tart rum cocktail with grapefruit",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "White rum",
-              "Grapefruit juice",
-              "Lime juice",
-              "Maraschino liqueur",
-              "Ice",
-            ],
-            instructions:
-              "Shake rum, grapefruit juice, lime juice, and maraschino liqueur with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Last Word",
-            description: "Herbal gin cocktail with chartreuse",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Green chartreuse",
-              "Maraschino liqueur",
-              "Lime juice",
-              "Ice",
-            ],
-            instructions:
-              "Shake gin, chartreuse, maraschino liqueur, and lime juice with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Paper Plane",
-            description: "Modern bourbon cocktail with Aperol",
-            price: 290,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Bourbon",
-              "Aperol",
-              "Amaro Nonino",
-              "Lemon juice",
-              "Ice",
-            ],
-            instructions:
-              "Shake bourbon, Aperol, Amaro Nonino, and lemon juice with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Corpse Reviver No. 2",
-            description: "Bright gin cocktail with absinthe",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Cointreau",
-              "Lillet Blanc",
-              "Lemon juice",
-              "Absinthe",
-              "Ice",
-            ],
-            instructions:
-              "Rinse glass with absinthe, shake gin, Cointreau, Lillet Blanc, and lemon juice with ice, strain into glass.",
-            locked: false,
-          },
-          {
-            name: "White Lady",
-            description: "Elegant gin cocktail with egg white",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Cointreau",
-              "Lemon juice",
-              "Egg white",
-              "Ice",
-            ],
-            instructions:
-              "Shake gin, Cointreau, lemon juice, and egg white with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Bee's Knees",
-            description: "Sweet gin cocktail with honey",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Gin", "Honey syrup", "Lemon juice", "Ice"],
-            instructions:
-              "Shake gin, honey syrup, and lemon juice with ice, strain into a glass, garnish with lemon twist.",
-            locked: false,
-          },
-          {
-            name: "Southside",
-            description: "Minty gin cocktail with lime",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Lime juice",
-              "Simple syrup",
-              "Fresh mint",
-              "Ice",
-            ],
-            instructions:
-              "Muddle mint with simple syrup, shake with gin, lime juice, and ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "El Diablo",
-            description: "Spicy tequila cocktail with ginger",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Tequila",
-              "Crème de cassis",
-              "Lime juice",
-              "Ginger beer",
-              "Ice",
-            ],
-            instructions:
-              "Shake tequila, crème de cassis, and lime juice with ice, strain over ice, top with ginger beer.",
-            locked: false,
-          },
-          {
-            name: "Penicillin",
-            description: "Smoky scotch cocktail with ginger",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Scotch",
-              "Ginger juice",
-              "Lemon juice",
-              "Honey syrup",
-              "Islay scotch",
-              "Ice",
-            ],
-            instructions:
-              "Shake scotch, ginger juice, lemon juice, and honey syrup with ice, strain over ice, float Islay scotch.",
-            locked: false,
-          },
-          {
-            name: "Naked and Famous",
-            description: "Bold mezcal cocktail with Aperol",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Mezcal",
-              "Aperol",
-              "Yellow Chartreuse",
-              "Lime juice",
-              "Ice",
-            ],
-            instructions:
-              "Shake mezcal, Aperol, Yellow Chartreuse, and lime juice with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Oaxacan Old Fashioned",
-            description: "Smoky mezcal twist on the classic",
-            price: 320,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Mezcal",
-              "Tequila",
-              "Agave syrup",
-              "Angostura bitters",
-              "Ice",
-              "Orange peel",
-            ],
-            instructions:
-              "Mix mezcal, tequila, agave syrup, and bitters with ice, strain into a glass over ice, garnish with orange peel.",
-            locked: false,
-          },
-          {
-            name: "Jungle Bird",
-            description: "Tropical rum cocktail with Campari",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Dark rum",
-              "Campari",
-              "Pineapple juice",
-              "Lime juice",
-              "Simple syrup",
-              "Ice",
-            ],
-            instructions:
-              "Shake rum, Campari, pineapple juice, lime juice, and simple syrup with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Toronto",
-            description: "Rye whiskey cocktail with fernet",
-            price: 300,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Rye whiskey",
-              "Fernet Branca",
-              "Simple syrup",
-              "Angostura bitters",
-              "Ice",
-            ],
-            instructions:
-              "Stir rye, Fernet Branca, simple syrup, and bitters with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Vieux Carré",
-            description: "Complex rye cocktail with cognac",
-            price: 310,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Rye whiskey",
-              "Cognac",
-              "Sweet vermouth",
-              "Bénédictine",
-              "Peychaud's bitters",
-              "Ice",
-            ],
-            instructions:
-              "Stir rye, cogn-making, vermouth, Bénédictine, and bitters with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Bramble",
-            description: "Fruity gin cocktail with blackberry",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Lemon juice",
-              "Simple syrup",
-              "Crème de mûre",
-              "Ice",
-              "Blackberry",
-            ],
-            instructions:
-              "Shake gin, lemon juice, and simple syrup with ice, strain over crushed ice, drizzle with crème de mûre, garnish with blackberry.",
-            locked: false,
-          },
-          {
-            name: "Zombie",
-            description: "Potent rum cocktail with tropical juices",
-            price: 300,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Light rum",
-              "Dark rum",
-              "Overproof rum",
-              "Pineapple juice",
-              "Lime juice",
-              "Grenadine",
-              "Ice",
-            ],
-            instructions:
-              "Shake all rums, pineapple juice, lime juice, and grenadine with ice, strain into a glass, garnish with mint.",
-            locked: false,
-          },
-          {
-            name: "Painkiller",
-            description: "Creamy rum cocktail with coconut",
-            price: 270,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Dark rum",
-              "Pineapple juice",
-              "Orange juice",
-              "Coconut cream",
-              "Nutmeg",
-              "Ice",
-            ],
-            instructions:
-              "Shake rum, pineapple juice, orange juice, and coconut cream with ice, strain into a glass, sprinkle with nutmeg.",
-            locked: false,
-          },
-          {
-            name: "Between the Sheets",
-            description: "Citrusy rum and cognac cocktail",
-            price: 280,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "White rum",
-              "Cognac",
-              "Triple sec",
-              "Lemon juice",
-              "Ice",
-            ],
-            instructions:
-              "Shake rum, cognac, triple sec, and lemon juice with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Singapore Sling",
-            description: "Fruity gin cocktail with cherry",
-            price: 290,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Gin",
-              "Cherry brandy",
-              "Cointreau",
-              "Pineapple juice",
-              "Lime juice",
-              "Grenadine",
-              "Ice",
-            ],
-            instructions:
-              "Shake gin, cherry brandy, Cointreau, pineapple juice, lime juice, and grenadine with ice, strain into a glass.",
-            locked: false,
-          },
-          {
-            name: "Bellini",
-            description: "Peach and prosecco cocktail",
-            price: 250,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: ["Peach puree", "Prosecco", "Ice"],
-            instructions:
-              "Pour peach puree into a flute, top with prosecco, stir gently.",
-            locked: false,
-          },
-          {
-            name: "Irish Coffee",
-            description: "Warm whiskey cocktail with coffee",
-            price: 260,
-            image:
-              "https://images.unsplash.com/photo-1590702461625-3d4b9c6f2ef1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-            ingredients: [
-              "Irish whiskey",
-              "Coffee",
-              "Brown sugar",
-              "Whipped cream",
-            ],
-            instructions:
-              "Mix whiskey, coffee, and brown sugar in a mug, top with whipped cream.",
-            locked: false,
-          },
-        ],
-      };
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <a href="food.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <span>Food</span>
+      </a>
+      <a href="drinks.html" class="bottom-nav-item active" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-cocktail"></i>
+        </div>
+        <span>Drinks</span>
+      </a>
+      <a href="cart.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <span>Cart</span>
+      </a>
+      <a href="search.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-search"></i>
+        </div>
+        <span>Search</span>
+      </a>
+    </div>
 
-      // Password for locked content
-      const LOCK_PASSWORD = "ibiza";
+    <script type="module">
+      import { drinksData } from "./data/drinks_data.js";
 
       // Cart functionality
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       function updateCartCount() {
-        const cartCount = document.getElementById("cartCount");
-        const totalItems = cart.reduce(
-          (sum, item) => sum + (item.quantity || 1),
-          0
-        );
-        cartCount.textContent = totalItems;
+        const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById("cartCount").textContent = cartCount;
       }
 
       function addToCart(item) {
-        // Generate unique ID if not exists
-        if (!item.id) {
-          item.id = Date.now().toString();
-        }
-
-        // Check if item already exists in cart
-        const existingItemIndex = cart.findIndex(
-          (cartItem) => cartItem.id === item.id
+        const existingItem = cart.find(
+          (cartItem) => cartItem.name === item.name
         );
-
-        if (existingItemIndex !== -1) {
-          cart[existingItemIndex].quantity =
-            (cart[existingItemIndex].quantity || 1) + 1;
+        if (existingItem) {
+          existingItem.quantity += 1;
         } else {
-          item.quantity = 1;
-          cart.push(item);
+          cart.push({ ...item, quantity: 1 });
         }
-
-        // Save to localStorage
         localStorage.setItem("cart", JSON.stringify(cart));
-
-        // Update UI
         updateCartCount();
-
-        // Show success message
-        const successMessage = document.createElement("div");
-        successMessage.className =
-          "fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50";
-        successMessage.textContent = `${item.name} added to cart!`;
-        document.body.appendChild(successMessage);
-        setTimeout(() => successMessage.remove(), 2000);
+        showSuccessMessage();
       }
 
-      // Function to show item details
-      function showItemDetails(item) {
-        const modal = document.getElementById("itemDetailModal");
-        const title = document.getElementById("detailTitle");
-        const image = document.getElementById("detailImage");
-        const description = document.getElementById("detailDescription");
-        const price = document.getElementById("detailPrice");
-        const ingredientsList = document.getElementById("ingredientsList");
-        const instructionsText = document.getElementById("instructionsText");
-        const addToCartBtn = document.getElementById("addToCartDetail");
+      function showSuccessMessage() {
+        const message = document.createElement("div");
+        message.textContent = "Item added to cart!";
+        message.className =
+          "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded shadow-lg";
+        document.body.appendChild(message);
+        setTimeout(() => {
+          message.remove();
+        }, 2000);
+      }
 
-        // Update modal content
-        title.textContent = item.name;
-        image.src = item.image;
-        image.alt = item.name;
-        description.textContent = item.description;
+      // Display drinks
+      function displayDrinks(category = "all") {
+        const drinksGrid = document.getElementById("drinksGrid");
+        drinksGrid.innerHTML = "";
 
-        // Show/hide price section
-        if (item.price) {
-          price.textContent = `฿${item.price}`;
-          price.style.display = "block";
-          addToCartBtn.style.display = "block";
+        let drinksToShow = [];
+        if (category === "all") {
+          Object.values(drinksData).forEach((categoryDrinks) => {
+            drinksToShow = drinksToShow.concat(categoryDrinks);
+          });
         } else {
-          price.style.display = "none";
-          addToCartBtn.style.display = "none";
+          drinksToShow = drinksData[category] || [];
         }
+
+        drinksToShow.forEach((drink) => {
+          const drinkCard = document.createElement("div");
+          drinkCard.className = "menu-item rounded-lg shadow-md relative";
+          drinkCard.innerHTML = `
+            <div class="relative">
+              <img src="${drink.image}" alt="${
+            drink.name
+          }" class="w-full h-48 object-cover rounded-t-lg">
+              ${
+                drink.locked
+                  ? `<div class="lock-overlay"><i class="fas fa-lock"></i> Unlock to view</div>`
+                  : ""
+              }
+            </div>
+            <div class="p-4 ${drink.locked ? "locked-content" : ""}">
+              <h3 class="text-lg font-semibold text-[#722F37]">${
+                drink.name
+              }</h3>
+              <p class="text-[#556B2F]">${drink.description}</p>
+              <p class="text-[#E27D60] font-bold mt-2">$${drink.price}</p>
+              <button class="mt-4 px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37] transition-colors add-to-cart" ${
+                drink.locked ? "disabled" : ""
+              }>Add to Cart</button>
+            </div>
+          `;
+          drinksGrid.appendChild(drinkCard);
+
+          if (!drink.locked) {
+            drinkCard
+              .querySelector(".add-to-cart")
+              .addEventListener("click", () => addToCart(drink));
+            drinkCard.addEventListener("click", (e) => {
+              if (!e.target.classList.contains("add-to-cart")) {
+                showItemDetail(drink);
+              }
+            });
+          } else {
+            drinkCard.addEventListener("click", showPasswordModal);
+          }
+        });
+      }
+
+      // Category filtering
+      document.querySelectorAll(".category-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const category = btn.getAttribute("data-category");
+          displayDrinks(category);
+        });
+      });
+
+      // Item detail modal
+      function showItemDetail(item) {
+        document.getElementById("detailTitle").textContent = item.name;
+        document.getElementById("detailDescription").textContent =
+          item.description;
+        document.getElementById("detailPrice").textContent = `$${item.price}`;
+        document.getElementById("detailImage").src = item.image;
+        document.getElementById("detailImage").alt = item.name;
+
+        const ingredientsList = document.getElementById("ingredientsList");
 
         // Update ingredients with clickable links
         if (item.ingredients && item.ingredients.length > 0) {
@@ -1606,7 +463,7 @@
               return `<li>
                         <a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" 
                            target="_blank" 
-                           class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
+                           class="text-[#E27D60] hover:text-[#722F37]">
                             ${ingredient}
                         </a>
                     </li>`;
@@ -1618,113 +475,36 @@
           document.getElementById("detailIngredients").style.display = "none";
         }
 
-        // Update instructions
-        if (item.instructions) {
-          instructionsText.textContent = item.instructions;
-          document.getElementById("detailInstructions").style.display = "block";
-        } else {
-          document.getElementById("detailInstructions").style.display = "none";
-        }
+        document.getElementById("instructionsText").textContent =
+          item.instructions;
 
-        // Show modal
-        modal.style.display = "block";
+        const modal = document.getElementById("itemDetailModal");
+        modal.classList.remove("hidden");
+        document.body.classList.add("no-scroll");
 
-        // Add to cart functionality
-        if (item.price) {
-          addToCartBtn.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            addToCart(item);
-            modal.style.display = "none";
-          };
-        }
+        document.getElementById("addToCartDetail").onclick = () =>
+          addToCart(item);
       }
 
-      // Function to render menu items
-      function renderMenuItems(category = "all") {
-        const grid = document.getElementById("drinksGrid");
-        let items = [];
-
-        if (category === "all") {
-          Object.values(drinksData).forEach((categoryItems) => {
-            items = items.concat(categoryItems);
-          });
-        } else {
-          items = drinksData[category] || [];
-        }
-
-        grid.innerHTML = items
-          .map(
-            (item) => `
-                <div class="menu-item bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer" onclick="${
-                  item.locked
-                    ? "showPasswordModal()"
-                    : `showItemDetails(${JSON.stringify(item).replace(
-                        /"/g,
-                        "&quot;"
-                      )})`
-                }">
-                    ${
-                      item.locked
-                        ? '<div class="lock-overlay"><i class="fas fa-lock"></i></div>'
-                        : ""
-                    }
-                    <img src="${item.image}" alt="${
-              item.name
-            }" class="w-full h-48 object-cover ${
-              item.locked ? "locked-content" : ""
-            }">
-                    <div class="p-6 ${item.locked ? "locked-content" : ""}">
-                        <h3 class="text-xl font-semibold mb-2">${item.name}</h3>
-                        <p class="text-gray-600 mb-4">${item.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-indigo-600">฿${
-                              item.price
-                            }</span>
-                            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" onclick="event.stopPropagation(); ${
-                              item.locked
-                                ? "showPasswordModal()"
-                                : `addToCart(${JSON.stringify(item).replace(
-                                    /"/g,
-                                    "&quot;"
-                                  )})`
-                            }">
-                                ${item.locked ? "Unlock" : "Add to Cart"}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `
-          )
-          .join("");
-      }
-
-      // Function to show password modal
-      function showPasswordModal() {
-        document.getElementById("passwordModal").style.display = "block";
-      }
-
-      // Initialize
-      renderMenuItems();
-      updateCartCount(); // Initialize cart count on page load
-
-      // Category button handlers
-      document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".category-btn")
-            .forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const category = btn.dataset.category;
-          renderMenuItems(category);
+      document
+        .getElementById("closeDetailModal")
+        .addEventListener("click", () => {
+          document.getElementById("itemDetailModal").classList.add("hidden");
+          document.body.classList.remove("no-scroll");
         });
-      });
 
-      // Password modal handlers
+      // Password modal
+      function showPasswordModal() {
+        document.getElementById("passwordModal").style.display = "flex";
+        document.body.classList.add("no-scroll");
+        document.getElementById("passwordInput").focus();
+      }
+
       document
         .getElementById("cancelPassword")
         .addEventListener("click", () => {
           document.getElementById("passwordModal").style.display = "none";
+          document.body.classList.remove("no-scroll");
           document.getElementById("passwordInput").value = "";
         });
 
@@ -1732,77 +512,28 @@
         .getElementById("submitPassword")
         .addEventListener("click", () => {
           const password = document.getElementById("passwordInput").value;
-          if (password === LOCK_PASSWORD) {
-            // Unlock content
-            document.querySelectorAll(".locked-content").forEach((content) => {
-              content.classList.remove("locked-content");
+          if (password === "unlock123") {
+            Object.keys(drinksData).forEach((category) => {
+              drinksData[category].forEach((drink) => {
+                drink.locked = false;
+              });
             });
-            document.querySelectorAll(".lock-overlay").forEach((overlay) => {
-              overlay.style.display = "none";
-            });
+            displayDrinks(
+              document
+                .querySelector(".category-btn.active")
+                .getAttribute("data-category")
+            );
             document.getElementById("passwordModal").style.display = "none";
+            document.body.classList.remove("no-scroll");
             document.getElementById("passwordInput").value = "";
           } else {
-            alert("Invalid password");
+            alert("Incorrect password");
           }
         });
 
-      // Close detail modal
-      document
-        .getElementById("closeDetailModal")
-        .addEventListener("click", () => {
-          document.getElementById("itemDetailModal").style.display = "none";
-        });
-
-      // Close modal when clicking outside
-      window.addEventListener("click", (event) => {
-        const modals = ["itemDetailModal", "passwordModal"];
-        modals.forEach((modalId) => {
-          const modal = document.getElementById(modalId);
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-      });
-
-      // Theme toggle
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        const icon = document.querySelector("#themeToggle i");
-        icon.classList.toggle("fa-moon");
-        icon.classList.toggle("fa-sun");
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileMenuButton = document.getElementById("mobileMenuButton");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        mobileMenuButton.addEventListener("click", function () {
-          mobileMenu.classList.toggle("hidden");
-          // Toggle between hamburger and close icon
-          const icon = mobileMenuButton.querySelector("i");
-          if (mobileMenu.classList.contains("hidden")) {
-            icon.classList.remove("fa-times");
-            icon.classList.add("fa-bars");
-          } else {
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-times");
-          }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener("click", function (event) {
-          if (
-            !mobileMenuButton.contains(event.target) &&
-            !mobileMenu.contains(event.target)
-          ) {
-            mobileMenu.classList.add("hidden");
-            const icon = mobileMenuButton.querySelector("i");
-            icon.classList.remove("fa-times");
-            icon.classList.add("fa-bars");
-          }
-        });
-      });
+      // Initialize
+      displayDrinks();
+      updateCartCount();
     </script>
   </body>
 </html>

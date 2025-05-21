@@ -1,682 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Food Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/bottom_navigation.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shopping Cart - Food Menu</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-    }
-
-    .cart-item {
-      transition: transform 0.3s ease;
-    }
-
-    .cart-item:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Floating Note Dialog */
-    .note-dialog {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      padding: 1.5rem;
-      width: 350px;
-      z-index: 1000;
-      transform: translateY(120%);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .note-dialog.show {
-      transform: translateY(0);
-    }
-
-    .note-dialog .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .note-dialog .close-btn {
-      background: none;
-      border: none;
-      color: #666;
-      cursor: pointer;
-      padding: 0.5rem;
-      transition: color 0.2s;
-    }
-
-    .note-dialog .close-btn:hover {
-      color: #333;
-    }
-
-    .note-dialog textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      resize: none;
-      margin-bottom: 1rem;
-      transition: border-color 0.2s;
-    }
-
-    .note-dialog textarea:focus {
-      outline: none;
-      border-color: #00d1d6;
-      box-shadow: 0 0 0 2px rgba(0, 209, 214, 0.1);
-    }
-
-    .note-dialog .actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-    }
-
-    .note-dialog .actions button {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .note-dialog .actions .save-btn {
-      background-color: #00d1d6;
-      color: white;
-      border: none;
-    }
-
-    .note-dialog .actions .save-btn:hover {
-      background-color: #00a8ac;
-      transform: translateY(-1px);
-    }
-
-    .note-dialog .actions .cancel-btn {
-      background-color: #f1f5f9;
-      color: #64748b;
-      border: 1px solid #e2e8f0;
-    }
-
-    .note-dialog .actions .cancel-btn:hover {
-      background-color: #e2e8f0;
-    }
-
-    /* Dark mode styles */
-    [data-theme="dark"] .note-dialog {
-      background-color: #1e293b;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    [data-theme="dark"] .note-dialog textarea {
-      background-color: #0f172a;
-      border-color: #334155;
-      color: #e2e8f0;
-    }
-
-    [data-theme="dark"] .note-dialog .close-btn {
-      color: #94a3b8;
-    }
-
-    [data-theme="dark"] .note-dialog .close-btn:hover {
-      color: #e2e8f0;
-    }
-
-    [data-theme="dark"] .note-dialog .actions .cancel-btn {
-      background-color: #334155;
-      color: #e2e8f0;
-      border-color: #475569;
-    }
-
-    [data-theme="dark"] .note-dialog .actions .cancel-btn:hover {
-      background-color: #475569;
-    }
-
-    @keyframes removeItem {
-      0% {
-        transform: translateX(0);
-        opacity: 1;
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #FFFAF0; /* Warm White/Cream */
       }
 
-      100% {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-
-    .removing {
-      animation: removeItem 0.5s ease forwards;
-    }
-
-    #mobileMenu {
-      transition: all 0.3s ease-in-out;
-    }
-
-    #mobileMenu.hidden {
-      display: none;
-    }
-
-    #mobileMenu:not(.hidden) {
-      display: block;
-      animation: slideDown 0.3s ease-in-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
+      .cart-item {
+        transition: transform 0.3s ease;
+        background-color: #F5F5F5; /* Warm White/Cream */
+        border: 1px solid rgba(85, 107, 47, 0.1); /* Olive Green border */
       }
 
-      to {
-        opacity: 1;
+      .cart-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
+      }
+
+      /* Floating Note Dialog */
+      .note-dialog {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #F5F5F5; /* Warm White/Cream */
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        padding: 1.5rem;
+        width: 350px;
+        z-index: 1000;
+        transform: translateY(120%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .note-dialog.show {
         transform: translateY(0);
       }
-    }
 
-    /* Delete Confirmation Dialog */
-    .delete-dialog {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      padding: 1.5rem;
-      width: 350px;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+      .note-dialog .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
 
-    .delete-dialog.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%, -50%) scale(1);
-    }
+      .note-dialog .header h3 {
+        color: #722F37; /* Deep Burgundy */
+      }
 
-    .delete-dialog .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+      .note-dialog .close-btn {
+        background: none;
+        border: none;
+        color: #556B2F; /* Olive Green */
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color 0.2s;
+      }
 
-    .delete-dialog .close-btn {
-      background: none;
-      border: none;
-      color: #666;
-      cursor: pointer;
-      padding: 0.5rem;
-      transition: color 0.2s;
-    }
+      .note-dialog .close-btn:hover {
+        color: #E27D60; /* Soft Terracotta */
+      }
 
-    .delete-dialog .close-btn:hover {
-      color: #333;
-    }
+      .note-dialog textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #556B2F; /* Olive Green */
+        border-radius: 8px;
+        resize: none;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s;
+        background-color: #FFFAF0; /* Warm White/Cream */
+        color: #722F37; /* Deep Burgundy */
+      }
 
-    .delete-dialog .content {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
+      .note-dialog textarea:focus {
+        outline: none;
+        border-color: #E27D60; /* Soft Terracotta */
+        box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2); /* Soft Terracotta */
+      }
 
-    .delete-dialog .content i {
-      font-size: 3rem;
-      color: #ef4444;
-      margin-bottom: 1rem;
-    }
+      .note-dialog .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+      }
 
-    .delete-dialog .actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
+      .note-dialog .actions button {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
 
-    .delete-dialog .actions button {
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
+      .note-dialog .actions .save-btn {
+        background-color: #E27D60; /* Soft Terracotta */
+        color: #FFFAF0; /* Warm White/Cream */
+        border: none;
+      }
 
-    .delete-dialog .actions .delete-btn {
-      background-color: #ef4444;
-      color: white;
-      border: none;
-    }
+      .note-dialog .actions .save-btn:hover {
+        background-color: #722F37; /* Deep Burgundy */
+        transform: translateY(-1px);
+      }
 
-    .delete-dialog .actions .delete-btn:hover {
-      background-color: #dc2626;
-      transform: translateY(-1px);
-    }
+      .note-dialog .actions .cancel-btn {
+        background-color: #556B2F; /* Olive Green */
+        color: #FFFAF0; /* Warm White/Cream */
+        border: 1px solid #556B2F; /* Olive Green */
+      }
 
-    .delete-dialog .actions .cancel-btn {
-      background-color: #f1f5f9;
-      color: #64748b;
-      border: 1px solid #e2e8f0;
-    }
+      .note-dialog .actions .cancel-btn:hover {
+        background-color: #E27D60; /* Soft Terracotta */
+      }
 
-    .delete-dialog .actions .cancel-btn:hover {
-      background-color: #e2e8f0;
-    }
+      /* Dark mode styles */
+      [data-theme="dark"] .note-dialog {
+        background-color: #722F37; /* Deep Burgundy */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
 
-    /* Dark mode styles for delete dialog */
-    [data-theme="dark"] .delete-dialog {
-      background-color: #1e293b;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
+      [data-theme="dark"] .note-dialog textarea {
+        background-color: #556B2F; /* Olive Green */
+        border-color: #E27D60; /* Soft Terracotta */
+        color: #FFFAF0; /* Warm White/Cream */
+      }
 
-    [data-theme="dark"] .delete-dialog .close-btn {
-      color: #94a3b8;
-    }
+      [data-theme="dark"] .note-dialog .close-btn {
+        color: #F5F5F5; /* Warm White */
+      }
 
-    [data-theme="dark"] .delete-dialog .close-btn:hover {
-      color: #e2e8f0;
-    }
+      [data-theme="dark"] .note-dialog .close-btn:hover {
+        color: #E27D60; /* Soft Terracotta */
+      }
 
-    [data-theme="dark"] .delete-dialog .actions .cancel-btn {
-      background-color: #334155;
-      color: #e2e8f0;
-      border-color: #475569;
-    }
+      [data-theme="dark"] .note-dialog .actions .cancel-btn {
+        background-color: #556B2F; /* Olive Green */
+        color: #FFFAF0; /* Warm White/Cream */
+        border-color: #E27D60; /* Soft Terracotta */
+      }
 
-    [data-theme="dark"] .delete-dialog .actions .cancel-btn:hover {
-      background-color: #475569;
-    }
-  </style>
-</head>
+      [data-theme="dark"] .note-dialog .actions .cancel-btn:hover {
+        background-color: #E27D60; /* Soft Terracotta */
+      }
 
-<body class="bg-gray-50">
-  <!-- Navigation -->
-  <nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center">
-          <a href="index.html" class="text-xl font-bold text-indigo-600">Food Menu</a>
-        </div>
-        <!-- Mobile menu button -->
-        <button id="mobileMenuButton" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex space-x-8">
-          <a href="food.html" class="text-gray-700 hover:text-indigo-600">Food</a>
-          <a href="drinks.html" class="text-gray-700 hover:text-indigo-600">Drinks</a>
-          <a href="recipes.html" class="text-gray-700 hover:text-indigo-600">Recipes</a>
-          <a href="search.html" class="text-gray-700 hover:text-indigo-600">
-            <i class="fas fa-search"></i> Search
-          </a>
-        </div>
-        <div class="flex items-center space-x-4">
-          <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 hidden">
-            <i class="fas fa-moon"></i>
-          </button>
-          <a href="cart.html" id="cartButton" class="relative p-2 rounded-full hover:bg-gray-100">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cartCount"
-              class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
-          </a>
-          <a href="search.html" class="text-gray-700 hover:text-indigo-600 md:hidden">
-            <i class="fas fa-search"></i>
-          </a>
+      [data-theme="dark"] .note-dialog .header h3 {
+        color: #FFFAF0; /* Warm White/Cream */
+      }
+
+      @keyframes removeItem {
+        0% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+
+      .removing {
+        animation: removeItem 0.5s ease forwards;
+      }
+
+      #mobileMenu {
+        transition: all 0.3s ease-in-out;
+      }
+
+      #mobileMenu.hidden {
+        display: none;
+      }
+
+      #mobileMenu:not(.hidden) {
+        display: block;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Delete Confirmation Dialog */
+      .delete-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+        background: #F5F5F5; /* Warm White/Cream */
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        padding: 1.5rem;
+        width: 350px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .delete-dialog.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .delete-dialog .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .delete-dialog .header h3 {
+        color: #722F37; /* Deep Burgundy */
+      }
+
+      .delete-dialog .close-btn {
+        background: none;
+        border: none;
+        color: #556B2F; /* Olive Green */
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color 0.2s;
+      }
+
+      .delete-dialog .close-btn:hover {
+        color: #E27D60; /* Soft Terracotta */
+      }
+
+      .delete-dialog .content {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .delete-dialog .content i {
+        font-size: 3rem;
+        color: #722F37; /* Deep Burgundy */
+        margin-bottom: 1rem;
+      }
+
+      .delete-dialog .content p {
+        color: #556B2F; /* Olive Green */
+      }
+
+      .delete-dialog .actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .delete-dialog .actions button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .delete-dialog .actions .delete-btn {
+        background-color: #722F37; /* Deep Burgundy */
+        color: #FFFAF0; /* Warm White/Cream */
+        border: none;
+      }
+
+      .delete-dialog .actions .delete-btn:hover {
+        background-color: #E27D60; /* Soft Terracotta */
+        transform: translateY(-1px);
+      }
+
+      .delete-dialog .actions .cancel-btn {
+        background-color: #556B2F; /* Olive Green */
+        color: #FFFAF0; /* Warm White/Cream */
+        border: 1px solid #556B2F; /* Olive Green */
+      }
+
+      .delete-dialog .actions .cancel-btn:hover {
+        background-color: #E27D60; /* Soft Terracotta */
+      }
+
+      /* Dark mode styles for delete dialog */
+      [data-theme="dark"] .delete-dialog {
+        background-color: #722F37; /* Deep Burgundy */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      [data-theme="dark"] .delete-dialog .close-btn {
+        color: #F5F5F5; /* Warm White */
+      }
+
+      [data-theme="dark"] .delete-dialog .close-btn:hover {
+        color: #E27D60; /* Soft Terracotta */
+      }
+
+      [data-theme="dark"] .delete-dialog .actions .cancel-btn {
+        background-color: #556B2F; /* Olive Green */
+        color: #FFFAF0; /* Warm White/Cream */
+        border-color: #E27D60; /* Soft Terracotta */
+      }
+
+      [data-theme="dark"] .delete-dialog .actions .cancel-btn:hover {
+        background-color: #E27D60; /* Soft Terracotta */
+      }
+
+      [data-theme="dark"] .delete-dialog .header h3 {
+        color: #FFFAF0; /* Warm White/Cream */
+      }
+
+      [data-theme="dark"] .delete-dialog .content p {
+        color: #F5F5F5; /* Warm White */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+     <nav class="bg-white shadow-md">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a
+              href="./"
+              class="text-xl font-bold text-[#722F37] flex items-center gap-2" /* Deep Burgundy */
+            >
+              <i class="fas fa-utensils"></i>
+              <span>Food Menu</span>
+            </a>
+          </div>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex space-x-8 desktop-nav">
+            <a
+              href="food.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              >Food</a
+            >
+            <a
+              href="drinks.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              >Drinks</a
+            >
+            <a
+              href="recipes.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              >Recipes</a
+            >
+            <a
+              href="search.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+            >
+              <i class="fas fa-search"></i> Search
+            </a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="cart.html"
+              id="cartButton"
+              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors" /* Soft Terracotta on hover */
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                id="cartCount"
+                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs" /* Deep Burgundy with Warm White text */
+                >0</span
+              >
+            </a>
+          </div>
         </div>
       </div>
-      <!-- Mobile Navigation Menu -->
-      <div id="mobileMenu" class="md:hidden hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="food.html"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Food</a>
-          <a href="drinks.html"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Drinks</a>
-          <a href="recipes.html"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Recipes</a>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-8 text-center text-[#722F37]" /* Deep Burgundy */
+      >Shopping Cart</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2">
+          <div id="cartItems" class="space-y-4">
+            <!-- Cart items will be dynamically inserted here -->
+          </div>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Main Content -->
-  <main class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold mb-8 text-center">Shopping Cart</h1>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Cart Items -->
-      <div class="lg:col-span-2">
-        <div id="cartItems" class="space-y-4">
-          <!-- Cart items will be dynamically inserted here -->
-        </div>
-      </div>
-
-      <!-- Order Summary -->
-      <div class="lg:col-span-1">
-        <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
-          <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
-          <div class="space-y-2">
-            <div class="flex justify-between">
-              <span>Subtotal</span>
-              <span id="subtotal">฿0.00</span>
-            </div>
-            <div class="flex justify-between text-sm text-gray-600">
-              <span>Service Charge (5%)</span>
-              <span id="serviceCharge">$0.00</span>
-            </div>
-            <div class="flex justify-between text-sm text-gray-600">
-              <span>VAT (7%)</span>
-              <span id="vat">$0.00</span>
-            </div>
-            <div class="border-t pt-2 mt-2">
-              <div class="flex justify-between font-semibold">
-                <span>Total</span>
-                <span id="total">$0.00</span>
+        <!-- Order Summary -->
+        <div class="lg:col-span-1">
+          <div class="bg-[#F5F5F5] rounded-lg shadow-md p-6 sticky top-4" /* Warm White/Cream */
+          >
+            <h2 class="text-xl font-semibold mb-4 text-[#722F37]" /* Deep Burgundy */
+            >Order Summary</h2>
+            <div class="space-y-2">
+              <div class="flex justify-between">
+                <span class="text-[#556B2F]" /* Olive Green */
+                >Subtotal</span>
+                <span id="subtotal" class="text-[#722F37]" /* Deep Burgundy */
+                >฿0.00</span>
+              </div>
+              <div class="flex justify-between text-sm text-[#556B2F]" /* Olive Green */
+              >
+                <span>Service Charge (5%)</span>
+                <span id="serviceCharge">฿0.00</span>
+              </div>
+              <div class="flex justify-between text-sm text-[#556B2F]" /* Olive Green */
+              >
+                <span>VAT (7%)</span>
+                <span id="vat">฿0.00</span>
+              </div>
+              <div class="border-t pt-2 mt-2 border-[#556B2F]" /* Olive Green */
+              >
+                <div class="flex justify-between font-semibold">
+                  <span class="text-[#556B2F]" /* Olive Green */
+                  >Total</span>
+                  <span id="total" class="text-[#722F37]" /* Deep Burgundy */
+                  >฿0.00</span>
+                </div>
               </div>
             </div>
+            <button
+              id="checkoutBtn"
+              class="w-full mt-6 bg-[#E27D60] text-[#FFFAF0] py-2 rounded-lg hover:bg-[#722F37] transition-colors" /* Soft Terracotta to Deep Burgundy */
+            >
+              Proceed to Checkout
+            </button>
           </div>
-          <button id="checkoutBtn"
-            class="w-full mt-6 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors">
-            Proceed to Checkout
-          </button>
         </div>
+      </div>
+
+      <!-- Empty Cart Message -->
+      <div id="emptyCart" class="text-center text-[#556B2F] mt-8 hidden" /* Olive Green */
+      >
+        <i class="fas fa-shopping-cart text-6xl mb-4 text-[#722F37]" /* Deep Burgundy */
+        ></i>
+        <p class="text-xl">Your cart is empty</p>
+        <a
+          href="index.html"
+          class="mt-4 inline-block px-6 py-3 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors" /* Soft Terracotta to Deep Burgundy */
+        >
+          Continue Shopping
+        </a>
+      </div>
+    </main>
+
+    <!-- Replace the Note Modal with Floating Dialog -->
+    <div id="noteDialog" class="note-dialog">
+      <div class="header">
+        <h3 class="text-lg font-semibold">Add Note</h3>
+        <button class="close-btn" id="closeNoteDialog">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <textarea
+        id="noteInput"
+        rows="4"
+        placeholder="Add any special instructions or preferences..."
+      ></textarea>
+      <div class="actions">
+        <button class="cancel-btn" id="cancelNote">Cancel</button>
+        <button class="save-btn" id="saveNote">Save Note</button>
       </div>
     </div>
 
-    <!-- Empty Cart Message -->
-    <div id="emptyCart" class="text-center text-gray-500 mt-8 hidden">
-      <i class="fas fa-shopping-cart text-6xl mb-4"></i>
-      <p class="text-xl">Your cart is empty</p>
-      <a href="index.html"
-        class="mt-4 inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
-        Continue Shopping
+    <!-- Add Delete Confirmation Dialog -->
+    <div id="deleteDialog" class="delete-dialog">
+      <div class="header">
+        <h3 class="text-lg font-semibold">Confirm Delete</h3>
+        <button class="close-btn" id="closeDeleteDialog">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="content">
+        <i class="fas fa-trash-alt"></i>
+        <p>Are you sure you want to remove this item from your cart?</p>
+      </div>
+      <div class="actions">
+        <button class="cancel-btn" id="cancelDelete">Cancel</button>
+        <button class="delete-btn" id="confirmDelete">Delete</button>
+      </div>
+    </div>
+    <div class="flex lg:hidden h-28"></div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <a href="food.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <span>Food</span>
+      </a>
+      <a href="drinks.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-cocktail"></i>
+        </div>
+        <span>Drinks</span>
+      </a>
+      <a href="cart.html" class="bottom-nav-item active" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <span>Cart</span>
+      </a>
+      <a href="search.html" class="bottom-nav-item" tabindex="0">
+        <div class="nav-icon-wrapper">
+          <i class="fas fa-search"></i>
+        </div>
+        <span>Search</span>
       </a>
     </div>
-  </main>
 
-  <!-- Replace the Note Modal with Floating Dialog -->
-  <div id="noteDialog" class="note-dialog">
-    <div class="header">
-      <h3 class="text-lg font-semibold">Add Note</h3>
-      <button class="close-btn" id="closeNoteDialog">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <textarea id="noteInput" rows="4" placeholder="Add any special instructions or preferences..."></textarea>
-    <div class="actions">
-      <button class="cancel-btn" id="cancelNote">Cancel</button>
-      <button class="save-btn" id="saveNote">Save Note</button>
-    </div>
-  </div>
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let currentEditingItemId = null;
+      let itemToDelete = null;
 
-  <!-- Add Delete Confirmation Dialog -->
-  <div id="deleteDialog" class="delete-dialog">
-    <div class="header">
-      <h3 class="text-lg font-semibold">Confirm Delete</h3>
-      <button class="close-btn" id="closeDeleteDialog">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="content">
-      <i class="fas fa-trash-alt"></i>
-      <p>Are you sure you want to remove this item from your cart?</p>
-    </div>
-    <div class="actions">
-      <button class="cancel-btn" id="cancelDelete">Cancel</button>
-      <button class="delete-btn" id="confirmDelete">Delete</button>
-    </div>
-  </div>
+      // Constants for charges
+      const SERVICE_CHARGE_RATE = 0.05; // 5%
+      const VAT_RATE = 0.07; // 7%
 
-  <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let currentEditingItemId = null;
-    let itemToDelete = null;
+      function updateCart() {
+        const cartItems = document.getElementById("cartItems");
+        const subtotalElement = document.getElementById("subtotal");
+        const serviceChargeElement = document.getElementById("serviceCharge");
+        const vatElement = document.getElementById("vat");
+        const totalElement = document.getElementById("total");
 
-    // Constants for charges
-    const SERVICE_CHARGE_RATE = 0.05; // 5%
-    const VAT_RATE = 0.07; // 7%
+        // Calculate totals
+        const subtotal = cart.reduce(
+          (sum, item) => sum + item.price * (item.quantity || 1),
+          0
+        );
+        const serviceCharge = subtotal * SERVICE_CHARGE_RATE;
+        const vat = (subtotal + serviceCharge) * VAT_RATE;
+        const total = subtotal + serviceCharge + vat;
 
-    function updateCart() {
-      const cartItems = document.getElementById("cartItems");
-      const subtotalElement = document.getElementById("subtotal");
-      const serviceChargeElement = document.getElementById("serviceCharge");
-      const vatElement = document.getElementById("vat");
-      const totalElement = document.getElementById("total");
+        // Update summary
+        subtotalElement.textContent = `฿${subtotal.toFixed(2)}`;
+        serviceChargeElement.textContent = `฿${serviceCharge.toFixed(2)}`;
+        vatElement.textContent = `฿${vat.toFixed(2)}`;
+        totalElement.textContent = `฿${total.toFixed(2)}`;
 
-      // Calculate totals
-      const subtotal = cart.reduce(
-        (sum, item) => sum + item.price * (item.quantity || 1),
-        0
-      );
-      const serviceCharge = subtotal * SERVICE_CHARGE_RATE;
-      const vat = (subtotal + serviceCharge) * VAT_RATE;
-      const total = subtotal + serviceCharge + vat;
-
-      // Update summary
-      subtotalElement.textContent = `฿${subtotal.toFixed(2)}`;
-      serviceChargeElement.textContent = `฿${serviceCharge.toFixed(2)}`;
-      vatElement.textContent = `฿${vat.toFixed(2)}`;
-      totalElement.textContent = `฿${total.toFixed(2)}`;
-
-      // Render cart items
-      cartItems.innerHTML = cart
-        .map(
-          (item) => `
+        // Render cart items
+        cartItems.innerHTML = cart
+          .map(
+            (item) => `
                 <div class="cart-item bg-white rounded-lg shadow-md p-4 flex items-center justify-between">
                     <div class="flex items-center space-x-4">
-                        <img src="${item.image}" alt="${item.name
+                        <img src="${item.image}" alt="${
+              item.name
             }" class="w-20 h-20 object-cover rounded-lg">
                         <div>
-                            <h3 class="font-semibold">${item.name}</h3>
-                            <p class="text-gray-600">฿${item.price.toFixed(
-              2
-            )}</p>
-                            ${item.note
-              ? `<p class="text-sm text-gray-500 mt-1"><i class="fas fa-sticky-note mr-1"></i>${item.note}</p>`
-              : ""
-            }
+                            <h3 class="font-semibold text-[#722F37]" /* Deep Burgundy */
+                            >${item.name}</h3>
+                            <p class="text-[#556B2F]" /* Olive Green */
+                            >฿${item.price.toFixed(2)}</p>
+                            ${
+                              item.note
+                                ? `<p class="text-sm text-[#556B2F] mt-1"><i class="fas fa-sticky-note mr-1 text-[#E27D60]"></i>${item.note}</p>` /* Olive Green text, Soft Terracotta icon */
+                                : ""
+                            }
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center space-x-2">
-                            <button onclick="updateQuantity('${item.id}', ${(item.quantity || 1) - 1
-            })" class="quantity-btn">-</button>
-                            <span>${item.quantity || 1}</span>
-                            <button onclick="updateQuantity('${item.id}', ${(item.quantity || 1) + 1
-            })" class="quantity-btn">+</button>
+                            <button onclick="updateQuantity('${item.id}', ${
+              (item.quantity || 1) - 1
+            })" class="quantity-btn bg-[#556B2F] text-[#FFFAF0] w-8 h-8 rounded-full hover:bg-[#E27D60]" /* Olive Green to Soft Terracotta */
+                            >-</button>
+                            <span class="text-[#722F37]" /* Deep Burgundy */
+                            >${item.quantity || 1}</span>
+                            <button onclick="updateQuantity('${item.id}', ${
+              (item.quantity || 1) + 1
+            })" class="quantity-btn bg-[#556B2F] text-[#FFFAF0] w-8 h-8 rounded-full hover:bg-[#E27D60]" /* Olive Green to Soft Terracotta */
+                            >+</button>
                         </div>
-                        <button onclick="showNoteModal('${item.id
-            }')" class="text-gray-600 hover:text-indigo-600">
+                        <button onclick="showNoteModal('${
+                          item.id
+                        }')" class="text-[#556B2F] hover:text-[#E27D60]" /* Olive Green to Soft Terracotta */
+                        >
                             <i class="fas fa-sticky-note"></i>
                         </button>
-                        <button onclick="showDeleteDialog('${item.id
-            }')" class="text-red-600 hover:text-red-700">
+                        <button onclick="showDeleteDialog('${
+                          item.id
+                        }')" class="text-[#722F37] hover:text-[#E27D60]" /* Deep Burgundy to Soft Terracotta */
+                        >
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>
             `
-        )
-        .join("");
-    }
-
-    function updateQuantity(itemId, newQuantity) {
-      if (newQuantity < 1) {
-        removeItem(itemId);
-        return;
+          )
+          .join("");
       }
 
-      const itemIndex = cart.findIndex((item) => item.id === itemId);
-      if (itemIndex !== -1) {
-        cart[itemIndex].quantity = newQuantity;
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCart();
-      }
-    }
+      function updateQuantity(itemId, newQuantity) {
+        if (newQuantity < 1) {
+          removeItem(itemId);
+          return;
+        }
 
-    function removeItem(itemId) {
-      showDeleteDialog(itemId);
-    }
-
-    function showNoteModal(itemId) {
-      currentEditingItemId = itemId;
-      const item = cart.find((item) => item.id === itemId);
-      const noteInput = document.getElementById("noteInput");
-      noteInput.value = item.note || "";
-      document.getElementById("noteDialog").classList.add("show");
-    }
-
-    function saveNote() {
-      if (!currentEditingItemId) return;
-
-      const noteInput = document.getElementById("noteInput");
-      const itemIndex = cart.findIndex(
-        (item) => item.id === currentEditingItemId
-      );
-
-      if (itemIndex !== -1) {
-        cart[itemIndex].note = noteInput.value.trim();
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCart();
+        const itemIndex = cart.findIndex((item) => item.id === itemId);
+        if (itemIndex !== -1) {
+          cart[itemIndex].quantity = newQuantity;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCart();
+        }
       }
 
-      closeNoteModal();
-    }
+      function removeItem(itemId) {
+        showDeleteDialog(itemId);
+      }
 
-    function closeNoteModal() {
-      document.getElementById("noteDialog").classList.remove("show");
-      currentEditingItemId = null;
-      document.getElementById("noteInput").value = "";
-    }
+      function showNoteModal(itemId) {
+        currentEditingItemId = itemId;
+        const item = cart.find((item) => item.id === itemId);
+        const noteInput = document.getElementById("noteInput");
+        noteInput.value = item.note || "";
+        document.getElementById("noteDialog").classList.add("show");
+      }
 
-    // Event Listeners
-    document
-      .getElementById("closeNoteDialog")
-      .addEventListener("click", closeNoteModal);
-    document
-      .getElementById("cancelNote")
-      .addEventListener("click", closeNoteModal);
-    document.getElementById("saveNote").addEventListener("click", saveNote);
+      function saveNote() {
+        if (!currentEditingItemId) return;
 
-    // Close dialog when clicking outside
-    window.addEventListener("click", (event) => {
-      const dialog = document.getElementById("noteDialog");
-      if (event.target === dialog) {
+        const noteInput = document.getElementById("noteInput");
+        const itemIndex = cart.findIndex(
+          (item) => item.id === currentEditingItemId
+        );
+
+        if (itemIndex !== -1) {
+          cart[itemIndex].note = noteInput.value.trim();
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCart();
+        }
+
         closeNoteModal();
       }
-    });
 
-    function showDeleteDialog(itemId) {
-      itemToDelete = itemId;
-      document.getElementById("deleteDialog").classList.add("show");
-    }
-
-    function closeDeleteDialog() {
-      document.getElementById("deleteDialog").classList.remove("show");
-      itemToDelete = null;
-    }
-
-    function confirmDelete() {
-      if (itemToDelete) {
-        cart = cart.filter((item) => item.id !== itemToDelete);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCart();
-        closeDeleteDialog();
+      function closeNoteModal() {
+        document.getElementById("noteDialog").classList.remove("show");
+        currentEditingItemId = null;
+        document.getElementById("noteInput").value = "";
       }
-    }
 
-    // Add event listeners for delete dialog
-    document
-      .getElementById("closeDeleteDialog")
-      .addEventListener("click", closeDeleteDialog);
-    document
-      .getElementById("cancelDelete")
-      .addEventListener("click", closeDeleteDialog);
-    document
-      .getElementById("confirmDelete")
-      .addEventListener("click", confirmDelete);
+      // Event Listeners
+      document
+        .getElementById("closeNoteDialog")
+        .addEventListener("click", closeNoteModal);
+      document
+        .getElementById("cancelNote")
+        .addEventListener("click", closeNoteModal);
+      document.getElementById("saveNote").addEventListener("click", saveNote);
 
-    // Close delete dialog when clicking outside
-    window.addEventListener("click", (event) => {
-      const dialog = document.getElementById("deleteDialog");
-      if (event.target === dialog) {
-        closeDeleteDialog();
+      // Close dialog when clicking outside
+      window.addEventListener("click", (event) => {
+        const dialog = document.getElementById("noteDialog");
+        if (event.target === dialog) {
+          closeNoteModal();
+        }
+      });
+
+      function showDeleteDialog(itemId) {
+        itemToDelete = itemId;
+        document.getElementById("deleteDialog").classList.add("show");
       }
-    });
 
-    // Initialize cart
-    updateCart();
-
-    // Cart functionality
-    function updateCartCount() {
-      const cartCount = document.getElementById("cartCount");
-      if (cartCount) {
-        // Check if element exists
-        const totalItems = cart.reduce(
-          (sum, item) => sum + (item.quantity || 1),
-          0
-        );
-        cartCount.textContent = totalItems;
+      function closeDeleteDialog() {
+        document.getElementById("deleteDialog").classList.remove("show");
+        itemToDelete = null;
       }
-    }
 
-    // Initialize cart count immediately and after DOM loads
-    updateCartCount();
-    document.addEventListener("DOMContentLoaded", () => {
+      function confirmDelete() {
+        if (itemToDelete) {
+          cart = cart.filter((item) => item.id !== itemToDelete);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCart();
+          closeDeleteDialog();
+        }
+      }
+
+      // Add event listeners for delete dialog
+      document
+        .getElementById("closeDeleteDialog")
+        .addEventListener("click", closeDeleteDialog);
+      document
+        .getElementById("cancelDelete")
+        .addEventListener("click", closeDeleteDialog);
+      document
+        .getElementById("confirmDelete")
+        .addEventListener("click", confirmDelete);
+
+      // Close delete dialog when clicking outside
+      window.addEventListener("click", (event) => {
+        const dialog = document.getElementById("deleteDialog");
+        if (event.target === dialog) {
+          closeDeleteDialog();
+        }
+      });
+
+      // Initialize cart
       updateCart();
+
+      // Cart functionality
+      function updateCartCount() {
+        const cartCount = document.getElementById("cartCount");
+        if (cartCount) {
+          // Check if element exists
+          const totalItems = cart.reduce(
+            (sum, item) => sum + (item.quantity || 1),
+            0
+          );
+          cartCount.textContent = totalItems;
+        }
+      }
+
+      // Initialize cart count immediately and after DOM loads
       updateCartCount();
-    });
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCart();
+        updateCartCount();
 
-    // Event listeners
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
-      alert("Checkout functionality coming soon!");
-    });
+        // Bottom navigation active state and touch feedback
+        const currentPath =
+          window.location.pathname.split("/").pop() || "index.html";
+        const bottomNavItems = document.querySelectorAll(".bottom-nav-item");
 
-    // Theme toggle
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      const icon = document.querySelector("#themeToggle i");
-      icon.classList.toggle("fa-moon");
-      icon.classList.toggle("fa-sun");
-    });
+        bottomNavItems.forEach((item) => {
+          const href = item.getAttribute("href");
+          if (href === currentPath) {
+            item.classList.add("active");
+            item.style.color = "#E27D60"; /* Soft Terracotta */
+          } else {
+            item.style.color = "#556B2F"; /* Olive Green */
+          }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const mobileMenuButton = document.getElementById("mobileMenuButton");
-      const mobileMenu = document.getElementById("mobileMenu");
+          // Touch feedback
+          item.addEventListener("touchstart", () => {
+            item.classList.add("touch-active");
+            // item.style.backgroundColor = "#E27D60"; /* Soft Terracotta */
+            item.style.color = "#FFFAF0"; /* Warm White/Cream */
+          });
 
-      mobileMenuButton.addEventListener("click", function () {
-        mobileMenu.classList.toggle("hidden");
-        // Toggle between hamburger and close icon
-        const icon = mobileMenuButton.querySelector("i");
-        if (mobileMenu.classList.contains("hidden")) {
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
-        } else {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-times");
-        }
+          item.addEventListener("touchend", () => {
+            setTimeout(() => {
+              item.classList.remove("touch-active");
+              if (href === currentPath) {
+                item.style.backgroundColor = "";
+                item.style.color = "#E27D60"; /* Soft Terracotta */
+              } else {
+                item.style.backgroundColor = "";
+                item.style.color = "#556B2F"; /* Olive Green */
+              }
+            }, 100);
+          });
+
+          // Keyboard navigation
+          item.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              window.location.href = item.getAttribute("href");
+            }
+          });
+        });
       });
 
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !mobileMenuButton.contains(event.target) &&
-          !mobileMenu.contains(event.target)
-        ) {
-          mobileMenu.classList.add("hidden");
-          const icon = mobileMenuButton.querySelector("i");
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
-        }
+      // Event listeners
+      document.getElementById("checkoutBtn").addEventListener("click", () => {
+        alert("Checkout functionality coming soon!");
       });
-    });
-  </script>
-</body>
 
+     
+    </script>
+  </body>
 </html>
