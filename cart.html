@@ -46,7 +46,7 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         padding: 1.5rem;
         width: 350px;
-        z-index: 1000;
+        z-index: 5000;
         transform: translateY(120%);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -242,19 +242,6 @@
         animation: removeItem 0.5s ease forwards;
       }
 
-      #mobileMenu {
-        transition: all 0.3s ease-in-out;
-      }
-
-      #mobileMenu.hidden {
-        display: none;
-      }
-
-      #mobileMenu:not(.hidden) {
-        display: block;
-        animation: slideDown 0.3s ease-in-out;
-      }
-
       @keyframes slideDown {
         from {
           opacity: 0;
@@ -264,17 +251,6 @@
           opacity: 1;
           transform: translateY(0);
         }
-      }
-
-      /* Bottom navigation active state */
-      .bottom-nav-item.active {
-        background-color: #e27d60; /* Soft Terracotta */
-        color: #fffaf0; /* Warm White/Cream */
-      }
-
-      .bottom-nav-item.active i,
-      .bottom-nav-item.active span {
-        color: #fffaf0; /* Warm White/Cream */
       }
     </style>
   </head>
@@ -293,13 +269,7 @@
               <span>Food Menu</span>
             </a>
           </div>
-          <!-- Mobile menu button -->
-          <button
-            id="mobileMenuButton"
-            class="md:hidden p-2 rounded-lg hover:bg-[#E27D60] hover:text-[#FFFAF0]"
-          >
-            <i class="fas fa-bars text-[#556B2F] text-xl"></i>
-          </button>
+
           <!-- Desktop Navigation -->
           <div class="hidden md:flex space-x-8 desktop-nav">
             <a
@@ -325,12 +295,6 @@
             </a>
           </div>
           <div class="flex items-center space-x-4">
-            <button
-              id="themeToggle"
-              class="p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0]"
-            >
-              <i class="fas fa-moon text-[#556B2F]"></i>
-            </button>
             <a
               href="cart.html"
               id="cartButton"
@@ -344,26 +308,6 @@
               >
             </a>
             <div id="google_translate_element"></div>
-          </div>
-        </div>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="food.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-[#556B2F] hover:text-[#E27D60] hover:bg-[#F5F5F5]"
-              >Food</a
-            >
-            <a
-              href="drinks.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-[#556B2F] hover:text-[#E27D60] hover:bg-[#F5F5F5]"
-              >Drinks</a
-            >
-            <a
-              href="recipes.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-[#556B2F] hover:text-[#E27D60] hover:bg-[#F5F5F5]"
-              >Recipes</a
-            >
           </div>
         </div>
       </div>
@@ -433,6 +377,7 @@
     </main>
 
     <!-- Floating Note Dialog -->
+
     <div id="noteDialog" class="note-dialog">
       <div class="header">
         <h3 class="text-lg font-semibold">Add Note</h3>
@@ -484,7 +429,7 @@
         </div>
         <span>Drinks</span>
       </a>
-      <a href="cart.html" class="bottom-nav-item active" tabindex="0">
+      <a href="cart.html" class="bottom-nav-item" tabindex="0">
         <div class="nav-icon-wrapper">
           <i class="fas fa-shopping-cart"></i>
         </div>
@@ -806,6 +751,7 @@
         updateCartCount();
 
         // Bottom navigation active state and touch feedback
+
         const currentPath =
           window.location.pathname.split("/").pop() || "index.html";
         const bottomNavItems = document.querySelectorAll(".bottom-nav-item");
@@ -814,9 +760,11 @@
           const href = item.getAttribute("href");
           if (href === currentPath) {
             item.classList.add("active");
+            item.style.color = "#E27D60";
+          } else {
+            item.style.color = "#556B2F";
           }
 
-          // Touch feedback
           item.addEventListener("touchstart", () => {
             item.classList.add("touch-active");
             item.style.color = "#FFFAF0";
@@ -833,35 +781,12 @@
             }, 100);
           });
 
-          // Keyboard navigation
           item.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
               window.location.href = item.getAttribute("href");
             }
           });
         });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById("mobileMenuButton");
-        const mobileMenu = document.getElementById("mobileMenu");
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-          });
-        }
-
-        // Theme toggle
-        const themeToggle = document.getElementById("themeToggle");
-        if (themeToggle) {
-          themeToggle.addEventListener("click", () => {
-            const currentTheme =
-              document.documentElement.getAttribute("data-theme");
-            document.documentElement.setAttribute(
-              "data-theme",
-              currentTheme === "dark" ? "light" : "dark"
-            );
-          });
-        }
       });
 
       // Checkout button

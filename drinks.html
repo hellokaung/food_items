@@ -485,18 +485,18 @@
 
           localStorage.setItem("cart", JSON.stringify(cart));
           updateCartCount();
-          showSuccessMessage();
+          showSuccessMessage(cartItem);
         } catch (error) {
           console.error("Error in addToCart:", error);
         }
       }
 
-      function showSuccessMessage() {
+      function showSuccessMessage(item) {
         try {
           const message = document.createElement("div");
-          message.textContent = "Item added to cart!";
+          message.textContent = `${item.name} added to cart!`;
           message.className =
-            "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded shadow-lg";
+            "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded-lg shadow-lg z-50";
           document.body.appendChild(message);
           setTimeout(() => {
             message.remove();
@@ -542,7 +542,7 @@
                   drink.name
                 }</h3>
                 <p class="text-[#556B2F]">${drink.description}</p>
-                <p class="text-[#E27D60] font-bold mt-2">$${drink.price}</p>
+                <p class="text-[#E27D60] font-bold mt-2">฿${drink.price}</p>
                 <button class="mt-4 px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37] transition-colors add-to-cart" ${
                   drink.locked ? "disabled" : ""
                 }>Add to Cart</button>
@@ -584,12 +584,13 @@
       function showItemDetail(item) {
         try {
           const modal = document.getElementById("itemDetailModal");
+          const addToCartBtn = document.getElementById("addToCartDetail");
           if (!modal) throw new Error("Item detail modal missing");
 
           document.getElementById("detailTitle").textContent = item.name;
           document.getElementById("detailDescription").textContent =
             item.description;
-          document.getElementById("detailPrice").textContent = `$${item.price}`;
+          document.getElementById("detailPrice").textContent = `฿${item.price}`;
           document.getElementById("detailImage").src = item.image;
           document.getElementById("detailImage").alt = item.name;
 
@@ -613,26 +614,38 @@
 
           modal.classList.remove("hidden");
           document.body.classList.add("no-scroll");
+          // Close detail modal
+          document
+            .getElementById("closeDetailModal")
+            .addEventListener("click", () => {
+              document
+                .getElementById("itemDetailModal")
+                .classList.add("hidden");
+              document.body.classList.remove("no-scroll");
+            });
 
-          document.getElementById("addToCartDetail").onclick = () =>
-            addToCart(item);
+          // Close modal when clicking outside
+          window.addEventListener("click", (event) => {
+            const modal = document.getElementById("itemDetailModal");
+            if (event.target === modal) {
+              modal.classList.add("hidden");
+              document.body.classList.remove("no-scroll");
+            }
+          });
+          // Add to cart functionality
+          if (item.price) {
+            addToCartBtn.onclick = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              addToCart(item);
+              modal.classList.add("hidden");
+              document.body.classList.remove("no-scroll");
+            };
+          }
         } catch (error) {
           console.error("Error in showItemDetail:", error);
         }
       }
-
-      document
-        .getElementById("closeDetailModal")
-        .addEventListener("click", () => {
-          try {
-            const modal = document.getElementById("itemDetailModal");
-            if (!modal) throw new Error("Item detail modal missing");
-            modal.classList.add("hidden");
-            document.body.classList.remove("no-scroll");
-          } catch (error) {
-            console.error("Error in closeDetailModal:", error);
-          }
-        });
 
       // Password modal
       function showPasswordModal() {

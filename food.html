@@ -328,7 +328,7 @@ function googleTranslateElementInit() {
         // Show success message
         const successMessage = document.createElement("div");
         successMessage.className =
-          "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded-lg shadow-lg z-50";
+          "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded-lg shadow-lg z-1000";
         successMessage.textContent = `${item.name} added to cart!`;
         document.body.appendChild(successMessage);
         setTimeout(() => successMessage.remove(), 2000);
@@ -353,7 +353,7 @@ function googleTranslateElementInit() {
 
         // Show/hide price section
         if (item.price) {
-          price.textContent = `$${item.price}`;
+          price.textContent = `฿${item.price}`;
           price.style.display = "block";
           addToCartBtn.style.display = "block";
         } else {
@@ -428,7 +428,7 @@ function googleTranslateElementInit() {
               <h3 class="text-xl font-semibold mb-2 text-[#722F37]">${item.name}</h3>
               <p class="text-[#556B2F] mb-4">${item.description}</p>
               <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-[#E27D60]">$${item.price}</span>
+                <span class="text-xl font-bold text-[#E27D60]">฿${item.price}</span>
                 <button class="px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors">
                   Add to Cart
                 </button>
