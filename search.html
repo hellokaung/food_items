@@ -122,13 +122,13 @@
 
   <body class="bg-gray-50">
     <!-- Navigation -->
-     <nav class="bg-white shadow-md">
+    <nav class="bg-white shadow-md">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
             <a
               href="./"
-              class="text-xl font-bold text-[#722F37] flex items-center gap-2" /* Deep Burgundy */
+              class="text-xl font-bold text-[#722F37] flex items-center gap-2"
             >
               <i class="fas fa-utensils"></i>
               <span>Food Menu</span>
@@ -138,22 +138,22 @@
           <div class="hidden md:flex space-x-8 desktop-nav">
             <a
               href="food.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Food</a
             >
             <a
               href="drinks.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Drinks</a
             >
             <a
               href="recipes.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Recipes</a
             >
             <a
               href="search.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
             >
               <i class="fas fa-search"></i> Search
             </a>
@@ -162,22 +162,20 @@
             <a
               href="cart.html"
               id="cartButton"
-              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors" /* Soft Terracotta on hover */
+              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors"
             >
               <i class="fas fa-shopping-cart"></i>
               <span
                 id="cartCount"
-                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs" /* Deep Burgundy with Warm White text */
+                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs"
                 >0</span
               >
             </a>
-    <div id="google_translate_element"></div>
-
+            <div id="google_translate_element"></div>
           </div>
         </div>
       </div>
     </nav>
-
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
@@ -225,7 +223,6 @@
         >
           Drinks
         </button>
-        
       </div>
 
       <!-- Search Results -->
@@ -341,1967 +338,2299 @@
       </a>
     </div>
     <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
 
     <script>
       // Sample data (in a real application, this would come from your backend)
       const menuData = {
         food: [
-       // Tapas
-  {
-    name: "Bomba Iberica",
-    description: "Creamy croquettes made with Jamón 100% Ibérico acorn feed. Served with Romesco.",
-    category: "Tapas",
-    price: 200,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhA8eQ84CVhLXB4Qd0S_m2rtZI1oj2wp1cmf_-rKIMzhnh55LPhmPGI9MQyLVohixFjMUZGjogqDJoCsrV3-Sxk-sTcT82cxsMaiHtPyM0KMy66bpTVyM44JM9xdQwk20Wam8TPHgLKw_oXEQqmAkF9AHvAWNrZX4WRzez-cKs6qg-tcJvFZ7qpuq7_R2G5/s1600/bomba%20iberica.webp",
-    ingredients: ["Jamón Ibérico", "Romesco", "Potato", "Flour", "Eggs", "Breadcrumbs"],
-    instructions: "Mix mashed potato with diced Jamón Ibérico, form into balls, coat in flour, egg, and breadcrumbs, deep fry until golden, serve with Romesco sauce.",
-  },
-  {
-    name: "Bomba Setas",
-    description: "Creamy and crispy croquettes made with local mushrooms, portobello and black truffle. Served with Romesco.",
-    category: "Tapas",
-    price: 200,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOl5MQfP9t-Hd1qUxaMMypCFJwi8eRDAJsMtBZLxPw8mdpXvpggv9UWYNQ8aIksVJmqsX9bs8mc-8qTDCsu493ArrYgzncsJgR_VmK1Y9-lhyphenhyphenMy4Po0YZ1GIKAN5AxwRw1shX-eH52W4z7UAQxBqDi0epr6ngc2Cycy-UnJ2x4aki_XUSRd7WJS3XU5dHb/s1600/bomba%20seta.webp",
-    ingredients: ["Mushrooms", "Portobello", "Black Truffle", "Romesco", "Potato", "Flour", "Eggs", "Breadcrumbs"],
-    instructions: "Sauté mushrooms, portobello, and truffle, mix with mashed potato, form into balls, coat in flour, egg, and breadcrumbs, deep fry, serve with Romesco.",
-  },
-  {
-    name: "Padron Peppers",
-    description: "Grilled padron peppers imported from Galicia, Spain. Served with garlic chips.",
-    category: "Tapas",
-    price: 250,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiVJoa56hD6iQCzsdG9jWl4CMgtl8iHDXxSJXfHoA_EaVVmpP7TuxdxI5bzMlq81jj8kzZhoujM50KE9Prg_cf32WQ2qW3ayty62ZOaTTdctYq6akCea3TC4nKotqCihueYegex9y_SMGMvFzCmgZjA6vnRxX3eaAK4U7i4OniOUhasvC6RAlQnlYTOKOb/s1600/padron%20peper.webp",
-    ingredients: ["Padron Peppers", "Garlic", "Olive Oil", "Sea Salt"],
-    instructions: "Heat olive oil in a pan, grill padron peppers until blistered, fry thin garlic slices until crispy, sprinkle with sea salt, serve hot.",
-  },
-  {
-    name: "Tortilla",
-    description: "Classic Spanish potato omelet with onion (optional), made with farm eggs and organic potatoes. Topped with Chorizo Ibérico (optional), and served with Romesco.",
-    category: "Tapas",
-    price: 350,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJHuWvai0fhHK5BGhs0DRqDapjP4W3FjLi9sDUwddEvMNbYWc3O_gR5SrXw-43o9UUzxTX18oDK6OroaEUjEichRGdOPZf8YefoF32uynJ-d_adTo3_lvxVcMihqQ7jXGiytoA_COOhkzkSXiMuJI7CV90nD5vqSkcLr_LAyqlQ_laBxPYKt2oqYXEItUy/s1600/tortila.webp",
-    ingredients: ["Potatoes", "Eggs", "Onion", "Chorizo Ibérico", "Romesco", "Olive Oil"],
-    instructions: "Slice potatoes and onions, fry in olive oil until soft, beat eggs, mix with potatoes, cook in a pan until set, top with chorizo, serve with Romesco.",
-  },
-  {
-    name: "Gazpacho",
-    description: "Refreshing Andalusian tomato cold soup. Served with chopped vegetables and egg, crispy jamón dust (optional) and garlic-parsley oil.",
-    category: "Tapas",
-    price: 150,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSJM3KTG42echFGxp0iTwCRa4mecRUUz3NVrHX1I5-TePyfJ6vua_W89gpAZs8AL6i0uX8-xkkYUYSRuGsBytYJMzgdeGGsSVMytMTd7a_4_AHmGHW7sdRuWdpDTS9kcOZ9zy2fXr66qoW_53X_MosncI8Rf59G9X8a2obXUZrSB5RXB9hTXlM3PjC-YDY/s1600/gapacho.webp",
-    ingredients: ["Tomatoes", "Vegetables", "Egg", "Jamón", "Garlic", "Parsley", "Olive Oil"],
-    instructions: "Blend tomatoes, vegetables, garlic, and olive oil, chill, serve with chopped boiled egg, crispy jamón dust, and garlic-parsley oil drizzle.",
-  },
-  {
-    name: "Galician Octopus",
-    description: "Grilled Galician octopus tentacle over potato foam. Served with smoked paprika, and green oil.",
-    category: "Tapas",
-    price: 370,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKD6911qjHtcyg9ftmUWoFtH8Jm5S7FYlaq19ORLAkIrij3rf42GzIk1Am-8VAIv_yZCMNj1D5nnHng7iDrTm1L9BHja3LtELR_i3UDmBDK9_b937cNGTqey3RgVTqR4P3dRgOS7f_g3HZrz1RFzpyoRXglpxe-xFrV74_aCVwiUFxOw_AHFhrqzHszJmZ/s1600/octopus.webp",
-    ingredients: ["Octopus", "Potatoes", "Paprika", "Olive Oil"],
-    instructions: "Boil octopus until tender, grill tentacle, blend boiled potatoes with olive oil for foam, serve octopus over foam, sprinkle paprika, drizzle with green oil.",
-  },
-  {
-    name: "Garlic Gambas",
-    description: "Sauteed shrimps in olive oil, garlic and cayenne pepper, flambeed with white wine and served with garlic chips.",
-    category: "Tapas",
-    price: 260,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWWo8HeKFKflusHew3u-95v-5QjHKeSOuyqkTh3_14m3DAQhta1Ly51yorPDrLSvHW3N-8xjfIXfp9AnUhlvXjGWumS1FerjfdMJ3OwUS0LA9awja0i1T1J_t9-7olbNvpR8ux4oEINY3FjNSd_e2X2ZbZIxUsPgDFpYKJCUSjBn_fwBimnOp1cTgAVPOb/s1600/garlic%20gambas.webp",
-    ingredients: ["Shrimp", "Olive Oil", "Garlic", "Cayenne Pepper", "White Wine"],
-    instructions: "Sauté shrimp with garlic and cayenne in olive oil, flambé with white wine, fry garlic slices until crispy, serve shrimp with garlic chips.",
-  },
-  {
-    name: "Patatas Bravas",
-    description: "Crispy triple cooked potatoes served with homemade aioli, and our special spicy brava sauce.",
-    category: "Tapas",
-    price: 150,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEie418oBCZ8C5uY7A1mAmlK4qqYB_HtcmIQ7rCJIdbyF5XItWyW5s3rceRgCnyA8BYNHMLB_BegnM7l4ZYiOyxxR5WQFmndKvoe0tg2Swth40GXfkpHjb7jKfyxH8VJjvD_6d4ATypNIYMuCWh4tBemQVBNAjLxo13-1pIlIyytBbYayQ7uKPFP2L9SDI5X/s1600/brava.webp",
-    ingredients: ["Potatoes", "Aioli", "Brava Sauce", "Olive Oil"],
-    instructions: "Cut potatoes, fry three times for crispiness, prepare aioli and spicy brava sauce, serve potatoes with both sauces.",
-  },
-  {
-    name: "Torreznos",
-    description: "Crispy pork belly confited in jamón ibérico lard, with honey mustard sauce. Served with sweet Spanish piquillo peppers and crispy onions.",
-    category: "Tapas",
-    price: 175,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjauWRsDenmG-rXQ-7tnYO1OSQL6vcNq2B0L3VT7eYQvddIlGcVFiZBKk3HWq1N2YGX-WDzwI4_72ZjRwNdd72QvKzzIncPFWijC3j7uub6BCsr7F-HHnuB68nduTbOEzB7mIcb7RgDij3mC3ubOukBa2X8xRBfPjNaeYwJ2-ekEVGGeF8lVpKDqQvGg4iP/s1600/torreznos.webp",
-    ingredients: ["Pork Belly", "Jamón Ibérico Lard", "Honey Mustard", "Piquillo Peppers", "Onions"],
-    instructions: "Confit pork belly in jamón ibérico lard, fry until crispy, prepare honey mustard sauce, serve with piquillo peppers and crispy onions.",
-  },
-  {
-    name: "Txipirones",
-    description: "Fried crispy baby squid in tempura with black ink mayo and aioli. Served with local 'chamuan' leaves and calamansi mandarin.",
-    category: "Tapas",
-    price: 180,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkTVH5KoUdyNQzkHnjtl-e08_PdrJFgkimBlAAYz-B2teBY0vHzcsFP1vremD2UxlLJD68FpeDgskRvaAvHzLSiTQDIfIJPKaiYeJgPaGo1MUIIM5vDxho_0qgwVx2RKI_pFybdHAZ6f8vGGtlhKm5W-4J0ofwZrT-mR_dJNG8igOPIWpUMfNVhKac7m9T/s1600/txripironos.webp",
-    ingredients: ["Baby Squid", "Tempura Batter", "Black Ink Mayo", "Aioli", "Chamuan Leaves", "Calamansi"],
-    instructions: "Coat baby squid in tempura batter, deep fry until crispy, prepare black ink mayo and aioli, serve with chamuan leaves and calamansi.",
-  },
-  {
-    name: "Tacos",
-    description: "2 Soft tortilla tacos with crispy soft shell crab, guacamole, mango-corn salsa, pickle onion & kimchi mayo.",
-    category: "Tapas",
-    price: 190,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0ITvaPTUCdJWxAt7m153m7t6J2r_j-bNFr8_Ywhh1ceMTuQwFQtW3xftdROtbxhMq1g-kCBjIGhsqBtE_7wXnn6HjbLDWnJnYqq4Tmcf0a676ITg-YWbYaWZIgoxCtCfsyAl8o4o6_AQ3VyLy6DmI8QEnEukP8xCw4r0BYJ-kjZlt2QBXpZAGojuRCz3c/s1600/taco.webp",
-    ingredients: ["Soft Shell Crab", "Tortilla", "Guacamole", "Mango", "Corn", "Pickled Onion", "Kimchi Mayo"],
-    instructions: "Fry soft shell crab until crispy, prepare guacamole and mango-corn salsa, assemble tacos with crab, guacamole, salsa, pickled onion, and kimchi mayo.",
-  },
-  {
-    name: "Broken Eggs With Chorizo",
-    description: "Spanish broken eggs with potato in 2 textures, 'Chistorra' (Chorizo from Navarra) flambeed in cider, served with fried eggs.",
-    category: "Tapas",
-    price: 175,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUcWXHPm1kFHJkc14GhCHGzrbmGoufjnGiaS-bbUdBK0_mfWs5b610v85-5UMFf7It-7DQSYOyIwI6zP7l-llzeatYhkQkpZjVWGMe4zdDFqHGCTU9CPJ3USGqwR_H9JtMuVQlhsdyEGQI8fsLxjmfBC_KgWKSyd8zT4I7JM07zw3Ck0W7B2quGQPEG3d0/s1600/broken%20egg.webp",
-    ingredients: ["Eggs", "Potatoes", "Chistorra", "Cider"],
-    instructions: "Cook potatoes in two textures (mashed and fried), flambé chistorra in cider, fry eggs, serve eggs over potatoes with chistorra.",
-  },
-  {
-    name: "Sardines",
-    description: "Grilled Atlantic sardines imported from the north of Spain, served with burnt lime.",
-    category: "Tapas",
-    price: 320,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQEhd9fpPIFUTuT2UFi1-dqlnm-q9RxCqmTBUrLyxVZznJ9m0wf3Dwom0urA2A_8jlU4wPeItmpZ32nS7NfYJ8GJpL2X21XWwIzp75Ep54NkzFlHT_xWT0RHu6MkRud30eM9mZ83lzN2M0mdkZfB8pGu1fbOdntfP_WRwvplCsU9he3csyCQc6mZ5lRObR/s1600/sardines.webp",
-    ingredients: ["Sardines", "Lime", "Olive Oil", "Sea Salt"],
-    instructions: "Grill sardines with olive oil and sea salt, char lime halves, serve sardines with burnt lime.",
-  },
-  {
-    name: "Mini Burgers",
-    description: "Crispy chicken breaded with cornflakes and kimchi mayo, a beef smash burger with melted cheddar, onion jam, and Big Mac sauce. (2pcs)",
-    category: "Tapas",
-    price: 190,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMp-2JOhdEwLbgTogRhdy0rvvuhreZac6bjBOPZqTPujH4XS02gKaSZUKPOKj0km3ZIde_ut0CUN3UxbWRA2YpzJz92sAkLXAwM8shK2Jp7RGYAk_FZoqecV4pcc1w__EIc1Hhj0E6vLhr2qCnaBxoA3C_3yNvdcgRUNdMNq865M1hzRxM3-4D68ayKZxS/s1600/mini%20buger.webp",
-    ingredients: ["Chicken", "Cornflakes", "Kimchi Mayo", "Beef", "Cheddar", "Onion Jam", "Big Mac Sauce", "Buns"],
-    instructions: "Bread chicken with cornflakes, fry until crispy, prepare beef patty with cheddar, assemble burgers with kimchi mayo, onion jam, and Big Mac sauce.",
-  },
-  // Coldcut
-  {
-    name: "Jamon Iberico",
-    description: "Jamón Ibérico acorn feed 36 months of maturation hand cut. Served with olive, tomaquet, crusty bread and Arbequina olive oil.",
-    category: "Coldcut",
-    price: 495,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVIgU9D4I3tqLgp8vOIUvDX1vokMF_teFO8B4i_nbKuPovdHNawas1YEkM302eBF2X9SmUEYrFPdewSiH4Nhx7lpzij_tsyFQ2VRALREpPvcGvfC9WcZJ2AZ_baONNJCUKf1CrrdKNCrrkqW6rTM9VDznFbXZpbMjn29Fk_ay-HrVsvJXedPGfMQk7RtQ/s1600/jamon%20iberico.webp",
-    ingredients: ["Jamón Ibérico", "Olives", "Tomaquet", "Bread", "Arbequina Olive Oil"],
-    instructions: "Hand-slice Jamón Ibérico, prepare tomaquet with grated tomatoes, serve with olives, crusty bread, and a drizzle of Arbequina olive oil.",
-  },
-  {
-    name: "Chorizo Iberico",
-    description: "Chorizo ibérico with 36 months maturation. Served with crusty bread, tomaquet, olives and Arbequina olive oil.",
-    category: "Coldcut",
-    price: 330,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAx3SgC7j8BVAlaOkV9ccLTPD7_NNU8fhyyC287EbQkyT3UMXGoX6gJgDkvzamrk4XAYAT6eUP49of81bUvR3ducRFRkY8AeHz-j_hCtjQqUe1v4cmKZyZ8593H9qTIEm_F-JLvnHZdQ3uefJkwbwPsCjZxy93tJrk1OJGxFxfA4BCTpwM9YBNc74K1-0U/s1600/churizo%20iberico.webp",
-    ingredients: ["Chorizo Ibérico", "Bread", "Tomaquet", "Olives", "Arbequina Olive Oil"],
-    instructions: "Slice Chorizo Ibérico thinly, prepare tomaquet with grated tomatoes, serve with crusty bread, olives, and Arbequina olive oil.",
-  },
-  {
-    name: "Salchichon Iberico Acorn Feed",
-    description: "Spanish salami ibérico with 36 months of maturation. Served with crusty bread, olives, tomaquet and Arbequina olive oil.",
-    category: "Coldcut",
-    price: 330,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxagjr0D2FGqaZvET8utiQSur_Q5RoJyUICnZ-aLpCPSL8u8h48F2hlRYg3Yk3R7pxjP_ne2jNU5X-dSnwf0OITVHD_FjPJIagMsT1QjK17-NKPgqjfrso3yIeZ8BoYb2t08iabDiox22t7BkKKLUbE78gYVqnlafHqnb_7ueB-4rtRzxEzEqamGOtjfod/s1600/salchichon%20iberico.webp",
-    ingredients: ["Salchichon Ibérico", "Bread", "Olives", "Tomaquet", "Arbequina Olive Oil"],
-    instructions: "Slice Salchichon Ibérico thinly, prepare tomaquet with grated tomatoes, serve with crusty bread, olives, and Arbequina olive oil.",
-  },
-  {
-    name: "Manchego Cheese",
-    description: "Semi-cured Manchego cheese cured for 2 months. Served with quince paste, walnuts, dried figs, grapes and crusty bread with Arbequina olive oil.",
-    category: "Coldcut",
-    price: 370,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1XM_fjyMvUynLzyQYHL5ej59wSOBcYFP3pqrlyjlfRm2MzoQZviPGPoFvoCKe2MdzRSFiS48Wzi5OO2BVu7t9pARjENCJ9Dx8j5uUMZ98DivbgrAHiTz4vgHN6JJjWnhR1Ngs3VIhijSRt5mMHpZlFOpYJRBnhGgP6mF4mR745sWstycS0JkVZMCISd5D/s1600/manchenco%20chess%20plate.webp",
-    ingredients: ["Manchego Cheese", "Quince Paste", "Walnuts", "Dried Figs", "Grapes", "Bread", "Arbequina Olive Oil"],
-    instructions: "Slice Manchego cheese, arrange with quince paste, walnuts, dried figs, grapes, and crusty bread, drizzle with Arbequina olive oil.",
-  },
-  {
-    name: "Iberico Board",
-    description: "A selection of Spanish ibérico cold cuts with 36 months maturation: jamón ibérico, chorizo ibérico, salchichón ibérico and Manchego cheese semi cured. Served with grapes, walnuts, quince paste, olives, dried figs and crusty bread.",
-    category: "Coldcut",
-    price: 900,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3LpvXQXhrrdX72GrJICRVgT8HzHXwhovpfkwyDRW3HYZIk1iaI2_aKYGcvq9BvMcNSb4eVGtppQozZmQQxmmh6C58kcXH8x57P-zgpmmVWOdszhx-sLX0RYgShFePa2sONsjF-NTzxZBydY5EmaPKBQR11zn08GnyeHvgWkst5lt7xcHyPPFWarZkCGrQ/s1600/iberico%20board.webp",
-    ingredients: ["Jamón Ibérico", "Chorizo Ibérico", "Salchichón Ibérico", "Manchego Cheese", "Grapes", "Walnuts", "Quince Paste", "Olives", "Dried Figs", "Bread"],
-    instructions: "Arrange sliced Jamón, Chorizo, Salchichón Ibérico, and Manchego cheese, serve with grapes, walnuts, quince paste, olives, dried figs, and crusty bread.",
-  },
-  // Salads
-  {
-    name: "Tuna Tataki",
-    description: "Seared yellowfin tuna loin, sesame crusted, with mixed greens, mango, avocado, sundried tomatoes, and our sesame Asian dressing.",
-    category: "Salads",
-    price: 295,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjK1LlZVJRYV5Bk6XIDqMLDzfWd-gBiQTHEpefQDW3K1X6TYqiALe79VodQql-JZTprdPhyq22FE2IW4vjg9zNbh3UAx-I2_Eh7Fqi0fA6BZT6zn87HyZMWrKw3Cwgl4KZMd0ov4BlNjwNOfnumeErWbS-5fupm3FC8ePcEv1a-gKsuzhC3VoNtRerHBdas/s1600/482343027_122207356550085149_8716084908958033559_n.jpg",
-    ingredients: ["Tuna", "Sesame Seeds", "Mixed Greens", "Mango", "Avocado", "Sundried Tomatoes", "Sesame Dressing"],
-    instructions: "Coat tuna loin with sesame seeds, sear briefly, slice thinly, toss mixed greens with mango, avocado, sundried tomatoes, and sesame dressing, top with tuna.",
-  },
-  {
-    name: "Green Salad",
-    description: "Fresh mozzarella cheese, homemade pesto sauce, fresh tomatoes, homemade balsamic glaze, fresh basil and extra virgin oil. Served with mixed salad and salt flakes.",
-    category: "Salads",
-    price: 175,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYdHCzUWHCu565V1abMeUZOYuecDbOG_6BYJhuUa0EUOpyIM71616X20J09ZXh0LJ1hMlE05PB8UN-OzbIzXs6IW1ApYzW37O8qlcEsiRd2EEzPwLPsH-eWwOe41AZWm6IX_aCuDe5nPp1w-RSQmPu4OTkhrl1jtiv7EZekYLtYAZgEdTKIoX7SHM0n4PJ/s1600/Olive-Garden-Salad-1-.jpg",
-    ingredients: ["Mozzarella", "Pesto", "Tomatoes", "Balsamic Glaze", "Basil", "Olive Oil", "Mixed Salad", "Salt"],
-    instructions: "Slice mozzarella and tomatoes, prepare pesto and balsamic glaze, toss mixed salad with olive oil, top with mozzarella, tomatoes, pesto, basil, glaze, and salt flakes.",
-  },
-  // Pizza
-  {
-    name: "Pizza Iberica",
-    description: "Thin-crust pizza with San Marzano tomatoes, fresh mozzarella, sun-dried tomatoes, balsamic glaze, Jamon Serrano gran reserva, basil and confited onions.",
-    category: "Pizza",
-    price: 350,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb-DiQFLe3gfbsV0vSOSYnnOe97h6EUIhMATTGflX2J6u_oDe935h-4xgg2EoAmhJhSQHFUtUUxP-6Bry4gqF5l9prz40PaHaKM7SRMM4jf_-PLeYct4wxAcvPV8B92y1mEU3Pc2g5foXiiY-C4JA7_hOPYHQ0Y_NqV-0YpjjXxP3JyFqWxZvlBFl4gtok/s1600/pizza%20iberica.webp",
-    ingredients: ["San Marzano Tomatoes", "Mozzarella", "Sundried Tomatoes", "Balsamic Glaze", "Jamon Serrano", "Basil", "Onions"],
-    instructions: "Spread San Marzano tomato sauce on thin crust, add mozzarella, bake until crispy, top with sundried tomatoes, Jamon Serrano, confited onions, basil, and balsamic glaze.",
-  },
-  {
-    name: "Chorizo and Goat Pizza",
-    description: "Thin-crust pizza, with San Marzano tomatoes, goat cheese, Chorizo Iberico, and red wine onion jam.",
-    category: "Pizza",
-    price: 350,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwu389fRoYTAesRygYu5OyTJw5UxBRlIu9eh4el0kyBuHzxEn0T_DqaEMhh4sJoQyMLN-tH8vYdg2b4sXmZ4WHC0uXLz2C-fk9Q6ja4tHSrDD5r0lcjT14_Mi2Amf8oFD8rbU3XcYEGFHfpQ0GK3M42NB5_zDBhq0P5E400Mi_KmZEtzd7ltOHoPgpZcVR/s1600/Leonardo_Phoenix_10_Chorizo_like_this_churizo_httpsbloggergoog_3.jpg",
-    ingredients: ["San Marzano Tomatoes", "Goat Cheese", "Chorizo Ibérico", "Red Wine", "Onion Jam"],
-    instructions: "Spread San Marzano tomato sauce on thin crust, add goat cheese and Chorizo Ibérico, bake, top with red wine onion jam.",
-  },
-  {
-    name: "Ham & Pesto",
-    description: "Thin-crust pizzas, with San Marzano tomatoes, fresh mozzarella, black olives, mushrooms, braised ham, crushed pistachios, and pesto.",
-    category: "Pizza",
-    price: 330,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZKyTuWGJeNxc9Ycn2m99WdHYjA8WwIXIUeNp623Urpcc-JJRuaoXRXD6Dfb0XLsg-aC1qXpdJP7jaOqVZj2z_s0lOGmyKLPqUMsepC7ZuSP7ZkkyG-0xp_-VqgNqp3kX40L2SzOQAM9wPdqjv5m0AfyUC1-QyBysAFfwQcw7BKVMzCfAY24h1mVdFY_n5/s1600/pizza%20ham%20and%20pesto.webp",
-    ingredients: ["San Marzano Tomatoes", "Mozzarella", "Black Olives", "Mushrooms", "Ham", "Pistachios", "Pesto"],
-    instructions: "Spread San Marzano tomato sauce on thin crust, add mozzarella, olives, mushrooms, and ham, bake, top with crushed pistachios and pesto.",
-  },
-  {
-    name: "Pizza Manchega",
-    description: "Tomato sauce, manchego cheese, fresh mozzarella di bufala, 'Pisto Manchego' (Spanish ratatouille), with cherry tomatoes, asparagus, mushrooms and black olives.",
-    category: "Pizza",
-    price: 280,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjN8BU0O0brvsnZaX8ikoN5haMMjGubehyphenhyphenaWCW5fWLPBsLtEoHXTxn6R_g9CCRvBdaPsAH7sp6DmuRPPuhaEU8Btff9tPdWF3tIXQ4XWm-GY-McRG5gYiU6-ojzThUBmNemqZqYPfflrn5VBdHR-RpQWxiNqFe-N8VIXIcY63Rka5AIahWsDv5YSnfMBfjx/s1600/323-pizza-manchega-xl-668x400x80xX.jpg",
-    ingredients: ["Tomato Sauce", "Manchego Cheese", "Mozzarella", "Pisto Manchego", "Cherry Tomatoes", "Asparagus", "Mushrooms", "Black Olives"],
-    instructions: "Spread tomato sauce on crust, add Manchego and mozzarella, top with pisto manchego, cherry tomatoes, asparagus, mushrooms, and olives, bake until crispy.",
-  },
-  {
-    name: "Pizza Margarita",
-    description: "Thin-crust pizzas with San Marzano tomatoes, fresh buffalo mozzarella, and basil.",
-    category: "Pizza",
-    price: 280,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje9rnbXQYK3-1DWPwNr_tjL9TsKjq60fwkHxjv_BvBKYn97kzEyq4uelVPVqAivtpVb9AtFGUvfEGb5YxTUWh1lYFYZJvU8VTim6gfmIXKy7FByGmovgrKGfIWhpahrj5RdJzke1xtCfb_HoZE5FLJYo1Z6oo_d-6Oyyp_Z2elB-7oHz0Fi7lIG1a3GG5D/s1600/Margherita-Pizza.webp",
-    ingredients: ["San Marzano Tomatoes", "Mozzarella", "Basil"],
-    instructions: "Spread San Marzano tomato sauce on thin crust, add fresh buffalo mozzarella, bake until bubbly, top with fresh basil.",
-  },
-  // Paella
-  {
-    name: "Seafood Paella for 1",
-    description: "Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
-    category: "Paella",
-    price: 495,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimroKkkuOs4bMQ9KgCx3tGMx-wXXia24-NTcOCr24lw0cmC6cBqROa96G5pqNotAfOuy-hyUsXa07fqCeDh-gI6fvZ59jASO3ecN5QdYYLilPD6laB62iLP88Wh1uwDXky2vYOOv3pdy1s1mxWwW0p_eXNVvTTuIERV9ceTxPeloe-1mgVMyX7ZByy1QuQ/s1600/seafood%20paellas.webp",
-    ingredients: ["Bomba Rice", "Saffron", "Seafood", "Fish Stock"],
-    instructions: "Cook bomba rice with fish stock and saffron, add mixed seafood, cook until rice is tender and socarrat forms if requested, serve hot.",
-  },
-  {
-    name: "Seafood Paella for 2",
-    description: "Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
-    category: "Paella",
-    price: 850,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimroKkkuOs4bMQ9KgCx3tGMx-wXXia24-NTcOCr24lw0cmC6cBqROa96G5pqNotAfOuy-hyUsXa07fqCeDh-gI6fvZ59jASO3ecN5QdYYLilPD6laB62iLP88Wh1uwDXky2vYOOv3pdy1s1mxWwW0p_eXNVvTTuIERV9ceTxPeloe-1mgVMyX7ZByy1QuQ/s1600/seafood%20paellas.webp",
-    ingredients: ["Bomba Rice", "Saffron", "Seafood", "Fish Stock"],
-    instructions: "Cook bomba rice with fish stock and saffron, add mixed seafood, cook until rice is tender and socarrat forms if requested, serve hot.",
-  },
-  {
-    name: "Black Rice for 1",
-    description: "Creamy Catalan style creamy black rice with ink squid, Galician grilled octopus tentacle, and seafood, served with aioli. Made with socarrat upon request.",
-    category: "Paella",
-    price: 595,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLKhV22cJPxvfWJ431qnIrSnqZmye20Ll0g-MJG6ZDjrtuGUIt8Cb4MurOJmOGVcz9ssaxgoKtNYjav6eJe7edXot8nWflPtz1Q4E-1SvRrOLSDZGXQtKSM7_qCsSJ6q4SybxOMGhQCmOT6JY7rahhsI7-7OBe7XdpWpUe0O6qPerYANCvi-arnqkrIlX/s1600/black%20rice%20paella.webp",
-    ingredients: ["Black Rice", "Squid Ink", "Octopus", "Seafood", "Aioli"],
-    instructions: "Cook black rice with squid ink and seafood, grill octopus tentacle, serve rice with seafood and octopus, drizzle with aioli, add socarrat if requested.",
-  },
-  {
-    name: "Black Rice for 2",
-    description: "Creamy Catalan style creamy black rice with ink squid, Galician grilled octopus tentacle, and seafood, served with aioli. Made with socarrat upon request.",
-    category: "Paella",
-    price: 950,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLKhV22cJPxvfWJ431qnIrSnqZmye20Ll0g-MJG6ZDjrtuGUIt8Cb4MurOJmOGVcz9ssaxgoKtNYjav6eJe7edXot8nWflPtz1Q4E-1SvRrOLSDZGXQtKSM7_qCsSJ6q4SybxOMGhQCmOT6JY7rahhsI7-7OBe7XdpWpUe0O6qPerYANCvi-arnqkrIlX/s1600/black%20rice%20paella.webp",
-    ingredients: ["Black Rice", "Squid Ink", "Octopus", "Seafood", "Aioli"],
-    instructions: "Cook black rice with squid ink and seafood, grill octopus tentacle, serve rice with seafood and octopus, drizzle with aioli, add socarrat if requested.",
-  },
-  {
-    name: "Meat Rice for 1",
-    description: "A non-traditional rice with chistorra, Chorizo Iberico, chicken wings, and pork ribs, served with aioli and made with meat broth. Made with socarrat upon request.",
-    category: "Paella",
-    price: 495,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWlhRkh-WLGwlgYKl1SsRRAZpvpxCDIdtxlNt4vRG8rwN9u22HuBhByQW66ABsYVfQC5SHf8-SiUbXe7iuZvsfTR9O-nghq3oBiKpXp0Va23gf2aZ3eKh7ihkslnHN1eJ03ZdXeJzETPVAeA1icfHFIl-lNIEYv94gcevBKJMiiT0jhuBgeD7w1rv0Gmtf/s1600/meat%20paella.webp",
-    ingredients: ["Rice", "Chistorra", "Chorizo Ibérico", "Chicken Wings", "Pork Ribs", "Aioli", "Meat Broth"],
-    instructions: "Cook rice in meat broth, add chistorra, Chorizo Ibérico, chicken wings, and pork ribs, serve with aioli, create socarrat if requested.",
-  },
-  {
-    name: "Meat Rice for 2",
-    description: "A non-traditional rice with chistorra, Chorizo Iberico, chicken wings, and pork ribs, served with aioli and made with meat broth. Made with socarrat upon request.",
-    category: "Paella",
-    price: 795,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWlhRkh-WLGwlgYKl1SsRRAZpvpxCDIdtxlNt4vRG8rwN9u22HuBhByQW66ABsYVfQC5SHf8-SiUbXe7iuZvsfTR9O-nghq3oBiKpXp0Va23gf2aZ3eKh7ihkslnHN1eJ03ZdXeJzETPVAeA1icfHFIl-lNIEYv94gcevBKJMiiT0jhuBgeD7w1rv0Gmtf/s1600/meat%20paella.webp",
-    ingredients: ["Rice", "Chistorra", "Chorizo Ibérico", "Chicken Wings", "Pork Ribs", "Aioli", "Meat Broth"],
-    instructions: "Cook rice in meat broth, add chistorra, Chorizo Ibérico, chicken wings, and pork ribs, serve with aioli, create socarrat if requested.",
-  },
-  {
-    name: "Vegetarian Rice for 1",
-    description: "A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
-    category: "Paella",
-    price: 395,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKnY1x1scmE6ZVvB8JmuaVZFCAVIn3ioWr6axOYFV_Pc_Fg1gxhs7BNpOVdfODL2d0a16CvIdbaaqwo8apj-wpH10BEoZaihsFncYTT3UMYjqaHuLGY5aoheWZxBFFEKjOgHJ4WbDQcs3FGqp1W3lGGnt8oF7d48U43ShSY2ZAh6EHVfSJdWQPOCVpsxQ/s1600/veggetarian%20paella.webp",
-    ingredients: ["Rice", "Vegetable Broth", "Mixed Vegetables"],
-    instructions: "Cook rice in vegetable broth with mixed vegetables, create socarrat if requested, serve hot.",
-  },
-  {
-    name: "Vegetarian Rice for 2",
-    description: "A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
-    category: "Paella",
-    price: 550,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKnY1x1scmE6ZVvB8JmuaVZFCAVIn3ioWr6axOYFV_Pc_Fg1gxhs7BNpOVdfODL2d0a16CvIdbaaqwo8apj-wpH10BEoZaihsFncYTT3UMYjqaHuLGY5aoheWZxBFFEKjOgHJ4WbDQcs3FGqp1W3lGGnt8oF7d48U43ShSY2ZAh6EHVfSJdWQPOCVpsxQ/s1600/veggetarian%20paella.webp",
-    ingredients: ["Rice", "Vegetable Broth", "Mixed Vegetables"],
-    instructions: "Cook rice in vegetable broth with mixed vegetables, create socarrat if requested, serve hot.",
-  },
-  // Meat
-  {
-    name: "Wagyu Steak",
-    description: "250 gr Australian Wagyu Ribeye MBS3 cooked to your point, served with a side dish and sauce of your choice.",
-    category: "Meat",
-    price: 850,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipv5u7Z9yh0jBez-hPyZD9DaRaJM6p1r8pmdvisBMYBKCArm21OkqLmAMr8yWr-SUANAcYoI8oWnz0Gs3UHwAFlM7ltNs-IFzltia1qZLRW6wJOdKhiD4NsjSiGY0KdliGWBEtacqAkZ2mnEDTSh6amZTkse8Orvs_jwiAILM2yJlh5Yzv2tXSbdZ7dQpM/s1600/Leonardo_Phoenix_10_A_sizzling_slice_of_wagyu_steak_garnished_2.jpg",
-    ingredients: ["Wagyu Beef", "Choice of Sauce", "Choice of Side"],
-    instructions: "Grill Wagyu ribeye to desired doneness, prepare chosen sauce (e.g., Black Pepper, Chimichurri), serve with chosen side (e.g., Mashed Potatoes, Green Salad).",
-  },
-  {
-    name: "Koh Tao Local Fish",
-    description: "Wild catch of the day by local fishermen delivered directly to our beach. We served grilled with a side dish and style of your choice.",
-    category: "Meat",
-    price: 550,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2yPNM6gPiNdGB_nCp05VJ_Jwd6UVxrVz96gIEhHrPW32y5Kfpbo4Bb73F1BSfKXwOxM6jaaANj5l_vzVzstuxTygvGDUVR0eBewEMvc_6uAGPvmpqDOvi2GyDNJohJRPGYgJT-iMRGVm6Kq6xe4l8BZAMeJ_gzSqNrQNel5A4cArntWdzsJc08CVp6DUy/s1600/images.jpeg",
-    ingredients: ["Fish", "Choice of Side", "Choice of Sauce"],
-    instructions: "Grill fresh fish, prepare in chosen style (e.g., Japanese with Miso-Sake or Thai with Neung Manao), serve with chosen side (e.g., Grilled Vegetables).",
-  },
-  // Dessert
-  {
-    name: "Torrija",
-    description: "The Spanish french toast. A caramelized brioche soaked in milk, vanilla and cinnamon. Toasted in brown butter, served with homemade salted caramel ice cream & local mango coulis.",
-    category: "Dessert",
-    price: 175,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiONOfX4SOaWkPaee79FhKWOT5KwXUHq1od7f48aBacxdW8tm-ycG5EbNSPm47vkQ0juFeWhGEaZJUkwaKsXuwrO4OMdHyq6wJ9u3yYYTfEEZtu7Lps4FZY3XkXuKfED4zNW2mQml3bwsCJ4EHcdLgtk7YjPNMr9MG97JsNGisoH95BuU36cWBepR6iPZ1o/s1600/torrija.webp",
-    ingredients: ["Brioche", "Milk", "Vanilla", "Cinnamon", "Brown Butter", "Salted Caramel Ice Cream", "Mango Coulis"],
-    instructions: "Soak brioche in milk, vanilla, and cinnamon, toast in brown butter until caramelized, serve with salted caramel ice cream and mango coulis.",
-  },
-  {
-    name: "Ibiza Churros",
-    description: "Spanish churros with cinnamon and sugar coated, served with hot chocolate sauce.",
-    category: "Dessert",
-    price: 150,
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlLsc9fpVmNNc8FldANd-Mk4l4q8DO4-wb7Aw_MxJGQkF8FwwG4woonC3WNdjh0976DUdSs7ytQmtnKXeQMfaSd7p9lFUCbfgh3WUzhmd1RcZPyh3cVbZHEgpi6JLqTrQ8Ja7SGOYIgvhrXxpJyXGKe4GqrUH50e_tOFjueZqpLJvjeUB2HIEVU4DX7uEH/s1600/ibiza%20churro.webp",
-    ingredients: ["Churros", "Cinnamon", "Sugar", "Chocolate Sauce"],
-    instructions: "Fry churros until golden, coat with cinnamon and sugar, prepare hot chocolate sauce, serve churros with sauce for dipping.",
-  },
-        ],
-           
-         drinks: [
-       
-  {
-    name: "Water (S)",
-    description: "Small bottle of water",
-    category: "Soft Drinks",
-    price: 40,
-    image:
-      "https://images.mango-prod.siammakro.cloud/product-images/492849089695262-889eb55e-5e89-4893-9352-dfdcfea14f51.jpeg",
-    ingredients: ["Water"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Singha Soda Water",
-    description: "Sparkling soda water",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://res.cloudinary.com/freshketimage001/image/upload/v1659960559/uvzf5zs0bloygljvq78i.jpg",
-    ingredients: ["Carbonated water"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Coke",
-    description: "Classic Coca-Cola",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://i5.walmartimages.com/asr/1d4c790b-4f3d-4020-baa9-47da0710431d.970e62144ad18c8487589870926a3cc1.jpeg",
-    ingredients: ["Cola"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Coke Zero",
-    description: "Zero sugar Coca-Cola",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://www.qibahstore.com/cdn/shop/files/69b01679a0669d1888b2bd867d7a6899_large_26c5daaa-924c-46ce-8fda-81dde5c6a448.webp?v=1719914932",
-    ingredients: ["Cola zero"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Sprite Drink",
-    description: "Lemon-lime soda",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://britishop.com/webpimg/L3N0b3JhZ2UvaW1nY2FjaGUvU3ByaXRlLWNhbi0zMjVtbC0tMV9fNDcweDQ3MHhzcXVhcmUuanBn",
-    ingredients: ["Lemon-lime soda"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Schwepps Tonic",
-    description: "Tonic water",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://assets.tops.co.th/SCHWEPPES-SchweppesTonicWater330cc-8851959132654-4?$JPEG$",
-    ingredients: ["Tonic water"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Schwepps Ginger Ale",
-    description: "Ginger-flavored soda",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://static.wixstatic.com/media/02b322_875bddfabd2f43d883d9d5202ae8ad6f~mv2.jpg/v1/fill/w_560,h_374,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/02b322_875bddfabd2f43d883d9d5202ae8ad6f~mv2.jpg",
-    ingredients: ["Ginger ale"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Red Bull",
-    description: "Energy drink",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://americancandystores.co.uk/cdn/shop/products/ezgif.com-gif-maker_158_1200x600_crop_center.jpg?v=1659380048",
-    ingredients: ["Energy drink"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Fever Tree",
-    description: "Premium tonic water",
-    category: "Soft Drinks",
-    price: 60,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQ_g0x0nVqhjJGLOlMqqvKauJ8SQZ7Ih8dg&s",
-    ingredients: ["Premium tonic water"],
-    instructions: "Serve chilled.",
-  },
-
-  // Fruit Juice
-  {
-    name: "Apple Juice",
-    description: "Fresh apple juice",
-    category: "Fruit Juice",
-    price: 60,
-    image:
-      "https://assets.tops.co.th/MALEE-MaleeAppleJuice200mlPack3-8853333010107-2?$JPEG$",
-    ingredients: ["Apple"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Pineapple Juice",
-    description: "Fresh pineapple juice",
-    category: "Fruit Juice",
-    price: 60,
-    image:
-      "https://media-stark.gourmetmarketthailand.com/products/cover/8853333000047-1.webp",
-    ingredients: ["Pineapple"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Orange Juice",
-    description: "Freshly squeezed orange juice",
-    category: "Fruit Juice",
-    price: 60,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpEwGVXIB-UA_1ofLZpI9Nnup9fmSXv0Z-Lw&s",
-    ingredients: ["Orange"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Cranberry Juice",
-    description: "Fresh cranberry juice",
-    category: "Fruit Juice",
-    price: 60,
-    image: "https://m.media-amazon.com/images/I/91kHxPOswOL.jpg",
-    ingredients: ["Cranberry"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Mango Juice",
-    description: "Rich mango juice",
-    category: "Fruit Juice",
-    price: 75,
-    image:
-      "https://assets.tops.co.th/MALEE-MaleeMangoJuiceMixedFruitJuice100percent1ltr-8853333018004-1",
-    ingredients: ["Mango"],
-    instructions: "Serve chilled.",
-  },
-
-  // Fruit Shake
-  {
-    name: "Banana Shake",
-    description: "Creamy banana shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://www.joyousapron.com/wp-content/uploads/2022/08/banana-milkshake-sq-pic.jpg",
-    ingredients: ["Banana", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Mango Shake",
-    description: "Rich mango shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://tastyoven.com/wp-content/uploads/2022/06/mango-shake-image-500x375.jpeg",
-    ingredients: ["Mango", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Pineapple Shake",
-    description: "Tropical pineapple shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://www.dinneratthezoo.com/wp-content/uploads/2018/05/pineapple-smoothie-3-500x500.jpg",
-    ingredients: ["Pineapple", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Coconut Shake",
-    description: "Creamy coconut shake",
-    category: "Fruit Shake",
-    price: 120,
-    image:
-      "https://delightfulemade.com/wp-content/uploads/2023/03/Coconut-Smoothie-6straw-683x1024.jpg",
-    ingredients: ["Coconut", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Passionfruit Shake",
-    description: "Refreshing passionfruit shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://media.istockphoto.com/id/1281587900/photo/passion-fruit-shake.jpg?s=612x612&w=0&k=20&c=pSjh0TTyI3EKot1EhGJ1GwqOgdzTAIVSkB9BrfsIV_c=",
-    ingredients: ["Passionfruit", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Mix Berries Shake",
-    description: "Mixed berry shake",
-    category: "Fruit Shake",
-    price: 130,
-    image:
-      "https://www.dinneratthezoo.com/wp-content/uploads/2017/01/mixed-berry-smoothie-2.jpg",
-    ingredients: ["Mixed berries", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Tropical Shake",
-    description: "Tropical fruit shake",
-    category: "Fruit Shake",
-    price: 130,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsotepqnEzxP3YqLtAsLJTc-4aRBZ83xxZLw&s",
-    ingredients: ["Mango", "Pineapple", "Passion fruit"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Watermelon Shake",
-    description: "Refreshing watermelon shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://plantbasedrdblog.com/wp-content/uploads/2021/07/watermelon-smoothie-recipe_8.jpg",
-    ingredients: ["Watermelon", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Fresh Coconut",
-    description: "Fresh coconut water shake",
-    category: "Fruit Shake",
-    price: 110,
-    image:
-      "https://images.squarespace-cdn.com/content/v1/5c1074accc8fed6a4251da8f/1652200437658-RFWI16B6LU8U3BF7ZN9V/shutterstock_490174816.jpg",
-    ingredients: ["Coconut water", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-  {
-    name: "Mix Fruit Shake",
-    description: "Mixed fruit shake",
-    category: "Fruit Shake",
-    price: 120,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQFraJNgW3QYR84Lb47lAf3k832CnKgDQ5MQ&s",
-    ingredients: ["Mixed fruits", "Milk"],
-    instructions: "Blend until smooth.",
-  },
-
-  // Happy Hour
-  {
-    name: "Mojito",
-    description: "Happy hour mojito",
-    category: "Happy Hour",
-    price: 160,
-    image:
-      "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
-    ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle mint with sugar and lime, add rum, top with soda.",
-  },
-  {
-    name: "Margarita",
-    description: "Happy hour margarita",
-    category: "Happy Hour",
-    price: 160,
-    image:
-      "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
-    ingredients: ["Tequila", "Lime juice", "Triple sec"],
-    instructions: "Shake with ice, serve with salt rim.",
-  },
-  {
-    name: "Espresso Martini",
-    description: "Happy hour espresso martini",
-    category: "Happy Hour",
-    price: 160,
-    image:
-      "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
-    ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
-    instructions: "Shake with ice, strain into a martini glass.",
-  },
-  {
-    name: "Piña Colada",
-    description: "Happy hour piña colada",
-    category: "Happy Hour",
-    price: 160,
-    image:
-      "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
-    ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
-    instructions: "Blend with ice until smooth.",
-  },
-  {
-    name: "Long Island",
-    description: "Happy hour long island iced tea",
-    category: "Happy Hour",
-    price: 160,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
-    ingredients: ["Vodka", "Gin", "Tequila", "Rum", "Triple sec", "Cola"],
-    instructions: "Shake with ice, top with cola.",
-  },
-  {
-    name: "Sparkling Wine",
-    description: "Happy hour sparkling wine",
-    category: "Happy Hour",
-    price: 150,
-    image:
-      "https://shop.coopershawkwinery.com/images/product/Almond%20Sparkling%20Lifestyle%20Graphic%201.jpg",
-    ingredients: ["Sparkling wine"],
-    instructions: "Serve chilled in a flute glass.",
-  },
-  {
-    name: "Red Wine",
-    description: "Happy hour red wine",
-    category: "Happy Hour",
-    price: 175,
-    image:
-      "https://vinodirect.co.uk/cdn/shop/collections/RedWine.jpg?v=1682000010&width=2400",
-    ingredients: ["Red wine"],
-    instructions: "Serve chilled or at room temperature.",
-  },
-  {
-    name: "White Wine",
-    description: "Happy hour white wine",
-    category: "Happy Hour",
-    price: 175,
-    image:
-      "https://dropinblog.net/34243665/files/featured/Popular-Types-of-White-Wine.jpg",
-    ingredients: ["White wine"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Singha Draft",
-    description: "Happy hour Singha draft beer",
-    category: "Happy Hour",
-    price: 130,
-    image:
-      "https://img.wongnai.com/p/1920x0/2017/02/25/2bf466215f9e4ffb8dd6d4d38cc383e6.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a draft glass.",
-  },
-  {
-    name: "Mahou Draft",
-    description: "Happy hour Mahou draft beer",
-    category: "Happy Hour",
-    price: 190,
-    image: "https://m.media-amazon.com/images/I/81do19az-QL.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a draft glass.",
-  },
-  {
-    name: "Local Beer can",
-    description: "Happy hour local beer",
-    category: "Happy Hour",
-    price: 70,
-    image:
-      "https://88bamboo.co/cdn/shop/articles/photo_2023-02-06_00.31.23_1200x1200.jpg?v=1675614834",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Sangria",
-    description: "Happy hour sangria",
-    category: "Happy Hour",
-    price: 150,
-    image:
-      "https://bamchocolate.com/uploads/recipes/58e5ba28-613d-442e-bb0b-828c30684bd5/big/osvezilna-sadna-sangria.jpeg",
-    ingredients: ["Red wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled.",
-  },
-  {
-    name: "White Sangria",
-    description: "Happy hour white sangria",
-    category: "Happy Hour",
-    price: 150,
-    image:
-      "https://dinnersdishesanddesserts.com/wp-content/uploads/2018/02/White-Wine-Sangria-2-square-500x375.jpg",
-    ingredients: ["White wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled.",
-  },
-  {
-    name: "Aperol Spritz",
-    description: "Happy hour Aperol spritz",
-    category: "Happy Hour",
-    price: 190,
-    image:
-      "https://muybuenoblog.com/wp-content/uploads/2024/02/classic-aperol-spritz-recipe.jpeg",
-    ingredients: ["Aperol", "Prosecco", "Soda water"],
-    instructions: "Pour Aperol, top with prosecco and soda water.",
-  },
-  {
-    name: "Spanish Spritz",
-    description: "Happy hour Spanish spritz",
-    category: "Happy Hour",
-    price: 200,
-    image:
-      "https://thebitterhousewife.com/cdn/shop/articles/DJB_1225_1100x.jpg?v=1649384604",
-    ingredients: ["Gin", "Soda", "Wine"],
-    instructions: "Mix ingredients and serve over ice.",
-  },
-  {
-    name: "Gin Raw & Tonic",
-    description: "Happy hour GinRaw and tonic",
-    category: "Happy Hour",
-    price: 150,
-    image:
-      "https://vintus.com/wp-content/uploads/2018/09/GINRAW_BAJA-2-14-scaled-1.jpg",
-    ingredients: ["GinRaw", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-
-  // Beer
-  {
-    name: "Leo (S)",
-    description: "Small bottle of Leo beer",
-    category: "Beer",
-    price: 90,
-    image: "https://umart.store/cdn/shop/files/Leo1s.png?v=1707411002",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Chang (S)",
-    description: "Small bottle of Chang beer",
-    category: "Beer",
-    price: 90,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCI2trxh_MIevtfq7KjV3wJRXQHQosxXuteA&s",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Singha (S)",
-    description: "Small bottle of Singha beer",
-    category: "Beer",
-    price: 100,
-    image:
-      "https://www.chiangmaicdsupply.com/system/resource/file/pzceo_product_271.jpg?date=130248.1",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "San Miguel (S)",
-    description: "Small bottle of San Miguel beer",
-    category: "Beer",
-    price: 100,
-    image:
-      "https://boozeone.ph/cdn/shop/files/4_855e706a-b732-4b23-864a-a088b453a86f.png?v=1698344379&width=1500",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Corona Bottle",
-    description: "Bottle of Corona beer",
-    category: "Beer",
-    price: 170,
-    image: "https://d19oj5aeuefgv.cloudfront.net/0246209",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled with a lime wedge.",
-  },
-  {
-    name: "Moose cider",
-    description: "Bottle of Moose cider",
-    category: "Beer",
-    price: 140,
-    image:
-      "https://www.siamwinery.com/strapi/uploads/product_moose_moose_4be397c964.png",
-    ingredients: ["Cider"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Mahou Bottle",
-    description: "Bottle of Mahou beer",
-    category: "Beer",
-    price: 180,
-    image:
-      "https://produits.bienmanger.com/34327-0w470h470_Mahou_Cinco_Estrellas_Beer_From_Spain.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-
-  // Draft Beers
-  {
-    name: "Singha Caña 220ml",
-    description: "Draft Singha beer 220ml",
-    category: "Draft Beers",
-    price: 80,
-    image: "https://www.singha-beer.jp/common/img/products_draft.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a draft glass.",
-  },
-  {
-    name: "Singha Pint 500ml",
-    description: "Draft Singha beer 500ml",
-    category: "Draft Beers",
-    price: 150,
-    image:
-      "https://static.vecteezy.com/system/resources/previews/054/873/267/large_2x/bangkok-thailand-december-16-2024-singha-beer-freshly-brewed-in-glass-on-table-manufactured-in-thailand-free-photo.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a pint glass.",
-  },
-  {
-    name: "Mahou Caña 220ml",
-    description: "Draft Mahou beer 220ml",
-    category: "Draft Beers",
-    price: 140,
-    image:
-      "https://www.mahou.es/wp-content/uploads/2025/01/5estrellas_carrousel_2.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a draft glass.",
-  },
-  {
-    name: "Mahou Pint 500ml",
-    description: "Draft Mahou beer 500ml",
-    category: "Draft Beers",
-    price: 250,
-    image:
-      "https://preview.redd.it/fz6hu72sjzs31.jpg?width=640&crop=smart&auto=webp&s=d123cebe08c0dc495262468daf43a75f7729e823",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled in a pint glass.",
-  },
-  {
-    name: "Shandy Caña",
-    description: "Shandy draft 220ml",
-    category: "Draft Beers",
-    price: 100,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNRqISpLqIJDFMwVK-L6e1goqrTZZk9_pGSQ&s",
-    ingredients: ["Beer", "Lemonade"],
-    instructions: "Serve chilled in a draft glass.",
-  },
-  {
-    name: "Shandy Pint",
-    description: "Shandy draft 500ml",
-    category: "Draft Beers",
-    price: 150,
-    image:
-      "https://www.liquor.com/thmb/aeta9-0v2WeFEazQw9pYgjTC7QY=/440x440/filters:no_upscale():max_bytes(150000):strip_icc()/lemon-shandy-720x720-primary-7b525bd15b224f7a82a6edc37a1062fb.jpg",
-    ingredients: ["Beer", "Lemonade"],
-    instructions: "Serve chilled in a pint glass.",
-  },
-
-  // Wine Glass
-  {
-    name: "Red - Esteban Martin (Spain)",
-    description: "Garnacha-Syrah-Tempranillo 6M Cariñena 2019",
-    category: "Wine Glass",
-    price: 200,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPMioRjRW-kvG_Jr0hI8Hqp8FaKZg5M37JFQ&s",
-    ingredients: ["Red wine"],
-    instructions: "Serve chilled or at room temperature.",
-  },
-  {
-    name: "White - Esteban Martin (Spain)",
-    description: "Chardonnay-Macabeo 6M Cariñena 2021",
-    category: "Wine Glass",
-    price: 200,
-    image:
-      "https://promotop.net/wp-content/uploads/2022/08/vinho-branco-esteban-martin-dop-carinena-chardonnay-macabeo-blanco-750-ml-bodegas-esteban-martin-chardonnay.jpg",
-    ingredients: ["White wine"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Sparkling - Mas Pere Reserva Brut Cava",
-    description: "DO, Macabeo, Xarel.lo, Parellada (Spain)",
-    category: "Wine Glass",
-    price: 200,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV9DmZvY-hRtFBVKPnh53yTmMFEgCQZveIgQ&s",
-    ingredients: ["Sparkling wine"],
-    instructions: "Serve chilled in a flute glass.",
-  },
-
-  // Classic Cocktail
-  {
-    name: "Mojito",
-    description: "Classic Cuban cocktail with rum and mint",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
-    ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle mint with sugar and lime, add rum, top with soda.",
-  },
-  {
-    name: "Daiquiri",
-    description: "Classic rum cocktail with lime",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://twobittart.com/wp-content/uploads/2023/08/strawberry-daiquiri-1.webp",
-    ingredients: ["White rum", "Lime juice", "Sugar"],
-    instructions: "Shake with ice, strain into a chilled glass.",
-  },
-  {
-    name: "Margarita",
-    description: "Zesty tequila cocktail with lime",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
-    ingredients: ["Tequila", "Lime juice", "Triple sec"],
-    instructions: "Shake with ice, serve with a salt rim.",
-  },
-  {
-    name: "Piña Colada",
-    description: "Tropical coconut and pineapple cocktail",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
-    ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
-    instructions: "Blend with ice until smooth.",
-  },
-  {
-    name: "Mai Tai",
-    description: "Exotic rum cocktail with citrus",
-    category: "Classic Cocktail",
-    price: 230,
-    image:
-      "https://www.cocktail.uk.com/wp-content/uploads/2003/01/Mai_tai_029_lores-e1692129068365.webp",
-    ingredients: [
-      "White rum",
-      "Dark rum",
-      "Lime juice",
-      "Orgeat",
-      "Orange liqueur",
-    ],
-    instructions: "Shake with ice, float dark rum on top.",
-  },
-  {
-    name: "Mimosa",
-    description: "Champagne with orange juice",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://i0.wp.com/www.imbored-letsgo.com/wp-content/uploads/2023/05/Malibu-Mimosas-1.jpg?ssl=1",
-    ingredients: ["Champagne", "Orange juice"],
-    instructions: "Pour champagne, top with orange juice.",
-  },
-  {
-    name: "Mimosa - Strawberry",
-    description: "Strawberry twist on classic mimosa",
-    category: "Classic Cocktail",
-    price: 250,
-    image:
-      "https://www.smalltownwoman.com/wp-content/uploads/2019/11/Strawberry-Mimosas-Preset-Facebook.jpg",
-    ingredients: ["Champagne", "Strawberry puree"],
-    instructions: "Pour champagne, top with strawberry puree.",
-  },
-  {
-    name: "Espresso Martini",
-    description: "Coffee-flavored vodka martini",
-    category: "Classic Cocktail",
-    price: 270,
-    image:
-      "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
-    ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
-    instructions: "Shake with ice, strain into a martini glass.",
-  },
-  {
-    name: "Aperol Spritz",
-    description: "Aperol with prosecco and soda",
-    category: "Classic Cocktail",
-    price: 270,
-    image:
-      "https://www.seriouseats.com/thmb/kx0gGQeyBPJxLJWnfcC2Z2GoO6I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20230811-SEA-AperolSpritz-TwoBites-004-07b0466379044dd6b38cde0e3fff1e0c.jpg",
-    ingredients: ["Aperol", "Prosecco", "Soda water"],
-    instructions: "Pour Aperol, top with prosecco and soda water.",
-  },
-  {
-    name: "Caipirinha",
-    description: "Brazilian lime and cachaça cocktail",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://www.liquor.com/thmb/EdUHsRs8g5jsnTi7_HMDg4xeE-o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/caipirnha-720x720-primary-40900f56782b4c1d8c79494c9b413f9c.jpg",
-    ingredients: ["Cachaça", "Lime", "Sugar"],
-    instructions: "Muddle lime with sugar, add cachaça and ice.",
-  },
-  {
-    name: "Negroni",
-    description: "Classic Italian gin cocktail",
-    category: "Classic Cocktail",
-    price: 250,
-    image:
-      "https://static01.nyt.com/images/2023/08/07/multimedia/JM-Negroni-mhwb/JM-Negroni-mhwb-jumbo.jpg",
-    ingredients: ["Gin", "Campari", "Sweet vermouth"],
-    instructions: "Stir with ice, strain into a glass.",
-  },
-  {
-    name: "Bloody Mary",
-    description: "Spicy vodka cocktail with tomato juice",
-    category: "Classic Cocktail",
-    price: 200,
-    image:
-      "https://images.services.kitchenstories.io/F8_bDIYgnnLlSuYxvj5vJtJMjns=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R1187-final-photo-2.jpg",
-    ingredients: ["Vodka", "Tomato juice", "Lemon juice", "Tabasco"],
-    instructions: "Shake with ice, serve with celery.",
-  },
-  {
-    name: "Tequila Sunrise",
-    description: "Tequila with orange juice and grenadine",
-    category: "Classic Cocktail",
-    price: 230,
-    image:
-      "https://cocktailcorner.fr/wp-content/uploads/2021/03/Tequila-Sunrise.jpg",
-    ingredients: ["Tequila", "Orange juice", "Grenadine"],
-    instructions: "Pour tequila and orange juice, add grenadine.",
-  },
-  {
-    name: "Long Island",
-    description: "Strong mix of spirits with cola",
-    category: "Classic Cocktail",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
-    ingredients: ["Vodka", "Gin", "Tequila", "Rum", "Triple sec", "Cola"],
-    instructions: "Shake with ice, top with cola.",
-  },
-  {
-    name: "Whiskey Sour",
-    description: "Whiskey with lemon and sugar",
-    category: "Classic Cocktail",
-    price: 250,
-    image:
-      "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2024-03-whiskey-sour%2Fwhiskey-sour-699_1",
-    ingredients: ["Whiskey", "Lemon juice", "Sugar syrup"],
-    instructions: "Shake with ice, strain into a glass.",
-  },
-  {
-    name: "Blue Hawaii",
-    description: "Blue curaçao cocktail with rum",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://www.liquor.com/thmb/rRuiX7llkYB5XvBRPn1Rh37Wa1M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/blue-hawaii-1500x1500-hero-1d77432ce500460f98caa29775805f1c.jpg",
-    ingredients: ["White rum", "Blue curaçao", "Pineapple juice"],
-    instructions: "Shake with ice, strain into a glass.",
-  },
-  {
-    name: "Sex on the Beach",
-    description: "Fruity vodka cocktail",
-    category: "Classic Cocktail",
-    price: 220,
-    image:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/sex_on_the_beach-621ae6e.jpg",
-    ingredients: [
-      "Vodka",
-      "Peach schnapps",
-      "Orange juice",
-      "Cranberry juice",
-    ],
-    instructions: "Shake with ice, strain into a glass.",
-  },
-
-  // Mocktail
-  {
-    name: "Piña Colada",
-    description: "Non-alcoholic tropical drink",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://www.sandals.com/blog/content/images/2025/02/shutterstock_2266459593.jpg",
-    ingredients: ["Coconut cream", "Pineapple juice"],
-    instructions: "Blend with ice until smooth.",
-  },
-  {
-    name: "Classic Mojito",
-    description: "Non-alcoholic mint and lime drink",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://cookieandkate.com/images/2020/08/best-mojito-recipe-2.jpg",
-    ingredients: ["Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle mint with sugar and lime, top with soda.",
-  },
-  {
-    name: "Strawberry Mojito",
-    description: "Strawberry-flavored non-alcoholic mojito",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://burrataandbubbles.com/wp-content/uploads/2022/07/strawberry-mojito-featured-image.jpg",
-    ingredients: ["Strawberry", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle with strawberry, mint, sugar, and lime, top with soda.",
-  },
-  {
-    name: "Passionfruit Mojito",
-    description: "Passionfruit-flavored non-alcoholic mojito",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbbpOVGFM94jeRPBK5bVtCCP0nuauDiSkBKg&s",
-    ingredients: ["Passionfruit", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle with passionfruit, mint, sugar, and lime, top with soda.",
-  },
-  {
-    name: "Mango Mojito",
-    description: "Mango-flavored non-alcoholic mojito",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://www.mapleandmango.com/wp-content/uploads/2023/07/mango-mojito-feature.jpg",
-    ingredients: ["Mango", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle with mango, mint, sugar, and lime, top with soda.",
-  },
-  {
-    name: "Berry Mojito",
-    description: "Berry-flavored non-alcoholic mojito",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2IC6GLZwaFrxvUYTG2QZZ8H4fYFwPqN3Dw&s",
-    ingredients: ["Mixed berries", "Mint", "Lime", "Sugar", "Soda"],
-    instructions: "Muddle with berries, mint, sugar, and lime, top with soda.",
-  },
-  {
-    name: "Sangria",
-    description: "Non-alcoholic fruit punch",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2_hfL3vO8lpi-9SDDejnZenFCRNbMENB6g&s",
-    ingredients: ["Fruit juice", "Soda", "Fruit"],
-    instructions: "Mix ingredients and serve chilled.",
-  },
-  {
-    name: "Other Mocktail",
-    description: "Custom non-alcoholic drink",
-    category: "Mocktail",
-    price: 150,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTETE1KcaUvoBquWntT4p1_Ts0aYjsXVEi9UJ8JGcbjXrkJGslGYwjfxB2pZGTl9qxjPts&usqp=CAU",
-    ingredients: ["Varied"],
-    instructions: "Prepare according to custom request.",
-  },
-
-  // Signature Cocktail
-  {
-    name: "Ibiza Illusion",
-    description: "Signature tropical cocktail",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://cdn0.bodas.net/vendor/20008/3_2/960/jpg/93f36d7b-0c35-4568-a092-f4d4e2ca321c_1_220008-167966328027706.jpeg",
-    ingredients: ["Rum", "Fruit juice", "Liqueur"],
-    instructions: "Blend with ice until smooth.",
-  },
-  {
-    name: "Refresher",
-    description: "Refreshing signature drink",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUhPiMO_rztECs72sucCXdOJUZJUerTSFJA&s",
-    ingredients: ["Vodka", "Citrus", "Soda"],
-    instructions: "Shake with ice, top with soda.",
-  },
-  {
-    name: "Aperol Sour",
-    description: "Aperol-based sour cocktail",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9ZJjOoQpuaiXbF51PeYvkZOPSEUV022qdA&s",
-    ingredients: ["Aperol", "Lemon juice", "Sugar"],
-    instructions: "Shake with ice, strain into a glass.",
-  },
-  {
-    name: "Pink Sky",
-    description: "Pink-hued signature cocktail",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://hips.hearstapps.com/hmg-prod/images/barbie-cocktails-64b989de9db69.jpg?crop=0.494xw:0.987xh;0.506xw,0.0128xh&resize=1200:*",
-    ingredients: ["Gin", "Berry puree", "Soda"],
-    instructions: "Shake with ice, top with soda.",
-  },
-  {
-    name: "Honey Jack Julep",
-    description: "Honey and whiskey julep",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://ik.imagekit.io/cvygf2xse/jamesonwhiskey/wp-content/uploads/2022/02/16-9_17c1b765-2b14-49d2-bfe2-108a4c360a31-aspect-ratio-4-3.jpg?tr=q-60,w-1200",
-    ingredients: ["Whiskey", "Honey", "Mint"],
-    instructions: "Muddle mint with honey, add whiskey and ice.",
-  },
-  {
-    name: "Rainbow Paradise",
-    description: "Colorful layered cocktail",
-    category: "Signature Cocktail",
-    price: 300,
-    image:
-      "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/15072/rainbowparadisecocktail.jpg",
-    ingredients: ["Multiple liqueurs", "Juice"],
-    instructions: "Layer ingredients carefully in a glass.",
-  },
-
-  // Spanish Cocktail
-  {
-    name: "Sangria",
-    description: "Spanish red wine punch",
-    category: "Spanish Cocktail",
-    price: 220,
-    image:
-      "https://www.eatingwell.com/thmb/JJNpmjrM9EpAGhk-lY9kP6R1H0I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/110524-EatingWell_Sangria-930-1eb9a9f4f1a145099340d89b4a2ab355.jpg",
-    ingredients: ["Red wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled.",
-  },
-  {
-    name: "Sangria Jug",
-    description: "Spanish red wine punch",
-    category: "Spanish Cocktail",
-    price: 600,
-    image:
-      "https://www.tasteofhome.com/wp-content/uploads/2024/06/Easy-Red-Sangria_EXPS_TOHVP24_276640_MF_05_21_2.jpg",
-    ingredients: ["Red wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled in a jug.",
-  },
-  {
-    name: "White Sangria",
-    description: "Spanish white wine punch",
-    category: "Spanish Cocktail",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAT2pTn6yjoLiD5GJUl_JEbH7kSv4AdH3qIA&s",
-    ingredients: ["White wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled.",
-  },
-  {
-    name: "White Sangria Jug",
-    description: "Spanish white wine punch",
-    category: "Spanish Cocktail",
-    price: 600,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ek_KKpFVrmW9VodNKPd5Di6WVXVNEOAl5w&s",
-    ingredients: ["White wine", "Fruit", "Brandy"],
-    instructions: "Mix ingredients and serve chilled in a jug.",
-  },
-  {
-    name: "Tinto de Verano",
-    description: "Spanish red wine and soda",
-    category: "Spanish Cocktail",
-    price: 250,
-    image:
-      "https://spanishsabores.com/wp-content/uploads/2023/08/Tinto-de-Verano-Featured.jpg",
-    ingredients: ["Red wine", "Soda", "Lemon"],
-    instructions: "Mix ingredients and serve over ice.",
-  },
-  {
-    name: "Carajillo",
-    description: "Spanish coffee liqueur cocktail",
-    category: "Spanish Cocktail",
-    price: 200,
-    image:
-      "https://cdn.apartmenttherapy.info/image/upload/v1724087173/k/Photo/Recipes/2024-08-Carajillo/Carajillo-2899.jpg",
-    ingredients: ["Coffee", "Licor 43"],
-    instructions: "Serve with espresso.",
-  },
-
-  // Gin Raw
-  {
-    name: "Basil Smash",
-    description: "GinRaw with basil",
-    category: "Gin Raw",
-    price: 280,
-    image:
-      "https://punchdrink.com/wp-content/uploads/2021/06/Social-Modern-Classic-Gin-Basil-Smash-Cocktail-Recipe.jpg",
-    ingredients: ["GinRaw", "Basil", "Lemon"],
-    instructions: "Muddle basil, shake with ice, strain into a glass.",
-  },
-  {
-    name: "Tom Collins",
-    description: "GinRaw Tom Collins",
-    category: "Gin Raw",
-    price: 280,
-    image:
-      "https://images.ctfassets.net/hs93c4k6gio0/4odLWPcmvLvBXvWY46Dytj/17d2ffbc123507cbcacf2bb196aeb25d/_images_tom-collins.jpg.jpg",
-    ingredients: ["GinRaw", "Lemon juice", "Sugar", "Soda"],
-    instructions: "Shake with ice, top with soda.",
-  },
-  {
-    name: "Ibiza-Polotin",
-    description: "GinRaw Ibiza special",
-    category: "Gin Raw",
-    price: 280,
-    image:
-      "https://cdn.prod.website-files.com/61258807d2d4f9553cc9d3e6/6671e997b9d929b9a159a16e_two%20glasses%20with%20drinks%20on%20a%20beach.webp",
-    ingredients: ["GinRaw", "Tonic", "Fruit"],
-    instructions: "Mix ingredients and serve over ice.",
-  },
-  {
-    name: "The Purple Pew",
-    description: "Purple-hued GinRaw cocktail",
-    category: "Gin Raw",
-    price: 280,
-    image:
-      "https://ik.imagekit.io/vjt1kualr/drinks/purple_people_eater/main-image.jpg",
-    ingredients: ["GinRaw", "Berry liqueur"],
-    instructions: "Shake with ice, strain into a glass.",
-  },
-
-  // Gin Tonic
-  {
-    name: "Classic",
-    description: "Classic gin and tonic",
-    category: "Gin Tonic",
-    price: 250,
-    image:
-      "https://www.liquor.com/thmb/sYX_sTKUpyagRermLA31SMLF3-8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__18090535__Gin-and-Tonic-720x720-recipe-c2e32c4cf53c4ed7a4de20af8e862a12.jpg",
-    ingredients: ["Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Nordes (Galicia)",
-    description: "Galician gin and tonic",
-    category: "Gin Tonic",
-    price: 420,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHGjOmUQ6q031l1dEZW9CdpliLwgRjJY_l3w&s",
-    ingredients: ["Nordes Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "GIN RAW (Barcelona)",
-    description: "Barcelona gin and tonic",
-    category: "Gin Tonic",
-    price: 250,
-    image:
-      "https://m.media-amazon.com/images/I/61BvYUlT0vS._AC_UF350,350_QL80_.jpg",
-    ingredients: ["GinRaw", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Roku Gin",
-    description: "Japanese gin and tonic",
-    category: "Gin Tonic",
-    price: 350,
-    image:
-      "https://binendswine.com/cdn/shop/products/A1BChmDB8KiZ9-uiGCpxRux0QcLWtYkO_uA_R-OxUakbc2hAnb6N1fsbyFbu8vXoVfHUbqdb1f4XvcDn8fIYzBLY5cEQ_cjj4h40UuZg6_GqVkO0ma8_5baUbNRJjpEyAj4xABNuW_LlC7Ldc5ek33T6mS4cg8URSDL1DRF1skc-l_pGT-jMkq4.png?v=1627080284",
-    ingredients: ["Roku Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Bulldog",
-    description: "Bulldog gin and tonic",
-    category: "Gin Tonic",
-    price: 280,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/bulldog-london-dry-premium-gin-70cl-41783819174126.jpg?v=1737556925",
-    ingredients: ["Bulldog Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Bombay",
-    description: "Bombay gin and tonic",
-    category: "Gin Tonic",
-    price: 250,
-    image:
-      "https://shop.bombaysapphire.com/cdn/shop/files/bombay-sapphire.jpg?v=1712226381&width=1500",
-    ingredients: ["Bombay Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Beefeater 24",
-    description: "Beefeater 24 gin and tonic",
-    category: "Gin Tonic",
-    price: 280,
-    image:
-      "https://ik.imagekit.io/cvygf2xse/beefeatergin/wp-content/uploads/2022/08/beefeater-24-gin-tonic-cocktail.jpg?tr=q-80,w-735",
-    ingredients: ["Beefeater 24", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-  {
-    name: "Hendriks",
-    description: "Hendricks gin and tonic",
-    category: "Gin Tonic",
-    price: 280,
-    image:
-      "https://www.zepbrook.co.uk/cdn/shop/files/1122640x640.jpg?v=1706616631",
-    ingredients: ["Hendricks Gin", "Tonic water"],
-    instructions: "Mix with ice and serve.",
-  },
-
-  // Vodka
-  {
-    name: "Smirnoff",
-    description: "Classic vodka",
-    category: "Vodka",
-    price: 220,
-    image: "https://d19oj5aeuefgv.cloudfront.net/0132106",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Grey Goose",
-    description: "Premium French vodka",
-    category: "Vodka",
-    price: 300,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa9qX8frU-7jUDdjzf0wTamtjs1R-pJ7_5dw&s",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Finlandia",
-    description: "Finnish vodka",
-    category: "Vodka",
-    price: 250,
-    image:
-      "https://www.wineandbeyond.ca/cdn/shop/files/1000212_1.jpg?v=1745942043",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Ciroc",
-    description: "Grape-based vodka",
-    category: "Vodka",
-    price: 350,
-    image:
-      "https://www.finewineandgoodspirits.com/ccstore/v1/images/?source=/file/v5846329782546229840/products/000004224_F1.jpg&height=475&width=475",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Belvedere",
-    description: "Polish vodka",
-    category: "Vodka",
-    price: 350,
-    image:
-      "https://http2.mlstatic.com/D_NQ_NP_669484-MLA82480221117_022025-O.webp",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Absolute",
-    description: "Swedish vodka",
-    category: "Vodka",
-    price: 250,
-    image:
-      "https://medias.artmajeur.com/standard/14633087_20200603-143523.jpg?v=1739030713",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled or with mixers.",
-  },
-
-  // Rum
-  {
-    name: "Captain Morgan (Dark)",
-    description: "Dark rum",
-    category: "Rum",
-    price: 230,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/captain-morgan-dark-rum-70cl-41382231900398.jpg?v=1737775499",
-    ingredients: ["Dark rum"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Zacapa",
-    description: "Premium Guatemalan rum",
-    category: "Rum",
-    price: 410,
-    image:
-      "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/Rum/Ron_Zacapa_Centenario_23_Y.png",
-    ingredients: ["Rum"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Sailor Jerry",
-    description: "Spiced rum",
-    category: "Rum",
-    price: 250,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/sailor-jerry-the-original-spiced-caribbean-rum-70cl-41427403178222.jpg?v=1746361482",
-    ingredients: ["Spiced rum"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Mount Gay",
-    description: "Barbadian rum",
-    category: "Rum",
-    price: 240,
-    image:
-      "https://wishbeer.com/cdn/shop/products/MountGayXORum-700ml-40.png?v=1669965271",
-    ingredients: ["Rum"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Chalong Bay",
-    description: "Thai rum",
-    category: "Rum",
-    price: 390,
-    image: "https://chalongbayrum.com/images/collection/spiced-thm-over.png",
-    ingredients: ["Rum"],
-    instructions: "Serve chilled or with mixers.",
-  },
-
-  // Whiskey
-  {
-    name: "Southern Comfort",
-    description: "Whiskey liqueur",
-    category: "Whiskey",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXRI9P7pBwj_CGkhhz2PG3KpBb-VOIznFlg&s",
-    ingredients: ["Whiskey"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Famous Grouse",
-    description: "Blended Scotch",
-    category: "Whiskey",
-    price: 200,
-    image:
-      "https://liberationqualitydrinks.je/cdn/shop/files/WEBSITE_11_79fcb52b-008b-4699-9267-6d75532c4a38_1024x.png?v=1714563173",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Chivas Regal (15 years)",
-    description: "15-year aged Scotch",
-    category: "Whiskey",
-    price: 340,
-    image:
-      "https://liquoreval.com/wp-content/uploads/2024/08/Chivas-Regal-XV-15Yea-2.jpg",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Chivas Regal (13 years)",
-    description: "13-year aged Scotch",
-    category: "Whiskey",
-    price: 250,
-    image:
-      "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/d12a67dfc7ae6f1a3f6a029f36a4cf0b.png",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Jack Daniels (Honey)",
-    description: "Honey-flavored whiskey",
-    category: "Whiskey",
-    price: 270,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/jack-daniel-s-tennessee-honey-35-cl-40872456225006.jpg?v=1742188631",
-    ingredients: ["Whiskey"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Jack Daniels",
-    description: "Classic Tennessee whiskey",
-    category: "Whiskey",
-    price: 270,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/jack-daniels-tennessee-whiskey-1l-42579621970158.jpg?v=1742189560",
-    ingredients: ["Whiskey"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Canadian Club",
-    description: "Canadian whisky",
-    category: "Whiskey",
-    price: 400,
-    image:
-      "https://topshelfwineandspirits.com/cdn/shop/products/00100lrPORTRAIT_00100_BURST20200625124607360_COVER-scaled.jpg?v=1650916186&width=2560",
-    ingredients: ["Whisky"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Woodford Reserve",
-    description: "Kentucky bourbon",
-    category: "Whiskey",
-    price: 250,
-    image:
-      "https://topshelfwineandspirits.com/cdn/shop/products/Screenshot2023-01-10at11.53.11AM.jpg?v=1673380771&width=2068",
-    ingredients: ["Bourbon"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Monkey Shoulder",
-    description: "Blended malt Scotch",
-    category: "Whiskey",
-    price: 250,
-    image: "https://wine-more.com/wp-content/uploads/2022/07/12-1.png",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Red Label",
-    description: "Johnnie Walker Red Label",
-    category: "Whiskey",
-    price: 250,
-    image:
-      "https://siamsips.com/wp-content/uploads/2023/12/3755d2_6546ea753b2b4c4cbce26f7952d72cb2mv2.jpg",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Black Label",
-    description: "Johnnie Walker Black Label",
-    category: "Whiskey",
-    price: 340,
-    image:
-      "https://images.ctfassets.net/waruwpig3jxu/rYk8WxpJ1ellZvibRckWT/0e8df23f16b39c6d986faf6f68af8fee/black-750ml_producthero_lifestyle-01_desktop.webp?&w=2560&q=70",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "J&B",
-    description: "J&B blended Scotch",
-    category: "Whiskey",
-    price: 200,
-    image:
-      "https://www.diageobaracademy.com/_next/image?url=https%3A%2F%2Fmedia.diageocms.com%2Fmedia%2Fjqvj2p4q%2Fspirits-beer-and-drinks_our-brands_blended-scotch_jb-split-media_dba_downloadable_704x506.png&w=1920&q=75",
-    ingredients: ["Scotch"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Jameson",
-    description: "Irish whiskey",
-    category: "Whiskey",
-    price: 200,
-    image:      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI9NguIR8diycdOSLTZCLM5QMrMqWPjMVKhg&s",
-    ingredients: ["Whiskey"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Tullamore Dew",
-    description: "Irish whiskey",
-    category: "Whiskey",
-    price: 220,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvIXHNxl4fJ5r7SixoevEVJHO0suqS__tWfw&s",
-    ingredients: ["Whiskey"],
-    instructions: "Serve neat or with ice.",
-  },
-
-  // Liqueurs
-  {
-    name: "Malibu",
-    description: "Coconut liqueur",
-    category: "Liqueurs",
-    price: 220,
-    image: "https://wishbeer.com/cdn/shop/products/3255.jpg?v=1560160234",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled or with mixers.",
-  },
-  {
-    name: "Baileys",
-    description: "Irish cream liqueur",
-    category: "Liqueurs",
-    price: 170,
-    image:
-      "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/ebc1f8037a1f1bc9266faf75e45ecac3.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Cointreau",
-    description: "Orange liqueur",
-    category: "Liqueurs",
-    price: 240,
-    image:
-      "https://www.marthastewart.com/thmb/yz2NBla0Iw1_l1O1wLouy37cweE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cointreau-cosmopolitan-1-0121-2000-horiz-958fd1f7503a4b1e824453c8d3a1e7ba.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Frangelico",
-    description: "Hazelnut liqueur",
-    category: "Liqueurs",
-    price: 240,
-    image: "https://wishbeer.com/cdn/shop/products/2852.jpg?v=1560159357",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Tia Maria",
-    description: "Coffee liqueur",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://cdn11.bigcommerce.com/s-ly0g6dh0z8/images/stencil/1280x1280/products/443/56557/tiamaria-2__91311.1740535932.jpg?c=1",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Drambuie",
-    description: "Honeyed Scotch liqueur",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://www.drambuie.com/assets/Uploads/carousel/Honeyed-Whisky-Espresso-Martini-carousel-1.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Heering",
-    description: "Cherry liqueur",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNW8A202PGKmWxRekqaNv42vLLMG76n0V3Kg&s",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "B52",
-    description: "Layered coffee liqueur shot",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2iGCuVrZpA8BTLsu9ztZ79Reh0vSi1_TheQ&s",
-    ingredients: ["Liqueur"],
-    instructions: "Layer ingredients and serve.",
-  },
-  {
-    name: "Amaretto",
-    description: "Almond liqueur",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgTQV91sijCeUMgkH_A_63c8VzIRw3np6fFQ&s",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Aperol",
-    description: "Italian aperitif",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Aperol_Flasche.jpg/250px-Aperol_Flasche.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Coffee",
-    description: "Coffee liqueur",
-    category: "Liqueurs",
-    price: 250,
-    image:
-      "https://zoom.ocado.com/productImages/255/25520011_25520011_0_1736346506000_1280x1280.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-
-  // Brandy
-  {
-    name: "Honney Conti",
-    description: "Brandy",
-    category: "Brandy",
-    price: 230,
-    image: "https://d19oj5aeuefgv.cloudfront.net/0261245",
-    ingredients: ["Brandy"],
-    instructions: "Serve neat or with ice.",
-  },
-  {
-    name: "Hennessy (V.S.O.P)",
-    description: "Premium cognac",
-    category: "Brandy",
-    price: 250,
-    image:
-      "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/HENNESSY/HENNESSY_VSOP.png",
-    ingredients: ["Cognac"],
-    instructions: "Serve neat or with ice.",
-  },
-
-  // Shooter
-  {
-    name: "Ibiza ICE",
-    description: "Ibiza special shooter",
-    category: "Shooter",
-    price: 100,
-    image:
-      "https://dv7zfk0hwmxgu.cloudfront.net/sites/default/files/styles/auto_1500_width/public/article-images/135908/slideshow-1589279390.jpg",
-    ingredients: ["Vodka"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Jose Quervo Silver",
-    description: "Tequila shooter",
-    category: "Shooter",
-    price: 300,
-    image: "https://wishbeer.com/cdn/shop/products/12317.jpg?v=1560178303",
-    ingredients: ["Tequila"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "400 Conejos",
-    description: "Mezcal shooter",
-    category: "Shooter",
-    price: 300,
-    image:
-      "https://wishbeer.com/cdn/shop/products/400conejos.jpg?v=1647841143",
-    ingredients: ["Mezcal"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Jaegermeister",
-    description: "Herbal liqueur shooter",
-    category: "Shooter",
-    price: 200,
-    image:
-      "https://omotgtravel.com/wp-content/uploads/2024/03/jagermeister-bottle.jpg",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "B52",
-    description: "Layered shooter",
-    category: "Shooter",
-    price: 150,
-    image:      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDSQo8PnpgrPl8B9DSZGmBwocLQMP_N17Cg&s",
-    ingredients: ["Liqueur"],
-    instructions: "Layer ingredients and serve.",
-  },
-  {
-    name: "Jaegerbomb",
-    description: "Jaegermeister with energy drink",
-    category: "Shooter",
-    price: 200,
-    image:
-      "https://t1.blockdit.com/photos/2019/06/5d0afa1af793520feead6bde_800x0xcover_uiSF_aCh.jpg",
-    ingredients: ["Jaegermeister", "Energy drink"],
-    instructions: "Drop Jaegermeister into energy drink and serve.",
-  },
-  {
-    name: "Sambuca",
-    description: "Anise-flavored shooter",
-    category: "Shooter",
-    price: 150,
-    image:
-      "https://mcgrocer.com/cdn/shop/files/antica-sambuca-classic-70cl-41369643778286.jpg?v=1735995553",
-    ingredients: ["Liqueur"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Tequila",
-    description: "Straight tequila shot",
-    category: "Shooter",
-    price: 150,
-    image:
-      "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/Tequilanew/SIERRA.png",
-    ingredients: ["Tequila"],
-    instructions: "Serve chilled with salt and lime.",
-  },
-
-  // Special
-  {
-    name: "San Miguel Bucket (6)",
-    description: "Bucket of 6 San Miguel beers",
-    category: "Special",
-    price: 500,
-    image: "https://asiatravelbug.net/wp-content/uploads/2012/04/bucket.jpg",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Mahou Bucket (5)",
-    description: "Bucket of 5 Mahou beers",
-    category: "Special",
-    price: 550,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0MIlzStWfr9Nlg4EgazETdRU7Lezxx1cTow&s",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled.",
-  },
-  {
-    name: "Corona Bucket (6)",
-    description: "Bucket of 6 Corona beers",
-    category: "Special",
-    price: 600,
-    image:
-      "https://powerhousesurf.com.au/cdn/shop/products/5636426aa1d005b13ca4164d7691940f0468d3c3.jpg?v=1566746191",
-    ingredients: ["Beer"],
-    instructions: "Serve chilled with lime.",
-  },
-  {
-    name: "Vodka and Mix",
-    description: "Vodka with mixer",
-    category: "Special",
-    price: 400,
-    image:      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfIZFbrDoYaiW239EviEvlPNbrsGk5rfQmgw&s",
-    ingredients: ["Vodka", "Mixer"],
-    instructions: "Mix with chosen mixer and serve over ice.",
-  },
-  {
-    name: "2x Gin Raw Mix",
-    description: "Two GinRaw cocktails",
-    category: "Special",
-    price: 400,
-    image:
-      "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/ceb83a2a55770d4157a8f656b7a97732.jpg",
-    ingredients: ["GinRaw", "Mixer"],
-    instructions: "Mix with chosen mixer and serve over ice.",
-  }
-      
-
+          // Tapas
+          {
+            name: "Bomba Iberica",
+            description:
+              "Creamy croquettes made with Jamón 100% Ibérico acorn feed. Served with Romesco.",
+            category: "Tapas",
+            price: 200,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhA8eQ84CVhLXB4Qd0S_m2rtZI1oj2wp1cmf_-rKIMzhnh55LPhmPGI9MQyLVohixFjMUZGjogqDJoCsrV3-Sxk-sTcT82cxsMaiHtPyM0KMy66bpTVyM44JM9xdQwk20Wam8TPHgLKw_oXEQqmAkF9AHvAWNrZX4WRzez-cKs6qg-tcJvFZ7qpuq7_R2G5/s1600/bomba%20iberica.webp",
+            ingredients: [
+              "Jamón Ibérico",
+              "Romesco",
+              "Potato",
+              "Flour",
+              "Eggs",
+              "Breadcrumbs",
+            ],
+            instructions:
+              "Mix mashed potato with diced Jamón Ibérico, form into balls, coat in flour, egg, and breadcrumbs, deep fry until golden, serve with Romesco sauce.",
+          },
+          {
+            name: "Bomba Setas",
+            description:
+              "Creamy and crispy croquettes made with local mushrooms, portobello and black truffle. Served with Romesco.",
+            category: "Tapas",
+            price: 200,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOl5MQfP9t-Hd1qUxaMMypCFJwi8eRDAJsMtBZLxPw8mdpXvpggv9UWYNQ8aIksVJmqsX9bs8mc-8qTDCsu493ArrYgzncsJgR_VmK1Y9-lhyphenhyphenMy4Po0YZ1GIKAN5AxwRw1shX-eH52W4z7UAQxBqDi0epr6ngc2Cycy-UnJ2x4aki_XUSRd7WJS3XU5dHb/s1600/bomba%20seta.webp",
+            ingredients: [
+              "Mushrooms",
+              "Portobello",
+              "Black Truffle",
+              "Romesco",
+              "Potato",
+              "Flour",
+              "Eggs",
+              "Breadcrumbs",
+            ],
+            instructions:
+              "Sauté mushrooms, portobello, and truffle, mix with mashed potato, form into balls, coat in flour, egg, and breadcrumbs, deep fry, serve with Romesco.",
+          },
+          {
+            name: "Padron Peppers",
+            description:
+              "Grilled padron peppers imported from Galicia, Spain. Served with garlic chips.",
+            category: "Tapas",
+            price: 250,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiVJoa56hD6iQCzsdG9jWl4CMgtl8iHDXxSJXfHoA_EaVVmpP7TuxdxI5bzMlq81jj8kzZhoujM50KE9Prg_cf32WQ2qW3ayty62ZOaTTdctYq6akCea3TC4nKotqCihueYegex9y_SMGMvFzCmgZjA6vnRxX3eaAK4U7i4OniOUhasvC6RAlQnlYTOKOb/s1600/padron%20peper.webp",
+            ingredients: ["Padron Peppers", "Garlic", "Olive Oil", "Sea Salt"],
+            instructions:
+              "Heat olive oil in a pan, grill padron peppers until blistered, fry thin garlic slices until crispy, sprinkle with sea salt, serve hot.",
+          },
+          {
+            name: "Tortilla",
+            description:
+              "Classic Spanish potato omelet with onion (optional), made with farm eggs and organic potatoes. Topped with Chorizo Ibérico (optional), and served with Romesco.",
+            category: "Tapas",
+            price: 350,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJHuWvai0fhHK5BGhs0DRqDapjP4W3FjLi9sDUwddEvMNbYWc3O_gR5SrXw-43o9UUzxTX18oDK6OroaEUjEichRGdOPZf8YefoF32uynJ-d_adTo3_lvxVcMihqQ7jXGiytoA_COOhkzkSXiMuJI7CV90nD5vqSkcLr_LAyqlQ_laBxPYKt2oqYXEItUy/s1600/tortila.webp",
+            ingredients: [
+              "Potatoes",
+              "Eggs",
+              "Onion",
+              "Chorizo Ibérico",
+              "Romesco",
+              "Olive Oil",
+            ],
+            instructions:
+              "Slice potatoes and onions, fry in olive oil until soft, beat eggs, mix with potatoes, cook in a pan until set, top with chorizo, serve with Romesco.",
+          },
+          {
+            name: "Gazpacho",
+            description:
+              "Refreshing Andalusian tomato cold soup. Served with chopped vegetables and egg, crispy jamón dust (optional) and garlic-parsley oil.",
+            category: "Tapas",
+            price: 150,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSJM3KTG42echFGxp0iTwCRa4mecRUUz3NVrHX1I5-TePyfJ6vua_W89gpAZs8AL6i0uX8-xkkYUYSRuGsBytYJMzgdeGGsSVMytMTd7a_4_AHmGHW7sdRuWdpDTS9kcOZ9zy2fXr66qoW_53X_MosncI8Rf59G9X8a2obXUZrSB5RXB9hTXlM3PjC-YDY/s1600/gapacho.webp",
+            ingredients: [
+              "Tomatoes",
+              "Vegetables",
+              "Egg",
+              "Jamón",
+              "Garlic",
+              "Parsley",
+              "Olive Oil",
+            ],
+            instructions:
+              "Blend tomatoes, vegetables, garlic, and olive oil, chill, serve with chopped boiled egg, crispy jamón dust, and garlic-parsley oil drizzle.",
+          },
+          {
+            name: "Galician Octopus",
+            description:
+              "Grilled Galician octopus tentacle over potato foam. Served with smoked paprika, and green oil.",
+            category: "Tapas",
+            price: 370,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKD6911qjHtcyg9ftmUWoFtH8Jm5S7FYlaq19ORLAkIrij3rf42GzIk1Am-8VAIv_yZCMNj1D5nnHng7iDrTm1L9BHja3LtELR_i3UDmBDK9_b937cNGTqey3RgVTqR4P3dRgOS7f_g3HZrz1RFzpyoRXglpxe-xFrV74_aCVwiUFxOw_AHFhrqzHszJmZ/s1600/octopus.webp",
+            ingredients: ["Octopus", "Potatoes", "Paprika", "Olive Oil"],
+            instructions:
+              "Boil octopus until tender, grill tentacle, blend boiled potatoes with olive oil for foam, serve octopus over foam, sprinkle paprika, drizzle with green oil.",
+          },
+          {
+            name: "Garlic Gambas",
+            description:
+              "Sauteed shrimps in olive oil, garlic and cayenne pepper, flambeed with white wine and served with garlic chips.",
+            category: "Tapas",
+            price: 260,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWWo8HeKFKflusHew3u-95v-5QjHKeSOuyqkTh3_14m3DAQhta1Ly51yorPDrLSvHW3N-8xjfIXfp9AnUhlvXjGWumS1FerjfdMJ3OwUS0LA9awja0i1T1J_t9-7olbNvpR8ux4oEINY3FjNSd_e2X2ZbZIxUsPgDFpYKJCUSjBn_fwBimnOp1cTgAVPOb/s1600/garlic%20gambas.webp",
+            ingredients: [
+              "Shrimp",
+              "Olive Oil",
+              "Garlic",
+              "Cayenne Pepper",
+              "White Wine",
+            ],
+            instructions:
+              "Sauté shrimp with garlic and cayenne in olive oil, flambé with white wine, fry garlic slices until crispy, serve shrimp with garlic chips.",
+          },
+          {
+            name: "Patatas Bravas",
+            description:
+              "Crispy triple cooked potatoes served with homemade aioli, and our special spicy brava sauce.",
+            category: "Tapas",
+            price: 150,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEie418oBCZ8C5uY7A1mAmlK4qqYB_HtcmIQ7rCJIdbyF5XItWyW5s3rceRgCnyA8BYNHMLB_BegnM7l4ZYiOyxxR5WQFmndKvoe0tg2Swth40GXfkpHjb7jKfyxH8VJjvD_6d4ATypNIYMuCWh4tBemQVBNAjLxo13-1pIlIyytBbYayQ7uKPFP2L9SDI5X/s1600/brava.webp",
+            ingredients: ["Potatoes", "Aioli", "Brava Sauce", "Olive Oil"],
+            instructions:
+              "Cut potatoes, fry three times for crispiness, prepare aioli and spicy brava sauce, serve potatoes with both sauces.",
+          },
+          {
+            name: "Torreznos",
+            description:
+              "Crispy pork belly confited in jamón ibérico lard, with honey mustard sauce. Served with sweet Spanish piquillo peppers and crispy onions.",
+            category: "Tapas",
+            price: 175,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjauWRsDenmG-rXQ-7tnYO1OSQL6vcNq2B0L3VT7eYQvddIlGcVFiZBKk3HWq1N2YGX-WDzwI4_72ZjRwNdd72QvKzzIncPFWijC3j7uub6BCsr7F-HHnuB68nduTbOEzB7mIcb7RgDij3mC3ubOukBa2X8xRBfPjNaeYwJ2-ekEVGGeF8lVpKDqQvGg4iP/s1600/torreznos.webp",
+            ingredients: [
+              "Pork Belly",
+              "Jamón Ibérico Lard",
+              "Honey Mustard",
+              "Piquillo Peppers",
+              "Onions",
+            ],
+            instructions:
+              "Confit pork belly in jamón ibérico lard, fry until crispy, prepare honey mustard sauce, serve with piquillo peppers and crispy onions.",
+          },
+          {
+            name: "Txipirones",
+            description:
+              "Fried crispy baby squid in tempura with black ink mayo and aioli. Served with local 'chamuan' leaves and calamansi mandarin.",
+            category: "Tapas",
+            price: 180,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkTVH5KoUdyNQzkHnjtl-e08_PdrJFgkimBlAAYz-B2teBY0vHzcsFP1vremD2UxlLJD68FpeDgskRvaAvHzLSiTQDIfIJPKaiYeJgPaGo1MUIIM5vDxho_0qgwVx2RKI_pFybdHAZ6f8vGGtlhKm5W-4J0ofwZrT-mR_dJNG8igOPIWpUMfNVhKac7m9T/s1600/txripironos.webp",
+            ingredients: [
+              "Baby Squid",
+              "Tempura Batter",
+              "Black Ink Mayo",
+              "Aioli",
+              "Chamuan Leaves",
+              "Calamansi",
+            ],
+            instructions:
+              "Coat baby squid in tempura batter, deep fry until crispy, prepare black ink mayo and aioli, serve with chamuan leaves and calamansi.",
+          },
+          {
+            name: "Tacos",
+            description:
+              "2 Soft tortilla tacos with crispy soft shell crab, guacamole, mango-corn salsa, pickle onion & kimchi mayo.",
+            category: "Tapas",
+            price: 190,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0ITvaPTUCdJWxAt7m153m7t6J2r_j-bNFr8_Ywhh1ceMTuQwFQtW3xftdROtbxhMq1g-kCBjIGhsqBtE_7wXnn6HjbLDWnJnYqq4Tmcf0a676ITg-YWbYaWZIgoxCtCfsyAl8o4o6_AQ3VyLy6DmI8QEnEukP8xCw4r0BYJ-kjZlt2QBXpZAGojuRCz3c/s1600/taco.webp",
+            ingredients: [
+              "Soft Shell Crab",
+              "Tortilla",
+              "Guacamole",
+              "Mango",
+              "Corn",
+              "Pickled Onion",
+              "Kimchi Mayo",
+            ],
+            instructions:
+              "Fry soft shell crab until crispy, prepare guacamole and mango-corn salsa, assemble tacos with crab, guacamole, salsa, pickled onion, and kimchi mayo.",
+          },
+          {
+            name: "Broken Eggs With Chorizo",
+            description:
+              "Spanish broken eggs with potato in 2 textures, 'Chistorra' (Chorizo from Navarra) flambeed in cider, served with fried eggs.",
+            category: "Tapas",
+            price: 175,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUcWXHPm1kFHJkc14GhCHGzrbmGoufjnGiaS-bbUdBK0_mfWs5b610v85-5UMFf7It-7DQSYOyIwI6zP7l-llzeatYhkQkpZjVWGMe4zdDFqHGCTU9CPJ3USGqwR_H9JtMuVQlhsdyEGQI8fsLxjmfBC_KgWKSyd8zT4I7JM07zw3Ck0W7B2quGQPEG3d0/s1600/broken%20egg.webp",
+            ingredients: ["Eggs", "Potatoes", "Chistorra", "Cider"],
+            instructions:
+              "Cook potatoes in two textures (mashed and fried), flambé chistorra in cider, fry eggs, serve eggs over potatoes with chistorra.",
+          },
+          {
+            name: "Sardines",
+            description:
+              "Grilled Atlantic sardines imported from the north of Spain, served with burnt lime.",
+            category: "Tapas",
+            price: 320,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQEhd9fpPIFUTuT2UFi1-dqlnm-q9RxCqmTBUrLyxVZznJ9m0wf3Dwom0urA2A_8jlU4wPeItmpZ32nS7NfYJ8GJpL2X21XWwIzp75Ep54NkzFlHT_xWT0RHu6MkRud30eM9mZ83lzN2M0mdkZfB8pGu1fbOdntfP_WRwvplCsU9he3csyCQc6mZ5lRObR/s1600/sardines.webp",
+            ingredients: ["Sardines", "Lime", "Olive Oil", "Sea Salt"],
+            instructions:
+              "Grill sardines with olive oil and sea salt, char lime halves, serve sardines with burnt lime.",
+          },
+          {
+            name: "Mini Burgers",
+            description:
+              "Crispy chicken breaded with cornflakes and kimchi mayo, a beef smash burger with melted cheddar, onion jam, and Big Mac sauce. (2pcs)",
+            category: "Tapas",
+            price: 190,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMp-2JOhdEwLbgTogRhdy0rvvuhreZac6bjBOPZqTPujH4XS02gKaSZUKPOKj0km3ZIde_ut0CUN3UxbWRA2YpzJz92sAkLXAwM8shK2Jp7RGYAk_FZoqecV4pcc1w__EIc1Hhj0E6vLhr2qCnaBxoA3C_3yNvdcgRUNdMNq865M1hzRxM3-4D68ayKZxS/s1600/mini%20buger.webp",
+            ingredients: [
+              "Chicken",
+              "Cornflakes",
+              "Kimchi Mayo",
+              "Beef",
+              "Cheddar",
+              "Onion Jam",
+              "Big Mac Sauce",
+              "Buns",
+            ],
+            instructions:
+              "Bread chicken with cornflakes, fry until crispy, prepare beef patty with cheddar, assemble burgers with kimchi mayo, onion jam, and Big Mac sauce.",
+          },
+          // Coldcut
+          {
+            name: "Jamon Iberico",
+            description:
+              "Jamón Ibérico acorn feed 36 months of maturation hand cut. Served with olive, tomaquet, crusty bread and Arbequina olive oil.",
+            category: "Coldcut",
+            price: 495,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVIgU9D4I3tqLgp8vOIUvDX1vokMF_teFO8B4i_nbKuPovdHNawas1YEkM302eBF2X9SmUEYrFPdewSiH4Nhx7lpzij_tsyFQ2VRALREpPvcGvfC9WcZJ2AZ_baONNJCUKf1CrrdKNCrrkqW6rTM9VDznFbXZpbMjn29Fk_ay-HrVsvJXedPGfMQk7RtQ/s1600/jamon%20iberico.webp",
+            ingredients: [
+              "Jamón Ibérico",
+              "Olives",
+              "Tomaquet",
+              "Bread",
+              "Arbequina Olive Oil",
+            ],
+            instructions:
+              "Hand-slice Jamón Ibérico, prepare tomaquet with grated tomatoes, serve with olives, crusty bread, and a drizzle of Arbequina olive oil.",
+          },
+          {
+            name: "Chorizo Iberico",
+            description:
+              "Chorizo ibérico with 36 months maturation. Served with crusty bread, tomaquet, olives and Arbequina olive oil.",
+            category: "Coldcut",
+            price: 330,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAx3SgC7j8BVAlaOkV9ccLTPD7_NNU8fhyyC287EbQkyT3UMXGoX6gJgDkvzamrk4XAYAT6eUP49of81bUvR3ducRFRkY8AeHz-j_hCtjQqUe1v4cmKZyZ8593H9qTIEm_F-JLvnHZdQ3uefJkwbwPsCjZxy93tJrk1OJGxFxfA4BCTpwM9YBNc74K1-0U/s1600/churizo%20iberico.webp",
+            ingredients: [
+              "Chorizo Ibérico",
+              "Bread",
+              "Tomaquet",
+              "Olives",
+              "Arbequina Olive Oil",
+            ],
+            instructions:
+              "Slice Chorizo Ibérico thinly, prepare tomaquet with grated tomatoes, serve with crusty bread, olives, and Arbequina olive oil.",
+          },
+          {
+            name: "Salchichon Iberico Acorn Feed",
+            description:
+              "Spanish salami ibérico with 36 months of maturation. Served with crusty bread, olives, tomaquet and Arbequina olive oil.",
+            category: "Coldcut",
+            price: 330,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxagjr0D2FGqaZvET8utiQSur_Q5RoJyUICnZ-aLpCPSL8u8h48F2hlRYg3Yk3R7pxjP_ne2jNU5X-dSnwf0OITVHD_FjPJIagMsT1QjK17-NKPgqjfrso3yIeZ8BoYb2t08iabDiox22t7BkKKLUbE78gYVqnlafHqnb_7ueB-4rtRzxEzEqamGOtjfod/s1600/salchichon%20iberico.webp",
+            ingredients: [
+              "Salchichon Ibérico",
+              "Bread",
+              "Olives",
+              "Tomaquet",
+              "Arbequina Olive Oil",
+            ],
+            instructions:
+              "Slice Salchichon Ibérico thinly, prepare tomaquet with grated tomatoes, serve with crusty bread, olives, and Arbequina olive oil.",
+          },
+          {
+            name: "Manchego Cheese",
+            description:
+              "Semi-cured Manchego cheese cured for 2 months. Served with quince paste, walnuts, dried figs, grapes and crusty bread with Arbequina olive oil.",
+            category: "Coldcut",
+            price: 370,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1XM_fjyMvUynLzyQYHL5ej59wSOBcYFP3pqrlyjlfRm2MzoQZviPGPoFvoCKe2MdzRSFiS48Wzi5OO2BVu7t9pARjENCJ9Dx8j5uUMZ98DivbgrAHiTz4vgHN6JJjWnhR1Ngs3VIhijSRt5mMHpZlFOpYJRBnhGgP6mF4mR745sWstycS0JkVZMCISd5D/s1600/manchenco%20chess%20plate.webp",
+            ingredients: [
+              "Manchego Cheese",
+              "Quince Paste",
+              "Walnuts",
+              "Dried Figs",
+              "Grapes",
+              "Bread",
+              "Arbequina Olive Oil",
+            ],
+            instructions:
+              "Slice Manchego cheese, arrange with quince paste, walnuts, dried figs, grapes, and crusty bread, drizzle with Arbequina olive oil.",
+          },
+          {
+            name: "Iberico Board",
+            description:
+              "A selection of Spanish ibérico cold cuts with 36 months maturation: jamón ibérico, chorizo ibérico, salchichón ibérico and Manchego cheese semi cured. Served with grapes, walnuts, quince paste, olives, dried figs and crusty bread.",
+            category: "Coldcut",
+            price: 900,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3LpvXQXhrrdX72GrJICRVgT8HzHXwhovpfkwyDRW3HYZIk1iaI2_aKYGcvq9BvMcNSb4eVGtppQozZmQQxmmh6C58kcXH8x57P-zgpmmVWOdszhx-sLX0RYgShFePa2sONsjF-NTzxZBydY5EmaPKBQR11zn08GnyeHvgWkst5lt7xcHyPPFWarZkCGrQ/s1600/iberico%20board.webp",
+            ingredients: [
+              "Jamón Ibérico",
+              "Chorizo Ibérico",
+              "Salchichón Ibérico",
+              "Manchego Cheese",
+              "Grapes",
+              "Walnuts",
+              "Quince Paste",
+              "Olives",
+              "Dried Figs",
+              "Bread",
+            ],
+            instructions:
+              "Arrange sliced Jamón, Chorizo, Salchichón Ibérico, and Manchego cheese, serve with grapes, walnuts, quince paste, olives, dried figs, and crusty bread.",
+          },
+          // Salads
+          {
+            name: "Tuna Tataki",
+            description:
+              "Seared yellowfin tuna loin, sesame crusted, with mixed greens, mango, avocado, sundried tomatoes, and our sesame Asian dressing.",
+            category: "Salads",
+            price: 295,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjK1LlZVJRYV5Bk6XIDqMLDzfWd-gBiQTHEpefQDW3K1X6TYqiALe79VodQql-JZTprdPhyq22FE2IW4vjg9zNbh3UAx-I2_Eh7Fqi0fA6BZT6zn87HyZMWrKw3Cwgl4KZMd0ov4BlNjwNOfnumeErWbS-5fupm3FC8ePcEv1a-gKsuzhC3VoNtRerHBdas/s1600/482343027_122207356550085149_8716084908958033559_n.jpg",
+            ingredients: [
+              "Tuna",
+              "Sesame Seeds",
+              "Mixed Greens",
+              "Mango",
+              "Avocado",
+              "Sundried Tomatoes",
+              "Sesame Dressing",
+            ],
+            instructions:
+              "Coat tuna loin with sesame seeds, sear briefly, slice thinly, toss mixed greens with mango, avocado, sundried tomatoes, and sesame dressing, top with tuna.",
+          },
+          {
+            name: "Green Salad",
+            description:
+              "Fresh mozzarella cheese, homemade pesto sauce, fresh tomatoes, homemade balsamic glaze, fresh basil and extra virgin oil. Served with mixed salad and salt flakes.",
+            category: "Salads",
+            price: 175,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYdHCzUWHCu565V1abMeUZOYuecDbOG_6BYJhuUa0EUOpyIM71616X20J09ZXh0LJ1hMlE05PB8UN-OzbIzXs6IW1ApYzW37O8qlcEsiRd2EEzPwLPsH-eWwOe41AZWm6IX_aCuDe5nPp1w-RSQmPu4OTkhrl1jtiv7EZekYLtYAZgEdTKIoX7SHM0n4PJ/s1600/Olive-Garden-Salad-1-.jpg",
+            ingredients: [
+              "Mozzarella",
+              "Pesto",
+              "Tomatoes",
+              "Balsamic Glaze",
+              "Basil",
+              "Olive Oil",
+              "Mixed Salad",
+              "Salt",
+            ],
+            instructions:
+              "Slice mozzarella and tomatoes, prepare pesto and balsamic glaze, toss mixed salad with olive oil, top with mozzarella, tomatoes, pesto, basil, glaze, and salt flakes.",
+          },
+          // Pizza
+          {
+            name: "Pizza Iberica",
+            description:
+              "Thin-crust pizza with San Marzano tomatoes, fresh mozzarella, sun-dried tomatoes, balsamic glaze, Jamon Serrano gran reserva, basil and confited onions.",
+            category: "Pizza",
+            price: 350,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb-DiQFLe3gfbsV0vSOSYnnOe97h6EUIhMATTGflX2J6u_oDe935h-4xgg2EoAmhJhSQHFUtUUxP-6Bry4gqF5l9prz40PaHaKM7SRMM4jf_-PLeYct4wxAcvPV8B92y1mEU3Pc2g5foXiiY-C4JA7_hOPYHQ0Y_NqV-0YpjjXxP3JyFqWxZvlBFl4gtok/s1600/pizza%20iberica.webp",
+            ingredients: [
+              "San Marzano Tomatoes",
+              "Mozzarella",
+              "Sundried Tomatoes",
+              "Balsamic Glaze",
+              "Jamon Serrano",
+              "Basil",
+              "Onions",
+            ],
+            instructions:
+              "Spread San Marzano tomato sauce on thin crust, add mozzarella, bake until crispy, top with sundried tomatoes, Jamon Serrano, confited onions, basil, and balsamic glaze.",
+          },
+          {
+            name: "Chorizo and Goat Pizza",
+            description:
+              "Thin-crust pizza, with San Marzano tomatoes, goat cheese, Chorizo Iberico, and red wine onion jam.",
+            category: "Pizza",
+            price: 350,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwu389fRoYTAesRygYu5OyTJw5UxBRlIu9eh4el0kyBuHzxEn0T_DqaEMhh4sJoQyMLN-tH8vYdg2b4sXmZ4WHC0uXLz2C-fk9Q6ja4tHSrDD5r0lcjT14_Mi2Amf8oFD8rbU3XcYEGFHfpQ0GK3M42NB5_zDBhq0P5E400Mi_KmZEtzd7ltOHoPgpZcVR/s1600/Leonardo_Phoenix_10_Chorizo_like_this_churizo_httpsbloggergoog_3.jpg",
+            ingredients: [
+              "San Marzano Tomatoes",
+              "Goat Cheese",
+              "Chorizo Ibérico",
+              "Red Wine",
+              "Onion Jam",
+            ],
+            instructions:
+              "Spread San Marzano tomato sauce on thin crust, add goat cheese and Chorizo Ibérico, bake, top with red wine onion jam.",
+          },
+          {
+            name: "Ham & Pesto",
+            description:
+              "Thin-crust pizzas, with San Marzano tomatoes, fresh mozzarella, black olives, mushrooms, braised ham, crushed pistachios, and pesto.",
+            category: "Pizza",
+            price: 330,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZKyTuWGJeNxc9Ycn2m99WdHYjA8WwIXIUeNp623Urpcc-JJRuaoXRXD6Dfb0XLsg-aC1qXpdJP7jaOqVZj2z_s0lOGmyKLPqUMsepC7ZuSP7ZkkyG-0xp_-VqgNqp3kX40L2SzOQAM9wPdqjv5m0AfyUC1-QyBysAFfwQcw7BKVMzCfAY24h1mVdFY_n5/s1600/pizza%20ham%20and%20pesto.webp",
+            ingredients: [
+              "San Marzano Tomatoes",
+              "Mozzarella",
+              "Black Olives",
+              "Mushrooms",
+              "Ham",
+              "Pistachios",
+              "Pesto",
+            ],
+            instructions:
+              "Spread San Marzano tomato sauce on thin crust, add mozzarella, olives, mushrooms, and ham, bake, top with crushed pistachios and pesto.",
+          },
+          {
+            name: "Pizza Manchega",
+            description:
+              "Tomato sauce, manchego cheese, fresh mozzarella di bufala, 'Pisto Manchego' (Spanish ratatouille), with cherry tomatoes, asparagus, mushrooms and black olives.",
+            category: "Pizza",
+            price: 280,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjN8BU0O0brvsnZaX8ikoN5haMMjGubehyphenhyphenaWCW5fWLPBsLtEoHXTxn6R_g9CCRvBdaPsAH7sp6DmuRPPuhaEU8Btff9tPdWF3tIXQ4XWm-GY-McRG5gYiU6-ojzThUBmNemqZqYPfflrn5VBdHR-RpQWxiNqFe-N8VIXIcY63Rka5AIahWsDv5YSnfMBfjx/s1600/323-pizza-manchega-xl-668x400x80xX.jpg",
+            ingredients: [
+              "Tomato Sauce",
+              "Manchego Cheese",
+              "Mozzarella",
+              "Pisto Manchego",
+              "Cherry Tomatoes",
+              "Asparagus",
+              "Mushrooms",
+              "Black Olives",
+            ],
+            instructions:
+              "Spread tomato sauce on crust, add Manchego and mozzarella, top with pisto manchego, cherry tomatoes, asparagus, mushrooms, and olives, bake until crispy.",
+          },
+          {
+            name: "Pizza Margarita",
+            description:
+              "Thin-crust pizzas with San Marzano tomatoes, fresh buffalo mozzarella, and basil.",
+            category: "Pizza",
+            price: 280,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje9rnbXQYK3-1DWPwNr_tjL9TsKjq60fwkHxjv_BvBKYn97kzEyq4uelVPVqAivtpVb9AtFGUvfEGb5YxTUWh1lYFYZJvU8VTim6gfmIXKy7FByGmovgrKGfIWhpahrj5RdJzke1xtCfb_HoZE5FLJYo1Z6oo_d-6Oyyp_Z2elB-7oHz0Fi7lIG1a3GG5D/s1600/Margherita-Pizza.webp",
+            ingredients: ["San Marzano Tomatoes", "Mozzarella", "Basil"],
+            instructions:
+              "Spread San Marzano tomato sauce on thin crust, add fresh buffalo mozzarella, bake until bubbly, top with fresh basil.",
+          },
+          // Paella
+          {
+            name: "Seafood Paella for 1",
+            description:
+              "Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
+            category: "Paella",
+            price: 495,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimroKkkuOs4bMQ9KgCx3tGMx-wXXia24-NTcOCr24lw0cmC6cBqROa96G5pqNotAfOuy-hyUsXa07fqCeDh-gI6fvZ59jASO3ecN5QdYYLilPD6laB62iLP88Wh1uwDXky2vYOOv3pdy1s1mxWwW0p_eXNVvTTuIERV9ceTxPeloe-1mgVMyX7ZByy1QuQ/s1600/seafood%20paellas.webp",
+            ingredients: ["Bomba Rice", "Saffron", "Seafood", "Fish Stock"],
+            instructions:
+              "Cook bomba rice with fish stock and saffron, add mixed seafood, cook until rice is tender and socarrat forms if requested, serve hot.",
+          },
+          {
+            name: "Seafood Paella for 2",
+            description:
+              "Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
+            category: "Paella",
+            price: 850,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimroKkkuOs4bMQ9KgCx3tGMx-wXXia24-NTcOCr24lw0cmC6cBqROa96G5pqNotAfOuy-hyUsXa07fqCeDh-gI6fvZ59jASO3ecN5QdYYLilPD6laB62iLP88Wh1uwDXky2vYOOv3pdy1s1mxWwW0p_eXNVvTTuIERV9ceTxPeloe-1mgVMyX7ZByy1QuQ/s1600/seafood%20paellas.webp",
+            ingredients: ["Bomba Rice", "Saffron", "Seafood", "Fish Stock"],
+            instructions:
+              "Cook bomba rice with fish stock and saffron, add mixed seafood, cook until rice is tender and socarrat forms if requested, serve hot.",
+          },
+          {
+            name: "Black Rice for 1",
+            description:
+              "Creamy Catalan style creamy black rice with ink squid, Galician grilled octopus tentacle, and seafood, served with aioli. Made with socarrat upon request.",
+            category: "Paella",
+            price: 595,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLKhV22cJPxvfWJ431qnIrSnqZmye20Ll0g-MJG6ZDjrtuGUIt8Cb4MurOJmOGVcz9ssaxgoKtNYjav6eJe7edXot8nWflPtz1Q4E-1SvRrOLSDZGXQtKSM7_qCsSJ6q4SybxOMGhQCmOT6JY7rahhsI7-7OBe7XdpWpUe0O6qPerYANCvi-arnqkrIlX/s1600/black%20rice%20paella.webp",
+            ingredients: [
+              "Black Rice",
+              "Squid Ink",
+              "Octopus",
+              "Seafood",
+              "Aioli",
+            ],
+            instructions:
+              "Cook black rice with squid ink and seafood, grill octopus tentacle, serve rice with seafood and octopus, drizzle with aioli, add socarrat if requested.",
+          },
+          {
+            name: "Black Rice for 2",
+            description:
+              "Creamy Catalan style creamy black rice with ink squid, Galician grilled octopus tentacle, and seafood, served with aioli. Made with socarrat upon request.",
+            category: "Paella",
+            price: 950,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLKhV22cJPxvfWJ431qnIrSnqZmye20Ll0g-MJG6ZDjrtuGUIt8Cb4MurOJmOGVcz9ssaxgoKtNYjav6eJe7edXot8nWflPtz1Q4E-1SvRrOLSDZGXQtKSM7_qCsSJ6q4SybxOMGhQCmOT6JY7rahhsI7-7OBe7XdpWpUe0O6qPerYANCvi-arnqkrIlX/s1600/black%20rice%20paella.webp",
+            ingredients: [
+              "Black Rice",
+              "Squid Ink",
+              "Octopus",
+              "Seafood",
+              "Aioli",
+            ],
+            instructions:
+              "Cook black rice with squid ink and seafood, grill octopus tentacle, serve rice with seafood and octopus, drizzle with aioli, add socarrat if requested.",
+          },
+          {
+            name: "Meat Rice for 1",
+            description:
+              "A non-traditional rice with chistorra, Chorizo Iberico, chicken wings, and pork ribs, served with aioli and made with meat broth. Made with socarrat upon request.",
+            category: "Paella",
+            price: 495,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWlhRkh-WLGwlgYKl1SsRRAZpvpxCDIdtxlNt4vRG8rwN9u22HuBhByQW66ABsYVfQC5SHf8-SiUbXe7iuZvsfTR9O-nghq3oBiKpXp0Va23gf2aZ3eKh7ihkslnHN1eJ03ZdXeJzETPVAeA1icfHFIl-lNIEYv94gcevBKJMiiT0jhuBgeD7w1rv0Gmtf/s1600/meat%20paella.webp",
+            ingredients: [
+              "Rice",
+              "Chistorra",
+              "Chorizo Ibérico",
+              "Chicken Wings",
+              "Pork Ribs",
+              "Aioli",
+              "Meat Broth",
+            ],
+            instructions:
+              "Cook rice in meat broth, add chistorra, Chorizo Ibérico, chicken wings, and pork ribs, serve with aioli, create socarrat if requested.",
+          },
+          {
+            name: "Meat Rice for 2",
+            description:
+              "A non-traditional rice with chistorra, Chorizo Iberico, chicken wings, and pork ribs, served with aioli and made with meat broth. Made with socarrat upon request.",
+            category: "Paella",
+            price: 795,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWlhRkh-WLGwlgYKl1SsRRAZpvpxCDIdtxlNt4vRG8rwN9u22HuBhByQW66ABsYVfQC5SHf8-SiUbXe7iuZvsfTR9O-nghq3oBiKpXp0Va23gf2aZ3eKh7ihkslnHN1eJ03ZdXeJzETPVAeA1icfHFIl-lNIEYv94gcevBKJMiiT0jhuBgeD7w1rv0Gmtf/s1600/meat%20paella.webp",
+            ingredients: [
+              "Rice",
+              "Chistorra",
+              "Chorizo Ibérico",
+              "Chicken Wings",
+              "Pork Ribs",
+              "Aioli",
+              "Meat Broth",
+            ],
+            instructions:
+              "Cook rice in meat broth, add chistorra, Chorizo Ibérico, chicken wings, and pork ribs, serve with aioli, create socarrat if requested.",
+          },
+          {
+            name: "Vegetarian Rice for 1",
+            description:
+              "A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
+            category: "Paella",
+            price: 395,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKnY1x1scmE6ZVvB8JmuaVZFCAVIn3ioWr6axOYFV_Pc_Fg1gxhs7BNpOVdfODL2d0a16CvIdbaaqwo8apj-wpH10BEoZaihsFncYTT3UMYjqaHuLGY5aoheWZxBFFEKjOgHJ4WbDQcs3FGqp1W3lGGnt8oF7d48U43ShSY2ZAh6EHVfSJdWQPOCVpsxQ/s1600/veggetarian%20paella.webp",
+            ingredients: ["Rice", "Vegetable Broth", "Mixed Vegetables"],
+            instructions:
+              "Cook rice in vegetable broth with mixed vegetables, create socarrat if requested, serve hot.",
+          },
+          {
+            name: "Vegetarian Rice for 2",
+            description:
+              "A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
+            category: "Paella",
+            price: 550,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKnY1x1scmE6ZVvB8JmuaVZFCAVIn3ioWr6axOYFV_Pc_Fg1gxhs7BNpOVdfODL2d0a16CvIdbaaqwo8apj-wpH10BEoZaihsFncYTT3UMYjqaHuLGY5aoheWZxBFFEKjOgHJ4WbDQcs3FGqp1W3lGGnt8oF7d48U43ShSY2ZAh6EHVfSJdWQPOCVpsxQ/s1600/veggetarian%20paella.webp",
+            ingredients: ["Rice", "Vegetable Broth", "Mixed Vegetables"],
+            instructions:
+              "Cook rice in vegetable broth with mixed vegetables, create socarrat if requested, serve hot.",
+          },
+          // Meat
+          {
+            name: "Wagyu Steak",
+            description:
+              "250 gr Australian Wagyu Ribeye MBS3 cooked to your point, served with a side dish and sauce of your choice.",
+            category: "Meat",
+            price: 850,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipv5u7Z9yh0jBez-hPyZD9DaRaJM6p1r8pmdvisBMYBKCArm21OkqLmAMr8yWr-SUANAcYoI8oWnz0Gs3UHwAFlM7ltNs-IFzltia1qZLRW6wJOdKhiD4NsjSiGY0KdliGWBEtacqAkZ2mnEDTSh6amZTkse8Orvs_jwiAILM2yJlh5Yzv2tXSbdZ7dQpM/s1600/Leonardo_Phoenix_10_A_sizzling_slice_of_wagyu_steak_garnished_2.jpg",
+            ingredients: ["Wagyu Beef", "Choice of Sauce", "Choice of Side"],
+            instructions:
+              "Grill Wagyu ribeye to desired doneness, prepare chosen sauce (e.g., Black Pepper, Chimichurri), serve with chosen side (e.g., Mashed Potatoes, Green Salad).",
+          },
+          {
+            name: "Koh Tao Local Fish",
+            description:
+              "Wild catch of the day by local fishermen delivered directly to our beach. We served grilled with a side dish and style of your choice.",
+            category: "Meat",
+            price: 550,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2yPNM6gPiNdGB_nCp05VJ_Jwd6UVxrVz96gIEhHrPW32y5Kfpbo4Bb73F1BSfKXwOxM6jaaANj5l_vzVzstuxTygvGDUVR0eBewEMvc_6uAGPvmpqDOvi2GyDNJohJRPGYgJT-iMRGVm6Kq6xe4l8BZAMeJ_gzSqNrQNel5A4cArntWdzsJc08CVp6DUy/s1600/images.jpeg",
+            ingredients: ["Fish", "Choice of Side", "Choice of Sauce"],
+            instructions:
+              "Grill fresh fish, prepare in chosen style (e.g., Japanese with Miso-Sake or Thai with Neung Manao), serve with chosen side (e.g., Grilled Vegetables).",
+          },
+          // Dessert
+          {
+            name: "Torrija",
+            description:
+              "The Spanish french toast. A caramelized brioche soaked in milk, vanilla and cinnamon. Toasted in brown butter, served with homemade salted caramel ice cream & local mango coulis.",
+            category: "Dessert",
+            price: 175,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiONOfX4SOaWkPaee79FhKWOT5KwXUHq1od7f48aBacxdW8tm-ycG5EbNSPm47vkQ0juFeWhGEaZJUkwaKsXuwrO4OMdHyq6wJ9u3yYYTfEEZtu7Lps4FZY3XkXuKfED4zNW2mQml3bwsCJ4EHcdLgtk7YjPNMr9MG97JsNGisoH95BuU36cWBepR6iPZ1o/s1600/torrija.webp",
+            ingredients: [
+              "Brioche",
+              "Milk",
+              "Vanilla",
+              "Cinnamon",
+              "Brown Butter",
+              "Salted Caramel Ice Cream",
+              "Mango Coulis",
+            ],
+            instructions:
+              "Soak brioche in milk, vanilla, and cinnamon, toast in brown butter until caramelized, serve with salted caramel ice cream and mango coulis.",
+          },
+          {
+            name: "Ibiza Churros",
+            description:
+              "Spanish churros with cinnamon and sugar coated, served with hot chocolate sauce.",
+            category: "Dessert",
+            price: 150,
+            image:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlLsc9fpVmNNc8FldANd-Mk4l4q8DO4-wb7Aw_MxJGQkF8FwwG4woonC3WNdjh0976DUdSs7ytQmtnKXeQMfaSd7p9lFUCbfgh3WUzhmd1RcZPyh3cVbZHEgpi6JLqTrQ8Ja7SGOYIgvhrXxpJyXGKe4GqrUH50e_tOFjueZqpLJvjeUB2HIEVU4DX7uEH/s1600/ibiza%20churro.webp",
+            ingredients: ["Churros", "Cinnamon", "Sugar", "Chocolate Sauce"],
+            instructions:
+              "Fry churros until golden, coat with cinnamon and sugar, prepare hot chocolate sauce, serve churros with sauce for dipping.",
+          },
         ],
 
+        drinks: [
+          {
+            name: "Water (S)",
+            description: "Small bottle of water",
+            category: "Soft Drinks",
+            price: 40,
+            image:
+              "https://images.mango-prod.siammakro.cloud/product-images/492849089695262-889eb55e-5e89-4893-9352-dfdcfea14f51.jpeg",
+            ingredients: ["Water"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Singha Soda Water",
+            description: "Sparkling soda water",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://res.cloudinary.com/freshketimage001/image/upload/v1659960559/uvzf5zs0bloygljvq78i.jpg",
+            ingredients: ["Carbonated water"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Coke",
+            description: "Classic Coca-Cola",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://i5.walmartimages.com/asr/1d4c790b-4f3d-4020-baa9-47da0710431d.970e62144ad18c8487589870926a3cc1.jpeg",
+            ingredients: ["Cola"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Coke Zero",
+            description: "Zero sugar Coca-Cola",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://www.qibahstore.com/cdn/shop/files/69b01679a0669d1888b2bd867d7a6899_large_26c5daaa-924c-46ce-8fda-81dde5c6a448.webp?v=1719914932",
+            ingredients: ["Cola zero"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Sprite Drink",
+            description: "Lemon-lime soda",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://britishop.com/webpimg/L3N0b3JhZ2UvaW1nY2FjaGUvU3ByaXRlLWNhbi0zMjVtbC0tMV9fNDcweDQ3MHhzcXVhcmUuanBn",
+            ingredients: ["Lemon-lime soda"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Schwepps Tonic",
+            description: "Tonic water",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://assets.tops.co.th/SCHWEPPES-SchweppesTonicWater330cc-8851959132654-4?$JPEG$",
+            ingredients: ["Tonic water"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Schwepps Ginger Ale",
+            description: "Ginger-flavored soda",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://static.wixstatic.com/media/02b322_875bddfabd2f43d883d9d5202ae8ad6f~mv2.jpg/v1/fill/w_560,h_374,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/02b322_875bddfabd2f43d883d9d5202ae8ad6f~mv2.jpg",
+            ingredients: ["Ginger ale"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Red Bull",
+            description: "Energy drink",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://americancandystores.co.uk/cdn/shop/products/ezgif.com-gif-maker_158_1200x600_crop_center.jpg?v=1659380048",
+            ingredients: ["Energy drink"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Fever Tree",
+            description: "Premium tonic water",
+            category: "Soft Drinks",
+            price: 60,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQ_g0x0nVqhjJGLOlMqqvKauJ8SQZ7Ih8dg&s",
+            ingredients: ["Premium tonic water"],
+            instructions: "Serve chilled.",
+          },
+
+          // Fruit Juice
+          {
+            name: "Apple Juice",
+            description: "Fresh apple juice",
+            category: "Fruit Juice",
+            price: 60,
+            image:
+              "https://assets.tops.co.th/MALEE-MaleeAppleJuice200mlPack3-8853333010107-2?$JPEG$",
+            ingredients: ["Apple"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Pineapple Juice",
+            description: "Fresh pineapple juice",
+            category: "Fruit Juice",
+            price: 60,
+            image:
+              "https://media-stark.gourmetmarketthailand.com/products/cover/8853333000047-1.webp",
+            ingredients: ["Pineapple"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Orange Juice",
+            description: "Freshly squeezed orange juice",
+            category: "Fruit Juice",
+            price: 60,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpEwGVXIB-UA_1ofLZpI9Nnup9fmSXv0Z-Lw&s",
+            ingredients: ["Orange"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Cranberry Juice",
+            description: "Fresh cranberry juice",
+            category: "Fruit Juice",
+            price: 60,
+            image: "https://m.media-amazon.com/images/I/91kHxPOswOL.jpg",
+            ingredients: ["Cranberry"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Mango Juice",
+            description: "Rich mango juice",
+            category: "Fruit Juice",
+            price: 75,
+            image:
+              "https://assets.tops.co.th/MALEE-MaleeMangoJuiceMixedFruitJuice100percent1ltr-8853333018004-1",
+            ingredients: ["Mango"],
+            instructions: "Serve chilled.",
+          },
+
+          // Fruit Shake
+          {
+            name: "Banana Shake",
+            description: "Creamy banana shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://www.joyousapron.com/wp-content/uploads/2022/08/banana-milkshake-sq-pic.jpg",
+            ingredients: ["Banana", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Mango Shake",
+            description: "Rich mango shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://tastyoven.com/wp-content/uploads/2022/06/mango-shake-image-500x375.jpeg",
+            ingredients: ["Mango", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Pineapple Shake",
+            description: "Tropical pineapple shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://www.dinneratthezoo.com/wp-content/uploads/2018/05/pineapple-smoothie-3-500x500.jpg",
+            ingredients: ["Pineapple", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Coconut Shake",
+            description: "Creamy coconut shake",
+            category: "Fruit Shake",
+            price: 120,
+            image:
+              "https://delightfulemade.com/wp-content/uploads/2023/03/Coconut-Smoothie-6straw-683x1024.jpg",
+            ingredients: ["Coconut", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Passionfruit Shake",
+            description: "Refreshing passionfruit shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://media.istockphoto.com/id/1281587900/photo/passion-fruit-shake.jpg?s=612x612&w=0&k=20&c=pSjh0TTyI3EKot1EhGJ1GwqOgdzTAIVSkB9BrfsIV_c=",
+            ingredients: ["Passionfruit", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Mix Berries Shake",
+            description: "Mixed berry shake",
+            category: "Fruit Shake",
+            price: 130,
+            image:
+              "https://www.dinneratthezoo.com/wp-content/uploads/2017/01/mixed-berry-smoothie-2.jpg",
+            ingredients: ["Mixed berries", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Tropical Shake",
+            description: "Tropical fruit shake",
+            category: "Fruit Shake",
+            price: 130,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsotepqnEzxP3YqLtAsLJTc-4aRBZ83xxZLw&s",
+            ingredients: ["Mango", "Pineapple", "Passion fruit"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Watermelon Shake",
+            description: "Refreshing watermelon shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://plantbasedrdblog.com/wp-content/uploads/2021/07/watermelon-smoothie-recipe_8.jpg",
+            ingredients: ["Watermelon", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Fresh Coconut",
+            description: "Fresh coconut water shake",
+            category: "Fruit Shake",
+            price: 110,
+            image:
+              "https://images.squarespace-cdn.com/content/v1/5c1074accc8fed6a4251da8f/1652200437658-RFWI16B6LU8U3BF7ZN9V/shutterstock_490174816.jpg",
+            ingredients: ["Coconut water", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+          {
+            name: "Mix Fruit Shake",
+            description: "Mixed fruit shake",
+            category: "Fruit Shake",
+            price: 120,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQFraJNgW3QYR84Lb47lAf3k832CnKgDQ5MQ&s",
+            ingredients: ["Mixed fruits", "Milk"],
+            instructions: "Blend until smooth.",
+          },
+
+          // Happy Hour
+          {
+            name: "Mojito",
+            description: "Happy hour mojito",
+            category: "Happy Hour",
+            price: 160,
+            image:
+              "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
+            ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle mint with sugar and lime, add rum, top with soda.",
+          },
+          {
+            name: "Margarita",
+            description: "Happy hour margarita",
+            category: "Happy Hour",
+            price: 160,
+            image:
+              "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
+            ingredients: ["Tequila", "Lime juice", "Triple sec"],
+            instructions: "Shake with ice, serve with salt rim.",
+          },
+          {
+            name: "Espresso Martini",
+            description: "Happy hour espresso martini",
+            category: "Happy Hour",
+            price: 160,
+            image:
+              "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
+            ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
+            instructions: "Shake with ice, strain into a martini glass.",
+          },
+          {
+            name: "Piña Colada",
+            description: "Happy hour piña colada",
+            category: "Happy Hour",
+            price: 160,
+            image:
+              "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
+            ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
+            instructions: "Blend with ice until smooth.",
+          },
+          {
+            name: "Long Island",
+            description: "Happy hour long island iced tea",
+            category: "Happy Hour",
+            price: 160,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
+            ingredients: [
+              "Vodka",
+              "Gin",
+              "Tequila",
+              "Rum",
+              "Triple sec",
+              "Cola",
+            ],
+            instructions: "Shake with ice, top with cola.",
+          },
+          {
+            name: "Sparkling Wine",
+            description: "Happy hour sparkling wine",
+            category: "Happy Hour",
+            price: 150,
+            image:
+              "https://shop.coopershawkwinery.com/images/product/Almond%20Sparkling%20Lifestyle%20Graphic%201.jpg",
+            ingredients: ["Sparkling wine"],
+            instructions: "Serve chilled in a flute glass.",
+          },
+          {
+            name: "Red Wine",
+            description: "Happy hour red wine",
+            category: "Happy Hour",
+            price: 175,
+            image:
+              "https://vinodirect.co.uk/cdn/shop/collections/RedWine.jpg?v=1682000010&width=2400",
+            ingredients: ["Red wine"],
+            instructions: "Serve chilled or at room temperature.",
+          },
+          {
+            name: "White Wine",
+            description: "Happy hour white wine",
+            category: "Happy Hour",
+            price: 175,
+            image:
+              "https://dropinblog.net/34243665/files/featured/Popular-Types-of-White-Wine.jpg",
+            ingredients: ["White wine"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Singha Draft",
+            description: "Happy hour Singha draft beer",
+            category: "Happy Hour",
+            price: 130,
+            image:
+              "https://img.wongnai.com/p/1920x0/2017/02/25/2bf466215f9e4ffb8dd6d4d38cc383e6.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a draft glass.",
+          },
+          {
+            name: "Mahou Draft",
+            description: "Happy hour Mahou draft beer",
+            category: "Happy Hour",
+            price: 190,
+            image: "https://m.media-amazon.com/images/I/81do19az-QL.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a draft glass.",
+          },
+          {
+            name: "Local Beer can",
+            description: "Happy hour local beer",
+            category: "Happy Hour",
+            price: 70,
+            image:
+              "https://88bamboo.co/cdn/shop/articles/photo_2023-02-06_00.31.23_1200x1200.jpg?v=1675614834",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Sangria",
+            description: "Happy hour sangria",
+            category: "Happy Hour",
+            price: 150,
+            image:
+              "https://bamchocolate.com/uploads/recipes/58e5ba28-613d-442e-bb0b-828c30684bd5/big/osvezilna-sadna-sangria.jpeg",
+            ingredients: ["Red wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled.",
+          },
+          {
+            name: "White Sangria",
+            description: "Happy hour white sangria",
+            category: "Happy Hour",
+            price: 150,
+            image:
+              "https://dinnersdishesanddesserts.com/wp-content/uploads/2018/02/White-Wine-Sangria-2-square-500x375.jpg",
+            ingredients: ["White wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled.",
+          },
+          {
+            name: "Aperol Spritz",
+            description: "Happy hour Aperol spritz",
+            category: "Happy Hour",
+            price: 190,
+            image:
+              "https://muybuenoblog.com/wp-content/uploads/2024/02/classic-aperol-spritz-recipe.jpeg",
+            ingredients: ["Aperol", "Prosecco", "Soda water"],
+            instructions: "Pour Aperol, top with prosecco and soda water.",
+          },
+          {
+            name: "Spanish Spritz",
+            description: "Happy hour Spanish spritz",
+            category: "Happy Hour",
+            price: 200,
+            image:
+              "https://thebitterhousewife.com/cdn/shop/articles/DJB_1225_1100x.jpg?v=1649384604",
+            ingredients: ["Gin", "Soda", "Wine"],
+            instructions: "Mix ingredients and serve over ice.",
+          },
+          {
+            name: "Gin Raw & Tonic",
+            description: "Happy hour GinRaw and tonic",
+            category: "Happy Hour",
+            price: 150,
+            image:
+              "https://vintus.com/wp-content/uploads/2018/09/GINRAW_BAJA-2-14-scaled-1.jpg",
+            ingredients: ["GinRaw", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+
+          // Beer
+          {
+            name: "Leo (S)",
+            description: "Small bottle of Leo beer",
+            category: "Beer",
+            price: 90,
+            image: "https://umart.store/cdn/shop/files/Leo1s.png?v=1707411002",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Chang (S)",
+            description: "Small bottle of Chang beer",
+            category: "Beer",
+            price: 90,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCI2trxh_MIevtfq7KjV3wJRXQHQosxXuteA&s",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Singha (S)",
+            description: "Small bottle of Singha beer",
+            category: "Beer",
+            price: 100,
+            image:
+              "https://www.chiangmaicdsupply.com/system/resource/file/pzceo_product_271.jpg?date=130248.1",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "San Miguel (S)",
+            description: "Small bottle of San Miguel beer",
+            category: "Beer",
+            price: 100,
+            image:
+              "https://boozeone.ph/cdn/shop/files/4_855e706a-b732-4b23-864a-a088b453a86f.png?v=1698344379&width=1500",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Corona Bottle",
+            description: "Bottle of Corona beer",
+            category: "Beer",
+            price: 170,
+            image: "https://d19oj5aeuefgv.cloudfront.net/0246209",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled with a lime wedge.",
+          },
+          {
+            name: "Moose cider",
+            description: "Bottle of Moose cider",
+            category: "Beer",
+            price: 140,
+            image:
+              "https://www.siamwinery.com/strapi/uploads/product_moose_moose_4be397c964.png",
+            ingredients: ["Cider"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Mahou Bottle",
+            description: "Bottle of Mahou beer",
+            category: "Beer",
+            price: 180,
+            image:
+              "https://produits.bienmanger.com/34327-0w470h470_Mahou_Cinco_Estrellas_Beer_From_Spain.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+
+          // Draft Beers
+          {
+            name: "Singha Caña 220ml",
+            description: "Draft Singha beer 220ml",
+            category: "Draft Beers",
+            price: 80,
+            image: "https://www.singha-beer.jp/common/img/products_draft.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a draft glass.",
+          },
+          {
+            name: "Singha Pint 500ml",
+            description: "Draft Singha beer 500ml",
+            category: "Draft Beers",
+            price: 150,
+            image:
+              "https://static.vecteezy.com/system/resources/previews/054/873/267/large_2x/bangkok-thailand-december-16-2024-singha-beer-freshly-brewed-in-glass-on-table-manufactured-in-thailand-free-photo.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a pint glass.",
+          },
+          {
+            name: "Mahou Caña 220ml",
+            description: "Draft Mahou beer 220ml",
+            category: "Draft Beers",
+            price: 140,
+            image:
+              "https://www.mahou.es/wp-content/uploads/2025/01/5estrellas_carrousel_2.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a draft glass.",
+          },
+          {
+            name: "Mahou Pint 500ml",
+            description: "Draft Mahou beer 500ml",
+            category: "Draft Beers",
+            price: 250,
+            image:
+              "https://preview.redd.it/fz6hu72sjzs31.jpg?width=640&crop=smart&auto=webp&s=d123cebe08c0dc495262468daf43a75f7729e823",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled in a pint glass.",
+          },
+          {
+            name: "Shandy Caña",
+            description: "Shandy draft 220ml",
+            category: "Draft Beers",
+            price: 100,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNRqISpLqIJDFMwVK-L6e1goqrTZZk9_pGSQ&s",
+            ingredients: ["Beer", "Lemonade"],
+            instructions: "Serve chilled in a draft glass.",
+          },
+          {
+            name: "Shandy Pint",
+            description: "Shandy draft 500ml",
+            category: "Draft Beers",
+            price: 150,
+            image:
+              "https://www.liquor.com/thmb/aeta9-0v2WeFEazQw9pYgjTC7QY=/440x440/filters:no_upscale():max_bytes(150000):strip_icc()/lemon-shandy-720x720-primary-7b525bd15b224f7a82a6edc37a1062fb.jpg",
+            ingredients: ["Beer", "Lemonade"],
+            instructions: "Serve chilled in a pint glass.",
+          },
+
+          // Wine Glass
+          {
+            name: "Red - Esteban Martin (Spain)",
+            description: "Garnacha-Syrah-Tempranillo 6M Cariñena 2019",
+            category: "Wine Glass",
+            price: 200,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPMioRjRW-kvG_Jr0hI8Hqp8FaKZg5M37JFQ&s",
+            ingredients: ["Red wine"],
+            instructions: "Serve chilled or at room temperature.",
+          },
+          {
+            name: "White - Esteban Martin (Spain)",
+            description: "Chardonnay-Macabeo 6M Cariñena 2021",
+            category: "Wine Glass",
+            price: 200,
+            image:
+              "https://promotop.net/wp-content/uploads/2022/08/vinho-branco-esteban-martin-dop-carinena-chardonnay-macabeo-blanco-750-ml-bodegas-esteban-martin-chardonnay.jpg",
+            ingredients: ["White wine"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Sparkling - Mas Pere Reserva Brut Cava",
+            description: "DO, Macabeo, Xarel.lo, Parellada (Spain)",
+            category: "Wine Glass",
+            price: 200,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV9DmZvY-hRtFBVKPnh53yTmMFEgCQZveIgQ&s",
+            ingredients: ["Sparkling wine"],
+            instructions: "Serve chilled in a flute glass.",
+          },
+
+          // Classic Cocktail
+          {
+            name: "Mojito",
+            description: "Classic Cuban cocktail with rum and mint",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
+            ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle mint with sugar and lime, add rum, top with soda.",
+          },
+          {
+            name: "Daiquiri",
+            description: "Classic rum cocktail with lime",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://twobittart.com/wp-content/uploads/2023/08/strawberry-daiquiri-1.webp",
+            ingredients: ["White rum", "Lime juice", "Sugar"],
+            instructions: "Shake with ice, strain into a chilled glass.",
+          },
+          {
+            name: "Margarita",
+            description: "Zesty tequila cocktail with lime",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
+            ingredients: ["Tequila", "Lime juice", "Triple sec"],
+            instructions: "Shake with ice, serve with a salt rim.",
+          },
+          {
+            name: "Piña Colada",
+            description: "Tropical coconut and pineapple cocktail",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
+            ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
+            instructions: "Blend with ice until smooth.",
+          },
+          {
+            name: "Mai Tai",
+            description: "Exotic rum cocktail with citrus",
+            category: "Classic Cocktail",
+            price: 230,
+            image:
+              "https://www.cocktail.uk.com/wp-content/uploads/2003/01/Mai_tai_029_lores-e1692129068365.webp",
+            ingredients: [
+              "White rum",
+              "Dark rum",
+              "Lime juice",
+              "Orgeat",
+              "Orange liqueur",
+            ],
+            instructions: "Shake with ice, float dark rum on top.",
+          },
+          {
+            name: "Mimosa",
+            description: "Champagne with orange juice",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://i0.wp.com/www.imbored-letsgo.com/wp-content/uploads/2023/05/Malibu-Mimosas-1.jpg?ssl=1",
+            ingredients: ["Champagne", "Orange juice"],
+            instructions: "Pour champagne, top with orange juice.",
+          },
+          {
+            name: "Mimosa - Strawberry",
+            description: "Strawberry twist on classic mimosa",
+            category: "Classic Cocktail",
+            price: 250,
+            image:
+              "https://www.smalltownwoman.com/wp-content/uploads/2019/11/Strawberry-Mimosas-Preset-Facebook.jpg",
+            ingredients: ["Champagne", "Strawberry puree"],
+            instructions: "Pour champagne, top with strawberry puree.",
+          },
+          {
+            name: "Espresso Martini",
+            description: "Coffee-flavored vodka martini",
+            category: "Classic Cocktail",
+            price: 270,
+            image:
+              "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
+            ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
+            instructions: "Shake with ice, strain into a martini glass.",
+          },
+          {
+            name: "Aperol Spritz",
+            description: "Aperol with prosecco and soda",
+            category: "Classic Cocktail",
+            price: 270,
+            image:
+              "https://www.seriouseats.com/thmb/kx0gGQeyBPJxLJWnfcC2Z2GoO6I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20230811-SEA-AperolSpritz-TwoBites-004-07b0466379044dd6b38cde0e3fff1e0c.jpg",
+            ingredients: ["Aperol", "Prosecco", "Soda water"],
+            instructions: "Pour Aperol, top with prosecco and soda water.",
+          },
+          {
+            name: "Caipirinha",
+            description: "Brazilian lime and cachaça cocktail",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://www.liquor.com/thmb/EdUHsRs8g5jsnTi7_HMDg4xeE-o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/caipirnha-720x720-primary-40900f56782b4c1d8c79494c9b413f9c.jpg",
+            ingredients: ["Cachaça", "Lime", "Sugar"],
+            instructions: "Muddle lime with sugar, add cachaça and ice.",
+          },
+          {
+            name: "Negroni",
+            description: "Classic Italian gin cocktail",
+            category: "Classic Cocktail",
+            price: 250,
+            image:
+              "https://static01.nyt.com/images/2023/08/07/multimedia/JM-Negroni-mhwb/JM-Negroni-mhwb-jumbo.jpg",
+            ingredients: ["Gin", "Campari", "Sweet vermouth"],
+            instructions: "Stir with ice, strain into a glass.",
+          },
+          {
+            name: "Bloody Mary",
+            description: "Spicy vodka cocktail with tomato juice",
+            category: "Classic Cocktail",
+            price: 200,
+            image:
+              "https://images.services.kitchenstories.io/F8_bDIYgnnLlSuYxvj5vJtJMjns=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R1187-final-photo-2.jpg",
+            ingredients: ["Vodka", "Tomato juice", "Lemon juice", "Tabasco"],
+            instructions: "Shake with ice, serve with celery.",
+          },
+          {
+            name: "Tequila Sunrise",
+            description: "Tequila with orange juice and grenadine",
+            category: "Classic Cocktail",
+            price: 230,
+            image:
+              "https://cocktailcorner.fr/wp-content/uploads/2021/03/Tequila-Sunrise.jpg",
+            ingredients: ["Tequila", "Orange juice", "Grenadine"],
+            instructions: "Pour tequila and orange juice, add grenadine.",
+          },
+          {
+            name: "Long Island",
+            description: "Strong mix of spirits with cola",
+            category: "Classic Cocktail",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
+            ingredients: [
+              "Vodka",
+              "Gin",
+              "Tequila",
+              "Rum",
+              "Triple sec",
+              "Cola",
+            ],
+            instructions: "Shake with ice, top with cola.",
+          },
+          {
+            name: "Whiskey Sour",
+            description: "Whiskey with lemon and sugar",
+            category: "Classic Cocktail",
+            price: 250,
+            image:
+              "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2024-03-whiskey-sour%2Fwhiskey-sour-699_1",
+            ingredients: ["Whiskey", "Lemon juice", "Sugar syrup"],
+            instructions: "Shake with ice, strain into a glass.",
+          },
+          {
+            name: "Blue Hawaii",
+            description: "Blue curaçao cocktail with rum",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://www.liquor.com/thmb/rRuiX7llkYB5XvBRPn1Rh37Wa1M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/blue-hawaii-1500x1500-hero-1d77432ce500460f98caa29775805f1c.jpg",
+            ingredients: ["White rum", "Blue curaçao", "Pineapple juice"],
+            instructions: "Shake with ice, strain into a glass.",
+          },
+          {
+            name: "Sex on the Beach",
+            description: "Fruity vodka cocktail",
+            category: "Classic Cocktail",
+            price: 220,
+            image:
+              "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/sex_on_the_beach-621ae6e.jpg",
+            ingredients: [
+              "Vodka",
+              "Peach schnapps",
+              "Orange juice",
+              "Cranberry juice",
+            ],
+            instructions: "Shake with ice, strain into a glass.",
+          },
+
+          // Mocktail
+          {
+            name: "Piña Colada",
+            description: "Non-alcoholic tropical drink",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://www.sandals.com/blog/content/images/2025/02/shutterstock_2266459593.jpg",
+            ingredients: ["Coconut cream", "Pineapple juice"],
+            instructions: "Blend with ice until smooth.",
+          },
+          {
+            name: "Classic Mojito",
+            description: "Non-alcoholic mint and lime drink",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://cookieandkate.com/images/2020/08/best-mojito-recipe-2.jpg",
+            ingredients: ["Mint", "Lime", "Sugar", "Soda"],
+            instructions: "Muddle mint with sugar and lime, top with soda.",
+          },
+          {
+            name: "Strawberry Mojito",
+            description: "Strawberry-flavored non-alcoholic mojito",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://burrataandbubbles.com/wp-content/uploads/2022/07/strawberry-mojito-featured-image.jpg",
+            ingredients: ["Strawberry", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle with strawberry, mint, sugar, and lime, top with soda.",
+          },
+          {
+            name: "Passionfruit Mojito",
+            description: "Passionfruit-flavored non-alcoholic mojito",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbbpOVGFM94jeRPBK5bVtCCP0nuauDiSkBKg&s",
+            ingredients: ["Passionfruit", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle with passionfruit, mint, sugar, and lime, top with soda.",
+          },
+          {
+            name: "Mango Mojito",
+            description: "Mango-flavored non-alcoholic mojito",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://www.mapleandmango.com/wp-content/uploads/2023/07/mango-mojito-feature.jpg",
+            ingredients: ["Mango", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle with mango, mint, sugar, and lime, top with soda.",
+          },
+          {
+            name: "Berry Mojito",
+            description: "Berry-flavored non-alcoholic mojito",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2IC6GLZwaFrxvUYTG2QZZ8H4fYFwPqN3Dw&s",
+            ingredients: ["Mixed berries", "Mint", "Lime", "Sugar", "Soda"],
+            instructions:
+              "Muddle with berries, mint, sugar, and lime, top with soda.",
+          },
+          {
+            name: "Sangria",
+            description: "Non-alcoholic fruit punch",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2_hfL3vO8lpi-9SDDejnZenFCRNbMENB6g&s",
+            ingredients: ["Fruit juice", "Soda", "Fruit"],
+            instructions: "Mix ingredients and serve chilled.",
+          },
+          {
+            name: "Other Mocktail",
+            description: "Custom non-alcoholic drink",
+            category: "Mocktail",
+            price: 150,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTETE1KcaUvoBquWntT4p1_Ts0aYjsXVEi9UJ8JGcbjXrkJGslGYwjfxB2pZGTl9qxjPts&usqp=CAU",
+            ingredients: ["Varied"],
+            instructions: "Prepare according to custom request.",
+          },
+
+          // Signature Cocktail
+          {
+            name: "Ibiza Illusion",
+            description: "Signature tropical cocktail",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://cdn0.bodas.net/vendor/20008/3_2/960/jpg/93f36d7b-0c35-4568-a092-f4d4e2ca321c_1_220008-167966328027706.jpeg",
+            ingredients: ["Rum", "Fruit juice", "Liqueur"],
+            instructions: "Blend with ice until smooth.",
+          },
+          {
+            name: "Refresher",
+            description: "Refreshing signature drink",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUhPiMO_rztECs72sucCXdOJUZJUerTSFJA&s",
+            ingredients: ["Vodka", "Citrus", "Soda"],
+            instructions: "Shake with ice, top with soda.",
+          },
+          {
+            name: "Aperol Sour",
+            description: "Aperol-based sour cocktail",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9ZJjOoQpuaiXbF51PeYvkZOPSEUV022qdA&s",
+            ingredients: ["Aperol", "Lemon juice", "Sugar"],
+            instructions: "Shake with ice, strain into a glass.",
+          },
+          {
+            name: "Pink Sky",
+            description: "Pink-hued signature cocktail",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://hips.hearstapps.com/hmg-prod/images/barbie-cocktails-64b989de9db69.jpg?crop=0.494xw:0.987xh;0.506xw,0.0128xh&resize=1200:*",
+            ingredients: ["Gin", "Berry puree", "Soda"],
+            instructions: "Shake with ice, top with soda.",
+          },
+          {
+            name: "Honey Jack Julep",
+            description: "Honey and whiskey julep",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://ik.imagekit.io/cvygf2xse/jamesonwhiskey/wp-content/uploads/2022/02/16-9_17c1b765-2b14-49d2-bfe2-108a4c360a31-aspect-ratio-4-3.jpg?tr=q-60,w-1200",
+            ingredients: ["Whiskey", "Honey", "Mint"],
+            instructions: "Muddle mint with honey, add whiskey and ice.",
+          },
+          {
+            name: "Rainbow Paradise",
+            description: "Colorful layered cocktail",
+            category: "Signature Cocktail",
+            price: 300,
+            image:
+              "https://3f4c2184e060ce99111b-f8c0985c8cb63a71df5cb7fd729edcab.ssl.cf2.rackcdn.com/media/15072/rainbowparadisecocktail.jpg",
+            ingredients: ["Multiple liqueurs", "Juice"],
+            instructions: "Layer ingredients carefully in a glass.",
+          },
+
+          // Spanish Cocktail
+          {
+            name: "Sangria",
+            description: "Spanish red wine punch",
+            category: "Spanish Cocktail",
+            price: 220,
+            image:
+              "https://www.eatingwell.com/thmb/JJNpmjrM9EpAGhk-lY9kP6R1H0I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/110524-EatingWell_Sangria-930-1eb9a9f4f1a145099340d89b4a2ab355.jpg",
+            ingredients: ["Red wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled.",
+          },
+          {
+            name: "Sangria Jug",
+            description: "Spanish red wine punch",
+            category: "Spanish Cocktail",
+            price: 600,
+            image:
+              "https://www.tasteofhome.com/wp-content/uploads/2024/06/Easy-Red-Sangria_EXPS_TOHVP24_276640_MF_05_21_2.jpg",
+            ingredients: ["Red wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled in a jug.",
+          },
+          {
+            name: "White Sangria",
+            description: "Spanish white wine punch",
+            category: "Spanish Cocktail",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAT2pTn6yjoLiD5GJUl_JEbH7kSv4AdH3qIA&s",
+            ingredients: ["White wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled.",
+          },
+          {
+            name: "White Sangria Jug",
+            description: "Spanish white wine punch",
+            category: "Spanish Cocktail",
+            price: 600,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ek_KKpFVrmW9VodNKPd5Di6WVXVNEOAl5w&s",
+            ingredients: ["White wine", "Fruit", "Brandy"],
+            instructions: "Mix ingredients and serve chilled in a jug.",
+          },
+          {
+            name: "Tinto de Verano",
+            description: "Spanish red wine and soda",
+            category: "Spanish Cocktail",
+            price: 250,
+            image:
+              "https://spanishsabores.com/wp-content/uploads/2023/08/Tinto-de-Verano-Featured.jpg",
+            ingredients: ["Red wine", "Soda", "Lemon"],
+            instructions: "Mix ingredients and serve over ice.",
+          },
+          {
+            name: "Carajillo",
+            description: "Spanish coffee liqueur cocktail",
+            category: "Spanish Cocktail",
+            price: 200,
+            image:
+              "https://cdn.apartmenttherapy.info/image/upload/v1724087173/k/Photo/Recipes/2024-08-Carajillo/Carajillo-2899.jpg",
+            ingredients: ["Coffee", "Licor 43"],
+            instructions: "Serve with espresso.",
+          },
+
+          // Gin Raw
+          {
+            name: "Basil Smash",
+            description: "GinRaw with basil",
+            category: "Gin Raw",
+            price: 280,
+            image:
+              "https://punchdrink.com/wp-content/uploads/2021/06/Social-Modern-Classic-Gin-Basil-Smash-Cocktail-Recipe.jpg",
+            ingredients: ["GinRaw", "Basil", "Lemon"],
+            instructions: "Muddle basil, shake with ice, strain into a glass.",
+          },
+          {
+            name: "Tom Collins",
+            description: "GinRaw Tom Collins",
+            category: "Gin Raw",
+            price: 280,
+            image:
+              "https://images.ctfassets.net/hs93c4k6gio0/4odLWPcmvLvBXvWY46Dytj/17d2ffbc123507cbcacf2bb196aeb25d/_images_tom-collins.jpg.jpg",
+            ingredients: ["GinRaw", "Lemon juice", "Sugar", "Soda"],
+            instructions: "Shake with ice, top with soda.",
+          },
+          {
+            name: "Ibiza-Polotin",
+            description: "GinRaw Ibiza special",
+            category: "Gin Raw",
+            price: 280,
+            image:
+              "https://cdn.prod.website-files.com/61258807d2d4f9553cc9d3e6/6671e997b9d929b9a159a16e_two%20glasses%20with%20drinks%20on%20a%20beach.webp",
+            ingredients: ["GinRaw", "Tonic", "Fruit"],
+            instructions: "Mix ingredients and serve over ice.",
+          },
+          {
+            name: "The Purple Pew",
+            description: "Purple-hued GinRaw cocktail",
+            category: "Gin Raw",
+            price: 280,
+            image:
+              "https://ik.imagekit.io/vjt1kualr/drinks/purple_people_eater/main-image.jpg",
+            ingredients: ["GinRaw", "Berry liqueur"],
+            instructions: "Shake with ice, strain into a glass.",
+          },
+
+          // Gin Tonic
+          {
+            name: "Classic",
+            description: "Classic gin and tonic",
+            category: "Gin Tonic",
+            price: 250,
+            image:
+              "https://www.liquor.com/thmb/sYX_sTKUpyagRermLA31SMLF3-8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__18090535__Gin-and-Tonic-720x720-recipe-c2e32c4cf53c4ed7a4de20af8e862a12.jpg",
+            ingredients: ["Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Nordes (Galicia)",
+            description: "Galician gin and tonic",
+            category: "Gin Tonic",
+            price: 420,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHGjOmUQ6q031l1dEZW9CdpliLwgRjJY_l3w&s",
+            ingredients: ["Nordes Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "GIN RAW (Barcelona)",
+            description: "Barcelona gin and tonic",
+            category: "Gin Tonic",
+            price: 250,
+            image:
+              "https://m.media-amazon.com/images/I/61BvYUlT0vS._AC_UF350,350_QL80_.jpg",
+            ingredients: ["GinRaw", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Roku Gin",
+            description: "Japanese gin and tonic",
+            category: "Gin Tonic",
+            price: 350,
+            image:
+              "https://binendswine.com/cdn/shop/products/A1BChmDB8KiZ9-uiGCpxRux0QcLWtYkO_uA_R-OxUakbc2hAnb6N1fsbyFbu8vXoVfHUbqdb1f4XvcDn8fIYzBLY5cEQ_cjj4h40UuZg6_GqVkO0ma8_5baUbNRJjpEyAj4xABNuW_LlC7Ldc5ek33T6mS4cg8URSDL1DRF1skc-l_pGT-jMkq4.png?v=1627080284",
+            ingredients: ["Roku Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Bulldog",
+            description: "Bulldog gin and tonic",
+            category: "Gin Tonic",
+            price: 280,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/bulldog-london-dry-premium-gin-70cl-41783819174126.jpg?v=1737556925",
+            ingredients: ["Bulldog Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Bombay",
+            description: "Bombay gin and tonic",
+            category: "Gin Tonic",
+            price: 250,
+            image:
+              "https://shop.bombaysapphire.com/cdn/shop/files/bombay-sapphire.jpg?v=1712226381&width=1500",
+            ingredients: ["Bombay Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Beefeater 24",
+            description: "Beefeater 24 gin and tonic",
+            category: "Gin Tonic",
+            price: 280,
+            image:
+              "https://ik.imagekit.io/cvygf2xse/beefeatergin/wp-content/uploads/2022/08/beefeater-24-gin-tonic-cocktail.jpg?tr=q-80,w-735",
+            ingredients: ["Beefeater 24", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+          {
+            name: "Hendriks",
+            description: "Hendricks gin and tonic",
+            category: "Gin Tonic",
+            price: 280,
+            image:
+              "https://www.zepbrook.co.uk/cdn/shop/files/1122640x640.jpg?v=1706616631",
+            ingredients: ["Hendricks Gin", "Tonic water"],
+            instructions: "Mix with ice and serve.",
+          },
+
+          // Vodka
+          {
+            name: "Smirnoff",
+            description: "Classic vodka",
+            category: "Vodka",
+            price: 220,
+            image: "https://d19oj5aeuefgv.cloudfront.net/0132106",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Grey Goose",
+            description: "Premium French vodka",
+            category: "Vodka",
+            price: 300,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa9qX8frU-7jUDdjzf0wTamtjs1R-pJ7_5dw&s",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Finlandia",
+            description: "Finnish vodka",
+            category: "Vodka",
+            price: 250,
+            image:
+              "https://www.wineandbeyond.ca/cdn/shop/files/1000212_1.jpg?v=1745942043",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Ciroc",
+            description: "Grape-based vodka",
+            category: "Vodka",
+            price: 350,
+            image:
+              "https://www.finewineandgoodspirits.com/ccstore/v1/images/?source=/file/v5846329782546229840/products/000004224_F1.jpg&height=475&width=475",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Belvedere",
+            description: "Polish vodka",
+            category: "Vodka",
+            price: 350,
+            image:
+              "https://http2.mlstatic.com/D_NQ_NP_669484-MLA82480221117_022025-O.webp",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Absolute",
+            description: "Swedish vodka",
+            category: "Vodka",
+            price: 250,
+            image:
+              "https://medias.artmajeur.com/standard/14633087_20200603-143523.jpg?v=1739030713",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled or with mixers.",
+          },
+
+          // Rum
+          {
+            name: "Captain Morgan (Dark)",
+            description: "Dark rum",
+            category: "Rum",
+            price: 230,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/captain-morgan-dark-rum-70cl-41382231900398.jpg?v=1737775499",
+            ingredients: ["Dark rum"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Zacapa",
+            description: "Premium Guatemalan rum",
+            category: "Rum",
+            price: 410,
+            image:
+              "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/Rum/Ron_Zacapa_Centenario_23_Y.png",
+            ingredients: ["Rum"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Sailor Jerry",
+            description: "Spiced rum",
+            category: "Rum",
+            price: 250,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/sailor-jerry-the-original-spiced-caribbean-rum-70cl-41427403178222.jpg?v=1746361482",
+            ingredients: ["Spiced rum"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Mount Gay",
+            description: "Barbadian rum",
+            category: "Rum",
+            price: 240,
+            image:
+              "https://wishbeer.com/cdn/shop/products/MountGayXORum-700ml-40.png?v=1669965271",
+            ingredients: ["Rum"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Chalong Bay",
+            description: "Thai rum",
+            category: "Rum",
+            price: 390,
+            image:
+              "https://chalongbayrum.com/images/collection/spiced-thm-over.png",
+            ingredients: ["Rum"],
+            instructions: "Serve chilled or with mixers.",
+          },
+
+          // Whiskey
+          {
+            name: "Southern Comfort",
+            description: "Whiskey liqueur",
+            category: "Whiskey",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXRI9P7pBwj_CGkhhz2PG3KpBb-VOIznFlg&s",
+            ingredients: ["Whiskey"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Famous Grouse",
+            description: "Blended Scotch",
+            category: "Whiskey",
+            price: 200,
+            image:
+              "https://liberationqualitydrinks.je/cdn/shop/files/WEBSITE_11_79fcb52b-008b-4699-9267-6d75532c4a38_1024x.png?v=1714563173",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Chivas Regal (15 years)",
+            description: "15-year aged Scotch",
+            category: "Whiskey",
+            price: 340,
+            image:
+              "https://liquoreval.com/wp-content/uploads/2024/08/Chivas-Regal-XV-15Yea-2.jpg",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Chivas Regal (13 years)",
+            description: "13-year aged Scotch",
+            category: "Whiskey",
+            price: 250,
+            image:
+              "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/d12a67dfc7ae6f1a3f6a029f36a4cf0b.png",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Jack Daniels (Honey)",
+            description: "Honey-flavored whiskey",
+            category: "Whiskey",
+            price: 270,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/jack-daniel-s-tennessee-honey-35-cl-40872456225006.jpg?v=1742188631",
+            ingredients: ["Whiskey"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Jack Daniels",
+            description: "Classic Tennessee whiskey",
+            category: "Whiskey",
+            price: 270,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/jack-daniels-tennessee-whiskey-1l-42579621970158.jpg?v=1742189560",
+            ingredients: ["Whiskey"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Canadian Club",
+            description: "Canadian whisky",
+            category: "Whiskey",
+            price: 400,
+            image:
+              "https://topshelfwineandspirits.com/cdn/shop/products/00100lrPORTRAIT_00100_BURST20200625124607360_COVER-scaled.jpg?v=1650916186&width=2560",
+            ingredients: ["Whisky"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Woodford Reserve",
+            description: "Kentucky bourbon",
+            category: "Whiskey",
+            price: 250,
+            image:
+              "https://topshelfwineandspirits.com/cdn/shop/products/Screenshot2023-01-10at11.53.11AM.jpg?v=1673380771&width=2068",
+            ingredients: ["Bourbon"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Monkey Shoulder",
+            description: "Blended malt Scotch",
+            category: "Whiskey",
+            price: 250,
+            image: "https://wine-more.com/wp-content/uploads/2022/07/12-1.png",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Red Label",
+            description: "Johnnie Walker Red Label",
+            category: "Whiskey",
+            price: 250,
+            image:
+              "https://siamsips.com/wp-content/uploads/2023/12/3755d2_6546ea753b2b4c4cbce26f7952d72cb2mv2.jpg",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Black Label",
+            description: "Johnnie Walker Black Label",
+            category: "Whiskey",
+            price: 340,
+            image:
+              "https://images.ctfassets.net/waruwpig3jxu/rYk8WxpJ1ellZvibRckWT/0e8df23f16b39c6d986faf6f68af8fee/black-750ml_producthero_lifestyle-01_desktop.webp?&w=2560&q=70",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "J&B",
+            description: "J&B blended Scotch",
+            category: "Whiskey",
+            price: 200,
+            image:
+              "https://www.diageobaracademy.com/_next/image?url=https%3A%2F%2Fmedia.diageocms.com%2Fmedia%2Fjqvj2p4q%2Fspirits-beer-and-drinks_our-brands_blended-scotch_jb-split-media_dba_downloadable_704x506.png&w=1920&q=75",
+            ingredients: ["Scotch"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Jameson",
+            description: "Irish whiskey",
+            category: "Whiskey",
+            price: 200,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI9NguIR8diycdOSLTZCLM5QMrMqWPjMVKhg&s",
+            ingredients: ["Whiskey"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Tullamore Dew",
+            description: "Irish whiskey",
+            category: "Whiskey",
+            price: 220,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvIXHNxl4fJ5r7SixoevEVJHO0suqS__tWfw&s",
+            ingredients: ["Whiskey"],
+            instructions: "Serve neat or with ice.",
+          },
+
+          // Liqueurs
+          {
+            name: "Malibu",
+            description: "Coconut liqueur",
+            category: "Liqueurs",
+            price: 220,
+            image:
+              "https://wishbeer.com/cdn/shop/products/3255.jpg?v=1560160234",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled or with mixers.",
+          },
+          {
+            name: "Baileys",
+            description: "Irish cream liqueur",
+            category: "Liqueurs",
+            price: 170,
+            image:
+              "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/ebc1f8037a1f1bc9266faf75e45ecac3.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Cointreau",
+            description: "Orange liqueur",
+            category: "Liqueurs",
+            price: 240,
+            image:
+              "https://www.marthastewart.com/thmb/yz2NBla0Iw1_l1O1wLouy37cweE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cointreau-cosmopolitan-1-0121-2000-horiz-958fd1f7503a4b1e824453c8d3a1e7ba.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Frangelico",
+            description: "Hazelnut liqueur",
+            category: "Liqueurs",
+            price: 240,
+            image:
+              "https://wishbeer.com/cdn/shop/products/2852.jpg?v=1560159357",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Tia Maria",
+            description: "Coffee liqueur",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://cdn11.bigcommerce.com/s-ly0g6dh0z8/images/stencil/1280x1280/products/443/56557/tiamaria-2__91311.1740535932.jpg?c=1",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Drambuie",
+            description: "Honeyed Scotch liqueur",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://www.drambuie.com/assets/Uploads/carousel/Honeyed-Whisky-Espresso-Martini-carousel-1.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Heering",
+            description: "Cherry liqueur",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNW8A202PGKmWxRekqaNv42vLLMG76n0V3Kg&s",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "B52",
+            description: "Layered coffee liqueur shot",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2iGCuVrZpA8BTLsu9ztZ79Reh0vSi1_TheQ&s",
+            ingredients: ["Liqueur"],
+            instructions: "Layer ingredients and serve.",
+          },
+          {
+            name: "Amaretto",
+            description: "Almond liqueur",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgTQV91sijCeUMgkH_A_63c8VzIRw3np6fFQ&s",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Aperol",
+            description: "Italian aperitif",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Aperol_Flasche.jpg/250px-Aperol_Flasche.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Coffee",
+            description: "Coffee liqueur",
+            category: "Liqueurs",
+            price: 250,
+            image:
+              "https://zoom.ocado.com/productImages/255/25520011_25520011_0_1736346506000_1280x1280.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+
+          // Brandy
+          {
+            name: "Honney Conti",
+            description: "Brandy",
+            category: "Brandy",
+            price: 230,
+            image: "https://d19oj5aeuefgv.cloudfront.net/0261245",
+            ingredients: ["Brandy"],
+            instructions: "Serve neat or with ice.",
+          },
+          {
+            name: "Hennessy (V.S.O.P)",
+            description: "Premium cognac",
+            category: "Brandy",
+            price: 250,
+            image:
+              "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/HENNESSY/HENNESSY_VSOP.png",
+            ingredients: ["Cognac"],
+            instructions: "Serve neat or with ice.",
+          },
+
+          // Shooter
+          {
+            name: "Ibiza ICE",
+            description: "Ibiza special shooter",
+            category: "Shooter",
+            price: 100,
+            image:
+              "https://dv7zfk0hwmxgu.cloudfront.net/sites/default/files/styles/auto_1500_width/public/article-images/135908/slideshow-1589279390.jpg",
+            ingredients: ["Vodka"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Jose Quervo Silver",
+            description: "Tequila shooter",
+            category: "Shooter",
+            price: 300,
+            image:
+              "https://wishbeer.com/cdn/shop/products/12317.jpg?v=1560178303",
+            ingredients: ["Tequila"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "400 Conejos",
+            description: "Mezcal shooter",
+            category: "Shooter",
+            price: 300,
+            image:
+              "https://wishbeer.com/cdn/shop/products/400conejos.jpg?v=1647841143",
+            ingredients: ["Mezcal"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Jaegermeister",
+            description: "Herbal liqueur shooter",
+            category: "Shooter",
+            price: 200,
+            image:
+              "https://omotgtravel.com/wp-content/uploads/2024/03/jagermeister-bottle.jpg",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "B52",
+            description: "Layered shooter",
+            category: "Shooter",
+            price: 150,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDSQo8PnpgrPl8B9DSZGmBwocLQMP_N17Cg&s",
+            ingredients: ["Liqueur"],
+            instructions: "Layer ingredients and serve.",
+          },
+          {
+            name: "Jaegerbomb",
+            description: "Jaegermeister with energy drink",
+            category: "Shooter",
+            price: 200,
+            image:
+              "https://t1.blockdit.com/photos/2019/06/5d0afa1af793520feead6bde_800x0xcover_uiSF_aCh.jpg",
+            ingredients: ["Jaegermeister", "Energy drink"],
+            instructions: "Drop Jaegermeister into energy drink and serve.",
+          },
+          {
+            name: "Sambuca",
+            description: "Anise-flavored shooter",
+            category: "Shooter",
+            price: 150,
+            image:
+              "https://mcgrocer.com/cdn/shop/files/antica-sambuca-classic-70cl-41369643778286.jpg?v=1735995553",
+            ingredients: ["Liqueur"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Tequila",
+            description: "Straight tequila shot",
+            category: "Shooter",
+            price: 150,
+            image:
+              "https://image.makewebcdn.com/makeweb/m_1920x0/6KKhXhmFQ/Tequilanew/SIERRA.png",
+            ingredients: ["Tequila"],
+            instructions: "Serve chilled with salt and lime.",
+          },
+
+          // Special
+          {
+            name: "San Miguel Bucket (6)",
+            description: "Bucket of 6 San Miguel beers",
+            category: "Special",
+            price: 500,
+            image:
+              "https://asiatravelbug.net/wp-content/uploads/2012/04/bucket.jpg",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Mahou Bucket (5)",
+            description: "Bucket of 5 Mahou beers",
+            category: "Special",
+            price: 550,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0MIlzStWfr9Nlg4EgazETdRU7Lezxx1cTow&s",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled.",
+          },
+          {
+            name: "Corona Bucket (6)",
+            description: "Bucket of 6 Corona beers",
+            category: "Special",
+            price: 600,
+            image:
+              "https://powerhousesurf.com.au/cdn/shop/products/5636426aa1d005b13ca4164d7691940f0468d3c3.jpg?v=1566746191",
+            ingredients: ["Beer"],
+            instructions: "Serve chilled with lime.",
+          },
+          {
+            name: "Vodka and Mix",
+            description: "Vodka with mixer",
+            category: "Special",
+            price: 400,
+            image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfIZFbrDoYaiW239EviEvlPNbrsGk5rfQmgw&s",
+            ingredients: ["Vodka", "Mixer"],
+            instructions: "Mix with chosen mixer and serve over ice.",
+          },
+          {
+            name: "2x Gin Raw Mix",
+            description: "Two GinRaw cocktails",
+            category: "Special",
+            price: 400,
+            image:
+              "https://images-svetnapojov-cdn.rshop.sk/gallery-big/products/ceb83a2a55770d4157a8f656b7a97732.jpg",
+            ingredients: ["GinRaw", "Mixer"],
+            instructions: "Mix with chosen mixer and serve over ice.",
+          },
+        ],
       };
 
       // Password for locked content
@@ -2458,8 +2787,6 @@ function googleTranslateElementInit() {
             )
           );
         }
-
-        
 
         return results;
       }
