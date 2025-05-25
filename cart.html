@@ -227,6 +227,47 @@
         background-color: #e27d60; /* Soft Terracotta */
       }
 
+      /* Name Input */
+      .name-input-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto 2rem;
+      }
+
+      .name-input-container input {
+        flex-grow: 1;
+        padding: 0.5rem;
+        border: 1px solid #556b2f; /* Olive Green */
+        border-radius: 6px;
+        background-color: #fffaf0; /* Warm White/Cream */
+        color: #722f37; /* Deep Burgundy */
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .name-input-container input:focus {
+        outline: none;
+        border-color: #e27d60; /* Soft Terracotta */
+        box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2); /* Soft Terracotta */
+      }
+
+      .name-input-container button {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        background-color: #e27d60; /* Soft Terracotta */
+        color: #fffaf0; /* Warm White/Cream */
+        border: none;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .name-input-container button:hover {
+        background-color: #722f37; /* Deep Burgundy */
+        transform: translateY(-1px);
+      }
+
       @keyframes removeItem {
         0% {
           transform: translateX(0);
@@ -315,9 +356,15 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold mb-8 text-center text-[#722F37]">
-        Shopping Cart
-      </h1>
+      <div class="name-input-container">
+        <input
+          type="text"
+          id="cartName"
+          value="Shopping Cart"
+          class="font-bold text-center"
+        />
+        <button id="saveNameBtn">Save</button>
+      </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Cart Items -->
@@ -354,10 +401,10 @@
               </div>
             </div>
             <button
-              id="checkoutBtn"
-              class="w-full mt-6 bg-[#E27D60] text-[#FFFAF0] py-2 rounded-lg hover:bg-[#722F37] transition-colors"
+              id="clearAllBtn"
+              class="w-full mt-6 bg-[#722F37] text-[#FFFAF0] py-2 rounded-lg hover:bg-[#E27D60] transition-colors"
             >
-              Proceed to Checkout
+              Clear All
             </button>
           </div>
         </div>
@@ -377,7 +424,6 @@
     </main>
 
     <!-- Floating Note Dialog -->
-
     <div id="noteDialog" class="note-dialog">
       <div class="header">
         <h3 class="text-lg font-semibold">Add Note</h3>
@@ -413,6 +459,25 @@
         <button class="delete-btn" id="confirmDelete">Delete</button>
       </div>
     </div>
+
+    <!-- Clear All Confirmation Dialog -->
+    <div id="clearAllDialog" class="delete-dialog">
+      <div class="header">
+        <h3 class="text-lg font-semibold">Confirm Clear All</h3>
+        <button class="close-btn" id="closeClearAllDialog">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="content">
+        <i class="fas fa-trash-alt"></i>
+        <p>Are you sure you want to clear all items from your cart?</p>
+      </div>
+      <div class="actions">
+        <button class="cancel-btn" id="cancelClearAll">Cancel</button>
+        <button class="delete-btn" id="confirmClearAll">Clear All</button>
+      </div>
+    </div>
+
     <div class="flex lg:hidden h-28"></div>
 
     <!-- Bottom Navigation -->
@@ -460,6 +525,7 @@
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       let currentEditingItemId = null;
       let itemToDelete = null;
+      let cartName = localStorage.getItem("cartName") || "Shopping Cart";
 
       // Constants for charges
       const SERVICE_CHARGE_RATE = 0.05; // 5%
@@ -483,6 +549,12 @@
             !totalElement
           ) {
             throw new Error("Cart elements missing");
+          }
+
+          // Update cart name
+          const cartNameElement = document.getElementById("cartName");
+          if (cartNameElement) {
+            cartNameElement.value = cartName;
           }
 
           // Show/hide empty cart message
@@ -522,9 +594,9 @@
                             <h3 class="font-semibold text-[#722F37]">${
                               item.name
                             }</h3>
-                            <p class="text-[#556B2F]">฿${item.price.toFixed(
-                              2
-                            )}</p>
+                            <p class="text-[#556B2F]">฿${(
+                              item.price * (item.quantity || 1)
+                            ).toFixed(2)}</p>
                             ${
                               item.note
                                 ? `<p class="text-sm text-[#556B2F] mt-1"><i class="fas fa-sticky-note mr-1 text-[#E27D60]"></i>${item.note}</p>`
@@ -576,6 +648,7 @@
             cart[itemIndex].quantity = newQuantity;
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCart();
+            updateCartCount();
           }
         } catch (error) {
           console.error("Error in updateQuantity:", error);
@@ -678,16 +751,79 @@
               cart = cart.filter((item) => item.id !== itemToDelete);
               localStorage.setItem("cart", JSON.stringify(cart));
               updateCart();
+              updateCartCount();
               closeDeleteDialog();
             }, 500);
           } else {
             cart = cart.filter((item) => item.id !== itemToDelete);
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCart();
+            updateCartCount();
             closeDeleteDialog();
           }
         } catch (error) {
           console.error("Error in confirmDelete:", error);
+        }
+      }
+
+      function showClearAllDialog() {
+        try {
+          const clearAllDialog = document.getElementById("clearAllDialog");
+          if (!clearAllDialog) throw new Error("Clear all dialog not found");
+
+          clearAllDialog.classList.add("show");
+          document.body.classList.add("no-scroll");
+        } catch (error) {
+          console.error("Error in showClearAllDialog:", error);
+        }
+      }
+
+      function closeClearAllDialog() {
+        try {
+          const clearAllDialog = document.getElementById("clearAllDialog");
+          if (!clearAllDialog) throw new Error("Clear all dialog not found");
+
+          clearAllDialog.classList.remove("show");
+          document.body.classList.remove("no-scroll");
+        } catch (error) {
+          console.error("Error in closeClearAllDialog:", error);
+        }
+      }
+
+      function confirmClearAll() {
+        try {
+          const cartItems = document.getElementById("cartItems");
+          if (cartItems) {
+            cartItems.classList.add("removing");
+            setTimeout(() => {
+              cart = [];
+              localStorage.setItem("cart", JSON.stringify(cart));
+              updateCart();
+              updateCartCount();
+              closeClearAllDialog();
+            }, 500);
+          } else {
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+            updateCartCount();
+            closeClearAllDialog();
+          }
+        } catch (error) {
+          console.error("Error in confirmClearAll:", error);
+        }
+      }
+
+      function saveCartName() {
+        try {
+          const cartNameInput = document.getElementById("cartName");
+          if (!cartNameInput) throw new Error("Cart name input not found");
+
+          cartName = cartNameInput.value.trim() || "Shopping Cart";
+          localStorage.setItem("cartName", cartName);
+          updateCart();
+        } catch (error) {
+          console.error("Error in saveCartName:", error);
         }
       }
 
@@ -725,10 +861,28 @@
         .getElementById("confirmDelete")
         .addEventListener("click", confirmDelete);
 
+      document
+        .getElementById("clearAllBtn")
+        .addEventListener("click", showClearAllDialog);
+      document
+        .getElementById("closeClearAllDialog")
+        .addEventListener("click", closeClearAllDialog);
+      document
+        .getElementById("cancelClearAll")
+        .addEventListener("click", closeClearAllDialog);
+      document
+        .getElementById("confirmClearAll")
+        .addEventListener("click", confirmClearAll);
+
+      document
+        .getElementById("saveNameBtn")
+        .addEventListener("click", saveCartName);
+
       // Close dialogs when clicking outside
       window.addEventListener("click", (event) => {
         const noteDialog = document.getElementById("noteDialog");
         const deleteDialog = document.getElementById("deleteDialog");
+        const clearAllDialog = document.getElementById("clearAllDialog");
 
         if (
           event.target === noteDialog &&
@@ -743,6 +897,13 @@
         ) {
           closeDeleteDialog();
         }
+
+        if (
+          event.target === clearAllDialog &&
+          !event.target.closest(".delete-dialog > div")
+        ) {
+          closeClearAllDialog();
+        }
       });
 
       // Initialize cart
@@ -751,7 +912,6 @@
         updateCartCount();
 
         // Bottom navigation active state and touch feedback
-
         const currentPath =
           window.location.pathname.split("/").pop() || "index.html";
         const bottomNavItems = document.querySelectorAll(".bottom-nav-item");
@@ -787,11 +947,6 @@
             }
           });
         });
-      });
-
-      // Checkout button
-      document.getElementById("checkoutBtn").addEventListener("click", () => {
-        alert("Checkout functionality coming soon!");
       });
     </script>
   </body>
