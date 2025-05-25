@@ -14,7 +14,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./css/bottom_navigation.css" />
-
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "olive-green": "#556B2F",
+              "soft-terracotta": "#E27D60",
+              "warm-cream": "#FFFAF0",
+              "deep-burgundy": "#722F37",
+              "light-cream": "#F5F5F5",
+            },
+          },
+        },
+      };
+    </script>
     <style>
       body {
         font-family: "Poppins", sans-serif;
@@ -356,14 +370,21 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-      <div class="name-input-container">
+      <div
+        class="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md mx-auto mb-6"
+      >
         <input
           type="text"
           id="cartName"
           value="Shopping Cart"
-          class="font-bold text-center"
+          class="w-full sm:flex-1 p-2 border border-olive-green rounded-lg bg-warm-cream text-deep-burgundy font-bold text-lg sm:text-xl text-center focus:outline-none focus:border-soft-terracotta focus:ring-2 focus:ring-soft-terracotta/20"
         />
-        <button id="saveNameBtn">Save</button>
+        <button
+          id="saveNameBtn"
+          class="hidden w-full sm:w-auto px-4 py-2 bg-soft-terracotta text-warm-cream rounded-lg font-medium hover:bg-deep-burgundy hover:-translate-y-0.5 transition-all min-w-[44px] min-h-[44px]"
+        >
+          Save
+        </button>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -375,7 +396,7 @@
         </div>
 
         <!-- Order Summary -->
-        <div class="lg:col-span-1">
+        <div id="orderSummary" class="lg:col-span-1 hidden">
           <div class="bg-[#F5F5F5] rounded-lg shadow-md p-6 sticky top-4">
             <h2 class="text-xl font-semibold mb-4 text-[#722F37]">
               Order Summary
@@ -557,13 +578,15 @@
             cartNameElement.value = cartName;
           }
 
-          // Show/hide empty cart message
+          // Show/hide empty cart message and order summary
           if (cart.length === 0) {
             emptyCart.classList.remove("hidden");
             cartItems.classList.add("hidden");
+            orderSummary.classList.add("hidden");
           } else {
             emptyCart.classList.add("hidden");
             cartItems.classList.remove("hidden");
+            orderSummary.classList.remove("hidden");
           }
 
           // Calculate totals
@@ -813,7 +836,23 @@
           console.error("Error in confirmClearAll:", error);
         }
       }
+      function toggleSaveButton() {
+        try {
+          const cartNameInput = document.getElementById("cartName");
+          const saveNameBtn = document.getElementById("saveNameBtn");
+          if (!cartNameInput || !saveNameBtn)
+            throw new Error("Cart name input or button not found");
 
+          const currentValue = cartNameInput.value.trim();
+          if (currentValue !== cartName && currentValue !== "") {
+            saveNameBtn.classList.remove("hidden");
+          } else {
+            saveNameBtn.classList.add("hidden");
+          }
+        } catch (error) {
+          console.error("Error in toggleSaveButton:", error);
+        }
+      }
       function saveCartName() {
         try {
           const cartNameInput = document.getElementById("cartName");
@@ -822,6 +861,7 @@
           cartName = cartNameInput.value.trim() || "Shopping Cart";
           localStorage.setItem("cartName", cartName);
           updateCart();
+          toggleSaveButton();
         } catch (error) {
           console.error("Error in saveCartName:", error);
         }
@@ -877,6 +917,10 @@
       document
         .getElementById("saveNameBtn")
         .addEventListener("click", saveCartName);
+      const cartNameInput = document.getElementById("cartName");
+      if (cartNameInput) {
+        cartNameInput.addEventListener("input", toggleSaveButton);
+      }
 
       // Close dialogs when clicking outside
       window.addEventListener("click", (event) => {
