@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food & Drink Menu</title>
+    <title>Ibiza Beach Club</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -13,13 +13,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/bottom_navigation.css" />
     <style>
       body {
         font-family: "Poppins", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: #FFFAF0; /* Warm White/Cream */
+        background-color: #fffaf0;
       }
 
       /* Hero Section Animations */
@@ -34,100 +38,342 @@
         }
       }
 
-      @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
+      @keyframes cursorPulse {
+        0% {
           transform: scale(1);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.4;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translateY(-20px) scale(1.2);
+          opacity: 0.4;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 0.8;
         }
       }
 
       .hero-content {
         animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
       .hero-buttons {
         animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+      }
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* Card styles */
       .card {
-        background: #F5F5F5; /* Warm White/Cream */
+        background: #f5f5f5;
         border-radius: 1.25rem;
         overflow: hidden;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid rgba(0, 0, 0, 0.05);
+        width: 85vw; /* Default for mobile */
+        max-width: 320px; /* Cap card width */
+        margin: 0 auto;
       }
 
       .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .swiper-slide-active .card {
+        transform: scale(1.05); /* Slightly enlarge active slide */
+        box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.15);
       }
 
       /* Button styles */
       .ios-button {
-        background: linear-gradient(135deg, #E27D60 0%, #722F37 100%); /* Soft Terracotta to Deep Burgundy */
-        color: #FFFAF0; /* Warm White/Cream */
+        background: linear-gradient(135deg, #e27d60 0%, #722f37 100%);
+        color: #fffaf0;
         padding: 0.875rem 1.75rem;
         border-radius: 1rem;
         font-weight: 500;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        transform-origin: center;
-        box-shadow: 0 4px 6px -1px rgba(114, 47, 55, 0.2); /* Deep Burgundy shadow */
+        box-shadow: 0 4px 6px -1px rgba(114, 47, 55, 0.2);
       }
 
       .ios-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 8px -1px rgba(114, 47, 55, 0.3);
-         /* Deep Burgundy shadow */
       }
 
       .ios-button:active {
         transform: scale(0.98) translateY(0);
       }
+
+      /* Custom Cursor */
+      .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: rgba(226, 125, 96, 0.7);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        animation: cursorPulse 1.5s infinite;
+        transition: transform 0.1s ease;
+      }
+
+      .custom-cursor.hover {
+        transform: scale(1.5);
+        background: rgba(226, 125, 96, 0.9);
+      }
+
+      /* Swiper Custom Styles (Hero and Events) */
+      .swiper-hero {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .swiper-hero .swiper-slide {
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      .swiper-hero .swiper-slide-active {
+        opacity: 1;
+      }
+
+      .swiper-events {
+        padding: 1rem 0.5rem;
+        width: 100%;
+        max-width: 1280px; /* Cap container width */
+        margin: 0 auto;
+        overflow: hidden; /* Prevent horizontal scroll */
+      }
+
+      .swiper-events .swiper-slide {
+        opacity: 0.6;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .swiper-events .swiper-slide-active {
+        opacity: 1;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        color: #fffaf0;
+        background: #e27d60;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px -1px rgba(114, 47, 55, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        background: #722f37;
+        transform: scale(1.1);
+      }
+
+      .swiper-button-prev {
+        left: 8px;
+      }
+
+      .swiper-button-next {
+        right: 8px;
+      }
+
+      .swiper-pagination {
+        bottom: 0;
+      }
+
+      .swiper-pagination-bullet {
+        background: #e27d60;
+        opacity: 0.5;
+        width: 10px;
+        height: 10px;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #722f37;
+        opacity: 1;
+      }
+
+      /* Particle Effects */
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: rgba(226, 125, 96, 0.5);
+        border-radius: 50%;
+        z-index: 1;
+        animation: particleFloat 3s infinite ease-in-out;
+      }
+
+      /* Typewriter Effect */
+      .typewriter {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #e27d60;
+      }
+
+      /* Responsive Adjustments */
+      @media (min-width: 640px) {
+        .card {
+          width: 45vw; /* Adjust for tablet */
+          max-width: 360px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .card {
+          width: 30vw; /* Adjust for desktop */
+          max-width: 380px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .swiper-events {
+          padding: 1rem 0.25rem;
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+          width: 30px;
+          height: 30px;
+        }
+        .swiper-pagination {
+          bottom: -4px;
+        }
+      }
+
+      /* Google Translate Widget */
+      .translate-container {
+        display: flex;
+        align-items: center;
+        max-width: 150px;
+      }
+
+      #google_translate_element {
+        width: 100%;
+      }
+
+      #google_translate_element select {
+        background: #f3f1f8;
+        color: #556b2f;
+        border: 1px solid #e27d60;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.875rem;
+        width: 100%;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23722F37" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position: right 0.5rem center;
+        transition: all 0.3s ease;
+      }
+
+      #google_translate_element select:focus {
+        outline: none;
+        border-color: #722f37;
+        box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+      }
+
+      /* Hide unnecessary Google Translate elements */
+      .goog-te-banner-frame,
+      .goog-te-menu-frame {
+        display: none !important;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 640px) {
+        .translate-container {
+          max-width: 120px;
+        }
+        #google_translate_element select {
+          font-size: 0.75rem;
+          padding: 0.375rem 1.5rem 0.375rem 0.5rem;
+          background-position: right 0.25rem center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .translate-container {
+          max-width: 100px;
+        }
+        #google_translate_element select {
+          font-size: 0.7rem;
+          padding: 0.25rem 1.25rem 0.25rem 0.375rem;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
     <!-- App Bar -->
-    <nav class="bg-white shadow-md">
+    <nav class="bg-white shadow-md fixed w-full z-10">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
             <a
               href="./"
-              class="text-xl font-bold text-[#722F37] flex items-center gap-2" /* Deep Burgundy */
+              class="text-xl font-bold text-[#722F37] flex items-center gap-2"
             >
               <i class="fas fa-utensils"></i>
-              <span>Food Menu</span>
+              <span>Ibiza Beach Club</span>
             </a>
           </div>
-          <!-- Desktop Navigation -->
           <div class="hidden md:flex space-x-8 desktop-nav">
             <a
               href="food.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Food</a
             >
             <a
               href="drinks.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Drinks</a
             >
             <a
-              href="recipes.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
-              >Recipes</a
+              href="cart.html"
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
+              >Cart</a
             >
             <a
               href="search.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
             >
               <i class="fas fa-search"></i> Search
             </a>
@@ -136,211 +382,271 @@
             <a
               href="cart.html"
               id="cartButton"
-              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors" /* Soft Terracotta on hover */
+              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors"
             >
               <i class="fas fa-shopping-cart"></i>
               <span
                 id="cartCount"
-                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs" /* Deep Burgundy with Warm White text */
+                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs"
                 >0</span
               >
             </a>
-    <div id="google_translate_element"></div>
- 
+            <div class="translate-container">
+              <div id="google_translate_element"></div>
+            </div>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <header
-      class="relative h-screen bg-cover bg-center overflow-hidden"
-      style="
-        background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      "
-    >
+    <header class="relative h-screen overflow-hidden">
+      <div class="swiper-hero">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1657313666513-70770d329ef4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          ></div>
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1633436375795-12b3b339712f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          ></div>
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1611244806964-91d204d4a2a7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            "
+          ></div>
+        </div>
+      </div>
       <div
-        class="absolute inset-0 bg-gradient-to-r from-[#722F37]/80 via-[#722F37]/50 to-transparent" /* Deep Burgundy gradient */
+        class="absolute inset-0 bg-gradient-to-r from-[#722F37]/80 via-[#722F37]/50 to-transparent z-2"
       ></div>
-      <div class="absolute inset-0 flex items-center">
+      <div class="absolute inset-0 z-3">
+        <div
+          class="particle"
+          style="left: 10%; top: 20%; animation-delay: 0s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 30%; top: 50%; animation-delay: 1s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 50%; top: 30%; animation-delay: 0.5s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 70%; top: 60%; animation-delay: 1.5s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 90%; top: 40%; animation-delay: 2s"
+        ></div>
+      </div>
+      <div class="absolute inset-0 flex items-center z-4">
         <div class="container mx-auto px-4">
-          <div class="max-w-2xl">
-            <div class="hero-content space-y-8">
-              <h1
-                class="text-6xl md:text-7xl font-bold text-[#FFFAF0] leading-tight" 
-              >
-                Discover the Art of
-                <span class="text-[#E27D60]">Fine Dining</span>  
-              </h1>
-              <p class="text-xl md:text-2xl text-[#F5F5F5] leading-relaxed" /* Warm White */
-              >
-              Spanish Beach club in Sairee beach, Koh Tao
-              </p>
-              <div class="hero-buttons flex flex-wrap gap-4">
+          <div class="max-w-2xl hero-content space-y-8">
+            <h1
+              class="text-5xl md:text-7xl font-bold text-[#FFFAF0] leading-tight"
+            >
+              Savor the
+              <span class="typewriter text-[#E27D60]" id="typewriter"></span>
+            </h1>
+            <p class="text-lg md:text-2xl text-[#F5F5F5] leading-relaxed">
+              Exquisite dining, vibrant drinks, and unforgettable events at
+              Sairee Beach, Koh Tao
+            </p>
+            <div class="hero-buttons flex flex-wrap gap-4">
+              <a href="food.html" class="ios-button flex items-center gap-2">
+                <i class="fas fa-utensils"></i> Explore Foods
+              </a>
+              <a href="drinks.html" class="ios-button flex items-center gap-2">
+                <i class="fas fa-cocktail"></i> Explore Drinks
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FFFAF0] to-transparent z-5"
+      ></div>
+    </header>
+
+    <!-- Events & Specials Slider -->
+    <section class="container mx-auto px-4 py-12 scroll-reveal">
+      <h2 class="text-3xl font-bold mb-8 text-center text-[#722F37]">
+        Events & Specials
+      </h2>
+      <div class="swiper-events">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="card">
+              <img
+                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="Live Events"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-[#556B2F]">
+                  Live Music & DJ Nights
+                </h3>
+                <p class="text-[#722F37] mb-4">
+                  Join us for electrifying performances every weekend, featuring
+                  top DJs and live bands.
+                </p>
                 <a
-                  href="food.html"
-                  class="px-8 py-4 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-all transform hover:scale-105 duration-300 flex items-center gap-2 ios-button" /* Soft Terracotta to Deep Burgundy */
-                >
-                  <i class="fas fa-utensils"></i>
-                  Explore Menu
-                </a>
+                  href="events.html"
+                  class="ios-button inline-flex items-center gap-2"
+                  >View Schedule <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1674837816505-a2297e859d1e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGFwcHklMjBob3VyfGVufDB8fDB8fHww"
+                alt="Happy Hour"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-[#556B2F]">
+                  Happy Hour
+                </h3>
+                <p class="text-[#722F37] mb-4">
+                  Unwind with 2-for-1 cocktails and discounted appetizers daily
+                  from 5 PM to 7 PM.
+                </p>
                 <a
                   href="drinks.html"
-                  class="px-8 py-4 bg-[#556B2F]/80 backdrop-blur-sm text-[#FFFAF0] rounded-lg hover:bg-[#556B2F] transition-all transform hover:scale-105 duration-300 flex items-center gap-2 ios-button" /* Olive Green */
-                >
-                  <i class="fas fa-cocktail"></i>
-                  View Drinks
-                </a>
+                  class="ios-button inline-flex items-center gap-2"
+                  >See Drink Specials <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card">
+              <img
+                src="https://images.unsplash.com/photo-1684591442558-860786985dd4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Daily Specials"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-[#556B2F]">
+                  Daily Specials
+                </h3>
+                <p class="text-[#722F37] mb-4">
+                  Savor our chef's daily creations, featuring fresh, local
+                  ingredients and bold flavors.
+                </p>
+                <a
+                  href="food.html"
+                  class="ios-button inline-flex items-center gap-2"
+                  >Explore Menu <i class="fas fa-arrow-right"></i
+                ></a>
               </div>
             </div>
           </div>
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
       </div>
-      <div
-        class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FFFAF0] to-transparent" /* Warm White/Cream */
-      ></div>
-    </header>
-
-    <!-- Featured Categories -->
-    <main class="container mx-auto px-4 py-12">
-      <h2 class="text-3xl font-bold mb-8 text-center text-[#722F37]" /* Deep Burgundy */
-      >Featured Categories</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <a href="food.html#appetizers" class="group">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="Appetizers"
-              class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-[#556B2F]" /* Olive Green */
-              >Tapas</h3>
-              <p class="text-[#722F37]" /* Deep Burgundy */
-              >Start your meal right</p>
-            </div>
-          </div>
-        </a>
-        <a href="food.html#main-course" class="group">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="Main Course"
-              class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-[#556B2F]" /* Olive Green */
-              >Main Course</h3>
-              <p class="text-[#722F37]" /* Deep Burgundy */
-              >Hearty main dishes</p>
-            </div>
-          </div>
-        </a>
-        <a href="drinks.html" class="group">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="Cocktails"
-              class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-[#556B2F]" /* Olive Green */
-              >Cocktails</h3>
-              <p class="text-[#722F37]" /* Deep Burgundy */
-              >Signature mixed drinks</p>
-            </div>
-          </div>
-        </a>
-        <a href="drinks.html" class="group">
-          <div class="card">
-            <img
-              src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="Soft Drinks"
-              class="w-full h-48 object-cover group-hover:opacity-75 transition-opacity"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-[#556B2F]" /* Olive Green */
-              >Soft Drinks</h3>
-              <p class="text-[#722F37]" /* Deep Burgundy */
-              >Refreshing beverages</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-<footer class="bg-[#722F37] text-[#FFFAF0] py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-        <p class="mb-2"><i class="fas fa-phone mr-2"></i> +385 95 548 1398</p>
-        <p class="mb-2"><i class="fas fa-envelope mr-2"></i> info@ibizabeach-club.com</p>
-        <p class="mb-2">
-          <i class="fas fa-map-marker-alt mr-2"></i> Obala Kneza Domagoja 1, 23210 Biograd na Moru
-        </p>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
-        <p class="mb-2">Monday - Sunday: 08:00 AM - 02:00 AM</p>
-        <p class="mb-2">Beach Bar: 08:00 AM - 12:00 AM</p>
-        <p class="mb-2">Restaurant: 11:00 AM - 12:00 AM</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
-        <div class="flex space-x-4 mb-6">
-          <a href="https://www.facebook.com/ibizabeachclubbiograd" target="_blank" class="hover:text-[#E27D60]">
-            <i class="fab fa-facebook-f text-xl"></i>
-          </a>
-          <a href="https://www.instagram.com/ibizabeachclub_biograd/" target="_blank" class="hover:text-[#E27D60]">
-            <i class="fab fa-instagram text-xl"></i>
-          </a>
+    <footer class="bg-[#722F37] text-[#FFFAF0] py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <p class="mb-2">
+              <i class="fas fa-phone mr-2"></i> +385 95 548 1398
+            </p>
+            <p class="mb-2">
+              <i class="fas fa-envelope mr-2"></i> info@ibizabeach-club.com
+            </p>
+            <p class="mb-2">
+              <i class="fas fa-map-marker-alt mr-2"></i> Sairee Beach, Koh Tao
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Opening Hours</h3>
+            <p class="mb-2">Monday - Sunday: 08:00 AM - 02:00 AM</p>
+            <p class="mb-2">Beach Bar: 08:00 AM - 12:00 AM</p>
+            <p class="mb-2">Restaurant: 11:00 AM - 12:00 AM</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+            <div class="flex space-x-4 mb-6">
+              <a
+                href="https://www.facebook.com/ibizabeachclubbiograd"
+                target="_blank"
+                class="hover:text-[#E27D60]"
+              >
+                <i class="fab fa-facebook-f text-xl"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/ibizabeachclub_biograd/"
+                target="_blank"
+                class="hover:text-[#E27D60]"
+              >
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-[#FFFAF0] opacity-30 text-center">
+          <p>© 2025 Ibiza Beach Club. All rights reserved.</p>
+          <p class="mt-2">Developed by Cowboy (waiter)</p>
         </div>
       </div>
-    </div>
-    <div class="mt-8 pt-6 border-t border-[#FFFAF0] opacity-30 text-center">
-      <p>© 2025 Ibiza Beach Club. All rights reserved.</p>
-      <p class="mt-2">Developed by Cowboy (waiter)</p>
-    </div>
-  </div>
-  <div class="flex lg:hidden h-28"></div>
-</footer>
+      <div class="flex lg:hidden h-28"></div>
+    </footer>
 
     <!-- Bottom Navigation -->
-      <div class="bottom-nav">
+    <div class="bottom-nav">
       <a href="food.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-utensils"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-utensils"></i></div>
         <span>Food</span>
       </a>
       <a href="drinks.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-cocktail"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-cocktail"></i></div>
         <span>Drinks</span>
       </a>
       <a href="cart.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-shopping-cart"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-shopping-cart"></i></div>
         <span>Cart</span>
       </a>
       <a href="search.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-search"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-search"></i></div>
         <span>Search</span>
       </a>
     </div>
-    <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
     <script>
       // Cart initialization
@@ -359,46 +665,173 @@ function googleTranslateElementInit() {
         }
       }
 
-      // Initialize cart count
-      updateCartCount();
+      // Custom Cursor
+      const cursor = document.getElementById("customCursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = `${e.clientX - 10}px`;
+        cursor.style.top = `${e.clientY - 10}px`;
+      });
+
+      document.addEventListener("mouseover", (e) => {
+        if (
+          e.target.closest(
+            ".ios-button, .card, .bottom-nav-item, .swiper-button-prev, .swiper-button-next"
+          )
+        ) {
+          cursor.classList.add("hover");
+        } else {
+          cursor.classList.remove("hover");
+        }
+      });
+
+      // Scroll Reveal Animation
+      const revealElements = document.querySelectorAll(".scroll-reveal");
+      const revealOnScroll = () => {
+        revealElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.8) {
+            el.classList.add("visible");
+          }
+        });
+      };
+
+      // Hero Background Carousel
+      const heroSwiper = new Swiper(".swiper-hero", {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+        speed: 1000,
+      });
+
+      // Typewriter Effect
+      const typewriterWords = ["Vibes", "Flavors", "Beats", "Moments"];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typewriterElement = document.getElementById("typewriter");
+
+      function type() {
+        const currentWord = typewriterWords[wordIndex];
+        if (isDeleting) {
+          typewriterElement.textContent = currentWord.substring(0, charIndex--);
+          if (charIndex < 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % typewriterWords.length;
+            setTimeout(type, 500);
+          } else {
+            setTimeout(type, 100);
+          }
+        } else {
+          typewriterElement.textContent = currentWord.substring(0, charIndex++);
+          if (charIndex > currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, 2000);
+          } else {
+            setTimeout(type, 150);
+          }
+        }
+      }
+
+      // Particle Animation with GSAP
+      gsap.utils.toArray(".particle").forEach((particle, i) => {
+        gsap.to(particle, {
+          y: -20,
+          scale: 1.2,
+          opacity: 0.4,
+          duration: 3,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: i * 0.5,
+        });
+      });
+
+      // Events Slider
+      const eventsSwiper = new Swiper(".swiper-events", {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        loop: true,
+        centeredSlides: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          640: {
+            spaceBetween: 20,
+          },
+          1024: {
+            spaceBetween: 24,
+          },
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        on: {
+          slideChangeTransitionStart: function () {
+            this.slides.forEach((slide) => {
+              slide.style.opacity = "0.6";
+              slide.querySelector(".card").style.transform = "scale(1)";
+              slide.querySelector(".card").style.boxShadow =
+                "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
+            });
+            this.slides[this.activeIndex].style.opacity = "1";
+            this.slides[this.activeIndex].querySelector(
+              ".card"
+            ).style.transform = "scale(1.05)";
+            this.slides[this.activeIndex].querySelector(
+              ".card"
+            ).style.boxShadow = "0 8px 16px -2px rgba(0, 0, 0, 0.15)";
+          },
+        },
+      });
+
+      // Initialize
       document.addEventListener("DOMContentLoaded", () => {
         updateCartCount();
+        revealOnScroll();
+        type();
 
-        // Bottom navigation active state and touch feedback
+        // Bottom navigation
         const currentPath =
           window.location.pathname.split("/").pop() || "index.html";
         const bottomNavItems = document.querySelectorAll(".bottom-nav-item");
-
         bottomNavItems.forEach((item) => {
           const href = item.getAttribute("href");
           if (href === currentPath) {
             item.classList.add("active");
-            item.style.color = "#E27D60"; /* Soft Terracotta for active state */
+            item.style.color = "#E27D60";
           } else {
-            item.style.color = "#556B2F"; /* Olive Green for inactive state */
+            item.style.color = "#556B2F";
           }
 
-          // Touch feedback
           item.addEventListener("touchstart", () => {
             item.classList.add("touch-active");
-            // item.style.backgroundColor = "#E27D60"; /* Soft Terracotta */
-            item.style.color = "#FFFAF0"; /* Warm White/Cream */
+            item.style.color = "#FFFAF0";
           });
 
           item.addEventListener("touchend", () => {
             setTimeout(() => {
               item.classList.remove("touch-active");
               if (href === currentPath) {
-                item.style.backgroundColor = "";
-                item.style.color = "#E27D60"; /* Soft Terracotta */
+                item.style.color = "#E27D60";
               } else {
-                item.style.backgroundColor = "";
-                item.style.color = "#556B2F"; /* Olive Green */
+                item.style.color = "#556B2F";
               }
             }, 100);
           });
 
-          // Keyboard navigation
           item.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
               window.location.href = item.getAttribute("href");
@@ -412,6 +845,8 @@ function googleTranslateElementInit() {
           button.classList.add("ios-scale");
         });
       });
+
+      window.addEventListener("scroll", revealOnScroll);
     </script>
   </body>
 </html>

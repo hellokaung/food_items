@@ -13,7 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
     <link rel="stylesheet" href="./css/bottom_navigation.css" />
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 
     <style>
       body {
@@ -32,7 +34,7 @@
 
       .search-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
+        /* box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2);  */
       }
 
       .modal {
@@ -120,9 +122,9 @@
     </style>
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-[#FFFAF0]">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
+    <nav class="bg-[#F5F5F5] shadow-md fixed w-full z-10">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
@@ -178,8 +180,10 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold mb-8 text-center">Search Menu</h1>
+    <main class="container mx-auto px-4 py-12 pt-24">
+      <h1 class="menu-title text-4xl font-bold mb-8 text-center text-[#722F37]">
+        Search Menu
+      </h1>
 
       <!-- Search Bar -->
       <div class="max-w-2xl mx-auto mb-8">
@@ -227,7 +231,7 @@
 
       <!-- Search Results -->
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8"
         id="searchResults"
       >
         <!-- Results will be dynamically inserted here -->
@@ -340,7 +344,10 @@
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
-          { pageLanguage: "en" },
+          {
+            pageLanguage: "en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
           "google_translate_element"
         );
       }
@@ -2725,12 +2732,12 @@
             .map((ingredient) => {
               const searchQuery = encodeURIComponent(ingredient);
               return `<li>
-                        <a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" 
-                           target="_blank" 
-                           class="text-[#E27D60] hover:text-[#722F37]">
-                            ${ingredient}
-                        </a>
-                    </li>`;
+                            <a href="https://www.google.com/search?q=${searchQuery}&tbm=isch"
+                               target="_blank"
+                               class="text-[#E27D60] hover:text-[#722F37]">
+                                ${ingredient}
+                            </a>
+                        </li>`;
             })
             .join("");
           ingredientsList.innerHTML = ingredientsHTML;
@@ -2806,57 +2813,49 @@
         container.innerHTML = results
           .map(
             (item) => `
-                <div class="search-item bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer" onclick="${
-                  item.locked
-                    ? "showPasswordModal()"
-                    : `showItemDetails(${JSON.stringify(item).replace(
-                        /"/g,
-                        "&quot;"
-                      )})`
-                }">
-                    ${
-                      item.locked
-                        ? '<div class="lock-overlay"><i class="fas fa-lock"></i></div>'
-                        : ""
-                    }
-                    <img src="${item.image}" alt="${
-              item.name
-            }" class="w-full h-48 object-cover ${
-              item.locked ? "locked-content" : ""
+      <div class="search-item bg-white/70 backdrop-blur-md rounded-xl shadow-lg overflow-hidden relative cursor-pointer flex items-center justify-between p-1.5 sm:p-2 hover:shadow-xl hover:border-[#D4A017]/20 border border-transparent transition-all duration-300 ${
+        item.locked ? "locked-content" : ""
+      }" onclick="${
+              item.locked
+                ? "showPasswordModal()"
+                : `showItemDetails(${JSON.stringify(item).replace(
+                    /"/g,
+                    "&quot;"
+                  )})`
             }">
-                    <div class="p-6 ${item.locked ? "locked-content" : ""}">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-semibold">${item.name}</h3>
-                            <span class="px-2 py-1 bg-[#E27D60] text-[#FFFAF0] rounded-full text-sm">${
-                              item.category
-                            }</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">${item.description}</p>
-                        ${
-                          item.price
-                            ? `<p class="text-[#E27D60] font-bold mb-2">฿${item.price.toFixed(
-                                2
-                              )}</p>`
-                            : ""
-                        }
-                        ${
-                          item.locked
-                            ? `<button class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
-                                Unlock
-                            </button>`
-                            : item.price
-                            ? `<button class=" px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37] transition-colors add-to-cart" onclick="event.stopPropagation(); addToCart(${JSON.stringify(
-                                item
-                              ).replace(/"/g, "&quot;")})">
-                                    Add to Cart
-                                </button>`
-                            : `<button class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
-                                    View Recipe
-                                </button>`
-                        }
-                    </div>
-                </div>
-            `
+        ${
+          item.locked
+            ? '<div class="lock-overlay absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#722F37]/70 to-[#E27D60]/50 backdrop-blur-sm text-white"><i class="fas fa-lock text-2xl animate-pulse"></i></div>'
+            : '<div class="absolute inset-0 bg-gradient-to-tr from-[#E27D60]/20 to-transparent"></div>'
+        }
+        <img src="${item.image}" alt="${
+              item.name
+            }" class="w-10 h-10 sm:w-16 md:w-20 lg:w-24 h-10 sm:h-16 md:h-20 lg:h-24 object-cover rounded-lg mr-2 sm:mr-3 transition-transform duration-300 hover:scale-105">
+        <div class="flex-1 flex flex-col justify-center">
+          <h3 class="text-xs sm:text-sm md:text-base font-semibold text-[#722F37] font-sans tracking-tight line-clamp-1">${
+            item.name
+          }</h3>
+          ${
+            item.price
+              ? `<span class="text-xs sm:text-sm md:text-base font-medium text-[#D4A017]">${item.price.toFixed(
+                  2
+                )} ฿</span>`
+              : ""
+          }
+        </div>
+        ${
+          item.locked
+            ? `<button class="px-2 py-1 sm:px-3 sm:py-2 text-white bg-gradient-to-r from-[#722F37] via-[#E27D60] to-[#D97777] rounded-lg hover:from-[#5A1F2A] hover:via-[#C24D3F] hover:to-[#A63B3B] transition-all duration-300 hover:scale-105">
+                <i class="fas fa-lock text-xs sm:text-sm md:text-base"></i>
+              </button>`
+            : item.price
+            ? ``
+            : `<button class="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#722F37] via-[#E27D60] to-[#D97777] text-[#F9F1E7] rounded-lg hover:from-[#5A1F2A] hover:via-[#C24D3F] hover:to-[#A63B3B] transition-all duration-300 hover:scale-105">
+                <i class="fas fa-eye text-xs sm:text-sm md:text-base"></i>
+              </button>`
+        }
+      </div>
+    `
           )
           .join("");
       }
@@ -2917,7 +2916,15 @@
 
       // Initialize with empty search
       performSearch();
-
+      // ScrollReveal animations
+      ScrollReveal().reveal(".menu-title", {
+        duration: 1000,
+        distance: "20px",
+        origin: "top",
+        opacity: 0,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        delay: 200,
+      });
       document.addEventListener("DOMContentLoaded", function () {
         const mobileMenuButton = document.getElementById("mobileMenuButton");
         const mobileMenu = document.getElementById("mobileMenu");

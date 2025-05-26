@@ -100,7 +100,7 @@ export const foodData = {
     {
       name: "Garlic Gambas",
       description:
-        "Sauteed shrimps in olive oil, garlic and cayenne pepper, flambeed with white wine and served with garlic chips.",
+        "Recommeded: Sauteed shrimps in olive oil, garlic and cayenne pepper, flambeed with white wine and served with garlic chips.",
       price: 260,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWWo8HeKFKflusHew3u-95v-5QjHKeSOuyqkTh3_14m3DAQhta1Ly51yorPDrLSvHW3N-8xjfIXfp9AnUhlvXjGWumS1FerjfdMJ3OwUS0LA9awja0i1T1J_t9-7olbNvpR8ux4oEINY3FjNSd_e2X2ZbZIxUsPgDFpYKJCUSjBn_fwBimnOp1cTgAVPOb/s1600/garlic%20gambas.webp",
@@ -145,7 +145,7 @@ export const foodData = {
     {
       name: "Txipirones",
       description:
-        "Fried crispy baby squid in tempura with black ink mayo and aioli. Served with local 'chamuan' leaves and calamansi mandarin.",
+        "Recommeded: Fried crispy baby squid in tempura with black ink mayo and aioli. Served with local 'chamuan' leaves and calamansi mandarin.",
       price: 180,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkTVH5KoUdyNQzkHnjtl-e08_PdrJFgkimBlAAYz-B2teBY0vHzcsFP1vremD2UxlLJD68FpeDgskRvaAvHzLSiTQDIfIJPKaiYeJgPaGo1MUIIM5vDxho_0qgwVx2RKI_pFybdHAZ6f8vGGtlhKm5W-4J0ofwZrT-mR_dJNG8igOPIWpUMfNVhKac7m9T/s1600/txripironos.webp",
@@ -182,7 +182,7 @@ export const foodData = {
     {
       name: "Broken Eggs With Chorizo",
       description:
-        "Spanish broken eggs with potato in 2 textures, 'Chistorra' (Chorizo from Navarra) flambeed in cider, served with fried eggs.",
+        "Recommeded: Spanish broken eggs with potato in 2 textures, 'Chistorra' (Chorizo from Navarra) flambeed in cider, served with fried eggs.",
       price: 175,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUcWXHPm1kFHJkc14GhCHGzrbmGoufjnGiaS-bbUdBK0_mfWs5b610v85-5UMFf7It-7DQSYOyIwI6zP7l-llzeatYhkQkpZjVWGMe4zdDFqHGCTU9CPJ3USGqwR_H9JtMuVQlhsdyEGQI8fsLxjmfBC_KgWKSyd8zT4I7JM07zw3Ck0W7B2quGQPEG3d0/s1600/broken%20egg.webp",
@@ -296,7 +296,7 @@ export const foodData = {
     {
       name: "Iberico Board",
       description:
-        "A selection of Spanish ibérico cold cuts with 36 months maturation: jamón ibérico, chorizo ibérico, salchichón ibérico and Manchego cheese semi cured. Served with grapes, walnuts, quince paste, olives, dried figs and crusty bread.",
+        "Recommeded: A selection of Spanish ibérico cold cuts with 36 months maturation: jamón ibérico, chorizo ibérico, salchichón ibérico and Manchego cheese semi cured. Served with grapes, walnuts, quince paste, olives, dried figs and crusty bread.",
       price: 900,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3LpvXQXhrrdX72GrJICRVgT8HzHXwhovpfkwyDRW3HYZIk1iaI2_aKYGcvq9BvMcNSb4eVGtppQozZmQQxmmh6C58kcXH8x57P-zgpmmVWOdszhx-sLX0RYgShFePa2sONsjF-NTzxZBydY5EmaPKBQR11zn08GnyeHvgWkst5lt7xcHyPPFWarZkCGrQ/s1600/iberico%20board.webp",
@@ -381,7 +381,7 @@ export const foodData = {
     {
       name: "Chorizo and Goat Pizza",
       description:
-        "Thin-crust pizza, with San Marzano tomatoes, goat cheese, Chorizo Iberico, and red wine onion jam.",
+        "Recommeded: Thin-crust pizza, with San Marzano tomatoes, goat cheese, Chorizo Iberico, and red wine onion jam.",
       price: 350,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwu389fRoYTAesRygYu5OyTJw5UxBRlIu9eh4el0kyBuHzxEn0T_DqaEMhh4sJoQyMLN-tH8vYdg2b4sXmZ4WHC0uXLz2C-fk9Q6ja4tHSrDD5r0lcjT14_Mi2Amf8oFD8rbU3XcYEGFHfpQ0GK3M42NB5_zDBhq0P5E400Mi_KmZEtzd7ltOHoPgpZcVR/s1600/Leonardo_Phoenix_10_Chorizo_like_this_churizo_httpsbloggergoog_3.jpg",
@@ -461,7 +461,7 @@ export const foodData = {
     {
       name: "Seafood Paella for 2",
       description:
-        "Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
+        "Recommeded: Spanish bomba rice, saffron, seafood and fish stock, local and imported seafood. Made with socarrat upon request.",
       price: 850,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimroKkkuOs4bMQ9KgCx3tGMx-wXXia24-NTcOCr24lw0cmC6cBqROa96G5pqNotAfOuy-hyUsXa07fqCeDh-gI6fvZ59jASO3ecN5QdYYLilPD6laB62iLP88Wh1uwDXky2vYOOv3pdy1s1mxWwW0p_eXNVvTTuIERV9ceTxPeloe-1mgVMyX7ZByy1QuQ/s1600/seafood%20paellas.webp",
@@ -532,7 +532,7 @@ export const foodData = {
     {
       name: "Vegetarian Rice for 1",
       description:
-        "A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
+        "Recommeded: A light vegetarian/vegan option made with vegetable broth. Made with socarrat upon request.",
       price: 395,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSKnY1x1scmE6ZVvB8JmuaVZFCAVIn3ioWr6axOYFV_Pc_Fg1gxhs7BNpOVdfODL2d0a16CvIdbaaqwo8apj-wpH10BEoZaihsFncYTT3UMYjqaHuLGY5aoheWZxBFFEKjOgHJ4WbDQcs3FGqp1W3lGGnt8oF7d48U43ShSY2ZAh6EHVfSJdWQPOCVpsxQ/s1600/veggetarian%20paella.webp",
@@ -556,7 +556,7 @@ export const foodData = {
     {
       name: "Wagyu Steak",
       description:
-        "250 gr Australian Wagyu Ribeye MBS3 cooked to your point, served with a side dish and sauce of your choice.",
+        "Recommeded: 250 gr Australian Wagyu Ribeye MBS3 cooked to your point, served with a side dish and sauce of your choice.",
       price: 850,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipv5u7Z9yh0jBez-hPyZD9DaRaJM6p1r8pmdvisBMYBKCArm21OkqLmAMr8yWr-SUANAcYoI8oWnz0Gs3UHwAFlM7ltNs-IFzltia1qZLRW6wJOdKhiD4NsjSiGY0KdliGWBEtacqAkZ2mnEDTSh6amZTkse8Orvs_jwiAILM2yJlh5Yzv2tXSbdZ7dQpM/s1600/Leonardo_Phoenix_10_A_sizzling_slice_of_wagyu_steak_garnished_2.jpg",
@@ -599,7 +599,7 @@ export const foodData = {
     {
       name: "Ibiza Churros",
       description:
-        "Spanish churros with cinnamon and sugar coated, served with hot chocolate sauce.",
+        "Recommeded: Spanish churros with cinnamon and sugar coated, served with hot chocolate sauce.",
       price: 150,
       image:
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlLsc9fpVmNNc8FldANd-Mk4l4q8DO4-wb7Aw_MxJGQkF8FwwG4woonC3WNdjh0976DUdSs7ytQmtnKXeQMfaSd7p9lFUCbfgh3WUzhmd1RcZPyh3cVbZHEgpi6JLqTrQ8Ja7SGOYIgvhrXxpJyXGKe4GqrUH50e_tOFjueZqpLJvjeUB2HIEVU4DX7uEH/s1600/ibiza%20churro.webp",

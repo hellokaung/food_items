@@ -1,4 +1,165 @@
 export const drinksData = {
+  "happy-hour": [
+    {
+      name: "Mojito",
+      description: "Happy hour mojito",
+      price: 160,
+      image:
+        "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
+      ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
+      instructions: "Muddle and top with soda.",
+      locked: false,
+    },
+    {
+      name: "Margarita",
+      description: "Happy hour margarita",
+      price: 160,
+      image:
+        "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
+      ingredients: ["Tequila", "Lime juice", "Triple sec"],
+      instructions: "Shake with ice, salt rim.",
+      locked: false,
+    },
+    {
+      name: "Espresso Martini",
+      description: "Happy hour espresso martini",
+      price: 160,
+      image:
+        "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
+      ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
+      instructions: "Shake with ice, strain.",
+      locked: false,
+    },
+    {
+      name: "Piña Colada",
+      description: "Happy hour piña colada",
+      price: 160,
+      image:
+        "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
+      ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
+      instructions: "Blend with ice.",
+      locked: false,
+    },
+    {
+      name: "Long Island",
+      description: "Happy hour long island",
+      price: 160,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
+      ingredients: ["Vodka", "Gin", "Tequila", "Rum", "Triple sec", "Cola"],
+      instructions: "Shake, top with cola.",
+      locked: false,
+    },
+    {
+      name: "Sparkling Wine",
+      description: "Happy hour sparkling wine",
+      price: 150,
+      image:
+        "https://shop.coopershawkwinery.com/images/product/Almond%20Sparkling%20Lifestyle%20Graphic%201.jpg",
+      ingredients: ["Sparkling wine"],
+      instructions: "Serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Red Wine",
+      description: "Happy hour red wine",
+      price: 175,
+      image:
+        "https://vinodirect.co.uk/cdn/shop/collections/RedWine.jpg?v=1682000010&width=2400",
+      ingredients: ["Red wine"],
+      instructions: "Serve chilled or at room temperature.",
+      locked: false,
+    },
+    {
+      name: "White Wine",
+      description: "Happy hour white wine",
+      price: 175,
+      image:
+        "https://dropinblog.net/34243665/files/featured/Popular-Types-of-White-Wine.jpg",
+      ingredients: ["White wine"],
+      instructions: "Serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Singha Draft",
+      description: "Happy hour Singha draft",
+      price: 130,
+      image:
+        "https://img.wongnai.com/p/1920x0/2017/02/25/2bf466215f9e4ffb8dd6d4d38cc383e6.jpg",
+      ingredients: ["Beer"],
+      instructions: "Serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Mahou Draft",
+      description: "Happy hour Mahou draft",
+      price: 190,
+      image: "https://m.media-amazon.com/images/I/81do19az-QL.jpg",
+      ingredients: ["Beer"],
+      instructions: "Serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Local Beer can",
+      description: "Happy hour local beer",
+      price: 70,
+      image:
+        "https://88bamboo.co/cdn/shop/articles/photo_2023-02-06_00.31.23_1200x1200.jpg?v=1675614834",
+      ingredients: ["Beer"],
+      instructions: "Serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Sangria",
+      description: "Happy hour sangria",
+      price: 150,
+      image:
+        "https://bamchocolate.com/uploads/recipes/58e5ba28-613d-442e-bb0b-828c30684bd5/big/osvezilna-sadna-sangria.jpeg",
+      ingredients: ["Red wine", "Fruit", "Brandy"],
+      instructions: "Mix and serve chilled.",
+      locked: false,
+    },
+    {
+      name: "White Sangria",
+      description: "Happy hour white sangria",
+      price: 150,
+      image:
+        "https://dinnersdishesanddesserts.com/wp-content/uploads/2018/02/White-Wine-Sangria-2-square-500x375.jpg",
+      ingredients: ["White wine", "Fruit", "Brandy"],
+      instructions: "Mix and serve chilled.",
+      locked: false,
+    },
+    {
+      name: "Aperol Spritz",
+      description: "Happy hour Aperol spritz",
+      price: 190,
+      image:
+        "https://muybuenoblog.com/wp-content/uploads/2024/02/classic-aperol-spritz-recipe.jpeg",
+      ingredients: ["Aperol", "Prosecco", "Soda water"],
+      instructions: "Pour and mix.",
+      locked: false,
+    },
+    {
+      name: "Spanish Spritz",
+      description: "Happy hour Spanish spritz",
+      price: 200,
+      image:
+        "https://thebitterhousewife.com/cdn/shop/articles/DJB_1225_1100x.jpg?v=1649384604",
+      ingredients: ["Gin", "Soda", "Wine"],
+      instructions: "Mix and serve.",
+      locked: false,
+    },
+    {
+      name: "Gin Raw & Tonic",
+      description: "Happy hour GinRaw and tonic",
+      price: 150,
+      image:
+        "https://vintus.com/wp-content/uploads/2018/09/GINRAW_BAJA-2-14-scaled-1.jpg",
+      ingredients: ["GinRaw", "Tonic water"],
+      instructions: "Mix with ice.",
+      locked: false,
+    },
+  ],
   "soft-drinks": [
     {
       name: "Water (S)",
@@ -244,167 +405,7 @@ export const drinksData = {
       locked: false,
     },
   ],
-  "happy-hour": [
-    {
-      name: "Mojito",
-      description: "Happy hour mojito",
-      price: 160,
-      image:
-        "https://www.saveur.com/uploads/2007/02/SAVEUR_Mojito_1149-Edit-scaled.jpg?auto=webp",
-      ingredients: ["White rum", "Mint", "Lime", "Sugar", "Soda"],
-      instructions: "Muddle and top with soda.",
-      locked: false,
-    },
-    {
-      name: "Margarita",
-      description: "Happy hour margarita",
-      price: 160,
-      image:
-        "https://mixthatdrink.com/wp-content/uploads/2023/03/classic-margarita-cocktail-540x720.jpg",
-      ingredients: ["Tequila", "Lime juice", "Triple sec"],
-      instructions: "Shake with ice, salt rim.",
-      locked: false,
-    },
-    {
-      name: "Espresso Martini",
-      description: "Happy hour espresso martini",
-      price: 160,
-      image:
-        "https://maplefromcanada.ca/uploads/2024/11/Recette_espresso_martine_1200x628.jpg",
-      ingredients: ["Vodka", "Espresso", "Coffee liqueur"],
-      instructions: "Shake with ice, strain.",
-      locked: false,
-    },
-    {
-      name: "Piña Colada",
-      description: "Happy hour piña colada",
-      price: 160,
-      image:
-        "https://www.kerryfoodservice.com/cdn/shop/products/swzjjrcehfuoah8kn4hz_800x.jpg?v=1615853893",
-      ingredients: ["White rum", "Coconut cream", "Pineapple juice"],
-      instructions: "Blend with ice.",
-      locked: false,
-    },
-    {
-      name: "Long Island",
-      description: "Happy hour long island",
-      price: 160,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7xXfE1S_NM1kudomXNgiTW0Xn_mviUNMQA&s",
-      ingredients: ["Vodka", "Gin", "Tequila", "Rum", "Triple sec", "Cola"],
-      instructions: "Shake, top with cola.",
-      locked: false,
-    },
-    {
-      name: "Sparkling Wine",
-      description: "Happy hour sparkling wine",
-      price: 150,
-      image:
-        "https://shop.coopershawkwinery.com/images/product/Almond%20Sparkling%20Lifestyle%20Graphic%201.jpg",
-      ingredients: ["Sparkling wine"],
-      instructions: "Serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Red Wine",
-      description: "Happy hour red wine",
-      price: 175,
-      image:
-        "https://vinodirect.co.uk/cdn/shop/collections/RedWine.jpg?v=1682000010&width=2400",
-      ingredients: ["Red wine"],
-      instructions: "Serve chilled or at room temperature.",
-      locked: false,
-    },
-    {
-      name: "White Wine",
-      description: "Happy hour white wine",
-      price: 175,
-      image:
-        "https://dropinblog.net/34243665/files/featured/Popular-Types-of-White-Wine.jpg",
-      ingredients: ["White wine"],
-      instructions: "Serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Singha Draft",
-      description: "Happy hour Singha draft",
-      price: 130,
-      image:
-        "https://img.wongnai.com/p/1920x0/2017/02/25/2bf466215f9e4ffb8dd6d4d38cc383e6.jpg",
-      ingredients: ["Beer"],
-      instructions: "Serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Mahou Draft",
-      description: "Happy hour Mahou draft",
-      price: 190,
-      image: "https://m.media-amazon.com/images/I/81do19az-QL.jpg",
-      ingredients: ["Beer"],
-      instructions: "Serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Local Beer can",
-      description: "Happy hour local beer",
-      price: 70,
-      image:
-        "https://88bamboo.co/cdn/shop/articles/photo_2023-02-06_00.31.23_1200x1200.jpg?v=1675614834",
-      ingredients: ["Beer"],
-      instructions: "Serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Sangria",
-      description: "Happy hour sangria",
-      price: 150,
-      image:
-        "https://bamchocolate.com/uploads/recipes/58e5ba28-613d-442e-bb0b-828c30684bd5/big/osvezilna-sadna-sangria.jpeg",
-      ingredients: ["Red wine", "Fruit", "Brandy"],
-      instructions: "Mix and serve chilled.",
-      locked: false,
-    },
-    {
-      name: "White Sangria",
-      description: "Happy hour white sangria",
-      price: 150,
-      image:
-        "https://dinnersdishesanddesserts.com/wp-content/uploads/2018/02/White-Wine-Sangria-2-square-500x375.jpg",
-      ingredients: ["White wine", "Fruit", "Brandy"],
-      instructions: "Mix and serve chilled.",
-      locked: false,
-    },
-    {
-      name: "Aperol Spritz",
-      description: "Happy hour Aperol spritz",
-      price: 190,
-      image:
-        "https://muybuenoblog.com/wp-content/uploads/2024/02/classic-aperol-spritz-recipe.jpeg",
-      ingredients: ["Aperol", "Prosecco", "Soda water"],
-      instructions: "Pour and mix.",
-      locked: false,
-    },
-    {
-      name: "Spanish Spritz",
-      description: "Happy hour Spanish spritz",
-      price: 200,
-      image:
-        "https://thebitterhousewife.com/cdn/shop/articles/DJB_1225_1100x.jpg?v=1649384604",
-      ingredients: ["Gin", "Soda", "Wine"],
-      instructions: "Mix and serve.",
-      locked: false,
-    },
-    {
-      name: "Gin Raw & Tonic",
-      description: "Happy hour GinRaw and tonic",
-      price: 150,
-      image:
-        "https://vintus.com/wp-content/uploads/2018/09/GINRAW_BAJA-2-14-scaled-1.jpg",
-      ingredients: ["GinRaw", "Tonic water"],
-      instructions: "Mix with ice.",
-      locked: false,
-    },
-  ],
+
   beer: [
     {
       name: "Leo (S)",

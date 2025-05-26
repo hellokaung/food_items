@@ -14,94 +14,197 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./css/bottom_navigation.css" />
-
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <style>
       body {
         font-family: "Poppins", sans-serif;
-        background-color: #fffaf0; /* Warm White/Cream */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       .no-scroll {
         overflow: hidden;
       }
 
-      .menu-item {
-        transition: transform 0.3s ease;
-        background-color: #f5f5f5; /* Warm White/Cream */
-      }
-
-      .menu-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
-      }
-
-      .category-btn {
-        background-color: #f5f5f5; /* Warm White/Cream */
-        color: #722f37; /* Deep Burgundy */
-      }
-
-      .category-btn.active {
-        background-color: #e27d60; /* Soft Terracotta */
-        color: #fffaf0; /* Warm White/Cream */
-      }
-
-      .category-btn:hover {
-        background-color: #722f37; /* Deep Burgundy */
-        color: #fffaf0; /* Warm White/Cream */
-      }
-
-      .modal {
+      /* Hide Scrollbar for Category Buttons */
+      .hide-scrollbar::-webkit-scrollbar {
         display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
-        z-index: 1000;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
 
-      .modal-content {
-        background: #f5f5f5; /* Warm White/Cream */
-        padding: 2rem;
-        border-radius: 1rem;
-        max-width: 800px;
-        margin: 2rem auto;
+      /* Instagram Card Hover Effects */
+      .insta-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .insta-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(85, 107, 47, 0.2);
+      }
+      .cart-icon {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .insta-card:hover .cart-icon {
+        opacity: 1;
+        transform: translateY(-2px);
       }
 
-      .locked-content {
-        filter: blur(5px);
-        pointer-events: none;
-      }
-
-      .lock-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
+      /* Ensure container is visible */
+      .scroll-container {
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
-        color: #fffaf0; /* Warm White/Cream */
-        font-size: 1.5rem;
-        cursor: pointer;
+        width: 100%;
+        min-height: 48px; /* Ensure enough space for buttons */
+
+        padding: 0 40px; /* Space for prev/next buttons */
+        box-sizing: border-box;
+      }
+      /* Ensure category container is visible and scrollable */
+      #categoryContainer {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto !important;
+        overflow-y: visible;
+        width: 100%;
+        gap: 8px;
+        padding-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        /* background: rgba(0, 255, 0, 0.1); */
+      }
+      /* Scrollbar hiding */
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* Button styles */
+      .category-btn {
+        display: inline-flex !important;
+        align-items: center;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 1;
+      }
+      /* Active state */
+      .category-btn.active {
+        background-color: #e27d60 !important;
+        color: #fffaf0 !important;
+        transition: all 0.2s ease;
+      }
+      /* Prev/Next buttons */
+      #prevCategory,
+      #nextCategory {
+        z-index: 2;
+        transform: translateY(-25%);
+        transition: transform 0.5s ease-in-out;
       }
 
-      #itemDetailModal {
-        background: rgba(114, 47, 55, 0.5); /* Deep Burgundy with opacity */
+      .recommended-label {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 12px rgba(226, 125, 96, 0.6),
+          0 0 20px rgba(255, 255, 255, 0.1) inset;
+        background: linear-gradient(
+          120deg,
+          #e27d60,
+          #e8a87c,
+          #c38d9e,
+          #85dcb0,
+          #e27d60
+        );
+        background-size: 400% 400%;
+        color: #fffaf0;
+        animation: shimmerGradient 8s ease infinite;
+        z-index: 10;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      #itemDetailModal .modal-content {
-        background: #f5f5f5; /* Warm White/Cream */
+      .recommended-label:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 16px rgba(226, 125, 96, 0.8),
+          0 0 25px rgba(255, 255, 255, 0.3) inset;
+      }
+
+      .recommended-label .icon {
+        margin-right: 0.4rem;
+      }
+
+      /* Gradient shimmer animation */
+      @keyframes shimmerGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Google Translate Styling */
+      .translate-container {
+        max-width: 150px;
+      }
+      #google_translate_element select {
+        background: #fffaf0;
+        color: #556b2f;
+        border: 1px solid #e27d60;
+        border-radius: 0.5rem;
+        padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.875rem;
+        width: 100%;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23722F37" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position: right 0.5rem center;
+        transition: all 0.3s ease;
+      }
+      #google_translate_element select:focus {
+        outline: none;
+        border-color: #722f37;
+        box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+      }
+      .goog-te-banner-frame,
+      .goog-te-menu-frame {
+        display: none !important;
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 640px) {
+        .translate-container {
+          max-width: 100px;
+        }
+        #google_translate_element select {
+          font-size: 0.75rem;
+          padding: 0.25rem 1.25rem 0.25rem 0.375rem;
+          background-position: right 0.25rem center;
+        }
       }
     </style>
   </head>
 
-  <body>
+  <body class="bg-[#FFFAF0]">
     <!-- Navigation -->
-    <nav class="bg-[#F5F5F5] shadow-md">
+    <nav class="bg-[#F5F5F5] shadow-md fixed w-full z-20">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
@@ -113,10 +216,7 @@
               <span>Food Menu</span>
             </a>
           </div>
-          <!-- Mobile menu button -->
-
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex space-x-8 desktop-nav">
+          <div class="hidden md:flex space-x-8 items-center desktop-nav">
             <a
               href="food.html"
               class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
@@ -152,206 +252,259 @@
                 >0</span
               >
             </a>
-            <div id="google_translate_element"></div>
+            <div class="translate-container">
+              <div id="google_translate_element"></div>
+            </div>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold mb-8 text-center text-[#722F37]">
+    <main class="container mx-auto px-4 py-12 pt-24">
+      <h1
+        class="menu-title text-3xl sm:text-4xl font-bold mb-8 text-center text-[#722F37]"
+      >
         Our Drinks Menu
       </h1>
 
       <!-- Category Navigation -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
+
+      <div class="relative flex items-center mb-8 scroll-container">
         <button
-          class="category-btn active px-6 py-2 rounded-full transition-colors"
-          data-category="all"
+          id="prevCategory"
+          class="absolute left-0 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-[#E27D60] text-[#FFFAF0] rounded-full flex items-center justify-center hover:bg-[#722F37] transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Previous categories"
         >
-          All
+          <i class="fas fa-chevron-left text-sm sm:text-base"></i>
         </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="soft-drinks"
+        <div
+          id="categoryContainer"
+          class="flex overflow-x-auto gap-2 pb-4 snap-x snap-proximity hide-scrollbar scroll-smooth px-2"
         >
-          Soft Drinks
-        </button>
+          <button
+            class="category-btn active px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="all"
+            aria-label="All drinks category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🌟</span> All
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="happy-hour"
+            aria-label="Happy Hour category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🎉</span> Happy Hour
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="soft-drinks"
+            aria-label="Soft Drinks category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🥤</span> Soft Drinks
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="fruit-juice"
+            aria-label="Juices category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍊</span> Juices
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="fruit-shake"
+            aria-label="Shakes category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🥛</span> Shakes
+          </button>
+
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="beer"
+            aria-label="Beer category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍺</span> Beer
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="draft-beers"
+            aria-label="Draft Beers category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍻</span> Draft Beers
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="wine-glass"
+            aria-label="Wine category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍷</span> Wine
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[150px] flex items-center"
+            data-category="classic-cocktail"
+            aria-label="Classic Cocktails category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍸</span> Classic Cocktails
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="mocktail"
+            aria-label="Mocktails category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🧉</span> Mocktails
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[150px] flex items-center"
+            data-category="signature-cocktail"
+            aria-label="Signature Cocktails category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🌹</span> Signature
+            Cocktails
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[150px] flex items-center"
+            data-category="spanish-cocktail"
+            aria-label="Spanish Cocktails category"
+          >
+            <span class="mr-1 text-sm sm:text-base">💃</span> Spanish Cocktails
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="gin-raw"
+            aria-label="GinRaw Cocktails category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍸</span> GinRaw
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="gin-tonic"
+            aria-label="Gin Tonic category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🥂</span> Gin Tonic
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="vodka"
+            aria-label="Vodka category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍸</span> Vodka
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="rum"
+            aria-label="Rum category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🏴‍☠️</span> Rum
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="whiskey"
+            aria-label="Whiskey category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🥃</span> Whiskey
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="liquers"
+            aria-label="Liqueurs category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🍹</span> Liqueurs
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="brandy"
+            aria-label="Brandy category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🥃</span> Brandy
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="shooter"
+            aria-label="Shooters category"
+          >
+            <span class="mr-1 text-sm sm:text-base">🎯</span> Shooters
+          </button>
+          <button
+            class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+            data-category="special"
+            aria-label="Specials category"
+          >
+            <span class="mr-1 text-sm sm:text-base">✨</span> Specials
+          </button>
+        </div>
         <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="fruit-juice"
+          id="nextCategory"
+          class="absolute right-0 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-[#E27D60] text-[#FFFAF0] rounded-full flex items-center justify-center hover:bg-[#722F37] transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Next categories"
         >
-          Juices
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="fruit-shake"
-        >
-          Shakes
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="happy-hour"
-        >
-          Happy Hour
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="beer"
-        >
-          Beer
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="draft-beers"
-        >
-          Draft Beers
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="wine-glass"
-        >
-          Wine
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="classic-cocktail"
-        >
-          Classic Cocktails
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="mocktail"
-        >
-          Mocktails
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="signature-cocktail"
-        >
-          Signature Cocktails
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="spanish-cocktail"
-        >
-          Spanish Cocktails
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="gin-raw"
-        >
-          GinRaw Cocktails
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="gin-tonic"
-        >
-          Gin Tonic
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="vodka"
-        >
-          Vodka
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="rum"
-        >
-          Rum
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="whiskey"
-        >
-          Whiskey
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="liquers"
-        >
-          Liqueurs
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="brandy"
-        >
-          Brandy
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="shooter"
-        >
-          Shooters
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="special"
-        >
-          Specials
+          <i class="fas fa-chevron-right text-sm sm:text-base"></i>
         </button>
       </div>
-
       <!-- Drinks Items Grid -->
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         id="drinksGrid"
       >
         <!-- Items will be dynamically inserted here -->
       </div>
     </main>
 
-    <!-- Fullscreen Item Detail Modal -->
+    <!-- Item Detail Modal -->
     <div
       id="itemDetailModal"
-      class="modal hidden flex items-center justify-center"
+      class="fixed inset-0 bg-[#722F37]/50 hidden flex items-center justify-center z-[1000]"
     >
       <div
-        class="modal-content relative w-full h-full max-w-lg overflow-hidden flex flex-col"
+        class="bg-[#F5F5F5] rounded-lg w-full max-w-md sm:max-w-lg mx-4 p-4 sm:p-6 flex flex-col max-h-[90vh]"
       >
-        <!-- Header -->
         <div
-          class="flex justify-between items-start p-4 border-b border-[#556B2F]"
+          class="flex justify-between items-start border-b border-[#556B2F] pb-2"
         >
-          <h3 class="text-2xl font-bold text-[#722F37]" id="detailTitle"></h3>
+          <h3
+            class="text-xl sm:text-2xl font-bold text-[#722F37]"
+            id="detailTitle"
+          ></h3>
           <button
             id="closeDetailModal"
             class="text-[#556B2F] hover:text-[#E27D60]"
           >
-            <i class="fas fa-times text-xl"></i>
+            <i class="fas fa-times text-lg sm:text-xl"></i>
           </button>
         </div>
-
-        <!-- Scrollable Content -->
-        <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        <div class="flex-1 overflow-y-auto py-4 space-y-4">
           <img
             id="detailImage"
             src=""
             alt=""
-            class="w-full h-64 object-cover rounded-lg"
+            class="w-full h-40 sm:h-48 object-cover rounded-lg"
           />
-          <p id="detailDescription" class="text-[#556B2F]"></p>
-          <div id="detailPrice" class="text-xl font-bold text-[#E27D60]"></div>
-          <div id="detailIngredients">
-            <h4 class="font-semibold mb-1 text-[#722F37]">Ingredients:</h4>
+          <p
+            id="detailDescription"
+            class="text-[#556B2F] text-sm sm:text-base"
+          ></p>
+          <div
+            id="detailPrice"
+            class="text-lg sm:text-xl font-bold text-[#E27D60]"
+          ></div>
+          <div id="detailIngredients" class="hidden">
+            <h4 class="font-semibold text-[#722F37] mb-1">Ingredients:</h4>
             <ul
               id="ingredientsList"
-              class="list-disc list-inside text-[#556B2F]"
+              class="list-disc list-inside text-[#556B2F] text-sm sm:text-base"
             ></ul>
           </div>
           <div id="detailInstructions">
-            <h4 class="font-semibold mb-1 text-[#722F37]">Instructions:</h4>
-            <p id="instructionsText" class="text-[#556B2F]"></p>
+            <h4 class="font-semibold text-[#722F37] mb-1">Instructions:</h4>
+            <p
+              id="instructionsText"
+              class="text-[#556B2F] text-sm sm:text-base"
+            ></p>
           </div>
         </div>
-
-        <!-- Sticky Add to Cart Button -->
-        <div class="p-4 border-t bg-[#F5F5F5] sticky bottom-0 z-10">
+        <div class="border-t border-[#556B2F] pt-4">
           <button
             id="addToCartDetail"
-            class="w-full px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors"
+            class="w-full px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors text-sm sm:text-base"
           >
             Add to Cart
           </button>
@@ -360,25 +513,32 @@
     </div>
 
     <!-- Password Modal -->
-    <div id="passwordModal" class="modal">
-      <div class="modal-content max-w-md">
-        <h3 class="text-xl font-bold mb-4 text-[#722F37]">Enter Password</h3>
+    <div
+      id="passwordModal"
+      class="fixed inset-0 bg-[#722F37]/50 hidden flex items-center justify-center z-[1000]"
+    >
+      <div
+        class="bg-[#F5F5F5] rounded-lg w-full max-w-xs sm:max-w-md mx-4 p-4 sm:p-6"
+      >
+        <h3 class="text-lg sm:text-xl font-bold text-[#722F37] mb-4">
+          Enter Password
+        </h3>
         <input
           type="password"
           id="passwordInput"
-          class="w-full p-2 border border-[#556B2F] rounded mb-4 bg-[#FFFAF0] text-[#722F37]"
+          class="w-full p-2 border border-[#556B2F] rounded mb-4 bg-[#FFFAF0] text-[#722F37] text-sm sm:text-base"
           placeholder="Enter password"
         />
         <div class="flex justify-end space-x-4">
           <button
             id="cancelPassword"
-            class="px-4 py-2 bg-[#556B2F] text-[#FFFAF0] rounded hover:bg-[#722F37]"
+            class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#556B2F] text-[#FFFAF0] rounded hover:bg-[#722F37] text-sm sm:text-base"
           >
             Cancel
           </button>
           <button
             id="submitPassword"
-            class="px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37]"
+            class="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37] text-sm sm:text-base"
           >
             Submit
           </button>
@@ -388,29 +548,21 @@
     <div class="flex lg:hidden h-28"></div>
 
     <!-- Bottom Navigation -->
-    <div class="bottom-nav">
+    <div class="bottom-nav lg:hidden">
       <a href="food.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-utensils"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-utensils"></i></div>
         <span>Food</span>
       </a>
       <a href="drinks.html" class="bottom-nav-item active" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-cocktail"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-cocktail"></i></div>
         <span>Drinks</span>
       </a>
       <a href="cart.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-shopping-cart"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-shopping-cart"></i></div>
         <span>Cart</span>
       </a>
       <a href="search.html" class="bottom-nav-item" tabindex="0">
-        <div class="nav-icon-wrapper">
-          <i class="fas fa-search"></i>
-        </div>
+        <div class="nav-icon-wrapper"><i class="fas fa-search"></i></div>
         <span>Search</span>
       </a>
     </div>
@@ -418,7 +570,10 @@
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
-          { pageLanguage: "en" },
+          {
+            pageLanguage: "en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
           "google_translate_element"
         );
       }
@@ -462,7 +617,6 @@
 
       function addToCart(item) {
         try {
-          // Create a new item object with a unique ID
           const cartItem = {
             id: item.id || generateUUID(),
             name: item.name,
@@ -498,9 +652,7 @@
           message.className =
             "fixed top-4 right-4 bg-[#556B2F] text-[#FFFAF0] px-4 py-2 rounded-lg shadow-lg z-50";
           document.body.appendChild(message);
-          setTimeout(() => {
-            message.remove();
-          }, 2000);
+          setTimeout(() => message.remove(), 2000);
         } catch (error) {
           console.error("Error in showSuccessMessage:", error);
         }
@@ -523,45 +675,72 @@
             drinksToShow = drinksData[category] || [];
           }
 
-          drinksToShow.forEach((drink) => {
+          drinksToShow.forEach((drink, index) => {
             const drinkCard = document.createElement("div");
-            drinkCard.className = "menu-item rounded-lg shadow-md relative";
+            drinkCard.className =
+              "insta-card rounded-lg overflow-hidden bg-[#F5F5F5] relative cursor-pointer";
+            drinkCard.setAttribute("data-sr-id", `drink-${index}`);
             drinkCard.innerHTML = `
-              <div class="relative">
-                <img src="${drink.image}" alt="${
+  <div class="relative aspect-square">
+    <img src="${drink.image}" alt="${
               drink.name
-            }" class="w-full h-48 object-cover rounded-t-lg">
-                ${
-                  drink.locked
-                    ? `<div class="lock-overlay"><i class="fas fa-lock"></i> Unlock to view</div>`
-                    : ""
-                }
-              </div>
-              <div class="p-4 ${drink.locked ? "locked-content" : ""}">
-                <h3 class="text-lg font-semibold text-[#722F37]">${
-                  drink.name
-                }</h3>
-                <p class="text-[#556B2F]">${drink.description}</p>
-                <p class="text-[#E27D60] font-bold mt-2">฿${drink.price}</p>
-                <button class="mt-4 px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded hover:bg-[#722F37] transition-colors add-to-cart" ${
-                  drink.locked ? "disabled" : ""
-                }>Add to Cart</button>
-              </div>
-            `;
+            }" class="w-full h-full object-cover">
+    ${
+      drink.locked
+        ? `<div class="absolute inset-0 bg-[#722F37]/50 flex items-center justify-center text-[#FFFAF0] text-base sm:text-lg"><i class="fas fa-lock mr-2"></i> Unlock to view</div>`
+        : ""
+    }
+    <button class="cart-icon absolute top-2 right-2 bg-[#E27D60]/80 text-[#FFFAF0] p-2 rounded-full hover:bg-[#722F37] transition-colors ${
+      drink.locked ? "hidden" : ""
+    }">
+      <i class="fas fa-shopping-cart text-sm"></i>
+    </button>
+    ${
+      drink.description?.includes("Happy hour")
+        ? `<div class="recommended-label">
+  <span class="icon">🌟</span>
+  Happy hour
+</div>
+`
+        : ""
+    }
+  </div>
+  <div class="p-3 flex justify-between items-center">
+    <h3 class="text-sm sm:text-base font-semibold text-[#722F37] line-clamp-1">${
+      drink.name
+    }</h3>
+    <p class="text-sm sm:text-base font-medium text-[#E27D60]">฿${
+      drink.price
+    }</p>
+  </div>
+`;
+
             drinksGrid.appendChild(drinkCard);
 
             if (!drink.locked) {
               drinkCard
-                .querySelector(".add-to-cart")
-                .addEventListener("click", () => addToCart(drink));
+                .querySelector(".cart-icon")
+                .addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  addToCart(drink);
+                });
               drinkCard.addEventListener("click", (e) => {
-                if (!e.target.classList.contains("add-to-cart")) {
-                  showItemDetail(drink);
-                }
+                if (!e.target.closest(".cart-icon")) showItemDetail(drink);
               });
             } else {
               drinkCard.addEventListener("click", showPasswordModal);
             }
+          });
+
+          // Re-apply ScrollReveal animations
+          ScrollReveal().reveal(".insta-card", {
+            duration: 800,
+            distance: "20px",
+            origin: "bottom",
+            opacity: 0,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            interval: 100,
+            reset: false,
           });
         } catch (error) {
           console.error("Error in displayDrinks:", error);
@@ -573,8 +752,10 @@
         btn.addEventListener("click", () => {
           document
             .querySelectorAll(".category-btn")
-            .forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
+            .forEach((b) =>
+              b.classList.remove("active", "bg-[#E27D60]", "text-[#FFFAF0]")
+            );
+          btn.classList.add("active", "bg-[#E27D60]", "text-[#FFFAF0]");
           const category = btn.getAttribute("data-category");
           displayDrinks(category);
         });
@@ -596,17 +777,19 @@
 
           const ingredientsList = document.getElementById("ingredientsList");
           if (item.ingredients && item.ingredients.length > 0) {
-            const ingredientsHTML = item.ingredients
+            ingredientsList.innerHTML = item.ingredients
               .map((ingredient) => {
                 const searchQuery = encodeURIComponent(ingredient);
                 return `<li><a href="https://www.google.com/search?q=${searchQuery}&tbm=isch" target="_blank" class="text-[#E27D60] hover:text-[#722F37]">${ingredient}</a></li>`;
               })
               .join("");
-            ingredientsList.innerHTML = ingredientsHTML;
-            document.getElementById("detailIngredients").style.display =
-              "block";
+            document
+              .getElementById("detailIngredients")
+              .classList.remove("hidden");
           } else {
-            document.getElementById("detailIngredients").style.display = "none";
+            document
+              .getElementById("detailIngredients")
+              .classList.add("hidden");
           }
 
           document.getElementById("instructionsText").textContent =
@@ -614,34 +797,26 @@
 
           modal.classList.remove("hidden");
           document.body.classList.add("no-scroll");
-          // Close detail modal
-          document
-            .getElementById("closeDetailModal")
-            .addEventListener("click", () => {
-              document
-                .getElementById("itemDetailModal")
-                .classList.add("hidden");
-              document.body.classList.remove("no-scroll");
-            });
 
-          // Close modal when clicking outside
-          window.addEventListener("click", (event) => {
-            const modal = document.getElementById("itemDetailModal");
+          document.getElementById("closeDetailModal").onclick = () => {
+            modal.classList.add("hidden");
+            document.body.classList.remove("no-scroll");
+          };
+
+          window.onclick = (event) => {
             if (event.target === modal) {
               modal.classList.add("hidden");
               document.body.classList.remove("no-scroll");
             }
-          });
-          // Add to cart functionality
-          if (item.price) {
-            addToCartBtn.onclick = (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              addToCart(item);
-              modal.classList.add("hidden");
-              document.body.classList.remove("no-scroll");
-            };
-          }
+          };
+
+          addToCartBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            addToCart(item);
+            modal.classList.add("hidden");
+            document.body.classList.remove("no-scroll");
+          };
         } catch (error) {
           console.error("Error in showItemDetail:", error);
         }
@@ -652,7 +827,7 @@
         try {
           const passwordModal = document.getElementById("passwordModal");
           if (!passwordModal) throw new Error("Password modal missing");
-          passwordModal.style.display = "flex";
+          passwordModal.classList.remove("hidden");
           document.body.classList.add("no-scroll");
           document.getElementById("passwordInput").focus();
         } catch (error) {
@@ -660,46 +835,42 @@
         }
       }
 
-      document
-        .getElementById("cancelPassword")
-        .addEventListener("click", () => {
-          try {
-            const passwordModal = document.getElementById("passwordModal");
-            if (!passwordModal) throw new Error("Password modal missing");
-            passwordModal.style.display = "none";
+      document.getElementById("cancelPassword").onclick = () => {
+        try {
+          const passwordModal = document.getElementById("passwordModal");
+          if (!passwordModal) throw new Error("Password modal missing");
+          passwordModal.classList.add("hidden");
+          document.body.classList.remove("no-scroll");
+          document.getElementById("passwordInput").value = "";
+        } catch (error) {
+          console.error("Error in cancelPassword:", error);
+        }
+      };
+
+      document.getElementById("submitPassword").onclick = () => {
+        try {
+          const password = document.getElementById("passwordInput").value;
+          if (password === "unlock123") {
+            Object.keys(drinksData).forEach((category) => {
+              drinksData[category].forEach((drink) => {
+                drink.locked = false;
+              });
+            });
+            displayDrinks(
+              document
+                .querySelector(".category-btn.active")
+                .getAttribute("data-category")
+            );
+            document.getElementById("passwordModal").classList.add("hidden");
             document.body.classList.remove("no-scroll");
             document.getElementById("passwordInput").value = "";
-          } catch (error) {
-            console.error("Error in cancelPassword:", error);
+          } else {
+            alert("Incorrect password");
           }
-        });
-
-      document
-        .getElementById("submitPassword")
-        .addEventListener("click", () => {
-          try {
-            const password = document.getElementById("passwordInput").value;
-            if (password === "unlock123") {
-              Object.keys(drinksData).forEach((category) => {
-                drinksData[category].forEach((drink) => {
-                  drink.locked = false;
-                });
-              });
-              displayDrinks(
-                document
-                  .querySelector(".category-btn.active")
-                  .getAttribute("data-category")
-              );
-              document.getElementById("passwordModal").style.display = "none";
-              document.body.classList.remove("no-scroll");
-              document.getElementById("passwordInput").value = "";
-            } else {
-              alert("Incorrect password");
-            }
-          } catch (error) {
-            console.error("Error in submitPassword:", error);
-          }
-        });
+        } catch (error) {
+          console.error("Error in submitPassword:", error);
+        }
+      };
 
       // Initialize
       document.addEventListener("DOMContentLoaded", () => {
@@ -707,11 +878,10 @@
           displayDrinks();
           updateCartCount();
 
-          // Bottom navigation active state and touch feedback
+          // Bottom navigation
           const currentPath =
             window.location.pathname.split("/").pop() || "index.html";
           const bottomNavItems = document.querySelectorAll(".bottom-nav-item");
-
           bottomNavItems.forEach((item) => {
             const href = item.getAttribute("href");
             if (href === currentPath) {
@@ -742,6 +912,39 @@
                 window.location.href = item.getAttribute("href");
               }
             });
+          });
+
+          const categoryContainer =
+            document.getElementById("categoryContainer");
+          const prevButton = document.getElementById("prevCategory");
+          const nextButton = document.getElementById("nextCategory");
+
+          // Scroll left
+          prevButton.addEventListener("click", () => {
+            categoryContainer.scrollBy({ left: -200, behavior: "smooth" });
+          });
+
+          // Scroll right
+          nextButton.addEventListener("click", () => {
+            categoryContainer.scrollBy({ left: 200, behavior: "smooth" });
+          });
+
+          // Optional: Disable buttons when at start/end
+          categoryContainer.addEventListener("scroll", () => {
+            const maxScroll =
+              categoryContainer.scrollWidth - categoryContainer.clientWidth;
+            prevButton.disabled = categoryContainer.scrollLeft <= 0;
+            nextButton.disabled = categoryContainer.scrollLeft >= maxScroll - 1;
+          });
+
+          // ScrollReveal animations
+          ScrollReveal().reveal(".menu-title", {
+            duration: 1000,
+            distance: "20px",
+            origin: "top",
+            opacity: 0,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            delay: 200,
           });
         } catch (error) {
           console.error("Error in DOMContentLoaded:", error);

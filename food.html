@@ -13,7 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
     <link rel="stylesheet" href="./css/bottom_navigation.css" />
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 
     <style>
       body {
@@ -25,29 +27,25 @@
         overflow: hidden;
       }
 
-      .menu-item {
-        transition: transform 0.3s ease;
+      /* Instagram Card Hover Effects */
+      .insta-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         background-color: #f5f5f5; /* Warm White/Cream */
       }
 
-      .menu-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
+      .insta-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(85, 107, 47, 0.2); /* Olive Green shadow */
       }
 
-      .category-btn {
-        background-color: #f5f5f5; /* Warm White/Cream */
-        color: #722f37; /* Deep Burgundy */
+      .cart-icon {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
       }
 
-      .category-btn.active {
-        background-color: #e27d60; /* Soft Terracotta */
-        color: #fffaf0; /* Warm White/Cream */
-      }
-
-      .category-btn:hover {
-        background-color: #722f37; /* Deep Burgundy */
-        color: #fffaf0; /* Warm White/Cream */
+      .insta-card:hover .cart-icon {
+        opacity: 1;
+        transform: translateY(-2px);
       }
 
       .modal {
@@ -68,18 +66,165 @@
         max-width: 800px;
         margin: 2rem auto;
       }
+
+      /* Custom styles for category navigation */
+      .food-menu-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        padding: 1rem 0;
+      }
+
+      /* Ensure container is visible */
+      .scroll-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 48px; /* Ensure enough space for buttons */
+
+        padding: 0 40px; /* Space for prev/next buttons */
+        box-sizing: border-box;
+      }
+      /* Ensure category container is visible and scrollable */
+      #categoryContainer {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto !important;
+        overflow-y: visible;
+        width: 100%;
+        gap: 8px;
+        padding-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        /* background: rgba(0, 255, 0, 0.1); */
+      }
+      /* Scrollbar hiding */
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* Button styles */
+      .category-btn {
+        display: inline-flex !important;
+        align-items: center;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 1;
+      }
+      /* Active state */
+      .category-btn.active {
+        background-color: #e27d60 !important;
+        color: #fffaf0 !important;
+        transition: all 0.2s ease;
+      }
+      /* Prev/Next buttons */
+      #prevCategory,
+      #nextCategory {
+        z-index: 2;
+        transform: translateY(-25%);
+        transition: transform 0.5s ease-in-out;
+      }
+
+     .recommended-label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 12px rgba(226, 125, 96, 0.6), 0 0 20px rgba(255, 255, 255, 0.1) inset;
+  background: linear-gradient(
+    120deg,
+    #e27d60,
+    #e8a87c,
+    #c38d9e,
+    #85dcb0,
+    #e27d60
+  );
+  background-size: 400% 400%;
+  color: #fffaf0;
+  animation: shimmerGradient 8s ease infinite;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recommended-label:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(226, 125, 96, 0.8), 0 0 25px rgba(255, 255, 255, 0.3) inset;
+}
+
+.recommended-label .icon {
+  margin-right: 0.4rem;
+}
+
+/* Gradient shimmer animation */
+@keyframes shimmerGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+      @media (max-width: 640px) {
+        .food-menu-section {
+          min-height: 150px;
+        }
+        .scroll-container {
+          padding: 0 20px;
+        }
+      }
+      #google_translate_element select:focus {
+        outline: none;
+        border-color: #722f37;
+        box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+      }
+      .goog-te-banner-frame,
+      .goog-te-menu-frame {
+        display: none !important;
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 640px) {
+        .translate-container {
+          max-width: 100px;
+        }
+        #google_translate_element select {
+          font-size: 0.75rem;
+          padding: 0.25rem 1.25rem 0.25rem 0.375rem;
+          background-position: right 0.25rem center;
+        }
+      }
     </style>
   </head>
 
-  <body>
+  <body class="bg-[#FFFAF0]">
     <!-- Navigation -->
-     <nav class="bg-white shadow-md">
+    <nav class="bg-[#F5F5F5] shadow-md fixed w-full z-20"">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
             <a
               href="./"
-              class="text-xl font-bold text-[#722F37] flex items-center gap-2" /* Deep Burgundy */
+              class="text-xl font-bold text-[#722F37] flex items-center gap-2"
             >
               <i class="fas fa-utensils"></i>
               <span>Food Menu</span>
@@ -89,22 +234,22 @@
           <div class="hidden md:flex space-x-8 desktop-nav">
             <a
               href="food.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Food</a
             >
             <a
               href="drinks.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Drinks</a
             >
             <a
               href="recipes.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
               >Recipes</a
             >
             <a
               href="search.html"
-              class="text-[#556B2F] hover:text-[#E27D60] transition-colors" /* Olive Green to Soft Terracotta */
+              class="text-[#556B2F] hover:text-[#E27D60] transition-colors"
             >
               <i class="fas fa-search"></i> Search
             </a>
@@ -113,84 +258,107 @@
             <a
               href="cart.html"
               id="cartButton"
-              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors" /* Soft Terracotta on hover */
+              class="relative p-2 rounded-full hover:bg-[#E27D60] hover:text-[#FFFAF0] transition-colors"
             >
               <i class="fas fa-shopping-cart"></i>
               <span
                 id="cartCount"
-                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs" /* Deep Burgundy with Warm White text */
+                class="absolute -top-1 -right-1 bg-[#722F37] text-[#FFFAF0] rounded-full w-5 h-5 flex items-center justify-center text-xs"
                 >0</span
               >
             </a>
-    <div id="google_translate_element"></div>
-
+            <div class="translate-container">
+              <div id="google_translate_element"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-
+        </div>
+        </nav>
+   
+   
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-      <h1 class="text-4xl font-bold mb-8 text-center text-[#722F37]">
+    <main class="container mx-auto px-4 py-12 pt-24">
+      <h1 class=" menu-title text-4xl font-bold mb-8 text-center text-[#722F37]">
         Our Food Menu
       </h1>
 
       <!-- Category Navigation -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button
-          class="category-btn active px-6 py-2 rounded-full transition-colors"
-          data-category="all"
-        >
-          All
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="tapas"
-        >
-          Tapas
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="coldcut"
-        >
-          Cold cuts
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="salads"
-        >
-          Salad
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="pizza"
-        >
-          Pizza
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="paella"
-        >
-          Paella
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="meat"
-        >
-          Steak
-        </button>
-        <button
-          class="category-btn px-6 py-2 rounded-full transition-colors"
-          data-category="dessert"
-        >
-          Desserts
-        </button>
+      <div class="food-menu-section">
+        <div class="relative flex items-center mb-8 scroll-container">
+          <button
+            id="prevCategory"
+            class="absolute left-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#E27D60] text-[#FFFAF0] rounded-full flex items-center justify-center hover:bg-[#722F37] shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous categories"
+          >
+            <i class="fas fa-chevron-left text-sm sm:text-base"></i>
+          </button>
+          <div
+            id="categoryContainer"
+            class="flex overflow-x-auto gap-2 pb-4 hide-scrollbar scroll-smooth"
+          >
+            <button
+              class="category-btn active px-3 ml-8 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="all"
+            >
+              <span class="mr-1 text-sm sm:text-base">🌍</span> All
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="tapas"
+            >
+              <span class="mr-1 text-sm sm:text-base">🍤</span> Tapas
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="coldcut"
+            >
+              <span class="mr-1 text-sm sm:text-base">🥓</span> Cold cuts
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="salads"
+            >
+              <span class="mr-1 text-sm sm:text-base">🥗</span> Salad
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="pizza"
+            >
+              <span class="mr-1 text-sm sm:text-base">🍕</span> Pizza
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="paella"
+            >
+              <span class="mr-1 text-sm sm:text-base">🍚</span> Paella
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="meat"
+            >
+              <span class="mr-1 text-sm sm:text-base">🥩</span> Steak
+            </button>
+            <button
+              class="category-btn px-3 py-1.5 mr-8 sm:px-4 sm:py-2 rounded-full bg-[#F5F5F5] text-[#722F37] text-xs sm:text-sm font-medium hover:bg-[#722F37] hover:text-[#FFFAF0] transition-colors snap-start min-w-[80px] sm:min-w-[100px] flex items-center"
+              data-category="dessert"
+            >
+              <span class="mr-1 text-sm sm:text-base">🍰</span> Desserts
+            </button>
+          </div>
+          <button
+            id="nextCategory"
+            class="absolute right-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#E27D60] text-[#FFFAF0] rounded-full flex items-center justify-center hover:bg-[#722F37] shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next categories"
+          >
+            <i class="fas fa-chevron-right text-sm sm:text-base"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Food Items Grid -->
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         id="foodGrid"
       >
         <!-- Items will be dynamically inserted here -->
@@ -281,13 +449,23 @@
         <span>Search</span>
       </a>
     </div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
 
     <script type="module">
       import { foodData } from "./data/foods_data.js";
@@ -421,25 +599,37 @@ function googleTranslateElementInit() {
         items.forEach((item) => {
           const itemDiv = document.createElement("div");
           itemDiv.className =
-            "menu-item rounded-lg shadow-md overflow-hidden cursor-pointer";
+            "insta-card rounded-lg overflow-hidden bg-[#F5F5F5] relative cursor-pointer";
           itemDiv.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-[#722F37]">${item.name}</h3>
-              <p class="text-[#556B2F] mb-4">${item.description}</p>
-              <div class="flex justify-between items-center">
-                <span class="text-xl font-bold text-[#E27D60]">฿${item.price}</span>
-                <button class="px-4 py-2 bg-[#E27D60] text-[#FFFAF0] rounded-lg hover:bg-[#722F37] transition-colors">
-                  Add to Cart
-                </button>
-              </div>
+            <div class="relative aspect-square">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+              
+              <button class="cart-icon absolute top-2 right-2 bg-[#E27D60]/80 text-[#FFFAF0] p-2 rounded-full hover:bg-[#722F37] transition-colors">
+                <i class="fas fa-shopping-cart text-sm"></i>
+              </button>
+            </div>
+             ${
+     item.description?.includes("Recommeded")
+  ? `<div class="recommended-label">
+  <span class="icon">🌟</span>
+  Recommended
+</div>
+`
+  : ""
+    }
+            <div class="p-3 flex justify-between items-center">
+              <h3 class="text-sm sm:text-base font-semibold text-[#722F37] line-clamp-1">${item.name}</h3>
+              <p class="text-sm sm:text-base font-medium text-[#E27D60]">฿${item.price}</p>
+              
             </div>
           `;
           grid.appendChild(itemDiv);
 
           // Add event listeners
-          itemDiv.addEventListener("click", () => showItemDetails(item));
-          itemDiv.querySelector("button").addEventListener("click", (e) => {
+          itemDiv.addEventListener("click", (e) => {
+            if (!e.target.closest(".cart-icon")) showItemDetails(item);
+          });
+          itemDiv.querySelector(".cart-icon").addEventListener("click", (e) => {
             e.stopPropagation();
             addToCart(item);
           });
@@ -451,14 +641,55 @@ function googleTranslateElementInit() {
       updateCartCount();
 
       // Category button handlers
-      document.querySelectorAll(".category-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".category-btn")
-            .forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const category = btn.dataset.category;
-          renderMenuItems(category);
+      document.addEventListener("DOMContentLoaded", () => {
+        const categoryContainer = document.getElementById("categoryContainer");
+        const prevButton = document.getElementById("prevCategory");
+        const nextButton = document.getElementById("nextCategory");
+
+        // Ensure scroll position starts at 0
+        setTimeout(() => {
+          categoryContainer.scrollLeft = 0;
+        }, 0);
+
+        // Scroll left
+        prevButton.addEventListener("click", () => {
+          categoryContainer.scrollBy({ left: -100, behavior: "smooth" });
+        });
+
+        // Scroll right
+        nextButton.addEventListener("click", () => {
+          categoryContainer.scrollBy({ left: 100, behavior: "smooth" });
+        });
+
+        // Update button states
+        const updateButtonStates = () => {
+          const maxScroll =
+            categoryContainer.scrollWidth - categoryContainer.clientWidth;
+          prevButton.disabled = categoryContainer.scrollLeft <= 0;
+          nextButton.disabled = categoryContainer.scrollLeft >= maxScroll - 1;
+        };
+        categoryContainer.addEventListener("scroll", updateButtonStates);
+        updateButtonStates();
+
+        // Handle active state for category buttons
+        document.querySelectorAll(".category-btn").forEach((btn) => {
+          const setActive = () => {
+            document.querySelectorAll(".category-btn").forEach((b) => {
+              b.classList.remove("active");
+              b.style.backgroundColor = "";
+              b.style.color = "";
+            });
+            btn.classList.add("active");
+            btn.style.backgroundColor = "#E27D60";
+            btn.style.color = "#FFFAF0";
+            const category = btn.dataset.category;
+            renderMenuItems(category);
+          };
+          btn.addEventListener("click", setActive);
+          btn.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            setActive();
+          });
         });
       });
 
@@ -507,8 +738,22 @@ function googleTranslateElementInit() {
             if (e.key === "Enter") {
               window.location.href = item.getAttribute("href");
             }
+
+              // ScrollReveal animations
+     
+          });
+
+               ScrollReveal().reveal(".menu-title", {
+            duration: 1000,
+            distance: "20px",
+            origin: "top",
+            opacity: 0,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            delay: 200,
           });
         });
+
+        
       });
     </script>
   </body>
